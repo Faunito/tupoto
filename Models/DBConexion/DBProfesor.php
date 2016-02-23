@@ -4,7 +4,7 @@ require_once ('ICrud.php');
 
 class DBProfesor implements ICrud
 {
-	public function GetIntence($var)
+	public function GetInstance($var)
 	{
 		$con = DBSingleton::getInstance();
 		$aux = $con -> getDB();
