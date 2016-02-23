@@ -5,31 +5,20 @@ require_once ('Profesor.php');
 //require_once ('Competencia.php');
 //equire_once ('ActividaddCompensacion.php');
 
-/**
- * @author Freddy
- * @version 1.0
- * @created 19-Feb.-2016 19:48:54
- */
-class DirectordeCarrera extends Profesor
+class DirectorDeCarrera extends Profesor
 {
-
-	var $carrera;
-	var $facultad;
+    //VARS
+	private $carrera;
+	private $facultad;
 	var $m_MallaCurricular;
 	var $m_Competencia;
 	var $m_ActividaddCompensacion;
-
+    //CONSTRUCT
 	function __construct()
 	{
         parent::__construct();
 	}
-
-	/**
-	 * 
-	 * @param idAsignatura
-	 * @param nombreAsignatura
-	 * @param nivelAsignatura
-	 */
+    //FUNCTIONS
 	function crearAsignatura($idAsignatura, $nombreAsignatura, $nivelAsignatura)
 	{
 	}
@@ -38,49 +27,30 @@ class DirectordeCarrera extends Profesor
 	{
 	}
 
-	/**
-	 * 
-	 * @param codigoMalla
-	 * @param codigoCarrera
-	 * @param duracionMalla
-	 * @param anioMalla
-	 */
 	function crearMallaCurricular($codigoMalla, $codigoCarrera , $duracionMalla, $anioMalla)
 	{
 	}
 
-	/**
-	 * 
-	 * @param codigoMallaCurricular
-	 */
 	function extraerMallaCurricular($codigoMallaCurricular)
 	{
 	}
-
-	function getcarrera()
+    //GETTERS
+	function getCarrera()
 	{
 		return $this->carrera;
 	}
 
-	function getfacultad()
+	function getFacultad()
 	{
 		return $this->facultad;
 	}
-
-	/**
-	 * 
-	 * @param newVal
-	 */
-	function setcarrera($newVal)
+    //SETTERS
+	function setCarrera($newVal)
 	{
 		$this->carrera = $newVal;
 	}
 
-	/**
-	 * 
-	 * @param newVal
-	 */
-	function setfacultad($newVal)
+	function setFacultad($newVal)
 	{
 		$this->facultad = $newVal;
 	}

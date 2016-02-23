@@ -47,9 +47,10 @@
 				                <div class="row">
 				                    <div class="input-field col s12 m10 offset-m1">
 				                    	<select name="tipoFuncionario">
-									      	<option value="" disabled selected>Elija un tipo</option>
-									      	<option value="profesor">Profesor</option>
-									    	<option value="secretaria">Secretaria</option>									      										    
+									      	<option value="" disabled selected>Elija un tipo</option>									      	
+									    	<option value="secretaria">Secretaria</option>
+                                            <option value="profesor">Profesor</option>
+                                            <option value="secretaria">Director de Carrera</option>									      										    
 									    </select>
 				                    <!--    <input type="password" id="pass" class="login-input" name="password" required>
 										<label for="pasword">Contraseña</label>-->

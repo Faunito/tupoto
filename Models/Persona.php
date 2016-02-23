@@ -1,75 +1,51 @@
 <?php //namespace Models;
 
-
-/**
- * @author Freddy
- * @version 1.0
- * @created 19-Feb.-2016 19:48:56
- */
 abstract class Persona
 {
-
-	private $apellidoMaterno;
-    private $apellidoPaterno;
+	private $amaterno;
+    private $apaterno;
 	private $nombre;
 	private $rut;
 
-
-	function getapellidoMaterno()
+    //SETTERS
+	function setAmaterno($newVal)
 	{
-		return $this->apellidoMaterno;
+		$this->amaterno = $newVal;
 	}
 
-	function getapellidoPaterno()
+	function setApaterno($newVal)
 	{
-		return $this->apellidoPaterno;
+		$this->apaterno = $newVal;
 	}
 
-	function getnombre()
-	{
-		return $this->nombre;
-	}
-
-	function getrut()
-	{
-		return $this->rut;
-	}
-
-	/**
-	 * 
-	 * @param newVal
-	 */
-	function setapellidoMaterno($newVal)
-	{
-		$this->apellidoMaterno = $newVal;
-	}
-
-	/**
-	 * 
-	 * @param newVal
-	 */
-	function setapellidoPaterno($newVal)
-	{
-		$this->apellidoPaterno = $newVal;
-	}
-
-	/**
-	 * 
-	 * @param newVal
-	 */
-	function setnombre($newVal)
+	function setNombre($newVal)
 	{
 		$this->nombre = $newVal;
 	}
 
-	/**
-	 * 
-	 * @param newVal
-	 */
-	function setrut($newVal)
+	function setRut($newVal)
 	{
 		$this->rut = $newVal;
 	}
+    //GETTERS
+	function getAmaterno()
+	{
+		return $this->amaterno;
+	}
 
+	function getApaterno()
+	{
+		return $this->apaterno;
+	}
+
+	function getNombre()
+	{
+		return $this->nombre;
+	}
+
+	function getRut()
+	{
+		return $this->rut;
+	}
 }
 ?>

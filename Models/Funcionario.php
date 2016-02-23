@@ -1,24 +1,19 @@
 <?php  //namespace Models;
+
 require_once ('Persona.php');
 
-/**
- * @author Freddy
- * @version 1.0
- * @created 19-Feb.-2016 19:48:56
- */
 abstract class Funcionario extends Persona
 {
+	//private $cargo;
+	private $correoElectronico;
+	private $password;
 
-	var $cargo;
-	var $correoElectronico;
-	var $password;
-
-	function getcorreoElectronico()
+	function getCorreoElectronico()
 	{
 		return $this->correoElectronico;
 	}
 
-	function getpassword()
+	function getPassword()
 	{
 		return $this->password;
 	}
@@ -27,20 +22,12 @@ abstract class Funcionario extends Persona
 	{
 	}
 
-	/**
-	 * 
-	 * @param newVal
-	 */
-	function setcorreoElectronico($newVal)
+	function setCorreoElectronico($newVal)
 	{
 		$this->correoElectronico = $newVal;
 	}
 
-	/**
-	 * 
-	 * @param newVal
-	 */
-	function setpassword($newVal)
+	function setPassword($newVal)
 	{
 		$this->password = $newVal;
 	}

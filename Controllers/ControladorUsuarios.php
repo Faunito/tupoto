@@ -22,12 +22,16 @@ class ControladorUsuarios{
 			//se instancia la clase profesor
 			$user = new Profesor();
 			$user -> getProfesor($email,$pass);
-                                                  
+            var_dump($user);
+            if(8)
+            //crear session                                    
 		}
 		else{
             if($tipoFuncionario == 'secretaria'){
                 $user = new Secretaria();
-         
+                $user -> getSecretaria($email,$pass);
+                var_dump($user);
+                //crear session
             }          
 		}
 	}
