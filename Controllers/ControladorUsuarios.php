@@ -19,7 +19,7 @@ class ControladorUsuarios{
 		//llamada al profe solamente por haora        
 		if($tipoFuncionario == 'profesor'){
 			//se instancia la clase profesor            
-            echo $tipoFuncionario;
+            echo '<h1>FUNCIONAAAA :D</h1>';
 			$user = new Profesor();
 			$res = $user -> getProfesor($email,$pass);
             echo json_encode($res);                      
