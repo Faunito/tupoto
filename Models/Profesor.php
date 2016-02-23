@@ -23,9 +23,9 @@ class Profesor extends Funcionario
         $res = $this -> con -> prepare('SELECT * FROM profesor where EMAIL =:email and PASSWORD =:pass');
         $res -> bindParam(':email',$email,PDO::PARAM_STR);
         $res -> bindParam(':pass',$pass,PDO::PARAM_STR);
-        $res -> execute();
-        $res1 = $res -> fetchAll(PDO::FETCH_ASSOC);
-        return $res1;
+        $res -> execute();        
+        $res2 = $res -> fetchObject(__CLASS__);      
+        return $res2;
             
 	}
 
