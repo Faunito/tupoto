@@ -23,7 +23,7 @@ class Profesor extends Funcionario
 	{       
         $this -> setcorreoElectronico($email);
         $this -> setpassword($pass);
-        $this -> dbprofesor -> GetIntance($this);
+        $this -> dbprofesor -> GetInstance($this);
 	}
 
 	function GenerarCuadroComparativo($Competencia, $PracticaEmpleador)

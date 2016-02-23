@@ -20,11 +20,8 @@ class ControladorUsuarios{
 		if($tipoFuncionario == 'profesor'){
 			//se instancia la clase profesor
 			$user = new Profesor();
-			$res = $user -> getProfesor($email,$pass);
-            print($res -> NOMBRE);
-            print($res -> APATERNO);
-            print($res -> AMATERNO);
-            print($res -> FACULTAD);            
+			$user -> getProfesor($email,$pass);
+            echo $user -> getnombre();            
                                                   
 		}/*
 		else{
