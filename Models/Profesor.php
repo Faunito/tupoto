@@ -1,6 +1,7 @@
 <?php //namespace Models;
 require_once ('DBSingleton.php');
 require_once ('Funcionario.php');
+require_once ('DBConexion/DBProfesor.php');
 class Profesor extends Funcionario
 {
 
@@ -10,23 +11,19 @@ class Profesor extends Funcionario
 	var $m_Evaluacion;
 	var $m_ProgramaCurricular;
 	var $bdprofesor;
+	var $dbprofesor;
     private $con;
 
 	public function __construct()
 	{
-		$aux = DBSingleton::getInstance();
-        $this -> con = $aux -> getDB();
+		$this -> dbprofesor = new DBProfesor();
 	}
 
 	function getProfesor($email,$pass)
 	{       
-        $res = $this -> con -> prepare('SELECT * FROM profesor where EMAIL =:email and PASSWORD =:pass');
-        $res -> bindParam(':email',$email,PDO::PARAM_STR);
-        $res -> bindParam(':pass',$pass,PDO::PARAM_STR);
-        $res -> execute();        
-        $res2 = $res -> fetchObject(__CLASS__);      
-        return $res2;
-            
+        $this -> setcorreoElectronico($email);
+        $this -> setpassword($pass);
+        $this -> dbprofesor -> GetIntance($this);
 	}
 
 	function GenerarCuadroComparativo($Competencia, $PracticaEmpleador)
