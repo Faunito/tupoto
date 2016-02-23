@@ -1,6 +1,7 @@
 <?php //namespace Controllers;
 
 require_once ('../Models/Profesor.php');
+require_once ('../Models/Secretaria.php');
 
 class ControladorUsuarios{
 	var $user;
@@ -21,14 +22,13 @@ class ControladorUsuarios{
 			//se instancia la clase profesor
 			$user = new Profesor();
 			$user -> getProfesor($email,$pass);
-            echo $user -> getnombre();            
                                                   
-		}/*
+		}
 		else{
             if($tipoFuncionario == 'secretaria'){
                 $user = new Secretaria();
          
             }          
-		}*/
+		}
 	}
 }

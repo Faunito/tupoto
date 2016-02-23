@@ -9,10 +9,10 @@
 abstract class Persona
 {
 
-	var $apellidoMaterno;
-	var $apellidoPaterno;
-	var $nombre;
-	var $rut;
+	private $apellidoMaterno;
+    private $apellidoPaterno;
+	private $nombre;
+	private $rut;
 
 
 	function getapellidoMaterno()
