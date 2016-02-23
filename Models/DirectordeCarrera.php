@@ -1,4 +1,4 @@
-<?php namespace Models;
+<?php //namespace Models;
 //require_once ('MallaCurricular.php');
 require_once ('Profesor.php');
 //require_once ('../autoload.php');

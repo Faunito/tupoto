@@ -1,4 +1,4 @@
-<?php namespace Models;
+<?php //namespace Models;
 
 class DBSingleton 
 {
@@ -21,4 +21,8 @@ class DBSingleton
         }
         return self::$instance;
     }
+    
+    public function getDB(){
+        return $this->db;
+    } 
 }

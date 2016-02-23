@@ -1,4 +1,4 @@
-<?php namespace Controllers;
+<?php //namespace Controllers;
 
 require_once ('../Models/Profesor.php');
 
@@ -11,22 +11,18 @@ class ControladorUsuarios{
 
 	public function getProfesor()
 	{
-       return $user;
+       return $this -> user;
 	}
 
 	public function login($email,$pass,$tipoFuncionario)
 	{
-		//llamada al profe solamente por haora
-        echo 'entrar a login';
+		//llamada al profe solamente por haora        
 		if($tipoFuncionario == 'profesor'){
-			//se instancia la clase profesor
-            echo 'hola login';
+			//se instancia la clase profesor            
             echo $tipoFuncionario;
 			$user = new Profesor();
 			$res = $user -> getProfesor($email,$pass);
-            echo $res;
-            echo 'chao login';
-             
+            echo json_encode($res);                      
 		}/*
 		else{
             if($tipoFuncionario == 'secretaria'){
