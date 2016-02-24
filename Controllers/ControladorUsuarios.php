@@ -18,29 +18,29 @@ class ControladorUsuarios{
 
 	public function login($email,$pass,$tipoFuncionario)
 	{
-		//llamada al profe solamente por haora        
-		if($tipoFuncionario == 'profesor'){
-			//se instancia la clase profesor
+		//llamada al profe solamente por haora 
+        
+        switch($tipoFuncionario){
+            case "profesor":
+            //se instancia la clase profesor
 			$user = new Profesor();
 			$user -> getProfesor($email,$pass);
             var_dump($user);            
-            //crear session                                    
-		}
-		//else{
-            if($tipoFuncionario == 'secretaria'){
-                $user = new Secretaria();
-                $user -> getSecretaria($email,$pass);
-                var_dump($user);
-                //crear session
-            }
-           // else{
-                if($tipoFuncionario == 'director'){
-                    $user = new DirectorDeCarrera();
-                    $user -> getDirector($email,$pass);
-                    var_dump($user);                    
-                    //si en user existe algo crear seion
-                }
-            //}          
-		//}
+            //crear session
+            break;
+            
+            case 'secretaria':
+            $user = new Secretaria();
+            $user -> getSecretaria($email,$pass);
+            var_dump($user);
+            //crear session
+            break;
+            case 'director':
+            $user = new DirectorDeCarrera();
+            $user -> getDirector($email,$pass);
+            var_dump($user);                    
+            //si en user existe algo crear seion   
+            break;         
+        }      
 	}
 }
