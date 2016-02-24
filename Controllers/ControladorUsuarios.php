@@ -2,6 +2,7 @@
 
 require_once ('../Models/Profesor.php');
 require_once ('../Models/Secretaria.php');
+require_once ('../Models/DirectorDeCarrera.php');
 
 class ControladorUsuarios{
 	var $user;
@@ -22,17 +23,24 @@ class ControladorUsuarios{
 			//se instancia la clase profesor
 			$user = new Profesor();
 			$user -> getProfesor($email,$pass);
-            var_dump($user);
-            if(8)
+            var_dump($user);            
             //crear session                                    
 		}
-		else{
+		//else{
             if($tipoFuncionario == 'secretaria'){
                 $user = new Secretaria();
                 $user -> getSecretaria($email,$pass);
                 var_dump($user);
                 //crear session
-            }          
-		}
+            }
+           // else{
+                if($tipoFuncionario == 'director'){
+                    $user = new DirectorDeCarrera();
+                    $user -> getDirector($email,$pass);
+                    var_dump($user);                    
+                    //si en user existe algo crear seion
+                }
+            //}          
+		//}
 	}
 }

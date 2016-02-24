@@ -8,6 +8,7 @@ class Secretaria extends Funcionario
 {
     //VARS
     private $facultad;
+    private $telefono;
     //FUNCIONES
     //CONSTRUCTS
     function __construct(){
@@ -19,9 +20,17 @@ class Secretaria extends Funcionario
     function setFacultad($facultad){
         $this -> facultad = $facultad;
     }
+    
+    function setTelefono($telefono){
+        $this -> telefono = $telefono;
+    }
     //GETTERS
     function getFacultad(){
         return $facultad;
+    }
+    
+    function getTelefono(){
+        return $telefono;
     }
     
     function getSecretaria($email,$pass){

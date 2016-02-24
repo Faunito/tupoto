@@ -44,6 +44,12 @@ class DirectorDeCarrera extends Profesor
 	{
 		return $this->facultad;
 	}
+    /*
+    function getDirector($email,$pass){
+        $this -> setCorreoElectronico($email);
+        $this -> setPassword($pass);
+        $this -> dbprofesor -> GetInstance($this);
+    }*/
     //SETTERS
 	function setCarrera($newVal)
 	{

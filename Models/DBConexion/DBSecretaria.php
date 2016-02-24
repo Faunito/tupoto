@@ -9,14 +9,15 @@ class DBSecretaria implements ICrud
 		$aux = $con -> getDB();
         //ejecutar query
 		$res = $aux -> prepare('SELECT * FROM secretaria where EMAIL =:email and PASSWORD =:pass');
-        $res -> bindParam(':email',$var -> getcorreoElectronico(),PDO::PARAM_STR);
-        $res -> bindParam(':pass',$var -> getpassword(),PDO::PARAM_STR);
+        $res -> bindParam(':email',$var -> getCorreoElectronico(),PDO::PARAM_STR);
+        $res -> bindParam(':pass',$var -> getPassword(),PDO::PARAM_STR);
         $res -> execute();
-        //guardar respuesta en ojeto php
+        //guardar respuesta en objeto php
         $res2 = $res -> fetchObject(__CLASS__);                
         $var->setCorreoElectronico($res2->EMAIL);
         $var->setPassword($res2->PASSWORD);
         $var->setFacultad($res2->FACULTAD);
+        $var->setTelefono($res2->TELEFONO_FIJO);
         $var->setRut($res2->RUT);
         $var->setNombre($res2->NOMBRE);
         $var->setApaterno($res2->APATERNO);

@@ -10,8 +10,8 @@ class DBProfesor implements ICrud
 		$aux = $con -> getDB();
         //ejecutar query
 		$res = $aux -> prepare('SELECT * FROM profesor where EMAIL =:email and PASSWORD =:pass');
-        $res -> bindParam(':email',$var -> getcorreoElectronico(),PDO::PARAM_STR);
-        $res -> bindParam(':pass',$var -> getpassword(),PDO::PARAM_STR);
+        $res -> bindParam(':email',$var -> getCorreoElectronico(),PDO::PARAM_STR);
+        $res -> bindParam(':pass',$var -> getPassword(),PDO::PARAM_STR);
         $res -> execute();
         //guardar respuesta en ojeto php
         $res2 = $res -> fetchObject(__CLASS__);
