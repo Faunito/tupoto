@@ -1,4 +1,4 @@
-<?php //namespace Controllers;
+<?php
 
 require_once ('../Models/Profesor.php');
 require_once ('../Models/Secretaria.php');
@@ -11,8 +11,7 @@ class ControladorUsuarios{
      
     }
     
-	public function login($email,$pass,$tipoFuncionario)
-	{
+	public function login($email,$pass,$tipoFuncionario){
 		//llamada al profe solamente por ahora 
         
         switch($tipoFuncionario){

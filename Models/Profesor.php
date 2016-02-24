@@ -2,8 +2,9 @@
 require_once ('DBSingleton.php');
 require_once ('Funcionario.php');
 require_once ('DBConexion/DBProfesor.php');
-class Profesor extends Funcionario
-{
+
+class Profesor extends Funcionario {
+
     //propias
 	private $tipoProfesor;
     private $facultad;
@@ -11,28 +12,27 @@ class Profesor extends Funcionario
     private $m_EvaluacionPracticaProfesor;
 	private $m_Evaluacion;
 	private $m_ProgramaCurricular;    
-	var $dbprofesor;
-    //CONSTRUCTS
-	public function __construct()
-	{
-		$this -> dbprofesor = new DBProfesor();
+	private $dbprofesor;
+
+	public function __construct(){
+		$this->dbprofesor = new DBProfesor();
 	}    
-    //FUNCTIONS
-	function generarCuadroComparativo($Competencia, $PracticaEmpleador)
-	{
+
+	function generarCuadroComparativo($Competencia, $PracticaEmpleador){
+
 	}
     
-	function nuevaEvaluacionProfesor($rutAlumno)
-	{
+	function nuevaEvaluacionProfesor($rutAlumno){
+
 	}
 
     //SETTERS	
     function setFacultad($facultad){
-        $this -> facultad = $facultad;
+        $this->facultad = $facultad;
     }
     
     function setTipoProfesor($tipoProfesor){
-        $this -> tipoProfesor = $tipoProfesor;
+        $this->tipoProfesor = $tipoProfesor;
     }   
     //GETTERS
     function getTipoProfesor(){
@@ -40,14 +40,14 @@ class Profesor extends Funcionario
     }
     
     function getFacultad(){
-        return $this -> facultad;
+        return $this->facultad;
     }   
     
     function getProfesor($email,$pass)
 	{       
-        $this -> setCorreoElectronico($email);
-        $this -> setPassword($pass);
-        $this -> dbprofesor -> GetInstance($this);
+        $this->setCorreoElectronico($email);
+        $this->setPassword($pass);
+        $this->dbprofesor->GetInstance($this);
 	}
 
 }
