@@ -10,23 +10,19 @@ class ControladorUsuarios{
     function __construct(){
      
     }
-
-	public function getProfesor()
-	{
-       return $this -> user;
-	}
-
+    
 	public function login($email,$pass,$tipoFuncionario)
 	{
-		//llamada al profe solamente por haora 
+		//llamada al profe solamente por ahora 
         
         switch($tipoFuncionario){
             case "profesor":
             //se instancia la clase profesor
 			$user = new Profesor();
 			$user -> getProfesor($email,$pass);
-            var_dump($user);            
+            //var_dump($user)
             //crear session
+            $this -> crearSesion($user);  
             break;
             
             case 'secretaria':
@@ -40,7 +36,24 @@ class ControladorUsuarios{
             $user -> getDirector($email,$pass);
             var_dump($user);                    
             //si en user existe algo crear seion   
-            break;         
-        }      
+            break;
+            default:
+            print('Funcionario no especificado');         
+        }
+              
 	}
+    
+   public function getProfesor()
+	{
+       return $this -> user;
+	}
+    
+    private function crearSesion($ob){
+        if(isset($ob)){
+            session_start();
+            $str = serialize($ob);
+            $_SESSION['usuario']=$str;    
+        }
+        else echo 'no funciono';        
+    }
 }
