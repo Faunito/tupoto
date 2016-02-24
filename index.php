@@ -1,63 +1,21 @@
 <?php
-	require('Views/hola.php');	//Llama al archivo con las constantes, 
-								//importante llamarlo primero desde aca para que header.php
-								//tome las constantes en los href
-	$title = 'Sistema SEP';
-	include(ROOT_DIR . TEMPLATES_DIR . 'header.php');	//Llama al header
-?>
+	require_once('/Config/Constantes.php');
+	require_once(ROOT_DIR . MODELS_DIR . 'Profesor.php');
+	require_once(ROOT_DIR . CONTROLLERS_DIR . 'LoginController.php');
+	require_once(ROOT_DIR . VIEWS_DIR . 'LoginView.php');
+	
+	$profesor = new Profesor();
+	$controller = new LoginController($profesor);
 
-<main id="sb-site" class="blue-grey lighten-5">
-	<div class="container">		
-		<!-- contenido del contenido principal -->
-		<div class="row center" style="margin-top:100px;">
-		    <div class="col s12 m6 offset-m3">
-		    	<div class="card  hoverable">
-				    <div class="card-content">
-				    	<span class="card-title">Ingreso al sistema</span>
-						<form method="POST" action="<?php echo VIEWS_DIR ?>home.php" id="login">
-			                <div class="row">
-			                    <div class="input-field col s12 m10 offset-m1">
-			                        <input type="text" id="email" class="login-input" name="email" required>
-									<label for="email">Email</label>
-			                    </div>
-			                </div>
-			                <div class="row">
-			                    <div class="input-field col s12 m10 offset-m1">
-			                        <input type="password" id="password" class="login-input" name="password" required>
-									<label for="pasword">Contraseña</label>
-			                    </div>
-			                </div>
-			                <div class="row">
-			                    <div class="input-field col s12 m10 offset-m1">
-			                    	<select name="tipoFuncionario">
-								      	<option value="" disabled selected>Elija un tipo</option>
-								      	<option value="profesor">Profesor</option>
-								    	<option value="secretaria">Secretaria</option>									      										    
-								    </select>
-			                    <!--    <input type="password" id="pass" class="login-input" name="password" required>
-									<label for="pasword">Contraseña</label>-->
-									<label >Funcionario</label>
-			                    </div>
-			                </div>
-			                <div class="row">
-			                    <div class="col  m10 offset-m1">
-			                        <p class="right-align">
-			                            <button class="btn btn-large waves-effect waves-light color_primario" type="submit" form="login" name="action">Ingresar</button>
-			                        </p>
-			                    </div>
-			                </div>
-			            <!--</form>-->
-			            </form>
-			        </div>
-		        </div>
-		    </div>
-	    </div>
-	    <!-- fin del contenido del contenido principal -->
-	</div>	
-</main>
+	if (isset($_GET['action'])) {
+		if($controller->{$_GET['action']}($_POST)){				//Llama a la funcion 'login' del controlador, 
+			header('Location: ' . ROUTES_DIR . 'inicio.php');		//que viene por parametro de $_GET en el form
+		}else{
+			//No existe el profesor
+		}													
+	}
 
-
-<?php
-	include(ROOT_DIR . TEMPLATES_DIR . 'footer.php');
+	$view = new LoginView($profesor);
+	$view->output();
 
 ?>

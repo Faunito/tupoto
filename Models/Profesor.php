@@ -4,27 +4,36 @@ require_once ('Funcionario.php');
 class Profesor extends Funcionario
 {
 
-	var $area;
-	var $titulo;
-	var $m_EvaluacionPracticaProfesor;
-	var $m_Evaluacion;
-	var $m_ProgramaCurricular;
-	var $bdprofesor;
+	private $area;
+	private $titulo;
+	private $m_EvaluacionPracticaProfesor;
+	private $m_Evaluacion;
+	private $m_ProgramaCurricular;
+	private $bdprofesor;
     private $con;
 
 	public function __construct()
 	{
 		$aux = DBSingleton::getInstance();
-        $this -> con = $aux -> getDB();
+        $this->con = $aux->getDB();
+	}
+
+	function existeProfesor($email,$pass){
+		$res = $this->con->prepare('SELECT count(*) FROM profesor where EMAIL =:email and PASSWORD =:pass');
+        $res->bindParam(':email',$email,PDO::PARAM_STR);
+        $res->bindParam(':pass',$pass,PDO::PARAM_STR);
+        $res->execute();
+        $res1 = $res->fetchColumn();
+        return $res1 == 1 ? true : false;
 	}
 
 	function getProfesor($email,$pass)
 	{       
-        $res = $this -> con -> prepare('SELECT * FROM profesor where EMAIL =:email and PASSWORD =:pass');
-        $res -> bindParam(':email',$email,PDO::PARAM_STR);
-        $res -> bindParam(':pass',$pass,PDO::PARAM_STR);
-        $res -> execute();
-        $res1 = $res -> fetchAll(PDO::FETCH_ASSOC);
+        $res = $this->con->prepare('SELECT * FROM profesor where EMAIL =:email and PASSWORD =:pass');
+        $res->bindParam(':email',$email,PDO::PARAM_STR);
+        $res->bindParam(':pass',$pass,PDO::PARAM_STR);
+        $res->execute();
+        $res1 = $res->fetchAll(PDO::FETCH_ASSOC);
         return $res1;
             
 	}
