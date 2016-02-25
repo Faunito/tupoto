@@ -9,7 +9,7 @@
 	switch (get_class($profesor)) {
 		case 'Profesor':
 			$controller = new ProfesorController($profesor);
-			include(ROOT_DIR.TEMPLATES_DIR.'asignaturas/asignaturas_profesor.php');
+			include(ROOT_DIR.TEMPLATES_DIR.'usuarios/usuarios_director.php');
 			break;
 	}
 ?>

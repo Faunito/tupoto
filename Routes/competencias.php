@@ -9,12 +9,7 @@
 	switch (get_class($profesor)) {
 		case 'Profesor':
 			$controller = new ProfesorController($profesor);
-			include(ROOT_DIR.TEMPLATES_DIR.'asignaturas/asignaturas_profesor.php');
-			//renderizar la vista que corresponde al profe
-			break;
-		case 'Secretaria':
-			break;
-		case 'Director':
+			include(ROOT_DIR.TEMPLATES_DIR.'competencias/competencias_profesor.php');
 			break;
 	}
 ?>

@@ -11,7 +11,7 @@
 		        <div class="col s12 m12">
 		          	<div class="card">
 		          		<div class="card-image">
-			          		<img src="../../recursos/img/hola.jpg">
+			          		<img src="<?php echo RESOURCES_DIR.'img/hola.jpg';?>">
 				            <span class="card-title"><strong><h4>Asignaturas</h4></strong></span>
 				        </div>
 			            <div class="card-content">
