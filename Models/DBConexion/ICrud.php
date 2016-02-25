@@ -3,12 +3,12 @@
 interface ICrud
 {
 	public function GetInstance($var);
-    /*
-    public abstract function add();
     
-    public abstract function delete();
+    public function add($var);
     
-    public abstract function modify();*/
+    public function delete($var);
+    
+    public function modify($var);
 }
 
 

@@ -13,8 +13,9 @@
             	//return $this->profesor->existeProfe($request['email'], $request['password']);
 				switch ($request['tipoFuncionario']) {
 					case 'profesor':
+                    echo $request['email'];
 						$this->usuario = new Profesor();
-						if($this->usuario->existeProfe($request['email'], $request['password'])){	
+						if($this->usuario->existeProfe($request['email'], $request['password'],$request['tipoFuncionario'])){	
 							$this->usuario->getProfesor($request['email'], $request['password']);
 				            $this->iniciarSesion();
 				            return true;  

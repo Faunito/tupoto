@@ -18,9 +18,9 @@ class Profesor extends Funcionario
 		$this->dbprofesor = new DBProfesor();
 	}    
 
-    function existeProfe($email,$pass){
-        return $this->dbprofesor->existeProfesor($email,$pass);
-    }	
+    function existeProfe($email,$pass,$tipo){
+        return $this->dbprofesor->existeProfesor($email,$pass,$tipo);
+    }  	
 
 	function GenerarCuadroComparativo($Competencia, $PracticaEmpleador){
 
@@ -53,6 +53,10 @@ class Profesor extends Funcionario
         $this->setPassword($pass);
         $this->dbprofesor->GetInstance($this);
 	}
+    
+    function getDBProfesor(){
+        return $this->dbprofesor;
+    }
 
 }
 
