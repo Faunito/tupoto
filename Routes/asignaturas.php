@@ -1,6 +1,7 @@
 <?php
 	require_once('../Config/Constantes.php');
 	require_once(ROOT_DIR . MODELS_DIR . 'Profesor.php');
+	require_once(ROOT_DIR . MODELS_DIR . 'Director.php');
 	require_once(ROOT_DIR . CONTROLLERS_DIR . 'ProfesorController.php');
 
 	session_start();
@@ -17,7 +18,7 @@
 				include(ROOT_DIR.TEMPLATES_DIR.'asignaturas/asignaturas_director.php');
 				break;
 			default:
-				header('Location: inicio.php');
+				//header('Location: inicio.php');
 				break;
 		}
 

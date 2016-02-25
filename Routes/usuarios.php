@@ -1,6 +1,7 @@
 <?php
 	require_once('../Config/Constantes.php');
 	require_once(ROOT_DIR . MODELS_DIR . 'Profesor.php');
+	require_once(ROOT_DIR . MODELS_DIR . 'Director.php');
 	require_once(ROOT_DIR . CONTROLLERS_DIR . 'ProfesorController.php');
 
 	session_start();
@@ -9,8 +10,8 @@
 		$usuario = unserialize($_SESSION['usuario']);
 
 		switch (get_class($usuario)) {
-			case 'Profesor':
-				$controller = new ProfesorController($profesor);
+			case 'Director':
+				//$controller = new DirectorController($usuario);
 				include(ROOT_DIR.TEMPLATES_DIR.'usuarios/usuarios_director.php');	//director o profesor?
 				break;
 			default:

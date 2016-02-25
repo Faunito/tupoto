@@ -16,7 +16,29 @@
 				        </div>
 	          			<div class="card-content">
 	          		    	<div class="row">
-			              		<div class="col s4 offset-s4">
+			                	<div class="col s4">
+				                	<div class="card hoverable">
+				                		<div class="card-content">
+				              				<span class="card-title">Nueva evaluación</span>
+				              				<p>Ingrese una nueva evaluación de práctica de un alumno</p>
+				              				<div class="card-action">
+	         									<a class="waves-effect waves-light btn color_primario" href="nueva_asignatura.php"><i class="material-icons right">note_add</i>Registrar</a>
+	        								</div>
+				              			</div>
+				              		</div>
+			              		</div>
+			              		<div class="col s4">
+				                	<div class="card hoverable">
+				                		<div class="card-content">
+				              				<span class="card-title">Modificar evaluación</span>
+				              				<p>Modifique una evaluación de práctica ya existente en el sistema</p>
+				              				<div class="card-action">
+	         									<a class="waves-effect waves-light btn color_primario"><i class="material-icons right">create</i>Modificar</a>
+	        								</div>
+				              			</div>
+				              		</div>
+			              		</div>
+			              		<div class="col s4">
 				                	<div class="card hoverable">
 				                		<div class="card-content">
 				              				<span class="card-title">Ver evaluación</span>
