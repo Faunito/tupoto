@@ -53,9 +53,7 @@ class DBDirector implements ICrud
                 $res->execute();
                 $res1 = $res->fetchColumn();
                 return $res1 == 1 ? true : false;
-        }
-    
-    
+        }  
 }
 
 ?>
