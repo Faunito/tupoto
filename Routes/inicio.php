@@ -2,7 +2,6 @@
 	require_once('../Config/Constantes.php');
 	require_once(ROOT_DIR . MODELS_DIR . 'Profesor.php');
 	require_once(ROOT_DIR . MODELS_DIR . 'Director.php');
-	//require_once(ROOT_DIR . CONTROLLERS_DIR . 'ProfesorController.php');
 	require_once(ROOT_DIR . VIEWS_DIR . 'inicioView.php');
 
 	session_start();

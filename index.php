@@ -16,10 +16,10 @@
 		}else{
 			//No existe el profesor
 		}													
-	}else{
-		$view = new LoginView();
-		$view->output();		
 	}
+	
+	$view = new LoginView();
+	$view->output();		
 
 
 ?>

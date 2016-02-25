@@ -2,21 +2,23 @@
 	require_once('../Config/Constantes.php');
 	require_once(ROOT_DIR . MODELS_DIR . 'Profesor.php');
 	require_once(ROOT_DIR . MODELS_DIR . 'Director.php');
+	require_once(ROOT_DIR . VIEWS_DIR . 'competenciasView.php');
 	require_once(ROOT_DIR . CONTROLLERS_DIR . 'ProfesorController.php');
 
 	session_start();
 	if(isset($_SESSION["usuario"])){
-
+		$view = new competenciasView();
 		$usuario = unserialize($_SESSION['usuario']);
 
 		switch (get_class($usuario)) {
 			case 'Profesor':
 				$controller = new ProfesorController($usuario);
-				include(ROOT_DIR.TEMPLATES_DIR.'competencias/competencias_profesor.php');
+				router($view, get_class($usuario));
+
 				break;	
 			case 'Director':
-				$controller = new Director($usuario);
-				include(ROOT_DIR.TEMPLATES_DIR.'competencias/competencias_director.php');
+				//$controller = new DirectorController($usuario);
+				router($view, get_class($usuario));
 				break;				
 			default:
 				header('Location: inicio.php');
@@ -24,6 +26,17 @@
 		}
 
 	}else{
-		header('Location: ../index.php');	
+		header('Location: ../index.php');
 	}
+
+
+	function router($view, $usuario){
+		if (isset($_GET['action'])) {
+			$view->action($_GET['action']);		
+		}else{
+			$view->output($usuario);
+		}
+	}
+
+
 ?>
