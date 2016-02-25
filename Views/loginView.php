@@ -1,6 +1,4 @@
 <?php 
-	require_once('/Config/Constantes.php');
-	require_once(ROOT_DIR . MODELS_DIR . 'Profesor.php');
 
 	class LoginView {    
 

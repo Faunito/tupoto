@@ -1,7 +1,7 @@
 <?php
 	require_once('/Config/Constantes.php');
 	require_once(ROOT_DIR . CONTROLLERS_DIR . 'LoginController.php');
-	require_once(ROOT_DIR . VIEWS_DIR . 'LoginView.php');
+	require_once(ROOT_DIR . VIEWS_DIR . 'loginView.php');
 
 	session_start();
 	if(isset($_SESSION["usuario"])){
@@ -16,9 +16,10 @@
 		}else{
 			//No existe el profesor
 		}													
+	}else{
+		$view = new LoginView();
+		$view->output();		
 	}
 
-	$view = new LoginView();
-	$view->output();
 
 ?>

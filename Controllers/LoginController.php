@@ -1,13 +1,18 @@
 <?php
 	require_once('/Config/Constantes.php');
 	require_once (ROOT_DIR . MODELS_DIR . 'Profesor.php');
+
 	class LoginController{
+
 		private $usuario;
-		function __construct(){
-		}
+
+		function __construct(){}
+
 		public function login($request){
-			if (isset($request['email']) && isset($request['password']) && isset($request['tipoFuncionario'])) {
-            	//return $this->profesor->existeProfe($request['email'], $request['password']);
+			if (isset($request['email']) && 
+				isset($request['password']) && 
+				isset($request['tipoFuncionario'])) {
+
 				switch ($request['tipoFuncionario']) {
 					case 'profesor':	
 						$this->usuario = new Profesor();
@@ -19,12 +24,17 @@
             				return false;
             			}
 						break;
+
 					case 'secretaria':
-						echo '<script>window.alert("La secree");</script>';
+						
 						break;
-					
+
+					case 'director':
+
+						break;
+
 					default:
-						# code...
+						return false;
 						break;
 				}
             	
