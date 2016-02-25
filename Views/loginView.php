@@ -2,12 +2,9 @@
 	require_once('/Config/Constantes.php');
 	require_once(ROOT_DIR . MODELS_DIR . 'Profesor.php');
 
-	class LoginView {
+	class LoginView {    
 
-	    private $profesor;	    
-
-	    public function __construct(Profesor $profesor) {
-	        $this->profesor = $profesor;
+	    public function __construct() {
 	    }	    
 
 	    public function output() {

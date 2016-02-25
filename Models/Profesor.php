@@ -3,8 +3,8 @@ require_once ('DBSingleton.php');
 require_once ('Funcionario.php');
 require_once ('DBConexion/DBProfesor.php');
 
-class Profesor extends Funcionario {
-
+class Profesor extends Funcionario
+{
     //propias
 	private $tipoProfesor;
     private $facultad;
@@ -18,7 +18,11 @@ class Profesor extends Funcionario {
 		$this->dbprofesor = new DBProfesor();
 	}    
 
-	function generarCuadroComparativo($Competencia, $PracticaEmpleador){
+    function existeProfe($email,$pass){
+        return $this->dbprofesor->existeProfesor($email,$pass);
+    }	
+
+	function GenerarCuadroComparativo($Competencia, $PracticaEmpleador){
 
 	}
     
@@ -28,23 +32,23 @@ class Profesor extends Funcionario {
 
     //SETTERS	
     function setFacultad($facultad){
-        $this->facultad = $facultad;
+        $this -> facultad = $facultad;
     }
     
     function setTipoProfesor($tipoProfesor){
-        $this->tipoProfesor = $tipoProfesor;
+        $this -> tipoProfesor = $tipoProfesor;
     }   
+
     //GETTERS
     function getTipoProfesor(){
         return $this->tipoProfesor;
     }
     
     function getFacultad(){
-        return $this->facultad;
+        return $this -> facultad;
     }   
     
-    function getProfesor($email,$pass)
-	{       
+    function getProfesor($email,$pass){  
         $this->setCorreoElectronico($email);
         $this->setPassword($pass);
         $this->dbprofesor->GetInstance($this);

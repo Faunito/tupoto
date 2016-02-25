@@ -5,8 +5,9 @@ require_once ('../Models/Secretaria.php');
 require_once ('../Models/DirectorDeCarrera.php');
 
 class ControladorUsuarios{
-	var $user;
     
+    private $user;
+
     function __construct(){
      
     }
@@ -17,24 +18,24 @@ class ControladorUsuarios{
         switch($tipoFuncionario){
             case "profesor":
             //se instancia la clase profesor
-			$user = new Profesor();
-			$user -> getProfesor($email,$pass);
-            //var_dump($user)
+			$profesor = new Profesor();
+			$profesor -> getProfesor($email,$pass);
+            //var_dump($profesor)
             //crear session
-            $this -> crearSesion($user);  
+            $this -> crearSesion($profesor);  
             break;
             
             case 'secretaria':
-            $user = new Secretaria();
-            $user -> getSecretaria($email,$pass);
-            var_dump($user);
+            $profesor = new Secretaria();
+            $profesor -> getSecretaria($email,$pass);
+            var_dump($profesor);
             //crear session
             break;
             case 'director':
-            $user = new DirectorDeCarrera();
-            $user -> getDirector($email,$pass);
-            var_dump($user);                    
-            //si en user existe algo crear seion   
+            $profesor = new DirectorDeCarrera();
+            $profesor -> getDirector($email,$pass);
+            var_dump($profesor);                    
+            //si en profesor existe algo crear seion   
             break;
             default:
             print('Funcionario no especificado');         
@@ -44,15 +45,15 @@ class ControladorUsuarios{
     
    public function getProfesor()
 	{
-       return $this -> user;
+       return $this->user;
 	}
     
-    private function crearSesion($ob){
-        if(isset($ob)){
+    private function crearSesion($profe){
+        if(isset($profe)){
             session_start();
-            $str = serialize($ob);
+            $str = serialize($profe);
             $_SESSION['usuario']=$str;    
         }
-        else echo 'no funciono';        
+        else echo 'no funciono'; //jajajjaj :D       
     }
 }
