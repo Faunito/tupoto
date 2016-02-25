@@ -1,28 +1,26 @@
 <?php
-
 require_once ('../Models/Profesor.php');
 require_once ('../Models/Secretaria.php');
 require_once ('../Models/DirectorDeCarrera.php');
-
 class ControladorUsuarios{
     
     private $user;
-
     function __construct(){
      
     }
     
-	public function login($email,$pass,$tipoFuncionario){
-		//llamada al profe solamente por ahora 
+    public function login($email,$pass,$tipoFuncionario){
+        //llamada al profe solamente por ahora 
         
         switch($tipoFuncionario){
             case "profesor":
             //se instancia la clase profesor
-			$profesor = new Profesor();
-			$profesor -> getProfesor($email,$pass);
+            $profesor = new Profesor();
+            $profesor -> getProfesor($email,$pass);
             //var_dump($profesor)
             //crear session
-            $this -> crearSesion($profesor);  
+            $this -> crearSesion($profesor);
+              
             break;
             
             case 'secretaria':
@@ -41,12 +39,12 @@ class ControladorUsuarios{
             print('Funcionario no especificado');         
         }
               
-	}
+    }
     
    public function getProfesor()
-	{
+    {
        return $this->user;
-	}
+    }
     
     private function crearSesion($profe){
         if(isset($profe)){

@@ -4,11 +4,15 @@
 	require_once(ROOT_DIR . CONTROLLERS_DIR . 'ProfesorController.php');
 
 	session_start();
-	$profesor = unserialize($_SESSION['usuario']);
+	if(isset($_SESSION["usuario"])){
+		$usuario = unserialize($_SESSION['usuario']);
+	}else{
+		header('Location: index.php');	
+	}
 
-	switch (get_class($profesor)) {
+	switch (get_class($usuario)) {
 		case 'Profesor':
-			$controller = new ProfesorController($profesor);
+			$controller = new ProfesorController($usuario);
 			include(ROOT_DIR.TEMPLATES_DIR.'inicio/inicio_profesor.php');
 			break;
 		case 'Secretaria':

@@ -2,6 +2,13 @@
 	require_once('/Config/Constantes.php');
 	require_once(ROOT_DIR . CONTROLLERS_DIR . 'LoginController.php');
 	require_once(ROOT_DIR . VIEWS_DIR . 'LoginView.php');
+
+	session_start();
+	if(isset($_SESSION["usuario"])){
+		$usuario = unserialize($_SESSION['usuario']);
+	}else{
+		$usuario = null;
+	}
 	
 	$controller = new LoginController();
 

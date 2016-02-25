@@ -1,3 +1,8 @@
+<?php 
+	if(isset($_SESSION["usuario"])){
+		$usuario = unserialize($_SESSION['usuario']);
+	}
+?>
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
@@ -14,7 +19,14 @@
             <div class="nav-wrapper color_primario">
                 <a href="#" class="brand-logo center">Sistema laravel facilito</a>
 				<ul class="right">
-			    	<li><a href="#"><i class="material-icons right">power_settings_new</i>Logout</a></li>
+				<?php 
+					if(isset($usuario)){
+						echo '<li><a href="../index.php?action=logout"><i class="material-icons right">power_settings_new</i>' . $usuario->getNombre() . ' ' . $usuario->getAPaterno() . '</a></li>';
+					} else{
+						echo '<li><a href="index.php"><i class="material-icons right">vpn_key</i>Ingresar</a></li>';
+					}
+				?>
+			    	
 			    </ul>
 			    <ul class="left">
 					<li> <a class='orange' href='index.php'><i class="sb-toggle-left material-icons right">dehaze</i></a></li>
