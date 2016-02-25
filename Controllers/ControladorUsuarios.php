@@ -22,7 +22,8 @@ class ControladorUsuarios{
 			$profesor -> getProfesor($email,$pass);
             //var_dump($profesor)
             //crear session
-            $this -> crearSesion($profesor);  
+            $this -> crearSesion($profesor);
+              
             break;
             
             case 'secretaria':
