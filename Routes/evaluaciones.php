@@ -9,13 +9,13 @@
 	switch (get_class($profesor)) {
 		case 'Profesor':
 			$controller = new ProfesorController($profesor);
-			include(ROOT_DIR.TEMPLATES_DIR.'inicio/inicio_profesor.php');
+			include(ROOT_DIR.TEMPLATES_DIR.'evaluaciones/evaluaciones_profesor.php');
 			break;
 		case 'Secretaria':
-		include(ROOT_DIR.TEMPLATES_DIR.'inicio/inicio_secretaria.php');
+			include(ROOT_DIR.TEMPLATES_DIR.'evaluaciones/evaluaciones_secretaria.php');
 			break;
 		case 'Director':
-		include(ROOT_DIR.TEMPLATES_DIR.'inicio/inicio_director.php');
+			include(ROOT_DIR.TEMPLATES_DIR.'evaluaciones/evaluaciones_profesor.php');
 			break;
 	}
 ?>
