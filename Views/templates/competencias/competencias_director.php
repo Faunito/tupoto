@@ -1,5 +1,5 @@
 <?php
-	$title = "Asignaturas";
+	$title = "Competencias";
 	require_once(ROOT_DIR . TEMPLATES_DIR . 'base/header.php');
 	require_once(ROOT_DIR . TEMPLATES_DIR . 'base/sidenav/sidenav_director.php');
 	?>
@@ -22,7 +22,7 @@
 				              				<span class="card-title">Nueva competencia</span>
 				              				<p>Ingrese una nueva competencia para una malla ya existente en el sistema</p>
 				              				<div class="card-action">
-             									<a class="waves-effect waves-light btn color_primario" href="nueva_asignatura.php">Registrar<i class="mdi mdi-library-plus right"></i></a>
+             									<a class="waves-effect waves-light btn color_primario" href="competencias.php?action=nueva">Registrar<i class="mdi mdi-library-plus right"></i></a>
             								</div>
 				              			</div>
 				              		</div>
@@ -33,7 +33,7 @@
 				              				<span class="card-title">Modificar competencia</span>
 				              				<p>Modifique una competencia ya existente en el sistema</p>
 				              				<div class="card-action">
-             									<a class="waves-effect waves-light btn color_primario"><i class="material-icons right">edit</i>Modificar</a>
+             									<a class="waves-effect waves-light btn color_primario" href="competencias.php?action=modificar"><i class="material-icons right">edit</i>Modificar</a>
             								</div>
 				              			</div>
 				              		</div>
@@ -44,7 +44,7 @@
 				              				<span class="card-title">Ver competencia</span>
 				              				<p>Cree una nueva asignatura para una malla ya existente</p>
 				              				<div class="card-action">
-             									<a class="waves-effect waves-light btn color_primario">Ver<i class="mdi mdi-eye right"></i></a>
+             									<a class="waves-effect waves-light btn color_primario" href="competencias.php?action=ver">Ver<i class="mdi mdi-eye right"></i></a>
             								</div>
 				              			</div>
 				              		</div>
@@ -57,7 +57,7 @@
 				              				<span class="card-title">Asignar competencia a malla</span>
 				              				<p>Asigne una o mas competencias a una malla ya existente en el sistema</p>
 				              				<div class="card-action">
-             									<a class="waves-effect waves-light btn color_primario"><i class="material-icons right">cloud</i>Asignar</a>
+             									<a class="waves-effect waves-light btn color_primario" href="competencias.php?action=asignar"><i class="material-icons right">cloud</i>Asignar</a>
             								</div>
 				              			</div>
 				              		</div>
