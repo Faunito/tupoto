@@ -32,11 +32,11 @@ class Profesor extends Funcionario
 
     //SETTERS	
     function setFacultad($facultad){
-        $this -> facultad = $facultad;
+        $this->facultad = $facultad;
     }
     
     function setTipoProfesor($tipoProfesor){
-        $this -> tipoProfesor = $tipoProfesor;
+        $this->tipoProfesor = $tipoProfesor;
     }   
 
     //GETTERS
@@ -45,7 +45,7 @@ class Profesor extends Funcionario
     }
     
     function getFacultad(){
-        return $this -> facultad;
+        return $this->facultad;
     }   
     
     function getProfesor($email,$pass){  

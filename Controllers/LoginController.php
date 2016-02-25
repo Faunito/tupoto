@@ -1,6 +1,7 @@
 <?php
 	require_once('/Config/Constantes.php');
 	require_once (ROOT_DIR . MODELS_DIR . 'Profesor.php');
+	require_once (ROOT_DIR . MODELS_DIR . 'Director.php');
 
 	class LoginController{
 
@@ -30,7 +31,14 @@
 						break;
 
 					case 'director':
-
+						$this->usuario = new Director();
+						if($this->usuario->existeDirector($request['email'], $request['password'],$request['tipoFuncionario'])){	
+							$this->usuario->getDirector($request['email'], $request['password']);
+				            $this->iniciarSesion();
+				            return true;  
+            			}else{
+            				return false;
+            			}
 						break;
 
 					default:

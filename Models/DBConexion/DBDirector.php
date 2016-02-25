@@ -22,9 +22,10 @@ class DBDirector implements ICrud
 		$con = DBSingleton::getInstance();
 		$aux = $con -> getDB();
         //ejecutar query
-		$res = $aux -> prepare('SELECT * FROM profesor where EMAIL =:email and PASSWORD =:pass and TIPO_PROFESOR="director"');
-        $res -> bindParam(':email',$var -> getcorreoElectronico(),PDO::PARAM_STR);
-        $res -> bindParam(':pass',$var -> getPassword(),PDO::PARAM_STR);
+		$res = $aux -> prepare('SELECT * FROM profesor 
+                               WHERE EMAIL = :email AND PASSWORD = :pass AND TIPO_PROFESOR = "director"');
+        $res -> bindParam(':email',$var->getcorreoElectronico(),PDO::PARAM_STR);
+        $res -> bindParam(':pass',$var->getPassword(),PDO::PARAM_STR);
         $res -> execute();
         //guardar respuesta en ojeto php
         $res2 = $res -> fetchObject(__CLASS__);
@@ -36,10 +37,23 @@ class DBDirector implements ICrud
         $var->setNombre($res2->NOMBRE);
         $var->setApaterno($res2->APATERNO);
         $var->setAmaterno($res2->AMATERNO);
+        $var->setCarrera('ICCI');
         //retorna el objeto instanciado con 
         //los valores configurados desde la bd
-        return $var;
 	}
+
+    function existeDirector($email,$pass,$tipo){
+                $con = DBSingleton::getInstance()->getDB();
+                $res = $con->prepare('SELECT count(*) 
+                                      FROM profesor 
+                                      WHERE EMAIL =:email AND PASSWORD =:pass AND TIPO_PROFESOR =:tipo');
+                $res->bindParam(':email',$email,PDO::PARAM_STR);
+                $res->bindParam(':pass',$pass,PDO::PARAM_STR);
+                $res->bindParam(':tipo',$tipo,PDO::PARAM_STR);
+                $res->execute();
+                $res1 = $res->fetchColumn();
+                return $res1 == 1 ? true : false;
+        }
     
     
 }
