@@ -5,16 +5,13 @@
 
 	session_start();
 	if(isset($_SESSION["usuario"])){
-		$usuario = unserialize($_SESSION['usuario']);
-	}else{
-		$usuario = null;
+		header('Location: ' . ROUTES_DIR . 'inicio.php');
 	}
 	
 	$controller = new LoginController();
 
 	if (isset($_GET['action'])) {
-		if($controller->{$_GET['action']}($_POST)){		
-		//profe existe, hacer la cuestion de sesiones		
+		if($controller->{$_GET['action']}($_POST)){	
 			header('Location: ' . ROUTES_DIR . 'inicio.php');
 		}else{
 			//No existe el profesor

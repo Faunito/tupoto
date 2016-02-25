@@ -70,10 +70,12 @@ class DBProfesor implements ICrud {
 
         function existeProfesor($email,$pass,$tipo){
                 $con = DBSingleton::getInstance()->getDB();
-                $res = $con->prepare('SELECT count(*) FROM profesor where EMAIL =:email and PASSWORD =:pass and TIPO_PROFESOR =:profesor');
+                $res = $con->prepare('SELECT count(*) 
+                                      FROM profesor 
+                                      WHERE EMAIL =:email AND PASSWORD =:pass and TIPO_PROFESOR =:tipo');
                 $res->bindParam(':email',$email,PDO::PARAM_STR);
                 $res->bindParam(':pass',$pass,PDO::PARAM_STR);
-                $res->bindParam(':profesor',$tipo,PDO::PARAM_STR);
+                $res->bindParam(':tipo',$tipo,PDO::PARAM_STR);
                 $res->execute();
                 $res1 = $res->fetchColumn();
                 return $res1 == 1 ? true : false;

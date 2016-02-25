@@ -22,9 +22,9 @@
 				<?php 
 					if(isset($usuario)){
 						echo '<li><a href="../index.php?action=logout"><i class="material-icons right">power_settings_new</i>' . $usuario->getNombre() . ' ' . $usuario->getAPaterno() . '</a></li>';
-					} else{
+					} /*else{
 						echo '<li><a href="index.php"><i class="material-icons right">vpn_key</i>Ingresar</a></li>';
-					}
+					}*/
 				?>
 			    	
 			    </ul>

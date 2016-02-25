@@ -6,11 +6,10 @@
 		function __construct(){
 		}
 		public function login($request){
-			if (isset($request['email']) && isset($request['password'])) {
+			if (isset($request['email']) && isset($request['password']) && isset($request['tipoFuncionario'])) {
             	//return $this->profesor->existeProfe($request['email'], $request['password']);
 				switch ($request['tipoFuncionario']) {
-					case 'profesor':
-                    echo $request['email'];
+					case 'profesor':	
 						$this->usuario = new Profesor();
 						if($this->usuario->existeProfe($request['email'], $request['password'],$request['tipoFuncionario'])){	
 							$this->usuario->getProfesor($request['email'], $request['password']);
@@ -33,6 +32,12 @@
         		return false;
         	}
 		}
+
+		public function logout(){
+			session_unset();
+			session_destroy();
+		}
+
 		private function iniciarSesion(){
 	            session_start();
 	            $str = serialize($this->usuario);
