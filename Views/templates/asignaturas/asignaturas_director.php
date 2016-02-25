@@ -26,8 +26,8 @@
             								</div>
 				              			</div>
 				              		</div>
-			              		</div>
-			              		<div class="col s4">
+				              	</div>
+				              	<div class="col s4">
 				                	<div class="card hoverable">
 				                		<div class="card-content">
 				              				<span class="card-title">Modificar asignatura</span>
@@ -37,8 +37,8 @@
             								</div>
 				              			</div>
 				              		</div>
-			              		</div>
-			              		<div class="col s4">
+				              	</div>
+				              	<div class="col s4">
 				                	<div class="card hoverable">
 				                		<div class="card-content">
 				              				<span class="card-title">Ver asignatura</span>

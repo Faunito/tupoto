@@ -4,6 +4,19 @@ require_once ('ICrud.php');
 
 class DBDirector implements ICrud
 {
+    
+    public function add($var){
+        
+    }
+    
+    public function delete($var){
+        
+    }
+    
+    public function modify($var){
+        
+    }
+    
 	public function GetInstance($var)
 	{
 		$con = DBSingleton::getInstance();

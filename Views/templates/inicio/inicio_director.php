@@ -19,7 +19,7 @@
 				                	<div class="card hoverable">
 				                		<div class="card-content">
 				              				<div class="card-action">
-             									<a class="waves-effect waves-light btn color_primario" href="nueva_asignatura.php">Asignaturas<i class="mdi mdi-library-plus right"></i></a>
+             									<a class="waves-effect waves-light btn color_primario" href="<?php echo ROUTES_DIR.'asignaturas.php';?>">Asignaturas<i class="mdi mdi-folder right"></i></a>
             								</div>
 				              			</div>
 				              		</div>
@@ -28,7 +28,7 @@
 				                	<div class="card hoverable">
 				                		<div class="card-content">
 				              				<div class="card-action">
-             									<a class="waves-effect waves-light btn color_primario"><i class="material-icons right">edit</i>Competencias</a>
+             									<a class="waves-effect waves-light btn color_primario" href="<?php echo ROUTES_DIR.'competencias.php';?>">Competencias<i class="mdi mdi-animation right"></i></a>
             								</div>
 				              			</div>
 				              		</div>
@@ -37,7 +37,7 @@
 				                	<div class="card hoverable">
 				                		<div class="card-content">
 				              				<div class="card-action">
-             									<a class="waves-effect waves-light btn color_primario">Evaluaciones<i class="mdi mdi-eye right"></i></a>
+             									<a class="waves-effect waves-light btn color_primario" href="<?php echo ROUTES_DIR.'evaluaciones.php';?>">Evaluaciones<i class="mdi mdi-clipboard-text right"></i></a>
             								</div>
 				              			</div>
 				              		</div>
@@ -48,7 +48,7 @@
 				                	<div class="card hoverable">
 				                		<div class="card-content">
 				              				<div class="card-action">
-             									<a class="waves-effect waves-light btn color_primario" href="nuevo_programa.php"><i class="material-icons right">note_add</i>Mallas</a>
+             									<a class="waves-effect waves-light btn color_primario" href="<?php echo ROUTES_DIR.'mallas.php';?>">Mallas<i class="mdi mdi-table-large right"></i></a>
             								</div>
 				              			</div>
 				              		</div>
@@ -57,7 +57,7 @@
 				                	<div class="card hoverable">
 				                		<div class="card-content">
 				              				<div class="card-action">
-             									<a class="waves-effect waves-light btn color_primario"><i class="material-icons right">edit</i>Practicas</a>
+             									<a class="waves-effect waves-light btn color_primario" href="<?php echo ROUTES_DIR.'practicas.php';?>">Practicas<i class="mdi mdi-file right"></i></a>
             								</div>
 				              			</div>
 				              		</div>
@@ -66,7 +66,7 @@
 				                	<div class="card hoverable">
 				                		<div class="card-content">
 				              				<div class="card-action">
-             									<a class="waves-effect waves-light btn color_primario">Usuarios<i class="mdi mdi-eye right"></i></a>
+             									<a class="waves-effect waves-light btn color_primario" href="<?php echo ROUTES_DIR.'usuarios.php';?>">Usuarios<i class="mdi mdi-eye right"></i></a>
             								</div>
 				              			</div>
 				              		</div>
