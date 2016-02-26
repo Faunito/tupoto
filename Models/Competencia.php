@@ -46,7 +46,7 @@ class Competencia
 
 	function getNomComp()
 	{
-		return $this->nombComp;
+		return $this->nomComp;
 	}
 
 	function getFalComp()

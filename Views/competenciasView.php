@@ -25,8 +25,8 @@
 					include(ROOT_DIR.TEMPLATES_DIR.'competencias/modificar_competencia.php');
 	    			break;
 	    		case 'ver':
-                    $controller->listarCompetencias();
-					//include(ROOT_DIR.TEMPLATES_DIR.'competencias/listar_competencias.php');
+	    			$lista=$controller->listarCompetencias();
+					include(ROOT_DIR.TEMPLATES_DIR.'competencias/listar_competencias.php');
 	    			break;
 	    		case 'asignar':
 					//include(ROOT_DIR.TEMPLATES_DIR.'competencias/competencias_director.php');
@@ -44,7 +44,7 @@
 								    				$post['nombre'], 
 								    				$post['descripcion']);
 	    			//TOAST
-	    			header('Location: competencias.php');
+	    			header('Location: competencias.php?action=ver');
 					//include(ROOT_DIR.TEMPLATES_DIR.'competencias/nueva_competencia.php');
 	    			break;
 	    		case 'modificar':
