@@ -2,6 +2,7 @@
 	$title = "Competencias";
 	require_once(ROOT_DIR . TEMPLATES_DIR . 'base/header.php');
 	require_once(ROOT_DIR . TEMPLATES_DIR . 'base/sidenav/sidenav_director.php');
+	require_once(ROOT_DIR . MODELS_DIR . 'Competencia.php');
 	?>
 	<main id="sb-site" class="blue-grey lighten-5">
 		<div class="container">		
@@ -15,10 +16,10 @@
 				            <span class="card-title"><strong><h4>Modifique una competencia</h4></strong></span>
 				        </div>
 			            <div class="card-content">
-							<form id="myForm" action="#" method="POST">
+							<form id="myForm" action="competencias.php?result=modificar" method="POST">
 					            <div class="row">
 					                <div class=" col s2 offset-s4 input-field">
-					                    <input id="codigo" name="codigo" type="text" class="validate">
+					                    <input id="codigo" name="codigo"  type="text" class="validate">
 					                    <label for="codigo">Codigo *</label>
 					                </div>
 					                <div class=" col s2 input-field">

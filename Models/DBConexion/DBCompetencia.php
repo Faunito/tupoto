@@ -42,13 +42,13 @@ class DBCompetencia Implements ICrud {
 
 	function modify($var){
         $con = DBSingleton::getInstance()->getDB();
-        $con->prepare('UPDATE competencia SET CATEGORIA = :cate, NOMBRE_COMPETENCIA = :nombre,
+        $dbh = $con->prepare('UPDATE competencia SET CATEGORIA = :cate, NOMBRE_COMPETENCIA = :nombre,
                         DESCRIPCION_DE_COMPETENCIA = :desc WHERE ID_COMPETENCIA = :id');
-        $con->bindParam(':id',$var->getIdComp(),PDO::PARAM_STR);        
-        $con->bindParam(':cate',$var->getCate(),PDO::PARAM_STR);
-        $con->bindParam(':nombre',$var->getNomComp(),PDO::PARAM_STR);
-        $con->bindParam(':desc',$var->getDesComp(),PDO::PARAM_STR);
-        $con->execute();
+        $dbh->bindParam(':id',$var->getIdComp(),PDO::PARAM_STR);        
+        $dbh->bindParam(':cate',$var->getCate(),PDO::PARAM_STR);
+        $dbh->bindParam(':nombre',$var->getNomComp(),PDO::PARAM_STR);
+        $dbh->bindParam(':desc',$var->getDesComp(),PDO::PARAM_STR);
+        $dbh->execute();
 	}
 
 	function delete($var){

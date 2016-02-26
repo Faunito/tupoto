@@ -48,10 +48,7 @@
 					//include(ROOT_DIR.TEMPLATES_DIR.'competencias/nueva_competencia.php');
 	    			break;
 	    		case 'modificar':
-		    		$controller->modificarCompetencia(	$post['id'], 
-									    				$post['categoria'], 
-									    				$post['nombre'], 
-									    				$post['descripcion']);
+
 		    		//TOAAAST
 		    		header('Location: competencias.php');
 					//include(ROOT_DIR.TEMPLATES_DIR.'competencias/competencias_director.php');
