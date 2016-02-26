@@ -1,20 +1,47 @@
 <?php
 
 require_once ('ICrud.php');
+require_once(ROOT_DIR . MODELS_DIR . 'Secretaria.php');
 
 class DBSecretaria implements ICrud
 {
     
     public function add($var){
-        
+        $con = DBSingleton::getInstance()->getDB();
+        $res = $con -> prepare('INSERT INTO secretaria VALUES (:rut,:telFijo,:email,:password,
+            :facultad,:nombre,:apaterno,:amaterno)');
+        $res->bindParam(':rut',$var->getRut(),PDO::PARAM_STR);
+        $res->bindParam(':telFijo',$var->getTelefono(),PDO::PARAM_STR);
+        $res->bindParam(':email',$var->getCorreoElectronico(),PDO::PARAM_STR);
+        $res->bindParam(':password',$var->getPassword(),PDO::PARAM_STR);
+        $res->bindParam(':facultad',$var->getFacultad(),PDO::PARAM_STR);
+        $res->bindParam(':nombre',$var->getNombre(),PDO::PARAM_STR);
+        $res->bindParam(':apaterno',$var->getApaterno(),PDO::PARAM_STR);
+        $res->bindParam(':amaterno',$var->getAmaterno(),PDO::PARAM_STR);
+        $res->execute();
     }
     
     public function delete($var){
-        
+        $con = DBSingleton::getInstance()->getDB();
+        $res = $con -> prepare('DELETE FROM secretaria where RUT =:rut)');
+        $res->bindParam(':rut',$var->getRut(),PDO::PARAM_STR);
+        $res->execute();
     }
     
     public function modify($var){
-        
+        $con = DBSingleton::getInstance()->getDB();
+        $res = $con->prepare('UPDATE secretaria SET TELEFONO_FIJO=:tipo,EMAIL=:email,
+            PASSWORD=:pass,FACULTAD=:facu,NOMBRE=:nombre,APATERNO=:apaterno,
+            AMATERNO=:amaterno where RUT=:rut)');
+        $res->bindParam(':rut',$var->getRut(),PDO::PARAM_STR);
+        $res->bindParam(':telFijo',$var->getTelefono(),PDO::PARAM_STR);
+        $res->bindParam(':email',$var->getCorreoElectronico(),PDO::PARAM_STR);
+        $res->bindParam(':password',$var->getPassword(),PDO::PARAM_STR);
+        $res->bindParam(':facultad',$var->getFacultad(),PDO::PARAM_STR);
+        $res->bindParam(':nombre',$var->getNombre(),PDO::PARAM_STR);
+        $res->bindParam(':apaterno',$var->getApaterno(),PDO::PARAM_STR);
+        $res->bindParam(':amaterno',$var->getAmaterno(),PDO::PARAM_STR);
+        $res->execute();
     }    
     
     public function GetInstance($var){
