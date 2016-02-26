@@ -1,9 +1,9 @@
 <?php
-require_once('ICrud.php')
+require_once('ICrud.php');
 
-class DBCompetencia Implements ICrud{
+class DBCompetencia Implements ICrud {
 
-	function GetIntance($competencia){
+	function GetInstance($competencia){
        /* $con = DBSingleton::getInstance()->getDB();
         $con -> prepare('SELECT * FROM profesor where EMAIL =:email and PASSWORD =:pass 
                         and TIPO_PROFESOR="profesor"');
@@ -24,31 +24,30 @@ class DBCompetencia Implements ICrud{
 
 	function add($var){
         $con = DBSingleton::getInstance()->getDB();
-        $con->prepare('INSERT INTO competencia VALUES (:id,:rut,:cate,:nombre,:desc)');
-        $res->bindParam(':id',$var->getIdComp(),PDO::PARAM_STR);
-        $res->bindParam(':rut',$var->getDirector()->getRut(),PDO::PARAM_STR)
-        $res->bindParam(':cate',$var->getCate(),PDO::PARAM_STR)
-        $res->bindParam(':nombre',$var->getNomComp(),PDO::PARAM_STR)
-        $res->bindParam(':desc',$var->getDesComp(),PDO::PARAM_STR)
-        $res->execute();
+        $dbh = $con->prepare('INSERT INTO competencia (RUT, CATEGORIA, NOMBRE_COMPETENCIA, DESCRIPCION_DE_COMPETENCIA) VALUES (:rut,:cate,:nombre,:desc)');
+        $dbh->bindParam(':rut', $var->getDirector()->getRut(),PDO::PARAM_STR);
+        $dbh->bindParam(':cate', $var->getCate(),PDO::PARAM_STR);
+        $dbh->bindParam(':nombre', $var->getNomComp(),PDO::PARAM_STR);
+        $dbh->bindParam(':desc', $var->getDesComp(),PDO::PARAM_STR);
+        $dbh->execute();
 	}
 
 	function modify($var){
         $con = DBSingleton::getInstance()->getDB();
-        $con->prepare('UPDATE competencia SET CATEGORIA=:cate,NOMBRE_COMPETENCIA=:nombre,
-                        DESCRIPCION_DE_COMPETENCIA=:desc WHERE ID_COMPETENCIA=:id');
-        $res->bindParam(':id',$var->getIdComp(),PDO::PARAM_STR);        
-        $res->bindParam(':cate',$var->getCate(),PDO::PARAM_STR)
-        $res->bindParam(':nombre',$var->getNomComp(),PDO::PARAM_STR)
-        $res->bindParam(':desc',$var->getDesComp(),PDO::PARAM_STR)
-        $res->execute();
+        $con->prepare('UPDATE competencia SET CATEGORIA = :cate, NOMBRE_COMPETENCIA = :nombre,
+                        DESCRIPCION_DE_COMPETENCIA = :desc WHERE ID_COMPETENCIA = :id');
+        $con->bindParam(':id',$var->getIdComp(),PDO::PARAM_STR);        
+        $con->bindParam(':cate',$var->getCate(),PDO::PARAM_STR);
+        $con->bindParam(':nombre',$var->getNomComp(),PDO::PARAM_STR);
+        $con->bindParam(':desc',$var->getDesComp(),PDO::PARAM_STR);
+        $con->execute();
 	}
 
 	function delete($var){
-        $con  DBSingleon::getInsance()->getDB();
-        $con->prepare('DELETE * FROM competencia WHERE ID_COMPETENCIA=:id');
-        $res->bindParam(':id',$var->getIdComp(),PDO::PARAM_STR);
-        $res->execute();
+        $con = DBSingleon::getInsance()->getDB();
+        $con->prepare('DELETE FROM competencia WHERE ID_COMPETENCIA = :id');
+        $con->bindParam(':id',$var->getIdComp(),PDO::PARAM_STR);
+        $con->execute();
 	}
 }
 ?>

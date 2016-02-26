@@ -36,9 +36,14 @@
 	    	}
 	    }
 
-	    public function result($action, $post){
-	    	switch ($action) {
+	    public function result($controller, $result, $post){
+	    	switch ($result['result']) {
 	    		case 'nueva':
+	    			$controller->crearCompetencia(	$post['categoria'], 
+								    				$post['nombre'], 
+								    				$post['descripcion']);
+	    			//TOAST
+	    			header('Location: competencias.php');
 					//include(ROOT_DIR.TEMPLATES_DIR.'competencias/nueva_competencia.php');
 	    			break;
 	    		case 'modificar':
