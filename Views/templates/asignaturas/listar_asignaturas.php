@@ -1,5 +1,5 @@
 <?php
-	$title = "Competencias";
+	$title = "Asignaturas";
 	require_once(ROOT_DIR . TEMPLATES_DIR . 'base/header.php');
 	require_once(ROOT_DIR . TEMPLATES_DIR . 'base/sidenav/sidenav_director.php');
 	?>
@@ -12,7 +12,7 @@
 		          	<div class="card  hoverable">
 		          		<div class="card-image">
 			          		<img src="<?php echo RESOURCES_DIR.'img/hola.jpg';?>">
-				            <span class="card-title"><strong><h4>Lista de competencias</h4></strong></span>
+				            <span class="card-title"><strong><h4>Lista de asignaturas</h4></strong></span>
 				        </div>
 			            <div class="card-content">
 							<form id="myForm" action="#" method="GET">	      
@@ -20,7 +20,7 @@
 								  <div id="admin" class="col s10 offset-s1">
 								    <div class="card material-table">
 								      <div class="table-header">
-								        <span class="table-title">Competencias</span>
+								        <span class="table-title">Asignaturas</span>
 								        <div class="actions">								        
 								          	<a href="#" class="search-toggle waves-effect btn-flat nopadding"><i class="material-icons">search</i></a>
 								        </div>
@@ -30,14 +30,16 @@
 									          <tr>
 									            <th>Nombre</th>
 									            <th>Código</th>
+									            <th>Nivel</th>
 									            <th>Modificar</th>
 									            <th>Eliminar</th>
 									          </tr>
 									        </thead>
 									        <tbody>
 									          <tr>
-									            <td>Competencia de tu poto</td>
-									            <td>1545</td>
+									            <td>Inteligencia de tu poto</td>
+									            <td>IC101</td>
+									            <td>2</td>
 									            <td>
 									            	<a class="btn-floating waves-effect waves-light"><i class="material-icons color_primario">edit</i></a>
 												</td>
@@ -46,8 +48,9 @@
 												</td>
 									          </tr>
 									          <tr>
-									            <td>Competencia de tu poto2</td>
-									            <td>6262</td>
+									            <td>Gneración de tu poto2</td>
+									            <td>IC104</td>
+									            <td>4</td>
 									            <td>
 									            	<a class="btn-floating waves-effect waves-light color_primario"><i class="material-icons">edit</i></a>
 												</td>
@@ -56,8 +59,9 @@
 												</td>
 									          </tr>
 									          <tr>
-									            <td>Competencia de tu poto3</td>
-									            <td>2144</td>
+									            <td>Programación de tu poto3</td>
+									            <td>IC114</td>
+									            <td>1</td>
 									            <td>
 									            	<a class="btn-floating waves-effect waves-light color_primario"><i class="material-icons">edit</i></a>
 												</td>

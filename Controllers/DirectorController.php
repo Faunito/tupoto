@@ -39,14 +39,12 @@
         function eliminarCompetencia($id){            
             $this->dir->eliminarCompetencia($id); 
         }               
+
         //GETTERS
         function getDirector(){
             return $this->dir;
         }
-        
-        function getArrayComp(){
-            return $this->arrayComp;
-        }
+
         //SETTERS
         function setDirector(){
             $this->dir = new $newVal;

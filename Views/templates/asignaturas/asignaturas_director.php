@@ -22,7 +22,7 @@
 				              				<span class="card-title">Nueva asignatura</span>
 				              				<p>Ingrese una nueva asignatura para una malla ya existente en el sistema</p>
 				              				<div class="card-action">
-             									<a class="waves-effect waves-light btn color_primario" href="nueva_asignatura.php">Registrar<i class="mdi mdi-folder-plus right"></i></a>
+             									<a class="waves-effect waves-light btn color_primario" href="asignaturas.php?action=nueva-asignatura">Registrar<i class="mdi mdi-folder-plus right"></i></a>
             								</div>
 				              			</div>
 				              		</div>
@@ -33,7 +33,7 @@
 				              				<span class="card-title">Modificar asignatura</span>
 				              				<p>Modifique una asignatura ya existente en el sistema</p>
 				              				<div class="card-action">
-             									<a class="waves-effect waves-light btn color_primario"><i class="material-icons right">edit</i>Modificar</a>
+             									<a class="waves-effect waves-light btn color_primario" href="asignaturas.php?action=modificar-asignatura"><i class="material-icons right">edit</i>Modificar</a>
             								</div>
 				              			</div>
 				              		</div>
@@ -44,7 +44,7 @@
 				              				<span class="card-title">Ver asignatura</span>
 				              				<p>Visualice una asignatura ya existente en el sistema</p>
 				              				<div class="card-action">
-             									<a class="waves-effect waves-light btn color_primario">Ver<i class="mdi mdi-eye right"></i></a>
+             									<a class="waves-effect waves-light btn color_primario" href="asignaturas.php?action=ver-asignatura">Ver<i class="mdi mdi-eye right"></i></a>
             								</div>
 				              			</div>
 				              		</div>
@@ -57,7 +57,7 @@
 				              				<span class="card-title">Nuevo programa</span>
 				              				<p>Ingrese un nuevo programa para una asignatura ya existente en el sistema</p>
 				              				<div class="card-action">
-             									<a class="waves-effect waves-light btn color_primario" href="nuevo_programa.php"><i class="material-icons right">note_add</i>Registrar</a>
+             									<a class="waves-effect waves-light btn color_primario" href="asignaturas.php?action=nuevo-programa"><i class="material-icons right">note_add</i>Registrar</a>
             								</div>
 				              			</div>
 				              		</div>
@@ -68,7 +68,7 @@
 				              				<span class="card-title">Modificar programa</span>
 				              				<p>Modifique un programa de asignatura ya existente en el sistema</p>
 				              				<div class="card-action">
-             									<a class="waves-effect waves-light btn color_primario"><i class="material-icons right">edit</i>Modificar</a>
+             									<a class="waves-effect waves-light btn color_primario" href="asignaturas.php?action=modificar-programa"><i class="material-icons right">edit</i>Modificar</a>
             								</div>
 				              			</div>
 				              		</div>
@@ -79,7 +79,7 @@
 				              				<span class="card-title">Ver programa</span>
 				              				<p>Visualice un programa de asignatura ya existente en el sistema</p>
 				              				<div class="card-action">
-             									<a class="waves-effect waves-light btn color_primario">Ver<i class="mdi mdi-eye right"></i></a>
+             									<a class="waves-effect waves-light btn color_primario" href="asignaturas.php?action=ver-programa">Ver<i class="mdi mdi-eye right"></i></a>
             								</div>
 				              			</div>
 				              		</div>
