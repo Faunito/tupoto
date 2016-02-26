@@ -29,9 +29,8 @@ class Director extends Profesor
 	function crearAsignatura($idAsignatura, $nombreAsignatura, $nivelAsignatura){
 	}
     //competencias
-	function crearCompetencia($id,$cate,$nomb,$desc){
+	function crearCompetencia($cate,$nomb,$desc){
         $this->competencia = new Competencia();
-        $this->competencia->setIdComp($id);
         $this->competencia->setCate($cate);
         $this->competencia->setNomComp($nomb);
         $this->competencia->setDesComp($desc);

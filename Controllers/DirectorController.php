@@ -6,12 +6,12 @@
     class DirectorController extends ProfesorController{
         private $dir;
 
-        function __construct(){
-
+        function __construct($dir){
+            $this->dir = $dir;  
         }
         
-        function crearCompetencia($id,$cate,$nomb,$desc){
-            $this->dir->crearCompetencia($id,$cate,$nomb,$desc); 
+        function crearCompetencia($cate,$nomb,$desc){
+            $this->dir->crearCompetencia($cate,$nomb,$desc);
         }
         
         function modificarCompetencia($id,$cate,$nomb,$desc){            

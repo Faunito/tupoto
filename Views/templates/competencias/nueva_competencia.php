@@ -15,13 +15,9 @@
 				            <span class="card-title"><strong><h4>Ingrese nueva competencia</h4></strong></span>
 				        </div>
 			            <div class="card-content">
-							<form id="myForm" action="#" method="POST">
+							<form id="myForm" action="competencias.php?result=nueva" method="POST">
 					            <div class="row">
-					                <div class=" col s2 offset-s4 input-field">
-					                    <input id="codigo" name="codigo" type="text" class="validate">
-					                    <label for="codigo">Codigo *</label>
-					                </div>
-					                <div class=" col s2 input-field">
+					                <div class=" col s4 offset-s4 input-field">
 					                    <input id="categoria" name="categoria" type="text" class="validate">
 					                    <label for="categoria">Categoria *</label>
 					                </div>
@@ -40,7 +36,7 @@
 					            </div>
 				                <div class="row center">
 						            <div class="col s2 offset-s6">
-							            <button id="btn" class="btn right waves-effect waves-light color_primario"  type="submit" name="action">Ingresar
+							            <button id="btn" class="btn right waves-effect waves-light color_primario"  type="submit" >Ingresar
 							            <i class="material-icons right">send</i>
 							            </button>
 						            </div>

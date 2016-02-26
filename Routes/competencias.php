@@ -35,7 +35,7 @@
 		if (isset($_GET['action'])) {
 			$view->action($_GET['action']);		
 		}elseif (isset($_GET['result'])){
-			$view->result($_GET, $_POST);
+			$view->result($controller, $_GET, $_POST);
 		}else{
 			$view->output($usuario);
 		}

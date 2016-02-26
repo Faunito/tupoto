@@ -2,6 +2,7 @@
 //require_once ('MallaCurricular.php');
 //require_once ('DetalleEvaluacion.php');
 //require_once ('EspecificaciondeEvidencia.php');
+require_once ('DBConexion/DBCompetencia.php');
 require_once('Director.php');
 class Competencia
 {
