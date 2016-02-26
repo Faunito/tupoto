@@ -1,17 +1,14 @@
 <?php 
 
-	class CompetenciasView {    
+	class MallasView {    
 
 	    public function __construct() {
 	    }	    
 
 	    public function output($usuario) {
 	    	switch ($usuario) {
-	    		case 'Profesor':
-					include(ROOT_DIR.TEMPLATES_DIR.'competencias/competencias_profesor.php');
-	    			break;
 	    		case 'Director':
-					include(ROOT_DIR.TEMPLATES_DIR.'competencias/competencias_director.php');
+					include(ROOT_DIR.TEMPLATES_DIR.'competencias/mallas_director.php');
 	    			break;
 	    	}
 	    }
@@ -19,7 +16,7 @@
 	    public function action($action){
 	    	switch ($action) {
 	    		case 'nueva':
-					include(ROOT_DIR.TEMPLATES_DIR.'competencias/nueva_competencia.php');
+					include(ROOT_DIR.TEMPLATES_DIR.'mallas/nueva_malla.php');
 	    			break;
 	    		case 'modificar':
 					//include(ROOT_DIR.TEMPLATES_DIR.'competencias/competencias_director.php');

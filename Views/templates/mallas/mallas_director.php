@@ -22,7 +22,7 @@
 				              				<span class="card-title">Nueva Malla</span>
 				              				<p>Ingrese una nueva malla curricular e incluya las asignaturas correspondientes</p>
 				              				<div class="card-action">
-             									<a class="waves-effect waves-light btn color_primario" href="opcion_malla.php">Registrar<i class="mdi mdi-table-large right"></i></a>
+             									<a class="waves-effect waves-light btn color_primario" href="mallas.php?action=nueva">Registrar<i class="mdi mdi-table-large right"></i></a>
             								</div>
 				              			</div>
 				              		</div>

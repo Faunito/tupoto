@@ -13,12 +13,12 @@
 		switch (get_class($usuario)) {
 			case 'Profesor':
 				$controller = new ProfesorController($usuario);
-				router($view, get_class($usuario));
+				router($controller, $view, get_class($usuario));
 
 				break;	
 			case 'Director':
-				//$controller = new DirectorController($usuario);
-				router($view, get_class($usuario));
+				$controller = new DirectorController($usuario);
+				router($controller, $view, get_class($usuario));
 				break;				
 			default:
 				header('Location: inicio.php');
@@ -30,9 +30,11 @@
 	}
 
 
-	function router($view, $usuario){
+	function router($controller, $view, $usuario){
 		if (isset($_GET['action'])) {
 			$view->action($_GET['action']);		
+		}elseif (isset($_GET['result'])){
+			$view->result($_GET, $_POST);
 		}else{
 			$view->output($usuario);
 		}
