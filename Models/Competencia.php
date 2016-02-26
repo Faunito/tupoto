@@ -24,8 +24,8 @@ class Competencia
     
 	//GETTERS
     //recibe objeto eliminar $var si no funciona
-    public static function getCompetencias($var){
-        return DBCompetencia::getAll($var);
+    public static function getCompetencias(){
+        return DBCompetencia::getAll();
     } 
     
     function getCate(){
@@ -36,8 +36,7 @@ class Competencia
         return $this->director;
     }
     
-	function getDesComp()
-	{
+	function getDesComp(){
 		return $this->desComp;
 	}
 
@@ -60,8 +59,8 @@ class Competencia
 		return $this->dbcomp;
 	}
     
-    function getCompetencia($var){
-        return DBCompetencia::getCompetencia($var);
+    public static function getCompetencia($id){
+        return DBCompetencia::getCompetencia($id);
     }
 	//SETTERS
     function setFalComp($newVal){

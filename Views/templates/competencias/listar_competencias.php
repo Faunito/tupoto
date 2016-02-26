@@ -36,19 +36,20 @@
 								        </thead>
 								        <tbody>
 								        <?php 
+								        if(!empty($lista)){
 								        foreach ($lista as $key) {
 								        	echo '<tr>';
 								        	echo '<td>'.$key->getNomComp().'</td>';
 								    	    echo '<td>'.$key->getCate().'</td>';
 								    	    ?>
 								            <td>
-								            	<a class="btn-floating waves-effect waves-light" href="competencias.php?result=modificar&param=<?php echo $key->getIdComp(); ?>"><i class="material-icons color_primario">edit</i></a>
+								            	<a class="btn-floating waves-effect waves-light" href="competencias.php?result=consultar&param=<?php echo $key->getIdComp(); ?>"><i class="material-icons color_primario">edit</i></a>
 											</td>
 											<td>
-								            	<a class="btn-floating waves-effect waves-light red" href="competencias.php?result=modificar&param=<?php echo $key->getIdComp(); ?>"><i class="material-icons">clear</i></a>
+								            	<a class="btn-floating waves-effect waves-light red" href="competencias.php?result=eliminar&param=<?php echo $key->getIdComp(); ?>"><i class="material-icons">clear</i></a>
 											</td>
 								          </tr>
-								          <?php } ?>
+								          <?php }} ?>
 							        	</tbody>
 						      		</table>
 						    	</div>
