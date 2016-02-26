@@ -22,10 +22,10 @@
 					include(ROOT_DIR.TEMPLATES_DIR.'asignaturas/nueva_asignatura.php');
 	    			break;
 	    		case 'modificar-asignatura':
-					include(ROOT_DIR.TEMPLATES_DIR.'asignatura/modificar_asignatura.php');
+					include(ROOT_DIR.TEMPLATES_DIR.'asignaturas/modificar_asignatura.php');
 	    			break;
 	    		case 'ver-asignatura':
-					include(ROOT_DIR.TEMPLATES_DIR.'asignatura/listar_asignaturas.php');
+					include(ROOT_DIR.TEMPLATES_DIR.'asignaturas/listar_asignaturas.php');
 	    			break;
 
 	    		case 'nuevo-programa':
