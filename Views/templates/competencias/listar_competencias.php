@@ -2,6 +2,7 @@
 	$title = "Competencias";
 	require_once(ROOT_DIR . TEMPLATES_DIR . 'base/header.php');
 	require_once(ROOT_DIR . TEMPLATES_DIR . 'base/sidenav/sidenav_director.php');
+	require_once(ROOT_DIR . MODELS_DIR . 'Competencia.php');
 	?>
 	<main id="sb-site" class="blue-grey lighten-5">
 		<div class="container">		
@@ -29,15 +30,18 @@
 									        <thead>
 									          <tr>
 									            <th>Nombre</th>
-									            <th>Código</th>
+									            <th>Categoria</th>
 									            <th>Modificar</th>
 									            <th>Eliminar</th>
 									          </tr>
 									        </thead>
 									        <tbody>
-									          <tr>
-									            <td>Competencia de tu poto</td>
-									            <td>1545</td>
+									        <?php 
+									        foreach ($lista as $key) {
+									        	echo '<tr>';
+									        	echo '<td>'.$key->getNomComp().'</td>';
+									    	    echo '<td>'.$key->getCate().'</td>';
+									    	    ?>
 									            <td>
 									            	<a class="btn-floating waves-effect waves-light"><i class="material-icons color_primario">edit</i></a>
 												</td>
@@ -45,26 +49,7 @@
 									            	<a class="btn-floating waves-effect waves-light red"><i class="material-icons">clear</i></a>
 												</td>
 									          </tr>
-									          <tr>
-									            <td>Competencia de tu poto2</td>
-									            <td>6262</td>
-									            <td>
-									            	<a class="btn-floating waves-effect waves-light color_primario"><i class="material-icons">edit</i></a>
-												</td>
-												<td>
-									            	<a class="btn-floating waves-effect waves-light red"><i class="material-icons">clear</i></a>
-												</td>
-									          </tr>
-									          <tr>
-									            <td>Competencia de tu poto3</td>
-									            <td>2144</td>
-									            <td>
-									            	<a class="btn-floating waves-effect waves-light color_primario"><i class="material-icons">edit</i></a>
-												</td>
-												<td>
-									            	<a class="btn-floating waves-effect waves-light red"><i class="material-icons">clear</i></a>
-												</td>
-									          </tr>
+									          <?php } ?>
 								        	</tbody>
 							      		</table>
 							    	</div>

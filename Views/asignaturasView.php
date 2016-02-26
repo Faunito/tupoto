@@ -29,13 +29,13 @@
 	    			break;
 
 	    		case 'nuevo-programa':
-					include(ROOT_DIR.TEMPLATES_DIR.'asignatura/nuevo_programa.php');
+					include(ROOT_DIR.TEMPLATES_DIR.'asignaturas/nuevo_programa.php');
 	    			break;
 	    		case 'modificar-programa':
-					include(ROOT_DIR.TEMPLATES_DIR.'asignatura/modificar_programa.php');
+					include(ROOT_DIR.TEMPLATES_DIR.'asignaturas/modificar_programa.php');
 	    			break;
 	    		case 'ver-programa':
-					include(ROOT_DIR.TEMPLATES_DIR.'asignatura/listar_programas.php');
+					include(ROOT_DIR.TEMPLATES_DIR.'asignaturas/listar_programas.php');
 	    			break;
 	    		
 	    		default:
