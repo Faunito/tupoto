@@ -28,6 +28,17 @@
             return $this->arrayComp;
         }
         
+        function listarCompetencia($var){
+            $res = Competencia::getCompetencia();
+            $aux = new Competencia();
+            $aux->setIdComp($var['ID_COMPETENCIA']);
+            $aux->setCate($var['CATEGORIA']);
+            $aux->setDirector($this->dir);
+            $aux->setDesComp($var['DESCRIPCION_DE_COMPETENCIA']);
+            $aux->setNomComp($var['NOMBRE_COMPETENCIA']);
+            return $aux;            
+        }
+        
         function crearCompetencia($cate,$nomb,$desc){
             $this->dir->crearCompetencia($cate,$nomb,$desc);
         }

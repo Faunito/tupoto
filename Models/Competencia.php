@@ -12,6 +12,7 @@ class Competencia
 	private $nomComp;
 	private $dbcomp;
     private $director;
+    private $falComp;
 	//private $m_MallaCurricular;
 	//private $m_DetalleEvaluacion;
 	//private $m_EspecificaciondeEvidencia;
@@ -22,8 +23,9 @@ class Competencia
 	}
     
 	//GETTERS
-    public static function getCompetencias(){
-        return DBCompetencia::getAll();
+    //recibe objeto eliminar $var si no funciona
+    public static function getCompetencias($var){
+        return DBCompetencia::getAll($var);
     } 
     
     function getCate(){
@@ -49,14 +51,23 @@ class Competencia
 		return $this->nomComp;
 	}
 
-	function getFalComp()
+	function getFalComp()//falencia competencia
 	{
+        return $this->falComp;
 	}
 
 	function getDBCompetencia(){
 		return $this->dbcomp;
 	}
+    
+    function getCompetencia($var){
+        return DBCompetencia::getCompetencia($var);
+    }
 	//SETTERS
+    function setFalComp($newVal){
+        $this->falComp = $newVal;
+    }
+        
     function setCate($newVal){
         $this->categoria = $newVal;
     }
