@@ -11,48 +11,75 @@ class Director extends Profesor
     //VARS
 	private $carrera;
 	private $facultad;
-	//var $m_MallaCurricular;
 	private $competencia;
-	//var $m_ActividaddCompensacion;
-    //var $dbdirector;
-    //CONSTRUCT
+    private $asignatura;
+
 	function __construct()
 	{
         parent::__construct();
         $this->dbdirector = new DBDirector();
 	}
 
+    //============ Funciones ================
+
 	function existeDirector($email,$pass,$tipo){
         return $this->dbdirector->existeDirector($email,$pass,$tipo);
     }  
-    //asignatura
-	function crearAsignatura($idAsignatura, $nombreAsignatura, $nivelAsignatura){
-	}
-    //competencias
-	function crearCompetencia($cate,$nomb,$desc){
-        $this->competencia = new Competencia();
-        $this->competencia->setCate($cate);
-        $this->competencia->setNomComp($nomb);
-        $this->competencia->setDesComp($desc);
-        $this->competencia->setDirector($this);
-        $this->competencia->getDBCompetencia()->add($this->competencia);        
-	}
-    
-    function modificarCompetencia($id,$cate,$nomb,$desc){
-        $this->competencia = new Competencia();
-        $this->competencia->setIdComp($id);
-        $this->competencia->setCate($cate);
-        $this->competencia->setNomComp($nomb);
-        $this->competencia->setDesComp($desc);
-        $this->competencia->setDirector($this);
-        $this->competencia->getDBCompetencia()->modify($this->competencia);
-    }
-    
-    function eliminarCompetencia($id){
-        $this->competencia = new Competencia();
-        $this->competencia->setIdComp($id);
-        $this->competencia->getDBCompetencia()->delete($this->competencia);
-    }
+
+        //============ Competencias ================
+    	function crearCompetencia($cate,$nomb,$desc){
+            $this->competencia = new Competencia();
+            $this->competencia->setCate($cate);
+            $this->competencia->setNomComp($nomb);
+            $this->competencia->setDesComp($desc);
+            $this->competencia->setDirector($this);
+            $this->competencia->getDBCompetencia()->add($this->competencia);        
+    	}
+        
+        function modificarCompetencia($id,$cate,$nomb,$desc){
+            $this->competencia = new Competencia();
+            $this->competencia->setIdComp($id);
+            $this->competencia->setCate($cate);
+            $this->competencia->setNomComp($nomb);
+            $this->competencia->setDesComp($desc);
+            $this->competencia->setDirector($this);
+            $this->competencia->getDBCompetencia()->modify($this->competencia);
+        }
+        
+        function eliminarCompetencia($id){
+            $this->competencia = new Competencia();
+            $this->competencia->setIdComp($id);
+            $this->competencia->getDBCompetencia()->delete($this->competencia);
+        }
+
+        //============ Asignaturas ================
+        function crearAsignatura($codigo, $nombre, $nivel){
+            $this->asignatura = new Asignatura();
+            $this->asignatura->setCodigo($codigo);
+            //$this->asignatura->setMalla($malla);
+            $this->asignatura->setNombre($nombre);
+            $this->asignatura->setNivel($nivel);
+            $this->asignatura->getDBAsignatura()->add($this->asignatura);
+        }
+
+        function modificarAsignatura($id, $codigo, $nombre, $nivel){
+            $this->asignatura = new Asignatura();
+            $this->asignatura->setId($id);
+            $this->asignatura->setCodigo($codigo);
+            $this->asignatura->setNombre($nombre);
+            $this->asignatura->setNivel($nivel);
+            $this->asignatura->setDirector($this);
+            $this->asignatura->getDBAsignatura()->modify($this->asignatura);
+        }
+
+        function eliminarAsignatura($id){
+            $this->asignatura = new Asignatura();
+            $this->asignatura->setId($id);
+            $this->asignatura->getDBAsignatura()->delete($this->asignatura);
+        }
+
+
+
     //mallas
 	function crearMallaCurricular($codigoMalla, $codigoCarrera , $duracionMalla, $anioMalla){
 	}

@@ -15,20 +15,20 @@
 				            <span class="card-title"><strong><h4>Modifique una asignatura</h4></strong></span>
 				        </div>
 			            <div class="card-content">
-							<form id="myForm" action="#" method="POST">
+							<form id="myForm" action="asignaturas.php?result=modificar&param=<?php echo $asignatura->getId(); ?>" method="POST">
 					            <div class="row">
 					                <div class=" col s2 offset-s4 input-field">
-					                    <input id="codigo" name="codigo" type="text" class="validate">
+					                    <input id="codigo" name="codigo" type="text" class="validate" value="<?php echo $asignatura->getCodigo(); ?>">
 					                    <label for="codigo">Codigo *</label>
 					                </div>
 					                <div class=" col s2 input-field">       
-					                    <input id="nivel" name="nivel" type="text" class="validate">
+					                    <input id="nivel" name="nivel" type="text" class="validate" value="<?php echo $asignatura->getNivel(); ?>">
 					                    <label for="nivel">Nivel *</label>
 					                </div>
 					            </div>
 					            <div class="row">
 					               <div class=" col s4 offset-s4 input-field">       
-					                    <input id="nombre" name="nombre" type="text" class="validate">
+					                    <input id="nombre" name="nombre" type="text" class="validate" value="<?php echo $asignatura->getNombre(); ?>">
 					                    <label for="nombre">Nombre *</label>
 					                </div>
 					            </div>
