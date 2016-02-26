@@ -18,27 +18,21 @@
 			                	<div class="col s4">
 				                	<div class="card hoverable">
 				                		<div class="card-content">
-				              				<div class="card-action">
-             									<a class="waves-effect waves-light btn color_primario" href="<?php echo ROUTES_DIR.'asignaturas.php';?>">Asignaturas<i class="mdi mdi-folder right"></i></a>
-            								</div>
+         									<a class="waves-effect waves-light btn-large  color_primario" href="<?php echo ROUTES_DIR.'asignaturas.php';?>">Asignaturas<i class="mdi mdi-folder right"></i></a>
 				              			</div>
 				              		</div>
 			              		</div>
 			              		<div class="col s4">
 				                	<div class="card hoverable">
 				                		<div class="card-content">
-				              				<div class="card-action">
-             									<a class="waves-effect waves-light btn color_primario" href="<?php echo ROUTES_DIR.'competencias.php';?>">Competencias<i class="mdi mdi-animation right"></i></a>
-            								</div>
+             									<a class="waves-effect waves-light btn-large color_primario" href="<?php echo ROUTES_DIR.'competencias.php';?>">Competencias<i class="mdi mdi-book right"></i></a>
 				              			</div>
 				              		</div>
 			              		</div>
 			              		<div class="col s4">
 				                	<div class="card hoverable">
 				                		<div class="card-content">
-				              				<div class="card-action">
-             									<a class="waves-effect waves-light btn color_primario" href="<?php echo ROUTES_DIR.'evaluaciones.php';?>">Evaluaciones<i class="mdi mdi-clipboard-text right"></i></a>
-            								</div>
+             								<a class="waves-effect waves-light btn-large color_primario" href="<?php echo ROUTES_DIR.'evaluaciones.php';?>">Evaluaciones<i class="mdi mdi-clipboard-text right"></i></a>
 				              			</div>
 				              		</div>
 			              		</div>
@@ -47,27 +41,21 @@
 			              		<div class="col s4">
 				                	<div class="card hoverable">
 				                		<div class="card-content">
-				              				<div class="card-action">
-             									<a class="waves-effect waves-light btn color_primario" href="<?php echo ROUTES_DIR.'mallas.php';?>">Mallas<i class="mdi mdi-table-large right"></i></a>
-            								</div>
+             								<a class="waves-effect waves-light btn-large color_primario" href="<?php echo ROUTES_DIR.'mallas.php';?>">Mallas<i class="mdi mdi-table-large right"></i></a>
 				              			</div>
 				              		</div>
 			              		</div>
 			              		<div class="col s4">
 				                	<div class="card hoverable">
 				                		<div class="card-content">
-				              				<div class="card-action">
-             									<a class="waves-effect waves-light btn color_primario" href="<?php echo ROUTES_DIR.'practicas.php';?>">Practicas<i class="mdi mdi-file right"></i></a>
-            								</div>
+             								<a class="waves-effect waves-light btn-large color_primario" href="<?php echo ROUTES_DIR.'practicas.php';?>">Practicas<i class="mdi mdi-file right"></i></a>
 				              			</div>
 				              		</div>
 			              		</div>
 			              		<div class="col s4">
 				                	<div class="card hoverable">
 				                		<div class="card-content">
-				              				<div class="card-action">
-             									<a class="waves-effect waves-light btn color_primario" href="<?php echo ROUTES_DIR.'usuarios.php';?>">Usuarios<i class="mdi mdi-eye right"></i></a>
-            								</div>
+             									<a class="waves-effect waves-light btn-large color_primario" href="<?php echo ROUTES_DIR.'usuarios.php';?>">Usuarios<i class="mdi mdi-account-multiple right"></i></a>
 				              			</div>
 				              		</div>
 			              		</div>

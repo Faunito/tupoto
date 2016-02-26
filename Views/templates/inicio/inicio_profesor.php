@@ -18,18 +18,14 @@
 			                	<div class="col s4 offset-s2">
 				                	<div class="card hoverable">
 				                		<div class="card-content">
-				              				<div class="card-action">
-             									<a class="waves-effect waves-light btn color_primario" href="<?php echo ROUTES_DIR.'asignaturas.php';?>">Asignaturas<i class="mdi mdi-folder right"></i></a>
-            								</div>
+             								<a class="waves-effect waves-light btn-large color_primario" href="<?php echo ROUTES_DIR.'asignaturas.php';?>">Asignaturas<i class="mdi mdi-folder right"></i></a>
 				              			</div>
 				              		</div>
 			              		</div>
 			              		<div class="col s4">
 				                	<div class="card hoverable">
 				                		<div class="card-content">
-				              				<div class="card-action">
-             									<a class="waves-effect waves-light btn color_primario" href="<?php echo ROUTES_DIR.'evaluaciones.php';?>">Evaluaciones<i class="mdi mdi-clipboard-text right"></i></a>
-            								</div>
+             								<a class="waves-effect waves-light btn-large color_primario" href="<?php echo ROUTES_DIR.'evaluaciones.php';?>">Evaluaciones<i class="mdi mdi-clipboard-text right"></i></a>
 				              			</div>
 				              		</div>
 			              		</div>

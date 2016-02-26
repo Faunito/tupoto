@@ -17,7 +17,7 @@
 				        </div>
 			            <div class="card-content">
 			                <div class="row">
-			                	<div class="col s4">
+			                	<div class="col s4 offset-s2">
 				                	<div class="card hoverable">
 				                		<div class="card-content">
 				              				<span class="card-title">Ver asignatura</span>
@@ -39,7 +39,9 @@
 				              			</div>
 				              		</div>
 			              		</div>
-			              		<div class="col s4">
+			              	</div>
+			              	<div class="row">
+			              		<div class="col s4 offset-s2">
 				                	<div class="card hoverable">
 				                		<div class="card-content">
 				              				<span class="card-title">Modificar programa</span>
@@ -50,7 +52,7 @@
 				              			</div>
 				              		</div>
 			              		</div>
-			              		<div class="col s4 offset-s4">
+			              		<div class="col s4">
 				                	<div class="card hoverable">
 				                		<div class="card-content">
 				              				<span class="card-title">Ver programa</span>

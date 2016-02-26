@@ -22,7 +22,7 @@
 				              				<span class="card-title">Nueva asignatura</span>
 				              				<p>Ingrese una nueva asignatura para una malla ya existente en el sistema</p>
 				              				<div class="card-action">
-             									<a class="waves-effect waves-light btn btn-large color_primario" href="nueva_asignatura.php">Registrar<i class="mdi mdi-library-plus right"></i></a>
+             									<a class="waves-effect waves-light btn color_primario" href="nueva_asignatura.php">Registrar<i class="mdi mdi-folder-plus right"></i></a>
             								</div>
 				              			</div>
 				              		</div>

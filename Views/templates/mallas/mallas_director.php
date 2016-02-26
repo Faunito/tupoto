@@ -1,5 +1,5 @@
 <?php
-	$title = "Asignaturas";
+	$title = "Mallas";
 	require_once(ROOT_DIR . TEMPLATES_DIR . 'base/header.php');
 	require_once(ROOT_DIR . TEMPLATES_DIR . 'base/sidenav/sidenav_director.php');
 	?>
@@ -16,7 +16,7 @@
 				        </div>
 			            <div class="card-content">
 			                <div class="row">
-			                	<div class="col s4">
+			                	<div class="col s4 offset-s2">
 				                	<div class="card hoverable">
 				                		<div class="card-content">
 				              				<span class="card-title">Nueva Malla</span>
@@ -38,13 +38,26 @@
 				              			</div>
 				              		</div>
 			              		</div>
-			              		<div class="col s4">
+			              	</div>
+			              	<div class="row">
+			              		<div class="col s4 offset-s2">
 				                	<div class="card hoverable">
 				                		<div class="card-content">
 				              				<span class="card-title">Ver malla</span>
 				              				<p>Visualice una malla con todas sus asignaturas y competencias ordenadas por nivel</p>
 				              				<div class="card-action">
              									<a class="waves-effect waves-light btn color_primario">Ver<i class="mdi mdi-eye right"></i></a>
+            								</div>
+				              			</div>
+				              		</div>
+			              		</div>
+			              		<div class="col s4">
+				                	<div class="card hoverable">
+				                		<div class="card-content">
+				              				<span class="card-title">Extraer malla</span>
+				              				<p>Extraiga una malla curricular ya existente en el sistema UNICO</p>
+				              				<div class="card-action">
+             									<a class="waves-effect waves-light btn color_primario">Extraer<i class="mdi mdi-content-duplicate right"></i></a>
             								</div>
 				              			</div>
 				              		</div>

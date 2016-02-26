@@ -15,21 +15,17 @@
 				        </div>
 			            <div class="card-content">
 			               <div class="row">			                	
-			              		<div class="col s4 offset-s4">
+			              		<div class="col s4 offset-s2">
 				                	<div class="card hoverable">
 				                		<div class="card-content">
-				              				<div class="card-action">
-             									<a class="waves-effect waves-light btn color_primario href="<?php echo ROUTES_DIR.'practicas.php';?>"">Practicas<i class="mdi mdi-file right"></i></a>
-            								</div>
+             								<a class="waves-effect waves-light btn-large color_primario href="<?php echo ROUTES_DIR.'practicas.php';?>"">Practicas<i class="mdi mdi-file right"></i></a>
 				              			</div>
 				              		</div>
 			              		</div>
 			              		<div class="col s4">
 				                	<div class="card hoverable">
 				                		<div class="card-content">
-				              				<div class="card-action">
-             									<a class="waves-effect waves-light btn color_primario" href="<?php echo ROUTES_DIR.'evaluaciones.php';?>">Evaluaciones<i class="mdi mdi-clipboard-text right"></i></a>
-            								</div>
+             								<a class="waves-effect waves-light btn-large color_primario" href="<?php echo ROUTES_DIR.'evaluaciones.php';?>">Evaluaciones<i class="mdi mdi-clipboard-text right"></i></a>
 				              			</div>
 				              		</div>
 			              		</div>
