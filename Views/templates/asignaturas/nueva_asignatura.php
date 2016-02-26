@@ -15,7 +15,7 @@
 				            <span class="card-title"><strong><h4>Ingrese nueva asignatura</h4></strong></span>
 				        </div>
 			            <div class="card-content">
-							<form id="myForm" action="#" method="POST">
+							<form id="myForm" action="asignaturas.php?result=nueva" method="POST">
 					            <div class="row">
 					                <div class=" col s2 offset-s4 input-field">
 					                    <input id="codigo" name="codigo" type="text" class="validate">

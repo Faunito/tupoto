@@ -16,15 +16,17 @@
 	    	}
 	    }
 
-	    public function action($action){
+	    public function action($action, $controller){
 	    	switch ($action) {
 	    		case 'nueva-asignatura':
 					include(ROOT_DIR.TEMPLATES_DIR.'asignaturas/nueva_asignatura.php');
 	    			break;
 	    		case 'modificar-asignatura':
-					include(ROOT_DIR.TEMPLATES_DIR.'asignaturas/modificar_asignatura.php');
+	    			//$asignatura = $controller->consultarAsignatura();
+					//include(ROOT_DIR.TEMPLATES_DIR.'asignaturas/modificar_asignatura.php');
 	    			break;
 	    		case 'ver-asignatura':
+	    			$asignaturas = $controller->listarAsignaturas();
 					include(ROOT_DIR.TEMPLATES_DIR.'asignaturas/listar_asignaturas.php');
 	    			break;
 
@@ -46,24 +48,27 @@
 	    public function result($controller, $result, $post){
 	    	switch ($result['result']) {
 	    		case 'nueva':
-	    			$controller->crearCompetencia(	$post['categoria'], 
+	    			$controller->crearAsignatura(	$post['codigo'], 
 								    				$post['nombre'], 
-								    				$post['descripcion']);
+								    				$post['nivel']);
 	    			//TOAST
-	    			header('Location: competencias.php');
+	    			header('Location: asignaturas.php?action=ver-asignatura');
 	    			break;
 	    		case 'modificar':
-		    		$controller->modificarCompetencia(	$post['id'], 
-									    				$post['categoria'], 
+		    		$controller->modificarAsignatura(	$result['param'], 
+									    				$post['codigo'], 
 									    				$post['nombre'], 
-									    				$post['descripcion']);
+									    				$post['nivel']);
 		    		//TOAAAST
-		    		header('Location: competencias.php');
+		    		header('Location: asignaturas.php?action=ver-asignatura');
 	    			break;
-	    		case 'ver':
+	    		case 'consultar':
+					$asignatura = $controller->consultarAsignatura($result['param']);
+	    			include(ROOT_DIR.TEMPLATES_DIR.'asignaturas/modificar_asignatura.php');
 	    			break;
-	    		case 'asignar':
-					//include(ROOT_DIR.TEMPLATES_DIR.'competencias/competencias_director.php');
+	    		case 'eliminar':
+					$controller->eliminarAsignatura($result['param']);
+					header('Location: asignaturas.php?action=ver-asignatura');	
 	    			break;
 	    		
 	    		default:
