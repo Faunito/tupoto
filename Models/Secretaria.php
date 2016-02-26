@@ -9,12 +9,16 @@ class Secretaria extends Funcionario
     //VARS
     private $facultad;
     private $telefono;
+    private $dbsecretaria;
     //FUNCIONES
     //CONSTRUCTS
     function __construct(){
-        $this -> dbsecretaria = new DBSecretaria();
+        $this->dbsecretaria = new DBSecretaria();
     }
     //FUNCTIONS
+    function existeSecre($email,$pass){
+        return $this->dbsecretaria->existeSecre($email,$pass);
+    }    
     
     //SETTERS
     function setFacultad($facultad){
@@ -34,9 +38,9 @@ class Secretaria extends Funcionario
     }
     
     function getSecretaria($email,$pass){
-        $this -> setCorreoElectronico($email);
-        $this -> setPassword($pass);
-        $this -> dbsecretaria -> GetInstance($this);
+        $this->setCorreoElectronico($email);
+        $this->setPassword($pass);
+        $this->dbsecretaria -> GetInstance($this);
     }
 }
 ?>
