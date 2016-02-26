@@ -31,34 +31,18 @@ class DBProfesor implements ICrud {
     
     public function modify($var){
         $con = DBSingleton::getInstance()->getDB();
-        $tipo = $var->getDirector()->getTipoProfesor();
-        if($tipo=='profesor'){
-            $res = $con -> prepare('UPDATE profesor SET EMAIL=:email,
-                PASSWORD=:pass,FACULTAD=:facu,NOMBRE=:nombre,APATERNO=:apaterno,
-                AMATERNO=:amaterno where RUT=:rut)');
-            $res->bindParam(':email',$var->getEmail(),PDO::PARAM_STR);
-            $res->bindParam(':pass',$var->getPassword(),PDO::PARAM_STR);
-            $res->bindParam(':facu',$var->getFacultad(),PDO::PARAM_STR);
-            $res->bindParam(':nombre',$var->getNombre(),PDO::PARAM_STR);
-            $res->bindParam(':apaterno',$var->getApaterno(),PDO::PARAM_STR);
-            $res->bindParam(':amaterno',$var->getAmaterno(),PDO::PARAM_STR);
-            $res->bindParam(':rut',$var->getRut(),PDO::PARAM_STR);
-            $res->execute();            
-        }
-        elseif ($tipo=='director') {
-            $res = $con -> prepare('UPDATE profesor SET TIPO_PROFESOR=:tipo,EMAIL=:email,
-                PASSWORD=:pass,FACULTAD=:facu,NOMBRE=:nombre,APATERNO=:apaterno,
-                AMATERNO=:amaterno where RUT=:rut)');
-            $res->bindParam(':tipo',$var->getTipoProfesor(),PDO::PARAM_STR);
-            $res->bindParam(':email',$var->getEmail(),PDO::PARAM_STR);
-            $res->bindParam(':pass',$var->getPassword(),PDO::PARAM_STR);
-            $res->bindParam(':facu',$var->getFacultad(),PDO::PARAM_STR);
-            $res->bindParam(':nombre',$var->getNombre(),PDO::PARAM_STR);
-            $res->bindParam(':apaterno',$var->getApaterno(),PDO::PARAM_STR);
-            $res->bindParam(':amaterno',$var->getAmaterno(),PDO::PARAM_STR);
-            $res->bindParam(':rut',$var->getRut(),PDO::PARAM_STR);
-            $res->execute();            
-        }      
+        $res = $con -> prepare('UPDATE profesor SET TIPO_PROFESOR=:tipo,EMAIL=:email,
+            PASSWORD=:pass,FACULTAD=:facu,NOMBRE=:nombre,APATERNO=:apaterno,
+            AMATERNO=:amaterno where RUT=:rut)');
+        $res->bindParam(':tipo',$var->getTipoProfesor(),PDO::PARAM_STR);
+        $res->bindParam(':email',$var->getEmail(),PDO::PARAM_STR);
+        $res->bindParam(':pass',$var->getPassword(),PDO::PARAM_STR);
+        $res->bindParam(':facu',$var->getFacultad(),PDO::PARAM_STR);
+        $res->bindParam(':nombre',$var->getNombre(),PDO::PARAM_STR);
+        $res->bindParam(':apaterno',$var->getApaterno(),PDO::PARAM_STR);
+        $res->bindParam(':amaterno',$var->getAmaterno(),PDO::PARAM_STR);
+        $res->bindParam(':rut',$var->getRut(),PDO::PARAM_STR);
+        $res->execute();  
                                                
     }
 
