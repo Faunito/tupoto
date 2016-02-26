@@ -28,14 +28,14 @@
             return $this->arrayComp;
         }
         
-        function listarCompetencia($var){
-            $res = Competencia::getCompetencia();
+        function listarCompetencia($id){
+            $res = Competencia::getCompetencia($id);
             $aux = new Competencia();
-            $aux->setIdComp($var['ID_COMPETENCIA']);
-            $aux->setCate($var['CATEGORIA']);
+            $aux->setIdComp($res['ID_COMPETENCIA']);
+            $aux->setCate($res['CATEGORIA']);
             $aux->setDirector($this->dir);
-            $aux->setDesComp($var['DESCRIPCION_DE_COMPETENCIA']);
-            $aux->setNomComp($var['NOMBRE_COMPETENCIA']);
+            $aux->setDesComp($res['DESCRIPCION_DE_COMPETENCIA']);
+            $aux->setNomComp($res['NOMBRE_COMPETENCIA']);
             return $aux;            
         }
         

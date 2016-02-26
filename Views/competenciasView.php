@@ -30,8 +30,7 @@
 	    			break;
 	    		case 'asignar':
 					//include(ROOT_DIR.TEMPLATES_DIR.'competencias/competencias_director.php');
-	    			break;
-	    		
+	    			break;	    		
 	    		default:
 	    			break;
 	    	}
@@ -48,21 +47,28 @@
 					//include(ROOT_DIR.TEMPLATES_DIR.'competencias/nueva_competencia.php');
 	    			break;
 	    		case 'modificar':
-		    		$controller->modificarCompetencia(	$post['id'], 
-									    				$post['categoria'], 
-									    				$post['nombre'], 
-									    				$post['descripcion']);
-		    		//TOAAAST
-		    		header('Location: competencias.php');
-					//include(ROOT_DIR.TEMPLATES_DIR.'competencias/competencias_director.php');
+	    			$controller->modificarCompetencia( $result['param'],	
+	    											$post['categoria'], 
+								    				$post['nombre'], 
+								    				$post['descripcion']);
+	    			//TOAST
+	    			header('Location: competencias.php?action=ver');		    		
 	    			break;
 	    		case 'ver':
 					//include(ROOT_DIR.TEMPLATES_DIR.'competencias/competencias_director.php');
 	    			break;
+	    		case 'eliminar':
+	    			$controller->eliminarCompetencia( $result['param']);
+	    			//TOAST
+	    			header('Location: competencias.php?action=ver');	
+	    			break;
 	    		case 'asignar':
 					//include(ROOT_DIR.TEMPLATES_DIR.'competencias/competencias_director.php');
 	    			break;
-	    		
+	    		case 'consultar':
+	    			$competencia=$controller->listarCompetencia($result['param']);
+	    			include(ROOT_DIR.TEMPLATES_DIR.'competencias/modificar_competencia.php');
+	    			break;
 	    		default:
 	    			break;
 	    	}
