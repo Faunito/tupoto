@@ -5,7 +5,7 @@ class DBCompetencia Implements ICrud {
 
 	function GetInstance($competencia){
        $con = DBSingleton::getInstance()->getDB();
-       $res = $con -> prepare('SELECT * FROM profesor where ID_COMPETENCIA =:id');
+       $res = $con -> prepare('SELECT * FROM competencia where ID_COMPETENCIA =:id');
         $res -> bindParam(':id',$competencia->getIdComp(),PDO::PARAM_STR);        
         $res -> execute();
         //guardar respuesta en objeto php

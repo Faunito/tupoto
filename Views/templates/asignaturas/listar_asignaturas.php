@@ -36,39 +36,22 @@
 									          </tr>
 									        </thead>
 									        <tbody>
-									          <tr>
-									            <td>Inteligencia de tu poto</td>
-									            <td>IC101</td>
-									            <td>2</td>
+									        <?php 
+										        if(!empty($asignaturas)){
+										        foreach ($asignaturas as $asignatura) {
+										        	echo '<tr>';
+										        	echo '<td>'.$asignatura->getNombre().'</td>';
+								    	    		echo '<td>'.$asignatura->getCodigo().'</td>';
+								    	    		echo '<td>'.$asignatura->getNivel().'</td>';
+								        	?>
 									            <td>
-									            	<a class="btn-floating waves-effect waves-light"><i class="material-icons color_primario">edit</i></a>
+									            	<a class="btn-floating waves-effect waves-light" href="asignaturas.php?result=consultar&param=<?php echo $asignatura->getId(); ?>"><i class="material-icons color_primario">edit</i></a>
 												</td>
 												<td>
-									            	<a class="btn-floating waves-effect waves-light red"><i class="material-icons">clear</i></a>
+									            	<a class="btn-floating waves-effect waves-light red" href="asignaturas.php?result=eliminar&param=<?php echo $asignatura->getId(); ?>"><i class="material-icons">clear</i></a>
 												</td>
 									          </tr>
-									          <tr>
-									            <td>Gneración de tu poto2</td>
-									            <td>IC104</td>
-									            <td>4</td>
-									            <td>
-									            	<a class="btn-floating waves-effect waves-light color_primario"><i class="material-icons">edit</i></a>
-												</td>
-												<td>
-									            	<a class="btn-floating waves-effect waves-light red"><i class="material-icons">clear</i></a>
-												</td>
-									          </tr>
-									          <tr>
-									            <td>Programación de tu poto3</td>
-									            <td>IC114</td>
-									            <td>1</td>
-									            <td>
-									            	<a class="btn-floating waves-effect waves-light color_primario"><i class="material-icons">edit</i></a>
-												</td>
-												<td>
-									            	<a class="btn-floating waves-effect waves-light red"><i class="material-icons">clear</i></a>
-												</td>
-									          </tr>
+								          	<?php }} ?>									          
 								        	</tbody>
 							      		</table>
 							    	</div>

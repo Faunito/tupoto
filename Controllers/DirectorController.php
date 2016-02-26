@@ -1,17 +1,22 @@
 <?php
-    //require_once('/Config/Constantes.php');
-    //require_once (ROOT_DIR . MODELS_DIR . 'Director.php')
-    require_once(ROOT_DIR . CONTROLLERS_DIR . 'ProfesorController.php');
-    require_once(ROOT_DIR . MODELS_DIR . 'Competencia.php');
-    
-    class DirectorController extends ProfesorController{
-        private $dir;
-        private $arrayComp;
+//require_once('/Config/Constantes.php');
+//require_once (ROOT_DIR . MODELS_DIR . 'Director.php')
+require_once(ROOT_DIR . CONTROLLERS_DIR . 'ProfesorController.php');
+require_once(ROOT_DIR . MODELS_DIR . 'Competencia.php');
+require_once(ROOT_DIR . MODELS_DIR . 'Asignatura.php');
 
-        function __construct($dir){
-            $this->dir = $dir;  
-        }
-        
+class DirectorController extends ProfesorController{
+    private $dir;
+    private $arrayCompetencias;
+    private $arrayAsignaturas;
+
+    function __construct($dir){
+        $this->dir = $dir;  
+    }
+
+    //============ Funciones ================
+    
+        //============ Competencias ================
         function listarCompetencias(){
             $res = Competencia::getCompetencias();
             $i=0;
@@ -22,10 +27,10 @@
                 $aux->setDirector($this->dir);
                 $aux->setDesComp($key['DESCRIPCION_DE_COMPETENCIA']);
                 $aux->setNomComp($key['NOMBRE_COMPETENCIA']);
-                $this->arrayComp[$i] = $aux;
+                $this->arrayCompetencias[$i] = $aux;
                 $i++;
             }
-            return $this->arrayComp;
+            return $this->arrayCompetencias;
         }
         
         function listarCompetencia($id){
@@ -49,15 +54,60 @@
        
         function eliminarCompetencia($id){            
             $this->dir->eliminarCompetencia($id); 
-        }               
+        }   
 
-        //GETTERS
-        function getDirector(){
-            return $this->dir;
+        //============ Asignaturas ================ 
+        function listarAsignaturas(){
+            $asignaturas = Asignatura::getAsignaturas();
+            $i=0;
+            foreach ($asignaturas as $asignatura) {
+                $nueva = new Asignatura();                
+                $nueva->setId($asignatura['ID_ASIGNATURA']);
+                $nueva->setCodigo($asignatura['CODIGO_ASIGNATURA']);
+                //$nueva->setMalla($asignatura['ID_MALLA']);
+                $nueva->setNombre($asignatura['NOMBRE_ASIGNATURA']);
+                $nueva->setNivel($asignatura['NIVEL_ASIGNATURA']);
+                $nueva->setDirector($this->dir);
+                $this->arrayAsignaturas[$i] = $nueva;
+                $i++;
+            }
+            return $this->arrayAsignaturas;
         }
+        
+        function consultarAsignatura($codigo){
+            $asignatura = Asignatura::getAsignatura($codigo);
+            $nueva = new Asignatura();
+            $nueva->setId($asignatura['ID_ASIGNATURA']);
+            $nueva->setCodigo($asignatura['CODIGO_ASIGNATURA']);
+            //$nueva->setMalla($asignatura['ID_MALLA']);
+            $nueva->setNombre($asignatura['NOMBRE_ASIGNATURA']);
+            $nueva->setNivel($asignatura['NIVEL_ASIGNATURA']);
+            $nueva->setDirector($this->dir);
+            return $nueva;            
+        }
+        
+        function crearAsignatura($codigo, $nombre, $nivel){
+            $this->dir->crearAsignatura($codigo, $nombre, $nivel);
+        }
+        
+        function modificarAsignatura($id, $codigo, $nombre, $nivel){            
+            $this->dir->modificarAsignatura($id, $codigo, $nombre, $nivel); 
+        }
+       
+        function eliminarAsignatura($id){            
+            $this->dir->eliminarAsignatura($id); 
+        } 
 
-        //SETTERS
-        function setDirector(){
-            $this->dir = new $newVal;
-        }
+
+    //============ Getters ================
+
+    function getDirector(){
+        return $this->dir;
     }
+
+    //============ Setters ================
+
+    function setDirector(){
+        $this->dir = new $newVal;
+    }
+}
