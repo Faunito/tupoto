@@ -12,7 +12,7 @@
 		          	<div class="card">
 		          		<div class="card-image">
 			          		<img src="<?php echo RESOURCES_DIR.'img/hola.jpg';?>">
-				            <span class="card-title"><strong><h4>Prácticas</h4></strong></span>
+				            <span class="card-title"><strong><h4><a href="<?php echo ROUTES_DIR.'inicio.php';?>"><i class="material-icons small white-text left" style="font-size: 40px">arrow_back</i></a>Prácticas</h4></strong></span>
 				        </div>
 			            <div class="card-content">
 			                <div class="row">

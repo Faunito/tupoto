@@ -3,7 +3,7 @@
 										//importante llamarlo primero desde aca para que header.php
 										//tome las constantes en los href
 	$title = 'Sistema SEP';
-	include(ROOT_DIR . TEMPLATES_DIR . 'base/header.php');	//Llama al header
+	include(ROOT_DIR . TEMPLATES_DIR . 'base/header_inicio.php');	//Llama al header
 ?>
 
 <main id="sb-site" class="blue-grey lighten-5">

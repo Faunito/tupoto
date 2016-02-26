@@ -12,7 +12,7 @@
 		          	<div class="card">
 		          		<div class="card-image">
 			          		<img src="<?php echo RESOURCES_DIR.'img/hola.jpg';?>">
-				            <span class="card-title"><strong><h4>Ingrese nueva competencia</h4></strong></span>
+				            <span class="card-title"><strong><h4><a href="javascript:history.go(-1)"><i class="material-icons small white-text left" style="font-size: 40px">arrow_back</i></a>Ingrese nueva competencia</h4></strong></span>
 				        </div>
 			            <div class="card-content">
 							<form id="myForm" action="competencias.php?result=nueva" method="POST">

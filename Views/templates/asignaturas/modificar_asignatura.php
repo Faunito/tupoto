@@ -12,7 +12,7 @@
 		          	<div class="card">
 		          		<div class="card-image">
 			          		<img src="<?php echo RESOURCES_DIR.'img/hola.jpg';?>">
-				            <span class="card-title"><strong><h4>Modifique una asignatura</h4></strong></span>
+				            <span class="card-title"><strong><h4><a href="<?php echo ROUTES_DIR.'asignaturas.php';?>"><i class="material-icons small white-text left" style="font-size: 40px">arrow_back</i></a>Modifique una asignatura</h4></strong></span>
 				        </div>
 			            <div class="card-content">
 							<form id="myForm" action="#" method="POST">
