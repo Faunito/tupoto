@@ -16,7 +16,7 @@
 	    	}
 	    }
 
-	    public function action($action){
+	    public function action($action,$controller){
 	    	switch ($action) {
 	    		case 'nueva':
 					include(ROOT_DIR.TEMPLATES_DIR.'competencias/nueva_competencia.php');
@@ -25,7 +25,8 @@
 					include(ROOT_DIR.TEMPLATES_DIR.'competencias/modificar_competencia.php');
 	    			break;
 	    		case 'ver':
-					include(ROOT_DIR.TEMPLATES_DIR.'competencias/listar_competencias.php');
+                    $controller->listarCompetencias();
+					//include(ROOT_DIR.TEMPLATES_DIR.'competencias/listar_competencias.php');
 	    			break;
 	    		case 'asignar':
 					//include(ROOT_DIR.TEMPLATES_DIR.'competencias/competencias_director.php');

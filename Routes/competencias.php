@@ -33,7 +33,7 @@
 
 	function router($controller, $view, $usuario){
 		if (isset($_GET['action'])) {
-			$view->action($_GET['action']);		
+			$view->action($_GET['action'],$controller);		
 		}elseif (isset($_GET['result'])){
 			$view->result($controller, $_GET, $_POST);
 		}else{

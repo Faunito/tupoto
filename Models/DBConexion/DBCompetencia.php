@@ -4,8 +4,8 @@ require_once('ICrud.php');
 class DBCompetencia Implements ICrud {
 
 	function GetInstance($competencia){
-       /* $con = DBSingleton::getInstance()->getDB();
-        $con -> prepare('SELECT * FROM profesor where EMAIL =:email and PASSWORD =:pass 
+       $con = DBSingleton::getInstance()->getDB();
+       $res = $con -> prepare('SELECT * FROM profesor where EMAIL =:email and PASSWORD =:pass 
                         and TIPO_PROFESOR="profesor"');
         $res -> bindParam(':email',$profesor -> getCorreoElectronico(),PDO::PARAM_STR);
         $res -> bindParam(':pass',$profesor -> getPassword(),PDO::PARAM_STR);
@@ -19,8 +19,16 @@ class DBCompetencia Implements ICrud {
         $profesor->setFacultad($res2->FACULTAD);
         $profesor->setNombre($res2->NOMBRE);
         $profesor->setApaterno($res2->APATERNO);
-        $profesor->setAmaterno($res2->AMATERNO);*/
+        $profesor->setAmaterno($res2->AMATERNO);
 	}
+    
+    public static function getAll(){
+        $con = DBSingleton::getInstance()->getDB();
+        $res = $con -> prepare('SELECT * FROM competencia');
+        $res -> execute();
+        $res1 = $res->fetchAll();
+        return $res1;
+    }
 
 	function add($var){
         $con = DBSingleton::getInstance()->getDB();

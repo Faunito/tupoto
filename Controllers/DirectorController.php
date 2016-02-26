@@ -2,12 +2,30 @@
     //require_once('/Config/Constantes.php');
     //require_once (ROOT_DIR . MODELS_DIR . 'Director.php')
     require_once(ROOT_DIR . CONTROLLERS_DIR . 'ProfesorController.php');
+    require_once(ROOT_DIR . MODELS_DIR . 'Competencia.php');
     
     class DirectorController extends ProfesorController{
         private $dir;
+        private $arrayComp;
 
         function __construct($dir){
             $this->dir = $dir;  
+        }
+        
+        function listarCompetencias(){
+            $res = Competencia::getCompetencias();
+            $i=0;
+            foreach ($res as $key) {
+                $aux = new Competencia();
+                $aux->setIdComp($key['ID_COMPETENCIA']);
+                $aux->setCate($key['CATEGORIA']);
+                $aux->setDirector($this->dir);
+                $aux->setDesComp($key['DESCRIPCION_DE_COMPETENCIA']);
+                $aux->setNomComp($key['NOMBRE_COMPETENCIA']);
+                $this->arrayComp[$i] = $aux;
+                $i++;
+            }
+            return $this->arrayComp;
         }
         
         function crearCompetencia($cate,$nomb,$desc){
@@ -24,6 +42,10 @@
         //GETTERS
         function getDirector(){
             return $this->dir;
+        }
+        
+        function getArrayComp(){
+            return $this->arrayComp;
         }
         //SETTERS
         function setDirector(){

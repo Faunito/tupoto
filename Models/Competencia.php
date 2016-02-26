@@ -22,6 +22,10 @@ class Competencia
 	}
     
 	//GETTERS
+    public static function getCompetencias(){
+        return DBCompetencia::getAll();
+    } 
+    
     function getCate(){
         return $this->categoria;    
     }
@@ -73,7 +77,7 @@ class Competencia
 
 	function setNomComp($newVal)
 	{
-		$this->nombComp = $newVal;
+		$this->nomComp = $newVal;
 	}
 
 }
