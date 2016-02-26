@@ -22,10 +22,10 @@
 					include(ROOT_DIR.TEMPLATES_DIR.'competencias/nueva_competencia.php');
 	    			break;
 	    		case 'modificar':
-					//include(ROOT_DIR.TEMPLATES_DIR.'competencias/competencias_director.php');
+					include(ROOT_DIR.TEMPLATES_DIR.'competencias/modificar_competencia.php');
 	    			break;
 	    		case 'ver':
-					//include(ROOT_DIR.TEMPLATES_DIR.'competencias/competencias_director.php');
+					include(ROOT_DIR.TEMPLATES_DIR.'competencias/listar_competencias.php');
 	    			break;
 	    		case 'asignar':
 					//include(ROOT_DIR.TEMPLATES_DIR.'competencias/competencias_director.php');
@@ -47,6 +47,12 @@
 					//include(ROOT_DIR.TEMPLATES_DIR.'competencias/nueva_competencia.php');
 	    			break;
 	    		case 'modificar':
+		    		$controller->modificarCompetencia(	$post['id'], 
+									    				$post['categoria'], 
+									    				$post['nombre'], 
+									    				$post['descripcion']);
+		    		//TOAAAST
+		    		header('Location: competencias.php');
 					//include(ROOT_DIR.TEMPLATES_DIR.'competencias/competencias_director.php');
 	    			break;
 	    		case 'ver':
