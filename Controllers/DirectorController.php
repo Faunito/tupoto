@@ -1,6 +1,7 @@
 <?php
     //require_once('/Config/Constantes.php');
     //require_once (ROOT_DIR . MODELS_DIR . 'Director.php')
+    require_once(ROOT_DIR . CONTROLLERS_DIR . 'ProfesorController.php');
     
     class DirectorController extends ProfesorController{
         private $dir;

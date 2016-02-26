@@ -2,7 +2,7 @@
 	require_once('../Config/Constantes.php');
 	require_once(ROOT_DIR . MODELS_DIR . 'Director.php');
 	require_once(ROOT_DIR . VIEWS_DIR . 'mallasView.php');
-	require_once(ROOT_DIR . CONTROLLERS_DIR . 'ProfesorController.php');
+	require_once(ROOT_DIR . CONTROLLERS_DIR . 'DirectorController.php');
 
 	session_start();
 	if(isset($_SESSION["usuario"])){
@@ -11,7 +11,7 @@
 
 		switch (get_class($usuario)) {
 			case 'Director':
-				include(ROOT_DIR.TEMPLATES_DIR.'mallas/mallas_director.php');
+			$controller = new DirectorController($usuario);
 				router($controller, $view, get_class($usuario));
 				break;
 			default:

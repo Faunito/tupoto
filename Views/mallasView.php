@@ -8,7 +8,7 @@
 	    public function output($usuario) {
 	    	switch ($usuario) {
 	    		case 'Director':
-					include(ROOT_DIR.TEMPLATES_DIR.'competencias/mallas_director.php');
+					include(ROOT_DIR.TEMPLATES_DIR.'mallas/mallas_director.php');
 	    			break;
 	    	}
 	    }

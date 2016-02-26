@@ -4,6 +4,7 @@
 	require_once(ROOT_DIR . MODELS_DIR . 'Director.php');
 	require_once(ROOT_DIR . VIEWS_DIR . 'competenciasView.php');
 	require_once(ROOT_DIR . CONTROLLERS_DIR . 'ProfesorController.php');
+	require_once(ROOT_DIR . CONTROLLERS_DIR . 'DirectorController.php');
 
 	session_start();
 	if(isset($_SESSION["usuario"])){
