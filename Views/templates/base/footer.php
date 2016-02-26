@@ -2,6 +2,7 @@
 <script src="<?php echo RESOURCES_DIR ?>js/jquery-2.2.0.min.js"></script>
 <script src="<?php echo RESOURCES_DIR ?>js/materialize.min.js"></script>
 <script src="<?php echo RESOURCES_DIR ?>js/slidebars.min.js"></script>
+<script src="<?php echo RESOURCES_DIR ?>js/dataTable.js"></script>
 
 
 <?php

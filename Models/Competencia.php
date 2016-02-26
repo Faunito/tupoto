@@ -2,7 +2,7 @@
 //require_once ('MallaCurricular.php');
 //require_once ('DetalleEvaluacion.php');
 //require_once ('EspecificaciondeEvidencia.php');
-require_php('Director.php');
+require_once('Director.php');
 class Competencia
 {
 	private $categoria;
