@@ -11,6 +11,7 @@
 	//============ Incluir aca templates javascript =============
 	include(ROOT_DIR . TEMPLATES_DIR . 'scripts/material_select_init.php');
 	include(ROOT_DIR . TEMPLATES_DIR . 'scripts/slidebar_init.php');
+	include(ROOT_DIR . TEMPLATES_DIR . 'scripts/tooltip_init.php');
  ?>
 
 

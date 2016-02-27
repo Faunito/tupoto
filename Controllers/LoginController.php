@@ -28,7 +28,14 @@
 						break;
 
 					case 'secretaria':
-						
+						$this->usuario = new Secretaria();
+						if($this->usuario->existeSecre($request['email'], $request['password'])){	
+							$this->usuario->getSecretaria($request['email'], $request['password']);
+				            $this->iniciarSesion();
+				            return true;  
+            			}else{
+            				return false;
+            			}
 						break;
 
 					case 'director':

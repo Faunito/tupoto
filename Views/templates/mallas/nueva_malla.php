@@ -12,7 +12,7 @@
 		          	<div class="card  hoverable">
 		          		<div class="card-image">
 			          		<img src="<?php echo RESOURCES_DIR.'img/hola.jpg';?>">
-				            <span class="card-title"><strong><h4>Ingrese una nueva malla</h4></strong></span>
+				            <span class="card-title"><strong><h4><a href="<?php echo ROUTES_DIR.'inicio.php';?>"><i class="material-icons small white-text left" style="font-size: 40px">arrow_back</i></a>Ingrese una nueva malla</h4></strong></span>
 				        </div>
 			            <div class="card-content">
 							<form id="myForm" action="#" method="POST">
@@ -45,8 +45,8 @@
 									        <thead>
 									          <tr>
 									            <th>Nombre</th>
-									            <th>Código</th>
-									            <th>Estado</th>
+									            <th class="center" style="width: 100px">Código</th>
+									            <th class="center" style="width: 180px">Estado</th>
 									          </tr>
 									        </thead>
 									        <tbody>

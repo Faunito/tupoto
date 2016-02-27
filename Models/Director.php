@@ -1,5 +1,5 @@
 <?php //namespace Models;
-//require_once ('MallaCurricular.php');
+require_once ('Malla.php');
 require_once ('Profesor.php');
 require_once ('DBConexion/DBDirector.php');
 require_once ('Competencia.php');
@@ -13,6 +13,7 @@ class Director extends Profesor
 	private $facultad;
 	private $competencia;
     private $asignatura;
+    private $malla;
 
 	function __construct()
 	{
@@ -76,6 +77,19 @@ class Director extends Profesor
             $this->asignatura = new Asignatura();
             $this->asignatura->setId($id);
             $this->asignatura->getDBAsignatura()->delete($this->asignatura);
+        }
+
+        //============ Mallas ================
+        function crearMalla($id,$codigo,$plan,$niveles,$asignaturas)
+        {
+            $this->malla = new Malla();
+            $this->malla->setIdMalla($id);
+            $this->malla->setCodCarrera($codigo);
+            $this->malla->setPlan($plan);
+            $this->malla->setNiveles($niveles);
+            $this->malla->setDirector($this);
+            $this->malla->setAsignaturas($asignaturas);
+            $this->malla->getDBMalla()->add($this->malla);
         }
 
 

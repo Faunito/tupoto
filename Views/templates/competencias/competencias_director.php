@@ -12,11 +12,11 @@
 		          	<div class="card">
 		          		<div class="card-image">
 			          		<img src="<?php echo RESOURCES_DIR.'img/hola.jpg';?>">
-				            <span class="card-title"><strong><h4>Competencias</h4></strong></span>
+				            <span class="card-title"><strong><h4><a href="<?php echo ROUTES_DIR.'inicio.php';?>"><i class="material-icons small white-text left" style="font-size: 40px">arrow_back</i></a>Competencias</h4></strong></span>
 				        </div>
 			            <div class="card-content">
 			                <div class="row">
-			                	<div class="col s4 offset-s2">
+			                	<div class="col s4">
 				                	<div class="card hoverable">
 				                		<div class="card-content">
 				              				<span class="card-title">Nueva competencia</span>
@@ -30,21 +30,8 @@
 			              		<div class="col s4">
 				                	<div class="card hoverable">
 				                		<div class="card-content">
-				              				<span class="card-title">Modificar competencia</span>
-				              				<p>Modifique una competencia ya existente en el sistema</p>
-				              				<div class="card-action">
-             									<a class="waves-effect waves-light btn color_primario" href="competencias.php?action=modificar"><i class="material-icons right">edit</i>Modificar</a>
-            								</div>
-				              			</div>
-				              		</div>
-			              		</div>
-			              	</div>
-			              	<div class="row">
-			              		<div class="col s4 offset-s2">
-				                	<div class="card hoverable">
-				                		<div class="card-content">
 				              				<span class="card-title">Ver competencia</span>
-				              				<p>Cree una nueva asignatura para una malla ya existente</p>
+				              				<p>Liste todas las competencias ya existentes, aqui podrá modificarlas y/o eliminarlas</p>
 				              				<div class="card-action">
              									<a class="waves-effect waves-light btn color_primario" href="competencias.php?action=ver">Ver<i class="mdi mdi-eye right"></i></a>
             								</div>

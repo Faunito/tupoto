@@ -9,11 +9,15 @@ class DBMalla Implements ICrud{
         $con = DBSingleton::getInstance()->getDB();        
         $res = $con -> prepare('INSERT INTO malla_curricular(RUT,PLAN,NIVELES,
             CODIGO_CARRERA) VALUES (:rut,:plan,:niveles,:cod)');
-        $res->bindParam(':rut',$var->getDirector(),PDO::PARAM_STR);
+        $res->bindParam(':rut',$var->getDirector()->getRut(),PDO::PARAM_STR);
         $res->bindParam(':plan',$var->getPlan(),PDO::PARAM_STR);
         $res->bindParam(':niveles',$var->getNiveles(),PDO::PARAM_STR);
-        $res->bindParam(':cod',$var->getCodCarrera(),PDO::PARAM_STR);        
+        $res->bindParam(':cod',$var->getCodCarrera(),PDO::PARAM_STR); 
         $res->execute();
+        foreach ($var->getAsignaturas() as $key) 
+        {
+            $key->getDBAsignatura()->addConMalla($key);
+        }
     }
     
     public function modify($var){
@@ -30,20 +34,20 @@ class DBMalla Implements ICrud{
         $res->bindParam(':id',$var->getIdMalla(),PDO::PARAM_STR);
         $res->execute();
     }
-    /*
+    //ID_MALLA:RUT:PLAN:NIVELES:CODIGO_CARRERA
+
+
     function GetInstance($var){
         $con = DBSingleton::getInstance()->getDB();
         $res = $con -> prepare('SELECT * FROM malla_curricular where ID_MALLA =:id');
         $res -> bindParam(':email',$profesor -> getIdMalla(),PDO::PARAM_STR);
         $res -> execute();
         $res2 = $res -> fetchObject(__CLASS__);
-        $profesor->setRut($res2->RUT);
-        $profesor->setTipoProfesor($res2->TIPO_PROFESOR);
-        $profesor->setCorreoElectronico($res2->EMAIL);
-        $profesor->setFacultad($res2->FACULTAD);
-        $profesor->setNombre($res2->NOMBRE);
-        $profesor->setApaterno($res2->APATERNO);
-        $profesor->setAmaterno($res2->AMATERNO);
-    }*/
+        $var->setCodCarrera($res2->CODIGO_CARRERA);
+        $var->setPLan($res2->PLAN);
+        $var->setIdMAlla($res2->ID_MALLA);
+        $var->setNiveles($res2->NIVELES);
+        return $var;
+    }
 }
 ?>
