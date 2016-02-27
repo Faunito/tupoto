@@ -9,16 +9,14 @@
 	session_start();
 	if(isset($_SESSION["usuario"])){
 		$view = new AsignaturasView();
-		$usuario = unserialize($_SESSION['usuario']);
+		$controller = unserialize($_SESSION['usuario']);
 
-		switch (get_class($usuario)) {
-			case 'Profesor':
-				$controller = new ProfesorController($usuario);
-				router($controller, $view, get_class($usuario));
+		switch (get_class($controller)) {
+			case 'ProfesorController':
+				router($controller, $view, get_class($controller->getProfesor()));
 				break;	
-			case 'Director':
-				$controller = new DirectorController($usuario);
-				router($controller, $view, get_class($usuario));
+			case 'DirectorController':
+				router($controller, $view, get_class($controller->getDirector()));
 				break;				
 			default:
 				header('Location: inicio.php');

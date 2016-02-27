@@ -1,6 +1,21 @@
 <?php 
 	if(isset($_SESSION["usuario"])){
-		$usuario = unserialize($_SESSION['usuario']);
+		$controller = unserialize($_SESSION['usuario']);
+		switch (get_class($controller)) {
+			case 'DirectorController':
+				$usuario = $controller->getDirector();
+				break;
+			case 'ProfesorController':
+				$usuario = $controller->getProfesor();
+				break;
+			case 'SecretariaController':
+				//$usuario = $controller->getSecretaria();
+				break;
+			
+			default:
+				# code...
+				break;
+		}
 	}
 ?>
 <html lang="en">
