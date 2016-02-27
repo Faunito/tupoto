@@ -9,4 +9,12 @@
 
 	}
 
+
+	//============ Serializacion ==========
+
+    function serializar($controller){
+        $str = serialize($controller);
+        $_SESSION['usuario'] = $str; 
+    }
+
 ?>

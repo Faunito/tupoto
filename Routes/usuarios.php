@@ -2,17 +2,17 @@
 	require_once('../Config/Constantes.php');
 	require_once(ROOT_DIR . MODELS_DIR . 'Profesor.php');
 	require_once(ROOT_DIR . MODELS_DIR . 'Director.php');
-	require_once(ROOT_DIR . CONTROLLERS_DIR . 'ProfesorController.php');
+	require_once(ROOT_DIR . VIEWS_DIR . 'usuariosView.php');
+	require_once(ROOT_DIR . CONTROLLERS_DIR . 'DirectorController.php');
 
 	session_start();
 	if(isset($_SESSION["usuario"])){
+		$view = new UsuariosView();
+		$controller = unserialize($_SESSION['usuario']);
 
-		$usuario = unserialize($_SESSION['usuario']);
-
-		switch (get_class($usuario)) {
-			case 'Director':
-				//$controller = new DirectorController($usuario);
-				include(ROOT_DIR.TEMPLATES_DIR.'usuarios/usuarios_director.php');	//director o profesor?
+		switch (get_class($controller)) {
+			case 'DirectorController':
+				router($controller, $view, get_class($controller->getDirector()));
 				break;
 			default:
 				header('Location: inicio.php');
@@ -21,5 +21,15 @@
 
 	}else{
 		header('Location: ../index.php');	
+	}
+
+	function router($controller, $view, $usuario){
+		if (isset($_GET['action'])) {
+			$view->action($_GET['action'], $controller);		
+		}elseif (isset($_GET['result'])){
+			$view->result($controller, $_GET, $_POST);
+		}else{
+			$view->output($usuario);
+		}
 	}
 ?>

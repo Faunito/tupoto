@@ -1,5 +1,5 @@
 <?php
-require_once ('DirectordeCarrera.php');
+require_once ('Director.php');
 require_once ('Competencia.php');
 require_once ('Asignatura.php');
 require_once ('DBConexion/DBMalla.php');
@@ -63,7 +63,7 @@ class Malla
     //SETTERS
 	function setAsignaturas($newVal)
 	{
-		foreach($newVal in $value)
+		foreach($newVal as $value)
 		{
 			$value->setMalla($this);
 		}
