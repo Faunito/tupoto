@@ -21,12 +21,13 @@ class DBEvaluacion implements ICrud
     {
     	$con = DBSingleton::getInstance()->getDB();
         $res = $con -> prepare('INSERT INTO evaluacion (ID_PRACTICA, RUT, RESULTADO, FECHA_ENTREGA, OBSERVACION)
-        						VALUES (:id,:rut,:result,:fecha,:obs)');
-        $res -> bindParam(':id',$var->getPractica()->getIdPractica(),PDO::PARAM_STR);
-        $res -> bindParam(':id',$var->getEmpleador()->getRut(),PDO::PARAM_STR);
-        $res -> bindParam(':id',$var->getResultado(),PDO::PARAM_STR);
-        $res -> bindParam(':id',$var->getFechaEntrega(),PDO::PARAM_STR);
-        $res -> bindParam(':id',$var->getObservacion(),PDO::PARAM_STR);
+        						VALUES (:idprac,:rut,:result,:fecha,:obs) WHERE ID_EVALUACION =:id');
+        $res -> bindParam(':idprac',$var->getPractica()->getIdPractica(),PDO::PARAM_STR);
+        $res -> bindParam(':rut',$var->getEmpleador()->getRut(),PDO::PARAM_STR);
+        $res -> bindParam(':result',$var->getResultado(),PDO::PARAM_STR);
+        $res -> bindParam(':fecha',$var->getFechaEntrega(),PDO::PARAM_STR);
+        $res -> bindParam(':obs',$var->getObservacion(),PDO::PARAM_STR);
+        $res -> bindParam(':id',$var->getIdEvaluacion(),PDO::PARAM_STR);
         $res -> execute();
     }
     
