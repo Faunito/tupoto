@@ -15,7 +15,7 @@
 				            <span class="card-title"><strong><h4><a href="<?php echo ROUTES_DIR.'inicio.php';?>"><i class="material-icons small white-text left" style="font-size: 40px">arrow_back</i></a>Ingrese una nueva malla</h4></strong></span>
 				        </div>
 			            <div class="card-content">
-							<form id="myForm" action="#" method="POST">
+							<form id="myForm" action="mallas.php?result=nueva" method="POST">
 					            <div class="row center-align">
 					                <div class=" col s2 offset-s3 input-field">
 					                    <input id="codigo" name="codigo" type="text" class="validate">
@@ -50,45 +50,25 @@
 									          </tr>
 									        </thead>
 									        <tbody>
-									          <tr>
-									            <td>Evaluacion de tu poto</td>
-									            <td>IC105</td>
+									           <?php 
+										        if(!empty($asignaturas)){
+										        	foreach ($asignaturas as $asignatura) 
+										        	{
+										        	echo '<tr>';
+										        	echo '<td>'.$asignatura->getNombre().'</td>';
+										    	    echo '<td>'.$asignatura->getCodigo().'</td>';
+										    	    ?>
 									            <td><div class="switch">
 												    <label>
 												      Quitar
-												      <input type="checkbox">
+												      <input name="<?php echo $asignatura->getId(); ?>" type="checkbox">
 												      <span class="lever"></span>
 												      Agregar
 												    </label>
 												  </div>
 												</td>
 									          </tr>
-									          <tr>
-									            <td>Generacion de tu poto</td>
-									            <td>IC104</td>
-									            <td><div class="switch">
-												    <label>
-												      Quitar
-												      <input type="checkbox">
-												      <span class="lever"></span>
-												      Agregar
-												    </label>
-												  </div>
-												</td>
-									          </tr>
-									          <tr>
-									            <td>Inteligencia de tu poto</td>
-									            <td>IC101</td>
-									            <td><div class="switch">
-												    <label>
-												      Quitar
-												      <input type="checkbox">
-												      <span class="lever"></span>
-												      Agregar
-												    </label>
-												  </div>
-												</td>
-									          </tr>
+									          <?php }} ?>
 								        	</tbody>
 							      		</table>
 							    	</div>
