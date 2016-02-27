@@ -66,5 +66,15 @@ class DBSecretaria implements ICrud
         //los valores configurados desde la bd
         return $var;
     }
+
+    function existeSecre($email,$pass){
+        $con = DBSingleton::getInstance()->getDB();
+        $res = $con->prepare('SELECT count(*) FROM secretaria WHERE EMAIL =:email AND PASSWORD =:pass');
+        $res->bindParam(':email',$email,PDO::PARAM_STR);
+        $res->bindParam(':pass',$pass,PDO::PARAM_STR);
+         $res->execute();
+        $res1 = $res->fetchColumn();
+        return $res1 == 1 ? true : false;
+    }    
 }
 ?>

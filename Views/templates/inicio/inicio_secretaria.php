@@ -18,7 +18,7 @@
 			              		<div class="col s4 offset-s2">
 				                	<div class="card hoverable">
 				                		<div class="card-content">
-             								<a class="waves-effect waves-light btn-large color_primario href="<?php echo ROUTES_DIR.'practicas.php';?>"">Practicas<i class="mdi mdi-file right"></i></a>
+             								<a class="waves-effect waves-light btn-large color_primario" href="<?php echo ROUTES_DIR.'practicas.php';?>">Practicas<i class="mdi mdi-file right"></i></a>
 				              			</div>
 				              		</div>
 			              		</div>

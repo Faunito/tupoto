@@ -16,7 +16,7 @@
 				        </div>
 			            <div class="card-content">
 			                <div class="row">
-			                	<div class="col s4">
+			                	<div class="col s4 offset-s2">
 				                	<div class="card hoverable">
 				                		<div class="card-content">
 				              				<span class="card-title">Nueva asignatura</span>
@@ -30,19 +30,8 @@
 				              	<div class="col s4">
 				                	<div class="card hoverable">
 				                		<div class="card-content">
-				              				<span class="card-title">Modificar asignatura</span>
-				              				<p>Modifique una asignatura ya existente en el sistema</p>
-				              				<div class="card-action">
-             									<a class="waves-effect waves-light btn color_primario" href="asignaturas.php?action=modificar-asignatura"><i class="material-icons right">edit</i>Modificar</a>
-            								</div>
-				              			</div>
-				              		</div>
-				              	</div>
-				              	<div class="col s4">
-				                	<div class="card hoverable">
-				                		<div class="card-content">
 				              				<span class="card-title">Ver asignatura</span>
-				              				<p>Visualice una asignatura ya existente en el sistema</p>
+				              				<p>Liste todas las asignaturas ya existentes, aqui podrá modificarlas y/o eliminarlas</p>
 				              				<div class="card-action">
              									<a class="waves-effect waves-light btn color_primario" href="asignaturas.php?action=ver-asignatura">Ver<i class="mdi mdi-eye right"></i></a>
             								</div>
@@ -51,7 +40,7 @@
 			              		</div>
 		              		</div>
 			                <div class="row">
-			              		<div class="col s4">
+			              		<div class="col s4 offset-s2">
 				                	<div class="card hoverable">
 				                		<div class="card-content">
 				              				<span class="card-title">Nuevo programa</span>
@@ -65,19 +54,8 @@
 			              		<div class="col s4">
 				                	<div class="card hoverable">
 				                		<div class="card-content">
-				              				<span class="card-title">Modificar programa</span>
-				              				<p>Modifique un programa de asignatura ya existente en el sistema</p>
-				              				<div class="card-action">
-             									<a class="waves-effect waves-light btn color_primario" href="asignaturas.php?action=modificar-programa"><i class="material-icons right">edit</i>Modificar</a>
-            								</div>
-				              			</div>
-				              		</div>
-			              		</div>
-			              		<div class="col s4">
-				                	<div class="card hoverable">
-				                		<div class="card-content">
 				              				<span class="card-title">Ver programa</span>
-				              				<p>Visualice un programa de asignatura ya existente en el sistema</p>
+				              				<p>Liste todos los programas ya existentes, aqui podrá modificarlos y/o eliminarlos</p>
 				              				<div class="card-action">
              									<a class="waves-effect waves-light btn color_primario" href="asignaturas.php?action=ver-programa">Ver<i class="mdi mdi-eye right"></i></a>
             								</div>
