@@ -1,5 +1,5 @@
 <?php
-//require_once ('Practica.php');
+require_once ('Practica.php');
 require_once ('Profesor.php');
 require_once ('Empleador.php');
 require_once ('DBConexion/DBEvaluacion.php');
@@ -11,7 +11,7 @@ class Evaluacion
 	private $fechaEntrega;
 	private $idEvaluacion;
 	private $observacion; //Fatla en la Base de Datos
-	//private $m_Practica;
+	private $practica;
 	private $profesor;
 	private $empleador;
 	private $dbevaluacion;
@@ -54,6 +54,11 @@ class Evaluacion
 		return $this->empleador;
 	}
 
+	function getPractica()
+	{
+		return $this->practica;
+	}
+
 	//SETTERS
 	function setResultado($newVal)
 	{
@@ -83,6 +88,11 @@ class Evaluacion
 	function setEmpleador($newVal)
 	{
 		$this->empleador = $newVal;
+	}
+
+	function setPractica($newVal)
+	{
+		$this->practica = $newVal;
 	}
 
 }

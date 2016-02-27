@@ -1,5 +1,6 @@
 <?php
 require_once ('ICrud.php');
+require_once ('../Evaluacion.php')
 
 class DBEvaluacion implements ICrud
 {
@@ -50,12 +51,24 @@ class DBEvaluacion implements ICrud
         $res -> execute();
     }
 
-    function getEvaluacion($practica)
+    public static function getEvalperPract($practica)
     {
     	$con = DBSingleton::getInstance()->getDB();
     	$res = $con -> prepare('SELECT * FROM evaluacion where ID_PRACTICA =:id');
     	$res -> bindParam(':id',$practica->getIdPractica(),PDO::PARAM_STR);        
         $res -> execute();
+        $res2 = $res->fetchAll();
+        $evals = array();
+        foreach ($res2 as $key) {
+        	$aux = new Evaluacion();
+        	$aux->setPractica($practica);
+        	$aux->setResultado($key['RESULTADO']);
+        	$aux->setFechaEntrega($key['FECHA_ENTREGA']);
+        	$aux->setIdEvaluacion($key['ID_EVALUACION']);
+        	$aux->setObservacion($key['OBSERVACION']);
+        	array_push($evals, $aux);
+        }
+        return $evals;
     }
 }
 
