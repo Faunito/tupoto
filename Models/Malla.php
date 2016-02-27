@@ -1,7 +1,8 @@
 <?php
-require_once ('DirectordeCarrera.php');
+require_once ('Director.php');
 require_once ('Competencia.php');
 require_once ('Asignatura.php');
+require_once ('DBConexion/DBMalla.php');
 
 class Malla
 {
@@ -12,7 +13,7 @@ class Malla
 	private $niveles;
 	private $director;
 	//private $m_Competencia;
-	//private $m_Asignatura;
+	private $m_Asignatura; //Array de Asignaturas
     private $dbmalla;
     //construct
 	function __construct()
@@ -20,10 +21,17 @@ class Malla
         $this->dbMalla= new DBMalla();
 	}
     //FUNCTIONS
-	function extraerAsignatura($codigoMalla)
+
+    public static function getMallas()
 	{
 	}
+	
     //GETTERS
+	function getDBMalla()
+	{
+		$this->dbmalla;
+	}
+
 	function getPlan()
 	{
 		return $this->plan;
@@ -47,10 +55,21 @@ class Malla
         return $this->director;
     }
 
-	static function getMallas()
-	{
-	}
+    function getAsignaturas()
+    {
+    	return $this->m_Asignatura;
+    }
+	
     //SETTERS
+	function setAsignaturas($newVal)
+	{
+		foreach($newVal as $value)
+		{
+			$value->setMalla($this);
+		}
+		$this->m_Asignatura = $newVal;
+	}
+
 	function setPlan($newVal)
 	{
 		$this->plan = $newVal;

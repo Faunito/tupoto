@@ -30,6 +30,7 @@ class DirectorController extends ProfesorController{
                 $this->arrayCompetencias[$i] = $aux;
                 $i++;
             }
+            $this->serializar($this);
             return $this->arrayCompetencias;
         }
         
@@ -71,6 +72,7 @@ class DirectorController extends ProfesorController{
                 $this->arrayAsignaturas[$i] = $nueva;
                 $i++;
             }
+            $this->serializar($this);
             return $this->arrayAsignaturas;
         }
         
@@ -109,5 +111,12 @@ class DirectorController extends ProfesorController{
 
     function setDirector(){
         $this->dir = new $newVal;
+    }
+
+    //============ Serializacion ==========
+
+    function serializar($controller){
+        $str = serialize($controller);
+        $_SESSION['usuario'] = $str; 
     }
 }

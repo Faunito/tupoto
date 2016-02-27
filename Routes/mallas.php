@@ -7,12 +7,11 @@
 	session_start();
 	if(isset($_SESSION["usuario"])){
 		$view = new MallasView();
-		$usuario = unserialize($_SESSION['usuario']);
+		$controller = unserialize($_SESSION['usuario']);
 
-		switch (get_class($usuario)) {
-			case 'Director':
-			$controller = new DirectorController($usuario);
-				router($controller, $view, get_class($usuario));
+		switch (get_class($controller)) {
+			case 'DirectorController':
+				router($controller, $view, get_class($controller->getDirector()));
 				break;
 			default:
 				header('Location: inicio.php');

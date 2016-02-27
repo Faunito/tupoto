@@ -33,6 +33,18 @@ class DBAsignatura Implements ICrud {
         return $asignatura;        
     }
 
+    function addConMalla()
+    {
+        $con = DBSingleton::getInstance()->getDB();
+        $dbh = $con->prepare(' INSERT INTO asignatura(CODIGO_ASIGNATURA, NOMBRE_ASIGNATURA, NIVEL_ASIGNATURA,ID_MALLA) 
+                               VALUES (:codigo, :nombre, :nivel, :malla)');
+        $dbh->bindParam(':codigo', $asignatura->getCodigo(),PDO::PARAM_STR);
+        $dbh->bindParam(':nombre', $asignatura->getNombre(),PDO::PARAM_STR);
+        $dbh->bindParam(':nivel', $asignatura->getNivel(),PDO::PARAM_STR);
+        $dbh->bindParam(':malla',$asignatura->getMalla()->getIdMalla(),PDO::PARAM_STR);
+        $dbh->execute();
+    }
+
 	function add($asignatura){
         $con = DBSingleton::getInstance()->getDB();
         $dbh = $con->prepare(' INSERT INTO asignatura(CODIGO_ASIGNATURA, NOMBRE_ASIGNATURA, NIVEL_ASIGNATURA) 
