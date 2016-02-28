@@ -1,6 +1,7 @@
 <?php 
+	require_once('View.php');
 
-	class InicioView {    
+	class InicioView extends View {    
 
 	    public function __construct() {
 	    }	    
@@ -19,7 +20,8 @@
 	    	}
 	    }
 
-	    //
+	    public function action($action, $controller){}
+		public function result($controller, $result, $post){}
 
 	}
 ?>

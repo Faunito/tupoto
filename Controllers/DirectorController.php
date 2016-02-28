@@ -97,7 +97,7 @@ class DirectorController extends ProfesorController{
         }
        
         function eliminarAsignatura($id){            
-            $this->dir->eliminarAsignatura($id); 
+            $this->dir->eliminarAsignatura($id);
         } 
 
 
