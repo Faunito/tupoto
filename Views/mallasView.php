@@ -1,6 +1,7 @@
 <?php 
+	require_once('View.php');
 
-	class MallasView {    
+	class MallasView extends View {    
 
 	    public function __construct() {
 	    }	    
@@ -13,7 +14,7 @@
 	    	}
 	    }
 
-	    public function action($action){
+	    public function action($action, $controller){
 	    	switch ($action) {
 	    		case 'nueva':
 					include(ROOT_DIR.TEMPLATES_DIR.'mallas/nueva_malla.php');
@@ -33,8 +34,8 @@
 	    	}
 	    }
 
-	    public function result($action, $post){
-	    	switch ($action) {
+	    public function result($controller, $result, $post){
+	    	switch ($result['result']) {
 	    		case 'nueva':
 					//include(ROOT_DIR.TEMPLATES_DIR.'competencias/nueva_competencia.php');
 	    			break;
