@@ -1,17 +1,24 @@
 <?php
-//require_once ('Practica.php');
+require_once ('Practica.php');
+require_once ('Profesor.php');
+require_once ('Empleador.php');
+require_once ('DBConexion/DBEvaluacion.php');
 
 class Evaluacion
 {
 
-	var $resultado;
-	var $fechaEntrega;
-	var $idEvaluacion;
-	var $observacion; //Fatla en la Base de Datos
-	//var $m_Practica;
+	private $resultado;
+	private $fechaEntrega;
+	private $idEvaluacion;
+	private $observacion; //Fatla en la Base de Datos
+	private $practica;
+	private $profesor;
+	private $empleador;
+	private $dbevaluacion;
 
 	function __construct()
 	{
+		$this->dbevaluacion = new DBEvaluacion();
 	}
 
 	//METODOS
@@ -37,6 +44,21 @@ class Evaluacion
 		return $this->observacion;
 	}
 
+	function getProfesor()
+	{
+		$this->profesor;
+	}
+
+	function getEmpleador();
+	{
+		return $this->empleador;
+	}
+
+	function getPractica()
+	{
+		return $this->practica;
+	}
+
 	//SETTERS
 	function setResultado($newVal)
 	{
@@ -56,6 +78,21 @@ class Evaluacion
 	function setObservacion($newVal)
 	{
 		$this->observacion = $newVal;
+	}
+
+	function setPrfesor($newVal)
+	{
+		$this->profesor = $newVal;
+	}
+
+	function setEmpleador($newVal)
+	{
+		$this->empleador = $newVal;
+	}
+
+	function setPractica($newVal)
+	{
+		$this->practica = $newVal;
 	}
 
 }
