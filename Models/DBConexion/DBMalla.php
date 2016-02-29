@@ -35,6 +35,14 @@ class DBMalla Implements ICrud{
         $res->execute();
     }
     //ID_MALLA:RUT:PLAN:NIVELES:CODIGO_CARRERA
+    
+    function getAll(){
+        $con = DBSingleton::getInstance()->getDB();
+        $res = $con -> prepare('SELECT * FROM malla_curricular');
+        $res -> execute();
+        $mallas = $res->fetchAll();
+        return $mallas;
+    }
 
 
     function GetInstance($var){
