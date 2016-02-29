@@ -7,10 +7,12 @@ require_once ('EspecificaciondeEvidencia.php');
 class Actividad
 {
 	private $dbpractica;
+    
     private $descripcionActividad;
 	private $idActividad;
+    
     private $idCompetencia;
-	private $m_Competencia;
+	private $m_Competencia;    
 	private $m_EspecificacionDeCompetencia;
 	private $alumnoRut;
 	private $m_EspecificaciondeEvidencia;

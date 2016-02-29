@@ -7,9 +7,9 @@ require_once ('DBConexion/DBMalla.php');
 class Malla
 {
 
-	private $plan;//anio
-	private $codigoCarrera;
+	private $plan;	
 	private $idMalla;
+    private $codigoCarrera;
 	private $niveles;
 	private $director;
 	//private $m_Competencia;
