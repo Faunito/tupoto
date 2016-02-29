@@ -3,30 +3,33 @@
 
 	class MallasView extends View {    
 
-	    public function __construct() {
+	    private $controller;    
+
+	    public function __construct($controller) {
+	    	$this->controller = $controller;
 	    }	    
 
 	    public function output($usuario) {
 	    	switch ($usuario) {
 	    		case 'Director':
-					include(ROOT_DIR.TEMPLATES_DIR.'mallas/mallas_director.php');
+					$this->controller->getTemplate()->load(ROOT_DIR.TEMPLATES_DIR.'mallas/mallas_director.php');
 	    			break;
 	    	}
 	    }
 
-	    public function action($action, $controller){
+	    public function action($action){
 	    	switch ($action) {
 	    		case 'nueva':
-					include(ROOT_DIR.TEMPLATES_DIR.'mallas/nueva_malla.php');
+					$this->controller->getTemplate()->load(ROOT_DIR.TEMPLATES_DIR.'mallas/nueva_malla.php');
 	    			break;
 	    		case 'modificar':
-					//include(ROOT_DIR.TEMPLATES_DIR.'competencias/competencias_director.php');
+	    		
 	    			break;
 	    		case 'ver':
-					//include(ROOT_DIR.TEMPLATES_DIR.'competencias/competencias_director.php');
+	    		
 	    			break;
 	    		case 'asignar':
-					//include(ROOT_DIR.TEMPLATES_DIR.'competencias/competencias_director.php');
+	    		
 	    			break;
 	    		
 	    		default:
@@ -34,19 +37,19 @@
 	    	}
 	    }
 
-	    public function result($controller, $result, $post){
+	    public function result($result, $post){
 	    	switch ($result['result']) {
 	    		case 'nueva':
-					//include(ROOT_DIR.TEMPLATES_DIR.'competencias/nueva_competencia.php');
+	    		
 	    			break;
 	    		case 'modificar':
-					//include(ROOT_DIR.TEMPLATES_DIR.'competencias/competencias_director.php');
+	    		
 	    			break;
 	    		case 'ver':
-					//include(ROOT_DIR.TEMPLATES_DIR.'competencias/competencias_director.php');
+	    		
 	    			break;
 	    		case 'asignar':
-					//include(ROOT_DIR.TEMPLATES_DIR.'competencias/competencias_director.php');
+	    		
 	    			break;
 	    		
 	    		default:
