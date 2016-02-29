@@ -6,7 +6,6 @@ require_once ('EspecificaciondeEvidencia.php');
 
 class Actividad
 {
-
 	private $dbpractica;
     private $descripcionActividad;
 	private $idActividad;

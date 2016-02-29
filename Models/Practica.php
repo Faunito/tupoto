@@ -8,7 +8,7 @@ class Practica{
     
     private $dbpractica;
     private $idPractica;
-    private $rutProfesor;
+    private $alumno;
     private $direccion;
     private $estado;
     private $fechaInicio;
@@ -30,8 +30,8 @@ class Practica{
       return $this->idPractica;
   }
   
-  function getRutProfesor(){
-      return $this->rutProfesor;
+  function getAlumno(){
+      return $this->alumno;
   }
   
   function getDireccion(){
@@ -66,8 +66,8 @@ class Practica{
       $this->idPractica = $newVal;
   }
   
-  function setRutProfesor($newVal){
-      $this->rutProfesor = $newVal;
+  function setAlumno($newVal){
+      $this->alumno = $newVal;
   }
   
   function setDireccion($newVal){
