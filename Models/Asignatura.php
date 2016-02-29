@@ -28,6 +28,11 @@ class Asignatura
 		return DBAsignatura::getAll();
 	}
 
+	public static function getAsignaturasMalla($id){
+		return DBAsignatura::getAsignaturasMalla($id);
+	}
+
+
 	public static function getAsignatura($codigo){
         return DBAsignatura::getAsignatura($codigo);
     }

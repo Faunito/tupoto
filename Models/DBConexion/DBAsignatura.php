@@ -33,6 +33,15 @@ class DBAsignatura Implements ICrud {
         return $asignatura;        
     }
 
+    public static function getAsignaturasMalla($id){
+        $con = DBSingleton::getInstance()->getDB();
+        $dbh = $con->prepare('SELECT * FROM asignatura WHERE ID_MALLA = :id');
+        $dbh->bindParam(':id', $id ,PDO::PARAM_STR);
+        $dbh->execute();
+        $asignatura = $dbh->fetchAll();
+        return $asignatura;        
+    }
+
     function actualizaIdMalla($idmalla, $asignatura)
     {
         $con = DBSingleton::getInstance()->getDB();

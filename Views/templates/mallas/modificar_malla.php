@@ -33,7 +33,7 @@
 					            </div>
 								<div class="row">
 								  <div class="row">
-								  <div id="admin" class="col s8 offset-s2">
+								  <div id="admin" class="col s10 offset-s1">
 								    <div class="card material-table">
 								      <div class="table-header">
 								        <span class="table-title">Asignaturas</span>
@@ -46,7 +46,8 @@
 									        <thead>
 									          <tr>
 									            <th>Nombre</th>
-									            <th style="width: 170px">Código</th>
+									            <th class="no-padding" style="width: 80px">Código</th>
+									            <th class="no-padding" style="width: 50px">Nivel</th>
 									            <th class="center" style="width: 180px">Estado</th>
 									          </tr>
 									        </thead>
@@ -57,7 +58,8 @@
 										        	{
 										        	echo '<tr>';
 										        	echo '<td>'.$asignatura->getNombre().'</td>';
-										    	    echo '<td>'.$asignatura->getCodigo().'</td>';
+										    	    echo '<td class="no-padding">'.$asignatura->getCodigo().'</td>';
+										    	    echo '<td class="no-padding">'.$asignatura->getNivel().'</td>';
 										    	    ?>
 									            <td class="center">
 											       <div class="switch">

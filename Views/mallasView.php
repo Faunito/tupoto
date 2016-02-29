@@ -40,7 +40,19 @@
 	    			$this->controller->getTemplate()->load(ROOT_DIR.TEMPLATES_DIR.'mallas/mallas_director.php');
 	    			break;
 	    		case 'ver':
-	    		
+	    			$malla=$this->controller->consultarMalla($action['param']);
+	    			$asignaturas=$this->controller->listarAsignaturasMalla($action['param']);
+	    			$niveles=array();
+	    			foreach ($asignaturas as $asignatura) {
+	    				if(!isset($niveles[$asignatura->getNivel()]))
+	    				{
+	    					$niveles[$asignatura->getNivel()]=array();
+	    				}
+	    				array_push($niveles[$asignatura->getNivel()], $asignatura);
+	    			}
+	    			$this->controller->getTemplate()->setData('malla',$malla);
+	    			$this->controller->getTemplate()->setData('niveles',$niveles);
+	    			$this->controller->getTemplate()->load(ROOT_DIR.TEMPLATES_DIR.'mallas/ver_malla.php');
 	    			break;
 	    			
 	    		

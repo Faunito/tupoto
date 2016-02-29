@@ -7,6 +7,7 @@
 <script src="<?php echo RESOURCES_DIR ?>js/ripplelink.js"></script>
 
 
+
 <?php
 
 	//============ Incluir aca templates javascript =============

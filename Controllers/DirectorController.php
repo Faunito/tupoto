@@ -27,6 +27,7 @@ class DirectorController extends ProfesorController{
         function listarCompetencias(){
             $res = Competencia::getCompetencias();
             $i=0;
+            $array=array();
             foreach ($res as $key) {
                 $aux = new Competencia();
                 $aux->setIdComp($key['ID_COMPETENCIA']);
@@ -104,6 +105,7 @@ class DirectorController extends ProfesorController{
         function listarAsignaturas(){
             $asignaturas = Asignatura::getAsignaturas();
             $i=0;
+            $array=array();
             foreach ($asignaturas as $asignatura) {
                 $nueva = new Asignatura();                
                 $nueva->setId($asignatura['ID_ASIGNATURA']);
@@ -123,6 +125,7 @@ class DirectorController extends ProfesorController{
         function listarAsignaturasLibres(){
             $asignaturas = Asignatura::getAsignaturas();
             $i=0;
+            $libres=array();
             foreach ($asignaturas as $asignatura) {
                 if(!isset($asignatura['ID_MALLA'])){
                     $nueva = new Asignatura();                
@@ -137,6 +140,24 @@ class DirectorController extends ProfesorController{
                 }
             }
             return $libres;
+        }
+
+         function listarAsignaturasMalla($id){
+            $asignaturas = Asignatura::getAsignaturasMalla($id);
+            $i=0;
+            $array=array();
+            foreach ($asignaturas as $asignatura) {
+                $nueva = new Asignatura();                
+                $nueva->setId($asignatura['ID_ASIGNATURA']);
+                $nueva->setCodigo($asignatura['CODIGO_ASIGNATURA']);
+                $nueva->setMalla($asignatura['ID_MALLA']);
+                $nueva->setNombre($asignatura['NOMBRE_ASIGNATURA']);
+                $nueva->setNivel($asignatura['NIVEL_ASIGNATURA']);
+                $nueva->setDirector($this->dir);
+                $array[$i] = $nueva;
+                $i++;
+            }
+            return $array;
         }
         
         function consultarAsignatura($codigo){
@@ -167,6 +188,7 @@ class DirectorController extends ProfesorController{
         function listarAlumnos(){
             $alumnos = Alumno::getAlumnos();
             $i=0;
+            $array=array();
             foreach ($alumnos as $alumno) {
                 $nuevo = new Alumno();                
                 $nuevo->setRut($alumno['RUT']);
@@ -175,9 +197,10 @@ class DirectorController extends ProfesorController{
                 $nuevo->setNombre($alumno['NOMBRE']);
                 $nuevo->setApaterno($alumno['APATERNO']);
                 $nuevo->setAmaterno($alumno['AMATERNO']);
-                $this->arrayAlumnos[$i] = $nuevo;
+                $array[$i] = $nuevo;
                 $i++;
             }
+            $this->arrayAlumnos=$array;
             $this->serializar($this);
             return $this->arrayAlumnos;
         }
