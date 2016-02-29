@@ -26,7 +26,6 @@ class DBAlumno Implements ICrud{
     }
     
     function getAllAsoc($rutProfesor){
-        echo $rutProfesor;
         $con = DBSingleton::getInstance()->getDB();
         $res = $con -> prepare('SELECT alumno.* FROM alumno,profesor,supervisa WHERE profesor.RUT=supervisa.PRO_RUT AND supervisa.RUT=alumno.RUT AND profesor.RUT=:rut');
         $res -> bindParam(':rut',$rutProfesor,PDO::PARAM_STR);
