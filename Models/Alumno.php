@@ -7,8 +7,8 @@ require_once ('Persona.php');
 class Alumno extends Persona
 {
     private $dbalumno;
-	private $car;   //carrera
-	private $nivAca;//nivel academico
+	private $carrera;   //carrera
+	private $nivelAcademico;//nivel academico
 	//private $m_Practica;
 	//private $m_ActividaddCompensacion;
 
@@ -18,34 +18,30 @@ class Alumno extends Persona
 	}
 
     //GETTERS
-	function getCar()
+	function getCarrera()
 	{
-		return $this->car;
+		return $this->carrera;
 	}
 
-	function getNivAca()
+	function getNivelAcademico()
 	{
-		return $this->nivAca;
+		return $this->nivAcademico;
 	}
 
 	public static function getAlumnos()
 	{
         return DBAlumno::getAll();
 	}
-/*
-	function getAlumno()
-	{
-        return DBAlumno::getAlumno();
-	}*/
+
     //SETTERS
-	function setCarrera($newVal)
+	function setCarrera($carrera)
 	{
-		$this->carrera = $newVal;
+		$this->carrera = $carrera;
 	}
 
-	function setNivAca($newVal)
+	function setNivelAcademico($nivel)
 	{
-		$this->nivAca = $newVal;
+		$this->nivelAcademico = $nivel;
 	}
 
 }

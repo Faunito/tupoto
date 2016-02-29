@@ -2,16 +2,21 @@
 //require_once('/Config/Constantes.php');
 //require_once (ROOT_DIR . MODELS_DIR . 'Director.php')
 require_once(ROOT_DIR . CONTROLLERS_DIR . 'ProfesorController.php');
+require_once(ROOT_DIR . VIEWS_DIR . 'Template.php');
 require_once(ROOT_DIR . MODELS_DIR . 'Competencia.php');
 require_once(ROOT_DIR . MODELS_DIR . 'Asignatura.php');
+require_once(ROOT_DIR . MODELS_DIR . 'Alumno.php');
 
 class DirectorController extends ProfesorController{
     private $dir;
     private $arrayCompetencias;
     private $arrayAsignaturas;
+    private $arrayAlumnos;
+    private $template;
 
-    function __construct($dir){
+    function __construct($dir, $template){
         $this->dir = $dir;  
+        $this->template = $template;
     }
 
     //============ Funciones ================
@@ -57,6 +62,11 @@ class DirectorController extends ProfesorController{
             $this->dir->eliminarCompetencia($id); 
         }   
 
+        //============ Mallas ================ 
+        function crearMalla($codigo, $plan, $asignaturas){
+            $this->dir->crearMalla($codigo, $plan, $asignaturas);
+        }
+
         //============ Asignaturas ================ 
         function listarAsignaturas(){
             $asignaturas = Asignatura::getAsignaturas();
@@ -65,7 +75,7 @@ class DirectorController extends ProfesorController{
                 $nueva = new Asignatura();                
                 $nueva->setId($asignatura['ID_ASIGNATURA']);
                 $nueva->setCodigo($asignatura['CODIGO_ASIGNATURA']);
-                //$nueva->setMalla($asignatura['ID_MALLA']);
+                $nueva->setMalla($asignatura['ID_MALLA']);
                 $nueva->setNombre($asignatura['NOMBRE_ASIGNATURA']);
                 $nueva->setNivel($asignatura['NIVEL_ASIGNATURA']);
                 $nueva->setDirector($this->dir);
@@ -100,11 +110,33 @@ class DirectorController extends ProfesorController{
             $this->dir->eliminarAsignatura($id);
         } 
 
+        //============ Alumnos ================ 
+        function listarAlumnos(){
+            $alumnos = Alumno::getAlumnos();
+            $i=0;
+            foreach ($alumnos as $alumno) {
+                $nuevo = new Alumno();                
+                $nuevo->setRut($alumno['RUT']);
+                $nuevo->setCarrera($alumno['CARRERA']);
+                $nuevo->setNivelAcademico($alumno['NIVEL_ACADEMICO']);
+                $nuevo->setNombre($alumno['NOMBRE']);
+                $nuevo->setApaterno($alumno['APATERNO']);
+                $nuevo->setAmaterno($alumno['AMATERNO']);
+                $this->arrayAlumnos[$i] = $nuevo;
+                $i++;
+            }
+            $this->serializar($this);
+            return $this->arrayAlumnos;
+        }
 
     //============ Getters ================
 
     function getDirector(){
         return $this->dir;
+    }
+
+    function getTemplate(){
+        return $this->template;
     }
 
     //============ Setters ================

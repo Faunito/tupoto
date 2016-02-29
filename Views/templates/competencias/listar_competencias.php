@@ -8,13 +8,13 @@
 		<div class="container">		
 
 			<!-- contenido del contenido principal -->
-			<div class="row center" style="margin-top:100px;">
+			<div class="row center margen-top">
 		        <div class="col s12 m12">
 		          	<div class="card">
 		          		<div class="card-image">
 			          		<img src="<?php echo RESOURCES_DIR.'img/hola.jpg';?>">
 				            <span class="card-title">
-				            <strong><h4 class="left"><a href="<?php echo ROUTES_DIR.'competencias.php';?>"><i class="material-icons small white-text left" style="font-size: 40px">arrow_back</i></a>Lista de competencias</h4></strong>
+				            <strong><h4 class="left"><a href="javascript:history.go(-1)"><i class="material-icons small white-text left" style="font-size: 40px">arrow_back</i></a>Lista de competencias</h4></strong>
 				            </span>
 				        </div>
 			            <div class="card-content">     
@@ -23,7 +23,7 @@
 							    <div class="card material-table">
 							      <div class="table-header">
 							        <span class="table-title">Competencias</span>
-							        <div class="actions">						<a href="competencias.php?action=nueva" class="modal-trigger waves	  -effect btn-flat nopadding"><i class="    material-icons right">add_circle</i>Crear competencia</a>		        
+							        <div class="actions">						<a href="competencias.php?action=nueva" class="modal-trigger waves-effect btn-flat nopadding"><i class="    material-icons right">add_circle</i>Crear competencia</a>		        
 							          	<a href="#" class="search-toggle waves-effect btn-flat nopadding"><i class="material-icons">search</i></a>
 							        </div>
 							      </div>
@@ -38,8 +38,8 @@
 								        </thead>
 								        <tbody>
 								        <?php 
-								        if(!empty($lista)){
-								        foreach ($lista as $key) {
+								        if(!empty($this->data['competencias'])){
+								        foreach ($this->data['competencias'] as $key) {
 								        	echo '<tr>';
 								        	echo '<td>'.$key->getNomComp().'</td>';
 								    	    echo '<td>'.$key->getCate().'</td>';
@@ -65,6 +65,7 @@
 		</div>	
 	</main>
 	<?php
+	require_once(ROOT_DIR . TEMPLATES_DIR . 'base/scripts.php');
 	require_once(ROOT_DIR . TEMPLATES_DIR . 'base/footer.php');
 
     ?>

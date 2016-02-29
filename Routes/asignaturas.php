@@ -8,15 +8,15 @@
 
 	session_start();
 	if(isset($_SESSION["usuario"])){
-		$view = new AsignaturasView();
 		$controller = unserialize($_SESSION['usuario']);
+		$view = new AsignaturasView($controller);
 
 		switch (get_class($controller)) {
 			case 'ProfesorController':
-				router($controller, $view, get_class($controller->getProfesor()));
+				router($view, get_class($controller->getProfesor()));
 				break;	
 			case 'DirectorController':
-				router($controller, $view, get_class($controller->getDirector()));
+				router($view, get_class($controller->getDirector()));
 				break;				
 			default:
 				header('Location: inicio.php');
@@ -27,11 +27,11 @@
 		header('Location: ../index.php');	
 	}
 
-	function router($controller, $view, $usuario){
+	function router($view, $usuario){
 		if (isset($_GET['action'])) {
-			$view->action($_GET['action'], $controller);		
+			$view->action($_GET['action']);		
 		}elseif (isset($_GET['result'])){
-			$view->result($controller, $_GET, $_POST);
+			$view->result($_GET, $_POST);
 		}else{
 			$view->output($usuario);
 		}

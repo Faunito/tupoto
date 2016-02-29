@@ -7,7 +7,7 @@
 		<div class="container">		
 
 			<!-- contenido del contenido principal -->
-			<div class="row center" style="margin-top:100px;">
+			<div class="row center margen-top">
 		        <div class="col s12 m12">
 		          	<div class="card">
 		          		<div class="card-image">
@@ -50,6 +50,7 @@
 		</div>	
 	</main>
 	<?php
+	require_once(ROOT_DIR . TEMPLATES_DIR . 'base/scripts.php');
 	require_once(ROOT_DIR . TEMPLATES_DIR . 'base/footer.php');
 
     ?>

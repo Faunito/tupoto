@@ -7,16 +7,16 @@ class DBMalla Implements ICrud{
     //CRUD
     public function add($var){
         $con = DBSingleton::getInstance()->getDB();        
-        $res = $con -> prepare('INSERT INTO malla_curricular(RUT,PLAN,NIVELES,
-            CODIGO_CARRERA) VALUES (:rut,:plan,:niveles,:cod)');
+        $res = $con -> prepare('INSERT INTO malla_curricular(RUT,PLAN,
+            CODIGO_CARRERA) VALUES (:rut,:plan,:cod)');
         $res->bindParam(':rut',$var->getDirector()->getRut(),PDO::PARAM_STR);
         $res->bindParam(':plan',$var->getPlan(),PDO::PARAM_STR);
-        $res->bindParam(':niveles',$var->getNiveles(),PDO::PARAM_STR);
         $res->bindParam(':cod',$var->getCodCarrera(),PDO::PARAM_STR); 
         $res->execute();
-        foreach ($var->getAsignaturas() as $key) 
+        $idmalla = $con->lastInsertId(); //devuelve el id de la malla
+        foreach ($var->getAsignaturas() as $asignatura) 
         {
-            $key->getDBAsignatura()->addConMalla($key);
+            $asignatura->getDBAsignatura()->actualizaIdMalla($idmalla, $asignatura);
         }
     }
     

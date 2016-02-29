@@ -59,6 +59,7 @@
 
 
 <?php
+	require_once(ROOT_DIR . TEMPLATES_DIR . 'base/scripts.php');
 	include(ROOT_DIR . TEMPLATES_DIR . 'base/footer.php');
 
 ?>

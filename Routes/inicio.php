@@ -10,8 +10,8 @@
 
 	session_start();
 	if(isset($_SESSION["usuario"])){
-		$view = new InicioView();
 		$controller = unserialize($_SESSION['usuario']);
+		$view = new InicioView($controller);
 		$view->output(get_class($controller->getDirector()));
 
 	}else{

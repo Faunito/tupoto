@@ -6,11 +6,13 @@
 	require_once (ROOT_DIR . MODELS_DIR . 'Profesor.php');
 	require_once (ROOT_DIR . MODELS_DIR . 'Director.php');
 	require_once (ROOT_DIR . MODELS_DIR . 'Secretaria.php');
+	require_once(ROOT_DIR . VIEWS_DIR . 'Template.php');
 
 	class LoginController{
 
 		private $usuario;
 		private $controller;
+		private $template;
 
 		function __construct(){}
 
@@ -19,10 +21,12 @@
 				isset($request['password']) && 
 				isset($request['tipoFuncionario'])) {
 
+				$this->template = new Template();
+
 				switch ($request['tipoFuncionario']) {
 					case 'profesor':	
 						$this->usuario = new Profesor();
-						$this->controller = new ProfesorController($this->usuario);
+						$this->controller = new ProfesorController($this->usuario, $this->template);
 						if($this->usuario->existeProfe($request['email'], $request['password'],$request['tipoFuncionario'])){	
 							$this->usuario->getProfesor($request['email'], $request['password']);
 				            $this->iniciarSesion();
@@ -46,7 +50,7 @@
 
 					case 'director':
 						$this->usuario = new Director();
-						$this->controller = new DirectorController($this->usuario);
+						$this->controller = new DirectorController($this->usuario, $this->template);
 						if($this->usuario->existeDirector($request['email'], $request['password'],$request['tipoFuncionario'])){	
 							$this->usuario->getDirector($request['email'], $request['password']);
 				            $this->iniciarSesion();

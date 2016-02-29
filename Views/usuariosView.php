@@ -3,45 +3,50 @@
 
 	class UsuariosView extends View {    
 
-	    public function __construct() {
+	    private $controller;    
+
+	    public function __construct($controller) {
+	    	$this->controller = $controller;
 	    }	    
 
 	    public function output($usuario) {
 	    	switch ($usuario) {
-	    // 		case 'Profesor':
-					// include(ROOT_DIR.TEMPLATES_DIR.'asignaturas/asignaturas_profesor.php');
-	    // 			break;
 	    		case 'Director':					
-					include(ROOT_DIR.TEMPLATES_DIR.'usuarios/usuarios_director.php');
+					$this->controller->getTemplate()->load(ROOT_DIR.TEMPLATES_DIR.'usuarios/usuarios_director.php');
 	    			break;
 	    	}
 	    }
 
-	    public function action($action, $controller){
+	    public function action($action){
 	    	switch ($action) {
 	    		case 'nuevo':
+
 	    			break;
-	    		case 'modificar':	    			
+	    		case 'modificar':	
+
 	    			break;
 	    		case 'eliminar':
+
 	    			break;	    		
 	    		default:
+	    		
 	    			break;
 	    	}
 	    }
 
-	    public function result($controller, $result, $post){
+	    public function result($result, $post){
 	    	switch ($result['result']) {
 	    		case 'nuevo':
-	    			//header('Location: asignaturas.php?action=ver-asignatura');
+
 	    			break;
 	    		case 'modificar':
+
 	    			break;
 	    		case 'consultar':
-					// $asignatura = $controller->consultarAsignatura($result['param']);
-	    // 			include(ROOT_DIR.TEMPLATES_DIR.'asignaturas/modificar_asignatura.php');
+
 	    			break;
 	    		case 'eliminar':
+
 	    			break;
 	    		
 	    		default:
