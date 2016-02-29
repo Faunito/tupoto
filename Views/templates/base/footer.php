@@ -4,6 +4,7 @@
 <script src="<?php echo RESOURCES_DIR ?>js/materialize.min.js"></script>
 <script src="<?php echo RESOURCES_DIR ?>js/slidebars.min.js"></script>
 <script src="<?php echo RESOURCES_DIR ?>js/dataTable.js"></script>
+<script src="<?php echo RESOURCES_DIR ?>js/ripplelink.js"></script>
 
 
 <?php

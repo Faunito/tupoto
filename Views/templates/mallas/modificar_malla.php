@@ -1,7 +1,8 @@
 <?php
-	$title = "Mallas";
+	$title = "Competencias";
 	require_once(ROOT_DIR . TEMPLATES_DIR . 'base/header.php');
 	require_once(ROOT_DIR . TEMPLATES_DIR . 'base/sidenav/sidenav_director.php');
+	require_once(ROOT_DIR . MODELS_DIR . 'Malla.php');
 	?>
 	<main id="sb-site" class="blue-grey lighten-5">
 		<div class="container">		
@@ -12,17 +13,17 @@
 		          	<div class="card  hoverable">
 		          		<div class="card-image">
 			          		<img src="<?php echo RESOURCES_DIR.'img/hola.jpg';?>">
-				            <span class="card-title"><strong><h4><a href="javascript:history.go(-1)"><i class="material-icons small white-text left" style="font-size: 40px">arrow_back</i></a>Ingrese una nueva malla</h4></strong></span>
+				            <span class="card-title"><strong><h4><a href="javascript:history.go(-1)"><i class="material-icons small white-text left" style="font-size: 40px">arrow_back</i></a>Modificar malla</h4></strong></span>
 				        </div>
 			            <div class="card-content">
-							<form id="myForm" action="mallas.php?result=nueva" method="POST">
+							<form id="myForm" action="mallas.php?result=modificar&param=<?php echo $malla->getIdMalla(); ?>" method="POST">
 					            <div class="row center-align">
 					                <div class=" col s2 offset-s3 input-field">
-					                    <input id="codigo" name="codigo" type="text" class="validate">
+					                    <input id="codigo" name="codigo" value="<?php echo $malla->getCodigo(); ?>" type="text" class="validate">
 					                    <label for="codigo">Codigo *</label>
 					                </div>
 					                <div class=" col s2 input-field">       
-					                    <input id="plan" name="plan" type="text" class="validate">
+					                    <input id="plan" name="plan" value="<?php echo $malla->getPlan(); ?>" type="text" class="validate">
 					                    <label for="plan">Plan *</label>
 					                </div>
 								    <div class="col s2">
@@ -58,7 +59,7 @@
 										        	echo '<td>'.$asignatura->getNombre().'</td>';
 										    	    echo '<td>'.$asignatura->getCodigo().'</td>';
 										    	    ?>
-									            <td><div class="switch center">
+									            <td><div class="switch">
 												    <label>
 												      Quitar
 												      <input name="<?php echo $asignatura->getId(); ?>" type="checkbox">
@@ -83,7 +84,8 @@
 		    
 		</div>	
 	</main>
+
+
 	<?php
 	require_once(ROOT_DIR . TEMPLATES_DIR . 'base/footer.php');
-
-?>
+    ?>
