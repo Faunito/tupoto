@@ -22,8 +22,9 @@
 	    public function action($action){
 	    	switch ($action) {
 	    		case 'nueva':
-	    			$asignaturas=$this->controller->listarAsignaturas();
-	    			$this->controller->getTemplate()->setData('asignaturas',$asignaturas);
+	    			$asignaturas=$this->controller->listarAsignaturasLibres();
+	    			$this->controller->getTemplate()->setData('asignaturasLibres', '');
+	    			$this->controller->getTemplate()->setData('asignaturasLibres',$asignaturas);
 	    			$this->controller->getTemplate()->load(ROOT_DIR.TEMPLATES_DIR.'mallas/nueva_malla.php');
 	    			break;
 	    		case 'modificar':
