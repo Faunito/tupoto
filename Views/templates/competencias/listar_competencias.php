@@ -38,8 +38,8 @@
 								        </thead>
 								        <tbody>
 								        <?php 
-								        if(!empty($lista)){
-								        foreach ($lista as $key) {
+								        if(!empty($this->data['competencias'])){
+								        foreach ($this->data['competencias'] as $key) {
 								        	echo '<tr>';
 								        	echo '<td>'.$key->getNomComp().'</td>';
 								    	    echo '<td>'.$key->getCate().'</td>';

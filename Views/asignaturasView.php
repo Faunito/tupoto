@@ -1,44 +1,47 @@
 <?php 
 	require_once('View.php');
 
-	class AsignaturasView extends View {    
+	class AsignaturasView extends View {
 
-	    public function __construct() {
+		private $controller;    
+
+	    public function __construct($controller) {
+	    	$this->controller = $controller;
 	    }	    
 
 	    public function output($usuario) {
 	    	switch ($usuario) {
 	    		case 'Profesor':
-					include(ROOT_DIR.TEMPLATES_DIR.'asignaturas/asignaturas_profesor.php');
+					$this->controller->getTemplate()->load(ROOT_DIR.TEMPLATES_DIR.'asignaturas/asignaturas_profesor.php');
 	    			break;
 	    		case 'Director':
-					include(ROOT_DIR.TEMPLATES_DIR.'asignaturas/asignaturas_director.php');
+					$this->controller->getTemplate()->load(ROOT_DIR.TEMPLATES_DIR.'asignaturas/asignaturas_director.php');
 	    			break;
 	    	}
 	    }
 
-	    public function action($action, $controller){
+	    public function action($action){
 	    	switch ($action) {
 	    		case 'nueva-asignatura':
-					include(ROOT_DIR.TEMPLATES_DIR.'asignaturas/nueva_asignatura.php');
+					$this->controller->getTemplate()->load(ROOT_DIR.TEMPLATES_DIR.'asignaturas/nueva_asignatura.php');
 	    			break;
 	    		case 'modificar-asignatura':
-	    			//$asignatura = $controller->consultarAsignatura();
-					//include(ROOT_DIR.TEMPLATES_DIR.'asignaturas/modificar_asignatura.php');
+	    		
 	    			break;
 	    		case 'ver-asignatura':
-	    			$asignaturas = $controller->listarAsignaturas();
-					include(ROOT_DIR.TEMPLATES_DIR.'asignaturas/listar_asignaturas.php');
+	    			$asignaturas = $this->controller->listarAsignaturas();
+	    			$this->controller->getTemplate()->setData('asignaturas', $asignaturas);
+					$this->controller->getTemplate()->load(ROOT_DIR.TEMPLATES_DIR.'asignaturas/listar_asignaturas.php');
 	    			break;
 
 	    		case 'nuevo-programa':
-					include(ROOT_DIR.TEMPLATES_DIR.'asignaturas/nuevo_programa.php');
+					$this->controller->getTemplate()->load(ROOT_DIR.TEMPLATES_DIR.'asignaturas/nuevo_programa.php');
 	    			break;
 	    		case 'modificar-programa':
-					include(ROOT_DIR.TEMPLATES_DIR.'asignaturas/modificar_programa.php');
+					$this->controller->getTemplate()->load(ROOT_DIR.TEMPLATES_DIR.'asignaturas/modificar_programa.php');
 	    			break;
 	    		case 'ver-programa':
-					include(ROOT_DIR.TEMPLATES_DIR.'asignaturas/listar_programas.php');
+					$this->controller->getTemplate()->load(ROOT_DIR.TEMPLATES_DIR.'asignaturas/listar_programas.php');
 	    			break;
 	    		
 	    		default:
@@ -46,30 +49,31 @@
 	    	}
 	    }
 
-	    public function result($controller, $result, $post){
+	    public function result($result, $post){
 	    	switch ($result['result']) {
 	    		case 'nueva':
-	    			$controller->crearAsignatura(	$post['codigo'], 
+	    			$this->controller->crearAsignatura(	$post['codigo'], 
 								    				$post['nombre'], 
 								    				$post['nivel']);
 	    			//TOAST
-	    			header('Location: asignaturas.php?action=ver-asignatura');
+	    			$this->controller->getTemplate()->redirect('asignaturas.php?action=ver-asignatura');
 	    			break;
 	    		case 'modificar':
-		    		$controller->modificarAsignatura(	$result['param'], 
-									    				$post['codigo'], 
-									    				$post['nombre'], 
-									    				$post['nivel']);
+		    		$this->controller->modificarAsignatura(	$result['param'], 
+										    				$post['codigo'], 
+										    				$post['nombre'], 
+										    				$post['nivel']);
 		    		//TOAAAST
-		    		header('Location: asignaturas.php?action=ver-asignatura');
+		    		$this->controller->getTemplate()->redirect('asignaturas.php?action=ver-asignatura');
 	    			break;
 	    		case 'consultar':
-					$asignatura = $controller->consultarAsignatura($result['param']);
-	    			include(ROOT_DIR.TEMPLATES_DIR.'asignaturas/modificar_asignatura.php');
+	    			$asignatura = $this->controller->consultarAsignatura($result['param']);
+	    			$this->controller->getTemplate()->setData('asignatura', $asignatura);
+	    			$this->controller->getTemplate()->load(ROOT_DIR.TEMPLATES_DIR.'asignaturas/modificar_asignatura.php');
 	    			break;
 	    		case 'eliminar':
-					$controller->eliminarAsignatura($result['param']);
-					header('Location: asignaturas.php?action=ver-asignatura');	
+					$this->controller->eliminarAsignatura($result['param']);
+					$this->controller->getTemplate()->redirect('asignaturas.php?action=ver-asignatura');	
 	    			break;
 	    		
 	    		default:

@@ -15,20 +15,20 @@
 				            <span class="card-title"><strong><h4><a href="javascript:history.go(-1)"><i class="material-icons small white-text left" style="font-size: 40px">arrow_back</i></a>Modifique una asignatura</h4></strong></span>
 				        </div>
 			            <div class="card-content">
-							<form id="myForm" action="asignaturas.php?result=modificar&param=<?php echo $asignatura->getId(); ?>" method="POST">
+							<form id="myForm" action="asignaturas.php?result=modificar&param=<?php echo $this->data['asignatura']->getId(); ?>" method="POST">
 					            <div class="row">
 					                <div class=" col s2 offset-s4 input-field">
-					                    <input id="codigo" name="codigo" type="text" class="validate" value="<?php echo $asignatura->getCodigo(); ?>">
+					                    <input id="codigo" name="codigo" type="text" class="validate" value="<?php echo $this->data['asignatura']->getCodigo(); ?>">
 					                    <label for="codigo">Codigo *</label>
 					                </div>
 					                <div class=" col s2 input-field">       
-					                    <input id="nivel" name="nivel" type="text" class="validate" value="<?php echo $asignatura->getNivel(); ?>">
+					                    <input id="nivel" name="nivel" type="text" class="validate" value="<?php echo $this->data['asignatura']->getNivel(); ?>">
 					                    <label for="nivel">Nivel *</label>
 					                </div>
 					            </div>
 					            <div class="row">
 					               <div class=" col s4 offset-s4 input-field">       
-					                    <input id="nombre" name="nombre" type="text" class="validate" value="<?php echo $asignatura->getNombre(); ?>">
+					                    <input id="nombre" name="nombre" type="text" class="validate" value="<?php echo $this->data['asignatura']->getNombre(); ?>">
 					                    <label for="nombre">Nombre *</label>
 					                </div>
 					            </div>

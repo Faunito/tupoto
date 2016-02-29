@@ -1,8 +1,7 @@
 <?php 
 	require_once('View.php');
 
-	class LoginView{    
-
+	class LoginView {    
 	    public function __construct() {
 	    }	    
 

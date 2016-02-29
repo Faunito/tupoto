@@ -22,7 +22,7 @@
 							    <div class="card material-table">
 							      <div class="table-header">
 							        <span class="table-title">Alumnos</span>
-							        <div class="actions">						<a href="competencias.php?action=nueva" class="modal-trigger waves	  -effect btn-flat nopadding"><i class="    material-icons right">add_circle</i>Ingresar alumno</a>		        
+							        <div class="actions">						<a href="alumnos.php?action=nuevo" class="modal-trigger waves	  -effect btn-flat nopadding"><i class="    material-icons right">add_circle</i>Ingresar alumno</a>		        
 							          	<a href="#" class="search-toggle waves-effect btn-flat nopadding"><i class="material-icons">search</i></a>
 							        </div>
 							      </div>
@@ -39,8 +39,8 @@
 								        </thead>
 								        <tbody>
 								        <?php 
-								        if(!empty($personas)){
-								        foreach ($personas as $persona) {
+								        if(!empty($this->data['alumnos'])){
+								        foreach ($this->data['alumnos'] as $persona) {
 								        	echo '<tr>';
 								        	echo '<td>'.$persona->getRut().'</td>';
 								    	    echo '<td>'.$persona->getNombre().'</td>';

@@ -51,8 +51,8 @@
 									        </thead>
 									        <tbody>
 									           <?php 
-										        if(!empty($asignaturas)){
-										        	foreach ($asignaturas as $asignatura) 
+										        if(!empty($this->data['asignaturas'])){
+										        	foreach ($this->data['asignaturas'] as $asignatura) 
 										        	{
 										        	echo '<tr>';
 										        	echo '<td>'.$asignatura->getNombre().'</td>';

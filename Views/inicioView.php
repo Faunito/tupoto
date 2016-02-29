@@ -1,27 +1,30 @@
 <?php 
 	require_once('View.php');
 
-	class InicioView extends View {    
+	class InicioView extends View {
 
-	    public function __construct() {
-	    }	    
+	    private $controller;    
+
+	    public function __construct($controller) {
+	    	$this->controller = $controller;
+	    }		    
 
 	    public function output($usuario) {
 	    	switch ($usuario) {
 	    		case 'Profesor':
-					include(ROOT_DIR.TEMPLATES_DIR.'inicio/inicio_profesor.php');
+					$this->controller->getTemplate()->load(ROOT_DIR.TEMPLATES_DIR.'inicio/inicio_profesor.php');
 	    			break;
 	    		case 'Secretaria':
-					include(ROOT_DIR.TEMPLATES_DIR.'inicio/inicio_secretaria.php');
+					$this->controller->getTemplate()->load(ROOT_DIR.TEMPLATES_DIR.'inicio/inicio_secretaria.php');
 	    			break;
 	    		case 'Director':
-					include(ROOT_DIR.TEMPLATES_DIR.'inicio/inicio_director.php');
+					$this->controller->getTemplate()->load(ROOT_DIR.TEMPLATES_DIR.'inicio/inicio_director.php');
 	    			break;
 	    	}
 	    }
 
-	    public function action($action, $controller){}
-		public function result($controller, $result, $post){}
+	    public function action($action){}
+		public function result($result, $post){}
 
 	}
 ?>
