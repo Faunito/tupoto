@@ -48,7 +48,7 @@
 					<li> <a href='#'><i class="sb-toggle-left material-icons right">dehaze</i></a></li>
 				</ul>
 				<ul class="right">
-					<li> <a href="../index.php">Inicio<i class="sb-toggle-left material-icons right">home</i></a></li>
+					<li> <a href="../index.php">Inicio<i class="material-icons right">home</i></a></li>
 				</ul>
             </div>
         </nav>			

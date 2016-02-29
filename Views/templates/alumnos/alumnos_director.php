@@ -18,23 +18,22 @@
 				        </div>
 			            <div class="card-content">     
 							<div class="row">
-							  <div id="admin" class="col s8 offset-s2">
+							  <div id="admin" class="col s10 offset-s1">
 							    <div class="card material-table">
 							      <div class="table-header">
 							        <span class="table-title">Alumnos</span>
-							        <div class="actions">						<a href="alumnos.php?action=nuevo" class="modal-trigger waves	  -effect btn-flat nopadding"><i class="    material-icons right">add_circle</i>Ingresar alumno</a>		        
+							        <div class="actions">				
 							          	<a href="#" class="search-toggle waves-effect btn-flat nopadding"><i class="material-icons">search</i></a>
 							        </div>
 							      </div>
 							      	<table id="datatable">
 								        <thead>
 								          <tr>
-								            <th>Rut</th>
+								            <th style="width: 120px">Rut</th>
 								            <th>Nombre</th>
 								            <th>Apellido paterno</th>
 								            <th>Apellido materno</th>
-								            <th class="center" style="width: 120px">Modificar</th>
-								            <th class="center" style="width: 80">Eliminar</th>
+								            <th class="center" style="width: 80">Prácticas</th>
 								          </tr>
 								        </thead>
 								        <tbody>
@@ -47,11 +46,8 @@
 								    	    echo '<td>'.$persona->getApaterno().'</td>';
 								    	    echo '<td>'.$persona->getAmaterno().'</td>';
 								    	    ?>
-								            <td class="center">
-								            	<a class="btn-floating waves-effect waves-light tooltipped" data-position="top" data-delay="50" data-tooltip="Modificar" href="competencias.php?result=consultar&param=<?php echo $key->getIdComp(); ?>"><i class="material-icons color_primario white-text">edit</i></a>
-											</td>
 											<td class="center">
-								            	<a class="btn-floating waves-effect waves-light red  tooltipped" data-position="top" data-delay="50" data-tooltip="Eliminar" href="competencias.php?result=eliminar&param=<?php echo $key->getIdComp(); ?>"><i class="material-icons  white-text">clear</i></a>
+								            	<a class="btn-floating waves-effect waves-light green  tooltipped" data-position="top" data-delay="50" data-tooltip="Prácticas" href="practicas.php?result=lista&param=<?php echo $key->getIdPractica(); ?>"><i class="material-icons  white-text">insert_drive_file</i></a>
 											</td>
 								          </tr>
 								          <?php }} ?>
