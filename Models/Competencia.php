@@ -10,9 +10,10 @@ class Competencia
 	private $desComp;
 	private $idComp;
 	private $nomComp;
+    private $tipoComp;
 	private $dbcomp;
     private $director;
-    private $falComp;
+    //private $falComp;
 	//private $m_MallaCurricular;
 	//private $m_DetalleEvaluacion;
 	//private $m_EspecificaciondeEvidencia;
@@ -50,9 +51,9 @@ class Competencia
 		return $this->nomComp;
 	}
 
-	function getFalComp()//falencia competencia
+	function getTipoComp()//falencia competencia
 	{
-        return $this->falComp;
+        return $this->tipoComp;
 	}
 
 	function getDBCompetencia(){
@@ -63,8 +64,8 @@ class Competencia
         return DBCompetencia::getCompetencia($id);
     }
 	//SETTERS
-    function setFalComp($newVal){
-        $this->falComp = $newVal;
+    function setTipoComp($newVal){
+        $this->tipoComp = $newVal;
     }
         
     function setCate($newVal){

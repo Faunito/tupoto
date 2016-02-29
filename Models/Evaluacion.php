@@ -7,13 +7,15 @@ require_once ('DBConexion/DBEvaluacion.php');
 class Evaluacion
 {
 
-	private $resultado;
+	private $resultado;    
 	private $fechaEntrega;
 	private $idEvaluacion;
-	private $observacion; //Fatla en la Base de Datos
+	private $observacion;
+    
 	private $practica;
 	private $profesor;
 	private $empleador;
+    
 	private $dbevaluacion;
 
 	function __construct()

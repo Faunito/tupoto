@@ -5,12 +5,14 @@ require_once(ROOT_DIR . CONTROLLERS_DIR . 'ProfesorController.php');
 require_once(ROOT_DIR . VIEWS_DIR . 'Template.php');
 require_once(ROOT_DIR . MODELS_DIR . 'Competencia.php');
 require_once(ROOT_DIR . MODELS_DIR . 'Asignatura.php');
+require_once(ROOT_DIR . MODELS_DIR . 'Malla.php');
 require_once(ROOT_DIR . MODELS_DIR . 'Alumno.php');
 
 class DirectorController extends ProfesorController{
     private $dir;
     private $arrayCompetencias;
     private $arrayAsignaturas;
+    private $arrayMallas;
     private $arrayAlumnos;
     private $template;
 
@@ -63,8 +65,38 @@ class DirectorController extends ProfesorController{
         }   
 
         //============ Mallas ================ 
+        function ConsultarMalla($id){
+            $malla = Malla::getMalla($id);
+            $nueva = new Malla();                
+            $nueva->setIdMalla($malla['ID_MALLA']);
+            $nueva->setPlan($malla['PLAN']);
+            $nueva->setCodCarrera($malla['CODIGO_CARRERA']);
+            $nueva->setNiveles($malla['NIVELES']);
+            return $nueva;
+        }
+
+        function listarMallas(){
+            $mallas = Malla::getMallas();
+            $i=0;
+            foreach ($mallas as $malla) {
+                $nueva = new Malla();                
+                $nueva->setIdMalla($malla['ID_MALLA']);
+                $nueva->setPlan($malla['PLAN']);
+                $nueva->setCodCarrera($malla['CODIGO_CARRERA']);
+                $nueva->setNiveles($malla['NIVELES']);
+                $array[$i] = $nueva;
+                $i++;
+            }
+            $this->arrayMallas = $array;
+            $this->serializar($this);
+            return $this->arrayMallas;
+        }
+
         function crearMalla($codigo, $plan, $asignaturas){
             $this->dir->crearMalla($codigo, $plan, $asignaturas);
+        }
+         function modificarMalla($id, $codigo, $plan, $listaOn, $listaOff){
+            $this->dir->modificarMalla($id, $codigo, $plan, $listaOn, $listaOff);
         }
 
         //============ Asignaturas ================ 

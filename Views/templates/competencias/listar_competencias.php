@@ -32,8 +32,8 @@
 								          <tr>
 								            <th>Nombre</th>
 								            <th style="width: 180px">Categoria</th>
-								            <th class="center" style="width: 120px">Modificar</th>
-								            <th class="center" style="width: 80">Eliminar</th>
+								            <th class="center no-padding" style="width: 60px">Modificar</th>
+								            <th class="center no-padding" style="width: 60">Eliminar</th>
 								          </tr>
 								        </thead>
 								        <tbody>

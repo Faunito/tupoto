@@ -4,9 +4,9 @@ require_once ('Competencia.php');
 
 class DetalleEvaluacion
 {
-
 	private $calificacion;
 	private $observacion;
+    //PKS
 	private $evaluacion;
 	private $competencia;
 

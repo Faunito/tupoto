@@ -90,6 +90,18 @@ class Director extends Profesor
             $this->malla->getDBMalla()->add($this->malla);
         }
 
+         function modificarMalla($id, $codigo, $plan, $listaOn, $ListaOff)
+        {
+            $this->malla = new Malla();
+            $this->malla->setIdMalla($id);
+            $this->malla->setCodCarrera($codigo);
+            $this->malla->setPlan($plan);
+            $this->malla->setDirector($this);
+            $this->malla->setAsignaturas($listaOn);
+            $this->malla->unsetAsignaturas($listaOff);
+            $this->malla->getDBMalla()->modify($this->malla);
+        }
+
         //============ Alumnos ================
 
 
