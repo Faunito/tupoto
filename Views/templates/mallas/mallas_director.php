@@ -33,9 +33,9 @@
 								            <th>Codigo</th>
 								            <th>Plan</th>
 								            <th>Niveles</th>
-								            <th class="center" style="width: 80px">Modificar</th>
-								            <th class="center" style="width: 90px">Eliminar</th>
-								            <th class="center" style="width: 200px">Asignar asignaturas</th>
+								            <th class="center no-padding" style="width: 50px">Ver</th>
+								            <th class="center no-padding" style="width: 60px">Modificar</th>
+								            <th class="center no-padding" style="width: 60">Eliminar</th>
 								          </tr>
 								        </thead>
 								        <tbody>
@@ -47,14 +47,14 @@
 								    	    echo '<td>'.$key->getPlan().'</td>';
 								    	    echo '<td>'.$key->getNiveles().'</td>';
 								    	    ?>
+								    	    <td class="center">
+								            	<a class="btn-floating waves-effect waves-light tooltipped" data-position="top" data-delay="50" data-tooltip="Ver malla" href="mallas.php?result=ver&param=<?php echo $key->getIdMalla(); ?>"><i class="mdi mdi-eye white-text right cyan"></i></a>
+											</td>
 								            <td class="center">
 								            	<a class="btn-floating waves-effect waves-light tooltipped" data-position="top" data-delay="50" data-tooltip="Modificar" href="mallas.php?result=consultar&param=<?php echo $key->getIdMalla(); ?>"><i class="material-icons color_primario white-text">edit</i></a>
 											</td>
 											<td class="center">
 								            	<a class="btn-floating waves-effect waves-light red  tooltipped" data-position="top" data-delay="50" data-tooltip="Eliminar" href="mallas.php?result=eliminar&param=<?php echo $key->getIdMalla(); ?>"><i class="material-icons  white-text">clear</i></a>
-											</td>
-											<td class="center">
-								            	<a class="btn-floating waves-effect waves-light red  tooltipped" data-position="top" data-delay="50" data-tooltip="Eliminar" href="mallas.php?result=modificar&param=<?php echo $key->getIdMalla(); ?>"><i class="mdi mdi-folder-move"></i></a>
 											</td>
 								          </tr>
 								          <?php }} ?>

@@ -28,11 +28,11 @@
 									        <thead>
 									          <tr>
 									            <th>Nombre</th>
-									            <th style="width: 100px">Código</th>
-									            <th style="width: 80px">Nivel</th>
-									            <th style="width: 80px">Malla</th>
-									            <th class="center" style="width: 120px">Modificar</th>
-								            <th class="center" style="width: 80">Eliminar</th>
+									            <th class="no-padding" style="width: 100px">Código</th>
+									            <th class="no-padding" style="width: 80px">Nivel</th>
+									            <th class="no-padding" style="width: 80px">Malla</th>
+									            <th class="center no-padding" style="width: 60px">Modificar</th>
+								            <th class="center no-padding" style="width: 60">Eliminar</th>
 									          </tr>
 									        </thead>
 									        <tbody>
@@ -41,14 +41,14 @@
 										        foreach ($this->data['asignaturas'] as $asignatura) {
 										        	echo '<tr>';
 										        	echo '<td>'.$asignatura->getNombre().'</td>';
-								    	    		echo '<td>'.$asignatura->getCodigo().'</td>';
-								    	    		echo '<td>'.$asignatura->getNivel().'</td>';
-								    	    		echo '<td>'.$asignatura->getMalla().'</td>';
+								    	    		echo '<td class="no-padding">'.$asignatura->getCodigo().'</td>';
+								    	    		echo '<td class="no-padding">'.$asignatura->getNivel().'</td>';
+								    	    		echo '<td class="no-padding">'.$asignatura->getMalla().'</td>';
 								        	?>
-									            <td class="center">
+									            <td class="no-padding">
 									            	<a class="btn-floating waves-effect waves-light" href="asignaturas.php?result=consultar&param=<?php echo $asignatura->getId(); ?>"><i class="material-icons color_primario white-text">edit</i></a>
 												</td>
-												<td class="center">
+												<td class="no-padding">
 									            	<a class="btn-floating waves-effect waves-light red" href="asignaturas.php?result=eliminar&param=<?php echo $asignatura->getId(); ?>"><i class="material-icons white-text">clear</i></a>
 												</td>
 									          </tr>

@@ -27,8 +27,10 @@
 	    		case 'modificar':
 	    		
 	    			break;
-	    		case 'ver':
-	    		
+	    		case 'listar':
+	    			$mallas=$this->controller->listarMallas();
+	    			$this->controller->getTemplate()->setData('mallas',$mallas);
+	    			$this->controller->getTemplate()->load(ROOT_DIR.TEMPLATES_DIR.'mallas/mallas_director.php');
 	    			break;
 	    		case 'asignar':
 	    		
