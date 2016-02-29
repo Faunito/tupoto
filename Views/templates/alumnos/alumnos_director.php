@@ -18,23 +18,22 @@
 				        </div>
 			            <div class="card-content">     
 							<div class="row">
-							  <div id="admin" class="col s8 offset-s2">
+							  <div id="admin" class="col s10 offset-s1">
 							    <div class="card material-table">
 							      <div class="table-header">
 							        <span class="table-title">Alumnos</span>
-							        <div class="actions">						<a href="alumnos.php?action=nuevo" class="modal-trigger waves	  -effect btn-flat nopadding"><i class="    material-icons right">add_circle</i>Ingresar alumno</a>		        
+							        <div class="actions">				
 							          	<a href="#" class="search-toggle waves-effect btn-flat nopadding"><i class="material-icons">search</i></a>
 							        </div>
 							      </div>
 							      	<table id="datatable">
 								        <thead>
 								          <tr>
-								            <th>Rut</th>
+								            <th style="width: 120px">Rut</th>
 								            <th>Nombre</th>
 								            <th>Apellido paterno</th>
 								            <th>Apellido materno</th>
-								            <th class="center" style="width: 120px">Modificar</th>
-								            <th class="center" style="width: 80">Eliminar</th>
+								            <th class="center" style="width: 80">Prácticas</th>
 								          </tr>
 								        </thead>
 								        <tbody>
