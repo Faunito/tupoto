@@ -32,7 +32,7 @@
 						            </div>
 					            </div>
 								<div class="row">
-								  <div id="admin" class="col s6 offset-s3">
+								  <div id="admin" class="col s8 offset-s2">
 								    <div class="card material-table">
 								      <div class="table-header">
 								        <span class="table-title">Asignaturas</span>
@@ -41,11 +41,11 @@
 								          <a href="#" class="search-toggle waves-effect btn-flat nopadding"><i class="material-icons">search</i></a>
 								        </div>
 								      </div>
-								      	<table id="datatable">
+								      	<table id="data">
 									        <thead>
 									          <tr>
 									            <th>Nombre</th>
-									            <th class="center" style="width: 100px">Código</th>
+									            <th style="width: 170px">Código</th>
 									            <th class="center" style="width: 180px">Estado</th>
 									          </tr>
 									        </thead>
@@ -58,14 +58,16 @@
 										        	echo '<td>'.$asignatura->getNombre().'</td>';
 										    	    echo '<td>'.$asignatura->getCodigo().'</td>';
 										    	    ?>
-									            <td><div class="switch center">
-												    <label>
-												      Quitar
-												      <input name="<?php echo $asignatura->getId(); ?>" type="checkbox">
-												      <span class="lever"></span>
-												      Agregar
+									            <td class="center">
+											       <div class="switch">
+											       	<label>
+											       	Quitar
+												    <input id="<?php echo $asignatura->getId(); ?>" name="<?php echo $asignatura->getId(); ?>" type="checkbox">
+												    <span class="lever"></span>
+												    Agregar
 												    </label>
 												  </div>
+																								     
 												</td>
 									          </tr>
 									          <?php }} ?>
@@ -83,7 +85,20 @@
 		    
 		</div>	
 	</main>
-	<?php
+	
+<?php
+	require_once(ROOT_DIR . TEMPLATES_DIR . 'base/scripts.php');
+?>
+	<script>
+	$(document).ready(function() {
+    $('#data').DataTable( {
+    	"sSearchPlaceholder": "Ingrese palabra clave",
+        "paging":   false,
+        "info":     false
+    } );
+	} );
+	</script>
+<?php
 	require_once(ROOT_DIR . TEMPLATES_DIR . 'base/footer.php');
 
 ?>

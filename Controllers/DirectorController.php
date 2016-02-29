@@ -62,6 +62,11 @@ class DirectorController extends ProfesorController{
             $this->dir->eliminarCompetencia($id); 
         }   
 
+        //============ Mallas ================ 
+        function crearMalla($codigo, $plan, $asignaturas){
+            $this->dir->crearMalla($codigo, $plan, $asignaturas);
+        }
+
         //============ Asignaturas ================ 
         function listarAsignaturas(){
             $asignaturas = Asignatura::getAsignaturas();
@@ -70,7 +75,7 @@ class DirectorController extends ProfesorController{
                 $nueva = new Asignatura();                
                 $nueva->setId($asignatura['ID_ASIGNATURA']);
                 $nueva->setCodigo($asignatura['CODIGO_ASIGNATURA']);
-                //$nueva->setMalla($asignatura['ID_MALLA']);
+                $nueva->setMalla($asignatura['ID_MALLA']);
                 $nueva->setNombre($asignatura['NOMBRE_ASIGNATURA']);
                 $nueva->setNivel($asignatura['NIVEL_ASIGNATURA']);
                 $nueva->setDirector($this->dir);

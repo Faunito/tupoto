@@ -56,7 +56,8 @@
 	    					}
 	    				}
 	    			}
-	    			var_dump($lista[0]->getNombre());
+	    			$this->controller->crearMalla($post['codigo'], $post['plan'], $lista);
+	    			$this->controller->getTemplate()->redirect('mallas.php');
 	    			break;
 	    		case 'modificar':
 	    		

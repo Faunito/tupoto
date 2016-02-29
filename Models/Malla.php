@@ -14,11 +14,11 @@ class Malla
 	private $director;
 	//private $m_Competencia;
 	private $m_Asignatura; //Array de Asignaturas
-    private $dbmalla;
+    private $dbMalla;
     //construct
 	function __construct()
 	{
-        $this->dbMalla= new DBMalla();
+        $this->dbMalla = new DBMalla();
 	}
     //FUNCTIONS
 
@@ -29,7 +29,7 @@ class Malla
     //GETTERS
 	function getDBMalla()
 	{
-		$this->dbmalla;
+		return $this->dbMalla;
 	}
 
 	function getPlan()
@@ -61,36 +61,36 @@ class Malla
     }
 	
     //SETTERS
-	function setAsignaturas($newVal)
+	function setAsignaturas($asignaturas)
 	{
-		foreach($newVal as $value)
+		foreach($asignaturas as $asignatura)
 		{
-			$value->setMalla($this);
+			$asignatura->setMalla($this);
 		}
-		$this->m_Asignatura = $newVal;
+		$this->m_Asignatura = $asignaturas;
 	}
 
-	function setPlan($newVal)
+	function setPlan($plan)
 	{
-		$this->plan = $newVal;
-	}
-    
-    function setDirector($newVal){
-        $this->director = $newVal;
-    }
-
-	function setCodCarrera($newVal)
-	{
-		$this->codCarrera = $newVal;
+		$this->plan = $plan;
 	}
     
-    function setNiveles($newVal){
-        $this->niveles = $newVal;
+    function setDirector($director){
+        $this->director = $director;
     }
 
-	function setIdMalla($newVal)
+	function setCodCarrera($codigo)
 	{
-		$this->idMalla = $newVal;
+		$this->codigoCarrera = $codigo;
+	}
+    
+    function setNiveles($niveles){
+        $this->niveles = $niveles;
+    }
+
+	function setIdMalla($idmalla)
+	{
+		$this->idMalla = $idmalla;
 	}
 
 }
