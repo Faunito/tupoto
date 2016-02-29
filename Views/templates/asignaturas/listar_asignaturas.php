@@ -1,7 +1,6 @@
 <?php
 	$title = "Asignaturas";
 	require_once(ROOT_DIR . TEMPLATES_DIR . 'base/header.php');
-	require_once(ROOT_DIR . TEMPLATES_DIR . 'base/sidenav/sidenav_director.php');
 	?>
 	<main id="sb-site" class="blue-grey lighten-5">
 		<div class="container">		
@@ -66,6 +65,7 @@
 		</div>	
 	</main>
 	<?php
+	require_once(ROOT_DIR . TEMPLATES_DIR . 'base/scripts.php');
 	require_once(ROOT_DIR . TEMPLATES_DIR . 'base/footer.php');
 
     ?>

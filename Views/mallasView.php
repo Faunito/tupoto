@@ -44,17 +44,20 @@
 	    public function result($result, $post){
 	    	switch ($result['result']) {
 	    		case 'nueva':
-	    			$asignaturas=$this->controller->listarAsignaturas();	
-	    			$i=0;
-	    			foreach ($post as $key => $value) {
-	    				if(strcmp($value,'on')==0){
-	    					foreach ($asignaturas as $asignatura) {
-								if(strcmp($key,$asignatura->getId())==0){
-									$lista[$i]=$asignatura;
-								}
-	    					}
-	    				}
-	    			}
+	    		var_dump($post);
+	    		//    $asignaturas=$this->controller->listarAsignaturas();	
+	    		//	$i=0;
+	    		//	foreach ($post as $key => $value) {
+	    		//		if(strcmp($value,'on')==0){
+	    		//			foreach ($asignaturas as $asignatura) {
+				//				if(strcmp($key,$asignatura->getId())==0){
+				//					$lista[$i]=$asignatura;
+				//					$i++;
+				//				}					
+	    		//			}
+	    		//		}
+	    		//	}
+	    		//	var_dump($lista[0]->getNombre());
 	    			break;
 	    		case 'modificar':
 	    		

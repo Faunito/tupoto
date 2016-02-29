@@ -29,6 +29,7 @@
 		</div>	
 	</main>
 	<?php
+	require_once(ROOT_DIR . TEMPLATES_DIR . 'base/scripts.php');
 	require_once(ROOT_DIR . TEMPLATES_DIR . 'base/footer.php');
 
     ?>
