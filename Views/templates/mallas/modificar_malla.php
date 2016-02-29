@@ -1,8 +1,7 @@
 <?php
-	$title = "Competencias";
+	$title = "Mallas";
 	require_once(ROOT_DIR . TEMPLATES_DIR . 'base/header.php');
 	require_once(ROOT_DIR . TEMPLATES_DIR . 'base/sidenav/sidenav_director.php');
-	require_once(ROOT_DIR . MODELS_DIR . 'Malla.php');
 	?>
 	<main id="sb-site" class="blue-grey lighten-5">
 		<div class="container">		
@@ -16,14 +15,14 @@
 				            <span class="card-title"><strong><h4><a href="javascript:history.go(-1)"><i class="material-icons small white-text left" style="font-size: 40px">arrow_back</i></a>Modificar malla</h4></strong></span>
 				        </div>
 			            <div class="card-content">
-							<form id="myForm" action="mallas.php?result=modificar&param=<?php echo $malla->getIdMalla(); ?>" method="POST">
+							<form id="myForm" action="mallas.php?result=modificar&param=<?php echo $this->data['malla']->getIdMalla(); ?>" method="POST">
 					            <div class="row center-align">
 					                <div class=" col s2 offset-s3 input-field">
-					                    <input id="codigo" name="codigo" value="<?php echo $malla->getCodigo(); ?>" type="text" class="validate">
+					                    <input id="codigo" name="codigo" value="<?php echo $this->data['malla']->getCodCarrera(); ?>" type="text" class="validate">
 					                    <label for="codigo">Codigo *</label>
 					                </div>
 					                <div class=" col s2 input-field">       
-					                    <input id="plan" name="plan" value="<?php echo $malla->getPlan(); ?>" type="text" class="validate">
+					                    <input id="plan" name="plan" value="<?php echo $this->data['malla']->getPlan(); ?>" type="text" class="validate">
 					                    <label for="plan">Plan *</label>
 					                </div>
 								    <div class="col s2">
@@ -33,7 +32,8 @@
 						            </div>
 					            </div>
 								<div class="row">
-								  <div id="admin" class="col s6 offset-s3">
+								  <div class="row">
+								  <div id="admin" class="col s10 offset-s1">
 								    <div class="card material-table">
 								      <div class="table-header">
 								        <span class="table-title">Asignaturas</span>
@@ -42,31 +42,34 @@
 								          <a href="#" class="search-toggle waves-effect btn-flat nopadding"><i class="material-icons">search</i></a>
 								        </div>
 								      </div>
-								      	<table id="datatable">
+								      	<table id="data">
 									        <thead>
 									          <tr>
 									            <th>Nombre</th>
-									            <th class="center" style="width: 100px">Código</th>
+									            <th class="no-padding" style="width: 80px">Código</th>
+									            <th class="no-padding" style="width: 50px">Nivel</th>
 									            <th class="center" style="width: 180px">Estado</th>
 									          </tr>
 									        </thead>
 									        <tbody>
 									           <?php 
-										        if(!empty($asignaturas)){
-										        	foreach ($asignaturas as $asignatura) 
+										        if(!empty($this->data['asignaturas'])){
+										        	foreach ($this->data['asignaturas'] as $asignatura) 
 										        	{
 										        	echo '<tr>';
 										        	echo '<td>'.$asignatura->getNombre().'</td>';
-										    	    echo '<td>'.$asignatura->getCodigo().'</td>';
+										    	    echo '<td class="no-padding">'.$asignatura->getCodigo().'</td>';
+										    	    echo '<td class="no-padding">'.$asignatura->getNivel().'</td>';
 										    	    ?>
-									            <td><div class="switch">
-												    <label>
-												      Quitar
-												      <input name="<?php echo $asignatura->getId(); ?>" type="checkbox">
-												      <span class="lever"></span>
-												      Agregar
+									            <td class="center">
+											       <div class="switch">
+											       	<label>
+											       	Quitar
+												    <input id="<?php echo $asignatura->getId(); ?>" <?php if(!empty($asignatura->getMalla())){ echo 'checked';} ?> name="<?php echo $asignatura->getId(); ?>" type="checkbox">
+												    <span class="lever"></span>
+												    Agregar
 												    </label>
-												  </div>
+												  </div>									     
 												</td>
 									          </tr>
 									          <?php }} ?>
@@ -84,9 +87,20 @@
 		    
 		</div>	
 	</main>
-
-
-	<?php
+	
+<?php
 	require_once(ROOT_DIR . TEMPLATES_DIR . 'base/scripts.php');
+?>
+	<script>
+	$(document).ready(function() {
+    $('#data').DataTable( {
+    	"sSearchPlaceholder": "Ingrese palabra clave",
+        "paging":   false,
+        "info":     false
+    } );
+	} );
+	</script>
+<?php
 	require_once(ROOT_DIR . TEMPLATES_DIR . 'base/footer.php');
-    ?>
+
+?>

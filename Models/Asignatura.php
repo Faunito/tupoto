@@ -28,6 +28,11 @@ class Asignatura
 		return DBAsignatura::getAll();
 	}
 
+	public static function getAsignaturasMalla($id){
+		return DBAsignatura::getAsignaturasMalla($id);
+	}
+
+
 	public static function getAsignatura($codigo){
         return DBAsignatura::getAsignatura($codigo);
     }
@@ -82,6 +87,10 @@ class Asignatura
 
 	function setMalla($malla){
 		$this->malla = $malla;
+	}
+
+	function unsetMalla(){
+		unset($this->malla);
 	}
 
 	function setDirector($director){

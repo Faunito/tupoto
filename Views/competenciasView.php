@@ -10,6 +10,8 @@
 	    }	    
 
 	    public function output($usuario) {
+	    	$competencias = $this->controller->listarCompetencias();
+	    	$this->controller->getTemplate()->setData('competencias', $competencias);
 	    	switch ($usuario) {
 	    		case 'Profesor':
 					$this->controller->getTemplate()->load(ROOT_DIR.TEMPLATES_DIR.'competencias/competencias_profesor.php');
@@ -61,7 +63,7 @@
 	    			break;
 	    		case 'eliminar':
 	    			$this->controller->eliminarCompetencia( $result['param']);
-	    			$this->controller->getTemplate()->redirect('competencias.php?action=ver');	
+	    			$this->controller->getTemplate()->redirect('competencias.php');	
 	    			break;
 	    		case 'asignar':
 

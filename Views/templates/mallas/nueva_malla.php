@@ -37,7 +37,7 @@
 								      <div class="table-header">
 								        <span class="table-title">Asignaturas</span>
 								        <div class="actions">
-								          <a href="asignaturas.php?action=nueva" class="modal-trigger waves-effect btn-flat nopadding"><i class="material-icons right">add_circle</i>Crear Asignatura</a>
+								          <a href="asignaturas.php?action=nueva-asignatura" class="modal-trigger waves-effect btn-flat nopadding"><i class="material-icons right">add_circle</i>Crear Asignatura</a>
 								          <a href="#" class="search-toggle waves-effect btn-flat nopadding"><i class="material-icons">search</i></a>
 								        </div>
 								      </div>
@@ -51,8 +51,8 @@
 									        </thead>
 									        <tbody>
 									           <?php 
-										        if(!empty($this->data['asignaturas'])){
-										        	foreach ($this->data['asignaturas'] as $asignatura) 
+										        if(!empty($this->data['asignaturasLibres'])){
+										        	foreach ($this->data['asignaturasLibres'] as $asignatura) 
 										        	{
 										        	echo '<tr>';
 										        	echo '<td>'.$asignatura->getNombre().'</td>';
@@ -62,7 +62,7 @@
 											       <div class="switch">
 											       	<label>
 											       	Quitar
-												    <input id="<?php echo $asignatura->getId(); ?>" name="<?php echo $asignatura->getId(); ?>" type="checkbox">
+												    <input id="<?php echo $asignatura->getId(); ?>"  name="<?php echo $asignatura->getId(); ?>" type="checkbox">
 												    <span class="lever"></span>
 												    Agregar
 												    </label>

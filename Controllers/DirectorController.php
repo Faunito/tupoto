@@ -27,6 +27,7 @@ class DirectorController extends ProfesorController{
         function listarCompetencias(){
             $res = Competencia::getCompetencias();
             $i=0;
+            $array=array();
             foreach ($res as $key) {
                 $aux = new Competencia();
                 $aux->setIdComp($key['ID_COMPETENCIA']);
@@ -34,9 +35,10 @@ class DirectorController extends ProfesorController{
                 $aux->setDirector($this->dir);
                 $aux->setDesComp($key['DESCRIPCION_DE_COMPETENCIA']);
                 $aux->setNomComp($key['NOMBRE_COMPETENCIA']);
-                $this->arrayCompetencias[$i] = $aux;
+                $array[$i] = $aux;
                 $i++;
             }
+            $this->arrayCompetencias = $array;
             $this->serializar($this);
             return $this->arrayCompetencias;
         }
@@ -65,6 +67,16 @@ class DirectorController extends ProfesorController{
         }   
 
         //============ Mallas ================ 
+        function ConsultarMalla($id){
+            $malla = Malla::getMalla($id);
+            $nueva = new Malla();                
+            $nueva->setIdMalla($malla['ID_MALLA']);
+            $nueva->setPlan($malla['PLAN']);
+            $nueva->setCodCarrera($malla['CODIGO_CARRERA']);
+            $nueva->setNiveles($malla['NIVELES']);
+            return $nueva;
+        }
+
         function listarMallas(){
             $mallas = Malla::getMallas();
             $i=0;
@@ -74,21 +86,26 @@ class DirectorController extends ProfesorController{
                 $nueva->setPlan($malla['PLAN']);
                 $nueva->setCodCarrera($malla['CODIGO_CARRERA']);
                 $nueva->setNiveles($malla['NIVELES']);
-                $this->arrayMallas[$i] = $nueva;
+                $array[$i] = $nueva;
                 $i++;
             }
+            $this->arrayMallas = $array;
             $this->serializar($this);
             return $this->arrayMallas;
         }
 
-        function crearMalla($codigo, $plan, $asignaturas){
-            $this->dir->crearMalla($codigo, $plan, $asignaturas);
+        function crearMalla($codigo, $plan, $lvl, $asignaturas){
+            $this->dir->crearMalla($codigo, $plan, $lvl, $asignaturas);
+        }
+         function modificarMalla($id, $codigo, $plan, $lvl, $listaOn, $listaOff){
+            $this->dir->modificarMalla($id, $codigo, $plan, $lvl, $listaOn, $listaOff);
         }
 
         //============ Asignaturas ================ 
         function listarAsignaturas(){
             $asignaturas = Asignatura::getAsignaturas();
             $i=0;
+            $array=array();
             foreach ($asignaturas as $asignatura) {
                 $nueva = new Asignatura();                
                 $nueva->setId($asignatura['ID_ASIGNATURA']);
@@ -97,11 +114,50 @@ class DirectorController extends ProfesorController{
                 $nueva->setNombre($asignatura['NOMBRE_ASIGNATURA']);
                 $nueva->setNivel($asignatura['NIVEL_ASIGNATURA']);
                 $nueva->setDirector($this->dir);
-                $this->arrayAsignaturas[$i] = $nueva;
+                $array[$i] = $nueva;
                 $i++;
             }
+            $this->arrayAsignaturas = $array;
             $this->serializar($this);
             return $this->arrayAsignaturas;
+        }
+
+        function listarAsignaturasLibres(){
+            $asignaturas = Asignatura::getAsignaturas();
+            $i=0;
+            $libres=array();
+            foreach ($asignaturas as $asignatura) {
+                if(!isset($asignatura['ID_MALLA'])){
+                    $nueva = new Asignatura();                
+                    $nueva->setId($asignatura['ID_ASIGNATURA']);
+                    $nueva->setCodigo($asignatura['CODIGO_ASIGNATURA']);
+                    $nueva->setMalla($asignatura['ID_MALLA']);
+                    $nueva->setNombre($asignatura['NOMBRE_ASIGNATURA']);
+                    $nueva->setNivel($asignatura['NIVEL_ASIGNATURA']);
+                    $nueva->setDirector($this->dir);
+                    $libres[$i] = $nueva;
+                    $i++;                    
+                }
+            }
+            return $libres;
+        }
+
+         function listarAsignaturasMalla($id){
+            $asignaturas = Asignatura::getAsignaturasMalla($id);
+            $i=0;
+            $array=array();
+            foreach ($asignaturas as $asignatura) {
+                $nueva = new Asignatura();                
+                $nueva->setId($asignatura['ID_ASIGNATURA']);
+                $nueva->setCodigo($asignatura['CODIGO_ASIGNATURA']);
+                $nueva->setMalla($asignatura['ID_MALLA']);
+                $nueva->setNombre($asignatura['NOMBRE_ASIGNATURA']);
+                $nueva->setNivel($asignatura['NIVEL_ASIGNATURA']);
+                $nueva->setDirector($this->dir);
+                $array[$i] = $nueva;
+                $i++;
+            }
+            return $array;
         }
         
         function consultarAsignatura($codigo){
@@ -132,6 +188,7 @@ class DirectorController extends ProfesorController{
         function listarAlumnos(){
             $alumnos = Alumno::getAlumnos();
             $i=0;
+            $array=array();
             foreach ($alumnos as $alumno) {
                 $nuevo = new Alumno();                
                 $nuevo->setRut($alumno['RUT']);
@@ -140,9 +197,10 @@ class DirectorController extends ProfesorController{
                 $nuevo->setNombre($alumno['NOMBRE']);
                 $nuevo->setApaterno($alumno['APATERNO']);
                 $nuevo->setAmaterno($alumno['AMATERNO']);
-                $this->arrayAlumnos[$i] = $nuevo;
+                $array[$i] = $nuevo;
                 $i++;
             }
+            $this->arrayAlumnos=$array;
             $this->serializar($this);
             return $this->arrayAlumnos;
         }

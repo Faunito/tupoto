@@ -12,6 +12,7 @@ class Malla
     private $codigoCarrera;
 	private $niveles;
 	private $director;
+	private $listaOff;
 	//private $m_Competencia;
 	private $m_Asignatura; //Array de Asignaturas
     private $dbMalla;
@@ -25,6 +26,10 @@ class Malla
     public static function getMallas()
 	{
         return DBMalla::getAll();
+	}
+	public static function getMalla($id)
+	{
+        return DBMalla::getMalla($id);
 	}
 	
     //GETTERS
@@ -61,6 +66,11 @@ class Malla
     	return $this->m_Asignatura;
     }
 	
+	 function getAsignaturasOff()
+    {
+    	return $this->listaOff;
+    }
+	
     //SETTERS
 	function setAsignaturas($asignaturas)
 	{
@@ -69,6 +79,15 @@ class Malla
 			$asignatura->setMalla($this);
 		}
 		$this->m_Asignatura = $asignaturas;
+	}
+
+	function unsetAsignaturas($asignaturas)
+	{
+		foreach($asignaturas as $asignatura)
+		{
+			$asignatura->unsetMalla();
+		}
+		$this->listaOff = $asignaturas;
 	}
 
 	function setPlan($plan)

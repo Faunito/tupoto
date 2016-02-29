@@ -16,7 +16,7 @@
 						<div class="card-content">        
 							<div class="wrapper">
 								<div class="row">
-								  <a class="ripplelink red darken-2" href="<?php echo ROUTES_DIR.'mallas.php';?>" style="font-size: 30px;">		MALLAS <i class="mdi mdi-table-large" style="font-size: 100px;"></i></a>
+								  <a class="ripplelink red darken-2" href="mallas.php?action=listar" style="font-size: 30px;">		MALLAS <i class="mdi mdi-table-large" style="font-size: 100px;"></i></a>
 								  <a class="ripplelink green darken-2" href="<?php echo ROUTES_DIR.'competencias.php';?>" style="font-size: 30px;">COMPETENCIAS <i class="mdi mdi-book" style="font-size: 100px;"></i></a>
 								</div>
 								<div class="row">
