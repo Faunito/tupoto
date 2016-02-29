@@ -48,10 +48,10 @@
 								    	    echo '<td>'.$persona->getAmaterno().'</td>';
 								    	    ?>
 								            <td class="center">
-								            	<a class="btn-floating waves-effect waves-light tooltipped" data-position="top" data-delay="50" data-tooltip="Modificar" href="competencias.php?result=consultar&param=<?php echo $key->getIdComp(); ?>"><i class="material-icons color_primario white-text">edit</i></a>
+								            	<a class="btn-floating waves-effect waves-light tooltipped" data-position="top" data-delay="50" data-tooltip="Modificar" href="competencias.php?result=consultar&param=<?php echo $persona->getRut(); ?>"><i class="material-icons color_primario white-text">edit</i></a>
 											</td>
 											<td class="center">
-								            	<a class="btn-floating waves-effect waves-light red  tooltipped" data-position="top" data-delay="50" data-tooltip="Eliminar" href="competencias.php?result=eliminar&param=<?php echo $key->getIdComp(); ?>"><i class="material-icons  white-text">clear</i></a>
+								            	<a class="btn-floating waves-effect waves-light red  tooltipped" data-position="top" data-delay="50" data-tooltip="Eliminar" href="competencias.php?result=eliminar&param=<?php echo $persona->getRut(); ?>"><i class="material-icons  white-text">clear</i></a>
 											</td>
 								          </tr>
 								          <?php }} ?>
