@@ -85,7 +85,7 @@ class Asignatura
 	}
 
 	function unsetMalla(){
-		$this->malla = NULL;
+		unset($this->malla);
 	}
 
 	function setDirector($director){

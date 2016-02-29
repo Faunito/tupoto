@@ -80,22 +80,24 @@ class Director extends Profesor
         }
 
         //============ Mallas ================
-        function crearMalla($codigo, $plan, $asignaturas)
+        function crearMalla($codigo, $plan, $lvl, $asignaturas)
         {
             $this->malla = new Malla();
             $this->malla->setCodCarrera($codigo);
             $this->malla->setPlan($plan);
+            $this->malla->setNiveles($lvl);
             $this->malla->setDirector($this);
             $this->malla->setAsignaturas($asignaturas);
             $this->malla->getDBMalla()->add($this->malla);
         }
 
-         function modificarMalla($id, $codigo, $plan, $listaOn, $ListaOff)
+         function modificarMalla($id, $codigo, $plan, $lvl, $listaOn, $listaOff)
         {
             $this->malla = new Malla();
             $this->malla->setIdMalla($id);
             $this->malla->setCodCarrera($codigo);
             $this->malla->setPlan($plan);
+            $this->malla->setNiveles($lvl);
             $this->malla->setDirector($this);
             $this->malla->setAsignaturas($listaOn);
             $this->malla->unsetAsignaturas($listaOff);

@@ -93,11 +93,11 @@ class DirectorController extends ProfesorController{
             return $this->arrayMallas;
         }
 
-        function crearMalla($codigo, $plan, $asignaturas){
-            $this->dir->crearMalla($codigo, $plan, $asignaturas);
+        function crearMalla($codigo, $plan, $lvl, $asignaturas){
+            $this->dir->crearMalla($codigo, $plan, $lvl, $asignaturas);
         }
-         function modificarMalla($id, $codigo, $plan, $listaOn, $listaOff){
-            $this->dir->modificarMalla($id, $codigo, $plan, $listaOn, $listaOff);
+         function modificarMalla($id, $codigo, $plan, $lvl, $listaOn, $listaOff){
+            $this->dir->modificarMalla($id, $codigo, $plan, $lvl, $listaOn, $listaOff);
         }
 
         //============ Asignaturas ================ 
