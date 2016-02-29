@@ -10,6 +10,8 @@
 	    }	    
 
 	    public function output($usuario) {
+	    	$mallas = $this->controller->listarMallas();
+	    	$this->controller->getTemplate()->setData('mallas', $mallas);
 	    	switch ($usuario) {
 	    		case 'Director':
 					$this->controller->getTemplate()->load(ROOT_DIR.TEMPLATES_DIR.'mallas/mallas_director.php');

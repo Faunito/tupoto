@@ -40,21 +40,21 @@
 								        </thead>
 								        <tbody>
 								        <?php 
-								        if(!empty($lista)){
-								        foreach ($lista as $key) {
+								        if(!empty($this->data['mallas'])){
+								        foreach ($this->data['mallas'] as $malla) {
 								        	echo '<tr>';
-								        	echo '<td>'.$key->getCodCarrera().'</td>';
-								    	    echo '<td>'.$key->getPlan().'</td>';
-								    	    echo '<td>'.$key->getNiveles().'</td>';
+								        	echo '<td>'.$malla->getCodCarrera().'</td>';
+								    	    echo '<td>'.$malla->getPlan().'</td>';
+								    	    echo '<td>'.$malla->getNiveles().'</td>';
 								    	    ?>
 								            <td class="center">
-								            	<a class="btn-floating waves-effect waves-light tooltipped" data-position="top" data-delay="50" data-tooltip="Modificar" href="mallas.php?result=consultar&param=<?php echo $key->getIdMalla(); ?>"><i class="material-icons color_primario white-text">edit</i></a>
+								            	<a class="btn-floating waves-effect waves-light tooltipped" data-position="top" data-delay="50" data-tooltip="Modificar" href="mallas.php?result=consultar&param=<?php echo $malla->getIdMalla(); ?>"><i class="material-icons color_primario white-text">edit</i></a>
 											</td>
 											<td class="center">
-								            	<a class="btn-floating waves-effect waves-light red  tooltipped" data-position="top" data-delay="50" data-tooltip="Eliminar" href="mallas.php?result=eliminar&param=<?php echo $key->getIdMalla(); ?>"><i class="material-icons  white-text">clear</i></a>
+								            	<a class="btn-floating waves-effect waves-light red  tooltipped" data-position="top" data-delay="50" data-tooltip="Eliminar" href="mallas.php?result=eliminar&param=<?php echo $malla->getIdMalla(); ?>"><i class="material-icons  white-text">clear</i></a>
 											</td>
 											<td class="center">
-								            	<a class="btn-floating waves-effect waves-light red  tooltipped" data-position="top" data-delay="50" data-tooltip="Eliminar" href="mallas.php?result=modificar&param=<?php echo $key->getIdMalla(); ?>"><i class="mdi mdi-folder-move"></i></a>
+								            	<a class="btn-floating waves-effect waves-light red  tooltipped" data-position="top" data-delay="50" data-tooltip="Eliminar" href="mallas.php?result=modificar&param=<?php echo $malla->getIdMalla(); ?>"><i class="mdi mdi-folder-move"></i></a>
 											</td>
 								          </tr>
 								          <?php }} ?>

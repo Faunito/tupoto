@@ -24,7 +24,7 @@ class Malla
 
     public static function getMallas()
 	{
-        return DBAlumno::getAll();
+        return DBMalla::getAll();
 	}
 	
     //GETTERS
