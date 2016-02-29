@@ -1,6 +1,7 @@
 <?php 
+	require_once('View.php');
 
-	class EvaluacionesView {    
+	class EvaluacionesView extends View {    
 
 	    public function __construct() {
 	    }	    

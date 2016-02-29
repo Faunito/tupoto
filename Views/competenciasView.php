@@ -1,6 +1,7 @@
 <?php 
+	require_once('View.php');
 
-	class CompetenciasView {    
+	class CompetenciasView extends View {    
 
 	    public function __construct() {
 	    }	    

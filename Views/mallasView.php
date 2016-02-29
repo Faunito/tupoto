@@ -1,6 +1,7 @@
 <?php 
+	require_once('View.php');
 
-	class MallasView {    
+	class MallasView extends View {    
 
 	    public function __construct() {
 	    }	    
@@ -35,23 +36,10 @@
 	    	}
 	    }
 
-	    public function result($controller,$action,$post){
-	    	switch ($action['result']) {
-	    		case 'nueva':	
-	    			$codigos=array();
-	    			$asignaturas=$controller->listarAsignaturas();
-	    			foreach ($post as $key => $value) {
-	    				if(strcmp($value,'on')==0){
-	    					array_push($codigos,$key);
-	    					}
-	    				}
-	    			var_dump($codigos);
-	    				
-	    			//$controller->crearMalla(		$post[],
-	    			//								$post['codigo'], 
-					//			    				$post['plan']);
-	    			//TOAST
-	    			//header('Location: mallas.php?action=ver');
+
+	    public function result($controller, $result, $post){
+	    	switch ($result['result']) {
+	    		case 'nueva':
 					//include(ROOT_DIR.TEMPLATES_DIR.'competencias/nueva_competencia.php');
 	    			break;
 	    		case 'modificar':

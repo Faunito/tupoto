@@ -1,6 +1,7 @@
 <?php 
+	require_once('View.php');
 
-	class PracticasView {    
+	class PracticasView extends View {    
 
 	    public function __construct() {
 	    }	    
