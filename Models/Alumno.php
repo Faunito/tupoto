@@ -2,7 +2,7 @@
 require_once ('DBConexion/DBAlumno.php');
 require_once ('Persona.php');
 //require_once ('Practica.php');
-//require_once ('ActividaddCompensacion.php');
+//require_once ('Actividad.php');
 
 class Alumno extends Persona
 {
@@ -31,6 +31,11 @@ class Alumno extends Persona
 	public static function getAlumnos()
 	{
         return DBAlumno::getAll();
+	}
+    
+    public static function getAlumnosAsoc($rutProfesor)
+	{
+        return DBAlumno::getAllAsoc($rutProfesor);
 	}
 
     //SETTERS

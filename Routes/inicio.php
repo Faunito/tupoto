@@ -12,7 +12,17 @@
 	if(isset($_SESSION["usuario"])){
 		$controller = unserialize($_SESSION['usuario']);
 		$view = new InicioView($controller);
-		$view->output(get_class($controller->getDirector()));
+        switch (get_class($controller)) {
+            case 'ProfesorController':
+                $view->output(get_class($controller->getProfesor()));
+                break;
+            case 'DirectorController':
+                $view->output(get_class($controller->getDirector()));
+                break;/*    
+            case 'SecretariaController':
+                view->output(get_class($controller->getSecretaria()));
+                break;*/
+        }
 
 	}else{
 		header('Location: ../index.php');
