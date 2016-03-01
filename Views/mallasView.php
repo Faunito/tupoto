@@ -54,6 +54,13 @@
 	    			$this->controller->getTemplate()->setData('niveles',$niveles);
 	    			$this->controller->getTemplate()->load(ROOT_DIR.TEMPLATES_DIR.'mallas/ver_malla.php');
 	    			break;
+	    		case 'asignar':
+	    			$malla=$this->controller->consultarMalla($action['param']);
+	    			$competencias = $this->controller->listarCompetencias();
+	    			$this->controller->getTemplate()->setData('malla',$malla);
+	    			$this->controller->getTemplate()->setData('competencias', $competencias);
+	    			$this->controller->getTemplate()->load(ROOT_DIR.TEMPLATES_DIR.'mallas/asignar_competencia_malla.php');
+	    			break;
 	    			
 	    		
 	    		default:
@@ -123,11 +130,26 @@
 	    			$this->controller->getTemplate()->redirect('mallas.php');
 	    		
 	    			break;
-	    		case 'ver':
-	    		
+	    		case 'eliminar':
+	    			$this->controller->eliminarMalla( $result['param']);
+	    			$this->controller->getTemplate()->redirect('mallas.php');	
+	    			break;
 	    			break;
 	    		case 'asignar':
-	    		
+	    			$competencias=$this->controller->listarCompetencias();	
+	    			$i=0;
+	    			foreach ($post as $key => $value) {
+	    				if(strcmp($value,'on') == 0){
+	    					foreach ($competencias as $competencia) {
+								if(strcmp($key,$competencia->getIdComp()) == 0){
+									$lista[$i]=$competencia;
+									$i++;
+								}
+	    					}
+	    				}
+	    			}
+	    			$this->controller->asignarCompetenciaMalla($post['codigo'], $lista);
+	    			$this->controller->getTemplate()->redirect('mallas.php');
 	    			break;
 	    		
 	    		default:

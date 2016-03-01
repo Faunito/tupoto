@@ -42,7 +42,6 @@
 									            <th class="center" style="width: 180px">Estado</th>
 									          </tr><th class="center" style="width: 180px">Nivel</th>
 									          </tr>
-
 									        </thead>
 									        <tbody>
 									        <?php 
