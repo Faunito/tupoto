@@ -51,7 +51,7 @@ class Evaluacion
 		$this->profesor;
 	}
 
-	function getEmpleador();
+	function getEmpleador()
 	{
 		return $this->empleador;
 	}

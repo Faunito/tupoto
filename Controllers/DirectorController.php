@@ -137,6 +137,10 @@ class DirectorController extends ProfesorController{
             $this->serializar($this);
             return $this->arrayMallas;
         }
+        
+        function eliminarMalla($id){            
+            $this->dir->eliminarMalla($id); 
+        }   
 
         function crearMalla($codigo, $plan, $lvl, $asignaturas){
             $this->dir->crearMalla($codigo, $plan, $lvl, $asignaturas);
