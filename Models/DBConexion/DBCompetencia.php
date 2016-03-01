@@ -16,6 +16,7 @@ class DBCompetencia Implements ICrud {
         $competencia->setDesComp($res2->DESCRIPCION_DE_COMPETENCIA);
         $competencia->setNomComp($res2->NOMBRE_COMPETENCIA);
 	}
+    
     //probar esta funcion con profesor y director
     public static function getAll(){
             $con = DBSingleton::getInstance()->getDB();
@@ -46,8 +47,8 @@ class DBCompetencia Implements ICrud {
 
 	function modify($var){
         $con = DBSingleton::getInstance()->getDB();
-        $dbh = $con->prepare('UPDATE competencia SET CATEGORIA = :cate, NOMBRE_COMPETENCIA = :nombre,
-                        DESCRIPCION_DE_COMPETENCIA = :desc WHERE ID_COMPETENCIA = :id');
+        $dbh = $con->prepare('UPDATE competencia SET CATEGORIA = :cate, NOMBRE_COMPETENCIA = :nombre,                       DESCRIPCION_DE_COMPETENCIA = :desc WHERE ID_COMPETENCIA = :id');
+
         $dbh->bindParam(':id',$var->getIdComp(),PDO::PARAM_STR);        
         $dbh->bindParam(':cate',$var->getCate(),PDO::PARAM_STR);
         $dbh->bindParam(':nombre',$var->getNomComp(),PDO::PARAM_STR);

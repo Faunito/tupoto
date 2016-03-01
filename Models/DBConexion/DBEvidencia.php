@@ -10,7 +10,6 @@ class DBEvidencia Implements ICrud {
         $res -> execute();
         $res2 = $res -> fetchObject(__CLASS__);
         $evidencia->setIdEvidencia($res2->ID_EVIDENCIA);
-        $evidencia->setIdCompetencia($res2->ID_COMPETENCIA);
         $evidencia->setDescripcion($res2->DESCRIPCION_EVIDENCIA);
         $evidencia->setNivel($res2->NIVEL_EVIDENCIA);
 	}

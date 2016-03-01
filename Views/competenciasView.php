@@ -35,8 +35,8 @@
 	    			$this->controller->getTemplate()->setData('competencias', $competencias);
 					$this->controller->getTemplate()->load(ROOT_DIR.TEMPLATES_DIR.'competencias/listar_competencias.php');
 	    			break;
-	    		case 'consultar':
-					$this->controller->getTemplate()->load(ROOT_DIR.TEMPLATES_DIR.'competencias/ver_competencia.php');
+	    		case 'asignar':
+					
 	    			break;	    		
 	    		default:
 	    			break;
@@ -49,8 +49,8 @@
 	    			$this->controller->crearCompetencia(	$post['tipoCompetencia'], 
 										    				$post['nombre'], 
 										    				$post['descripcion']);
-	    			
-	    			$this->controller->getTemplate()->redirect('competencias.php?action=ver');
+	    			var_dump($post);
+	    			//$this->controller->getTemplate()->redirect('competencias.php?action=ver');
 	    			break;
 	    		case 'modificar':
 	    			$this->controller->modificarCompetencia($result['param'],	
@@ -72,6 +72,7 @@
 	    		case 'consultar':
 	    			$competencia = $this->controller->listarCompetencia($result['param']);
 	    			$this->controller->getTemplate()->setData('competencia', $competencia);
+	    			var_dump($competencia);
 	    			$this->controller->getTemplate()->load(ROOT_DIR.TEMPLATES_DIR.'competencias/modificar_competencia.php');
 	    			break;
 	    		default:
