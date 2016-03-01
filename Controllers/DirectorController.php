@@ -43,19 +43,13 @@ class DirectorController extends ProfesorController{
             return $this->arrayCompetencias;
         }
         
-        function listarCompetencia($id){
-            $res = Competencia::getCompetencia($id);
-            $aux = new Competencia();
-            $aux->setIdComp($res['ID_COMPETENCIA']);
-            $aux->setCate($res['CATEGORIA']);
-            $aux->setDirector($this->dir);
-            $aux->setDesComp($res['DESCRIPCION_DE_COMPETENCIA']);
-            $aux->setNomComp($res['NOMBRE_COMPETENCIA']);
-            return $aux;            
+        function consultarCompetencia($id){
+            $competencia = $this->dir->consultarCompetencia($id);
+            return $competencia;
         }
         
         function crearCompetencia($cate,$nomb,$desc){
-            $this->dir->crearCompetencia($cate,$nomb,$desc);
+            return $this->dir->crearCompetencia($cate,$nomb,$desc);
         }
         
         function modificarCompetencia($id,$cate,$nomb,$desc){            
@@ -65,6 +59,39 @@ class DirectorController extends ProfesorController{
         function eliminarCompetencia($id){            
             $this->dir->eliminarCompetencia($id); 
         }   
+
+        //============ Evidencias ============
+        function getEvidenciasCompetencia($idCompetencia){
+            $evidencias = Evidencia::getEvidenciasCompetencia($idCompetencia);
+            $i=0;
+            $array=array();
+            foreach ($evidencias as $evidencia) {
+                $aux = new Evidencia();
+                $aux->setIdEvidencia($evidencia['ID_EVIDENCIA']);
+                $aux->setDescripcion($evidencia['DESCRIPCION_EVIDENCIA']);
+                $aux->setNivel($evidencia['NIVEL_EVIDENCIA']);
+                $array[$i] = $aux;
+                $i++;
+            }
+            return $array;
+        }
+
+        function consultarEvidencia($id){
+            $evidencia = $this->dir->consultarEvidencia($id);
+            return $evidencia;
+        }
+
+        function crearEvidencia($descripcion, $nivel, $idCompetencia){
+            $this->dir->crearEvidencia($descripcion, $nivel, $idCompetencia);
+        }
+
+        function modificarEvidencia($idCompetencia, $descripcion, $nivel){            
+            $this->dir->modificarEvidencia($idCompetencia, $descripcion, $nivel); 
+        }
+       
+        function eliminarEvidencia($id){            
+            $this->dir->eliminarEvidencia($id); 
+        } 
 
         //============ Mallas ================ 
         function ConsultarMalla($id){

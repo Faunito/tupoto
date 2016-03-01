@@ -27,8 +27,8 @@
 							                <div class=" col s4 input-field">
 						                    	<select name="tipoCompetencia">
 											      	<option value="" disabled selected>Elija un tipo</option>
-											      	<option value="Genérica">Genérica</option>
-											    	<option value="Especéfica">Específica</option>
+											      	<option value="Generica">Genérica</option>
+											    	<option value="Especifica">Específica</option>
 											    </select>
 												<label >Tipo de competencia</label>
 							                </div>
@@ -62,7 +62,7 @@
 									            </div>
 									            <div class="row">
 										            <div class=" col s12 input-field">      
-									                    <textarea id="descripcion" name="descripcion" class="materialize-textarea" length="1000"></textarea>
+									                    <textarea id="descripcion" name="basico" class="materialize-textarea" length="1000"></textarea>
 					        							<label for="descripcion">Descripción</label>
 									                </div>
 										      	</div> 
@@ -79,7 +79,7 @@
 									            </div>
 									            <div class="row">
 										            <div class=" col s12 input-field">      
-									                    <textarea id="descripcion" name="descripcion" class="materialize-textarea" length="1000"></textarea>
+									                    <textarea id="descripcion" name="medio" class="materialize-textarea" length="1000"></textarea>
 					        							<label for="descripcion">Descripción</label>
 									                </div>
 										      	</div> 
@@ -96,7 +96,7 @@
 									            </div>
 									            <div class="row">
 										            <div class=" col s12 input-field">      
-									                    <textarea id="descripcion" name="descripcion" class="materialize-textarea" length="1000"></textarea>
+									                    <textarea id="descripcion" name="avanzado" class="materialize-textarea" length="1000"></textarea>
 					        							<label for="descripcion">Descripción</label>
 									                </div>
 										      	</div> 

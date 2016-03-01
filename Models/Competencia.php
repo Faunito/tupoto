@@ -59,10 +59,7 @@ class Competencia
 	function getDBCompetencia(){
 		return $this->dbcomp;
 	}
-    
-    public static function getCompetencia($id){
-        return DBCompetencia::getCompetencia($id);
-    }
+	
 	//SETTERS
     function setTipoComp($newVal){
         $this->tipoComp = $newVal;

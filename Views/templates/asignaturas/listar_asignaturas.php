@@ -31,8 +31,9 @@
 									            <th class="no-padding" style="width: 100px">Código</th>
 									            <th class="no-padding" style="width: 80px">Nivel</th>
 									            <th class="no-padding" style="width: 80px">Malla</th>
+									            <th class="center no-padding" style="width: 60px">Asignar</th>
 									            <th class="center no-padding" style="width: 60px">Modificar</th>
-								            <th class="center no-padding" style="width: 60">Eliminar</th>
+								            	<th class="center no-padding" style="width: 60">Eliminar</th>
 									          </tr>
 									        </thead>
 									        <tbody>
@@ -45,11 +46,14 @@
 								    	    		echo '<td class="no-padding">'.$asignatura->getNivel().'</td>';
 								    	    		echo '<td class="no-padding">'.$asignatura->getMalla().'</td>';
 								        	?>
-									            <td class="no-padding">
-									            	<a class="btn-floating waves-effect waves-light" href="asignaturas.php?result=consultar&param=<?php echo $asignatura->getId(); ?>"><i class="material-icons color_primario white-text">edit</i></a>
+									        	<td class="center no-padding">
+									            	<a class="btn-floating waves-effect waves-light tooltipped" data-position="top" data-delay="50" data-tooltip="Asignar competencia" href="asignaturas.php?action=asignar&param=<?php echo $asignatura->getId(); ?>"><i class="material-icons orange white-text">note_add</i></a>
 												</td>
-												<td class="no-padding">
-									            	<a class="btn-floating waves-effect waves-light red" href="asignaturas.php?result=eliminar&param=<?php echo $asignatura->getId(); ?>"><i class="material-icons white-text">clear</i></a>
+									            <td class="center no-padding">
+									            	<a class="btn-floating waves-effect waves-light tooltipped" data-position="top" data-delay="50" data-tooltip="Modificar" href="asignaturas.php?result=consultar&param=<?php echo $asignatura->getId(); ?>"><i class="material-icons color_primario white-text">edit</i></a>
+												</td>
+												<td class="center no-padding">
+									            	<a class="btn-floating waves-effect waves-light tooltipped" data-position="top" data-delay="50" data-tooltip="Eliminar" href="asignaturas.php?result=eliminar&param=<?php echo $asignatura->getId(); ?>"><i class="material-icons red white-text">clear</i></a>
 												</td>
 									          </tr>
 								          	<?php }} ?>									          
