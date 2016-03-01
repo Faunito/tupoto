@@ -20,7 +20,7 @@ class DBDetalleEValuacion implements ICrud
     	$con = DBSingleton::getInstance()->getDB();
         $res = $con -> prepare('INSERT INTO evaluacion (ID_EVALUACION, ID_COMPETENCIA, CALIFICACION, OBSERVACION)
         						VALUES (:idval,:idcom,:cali,:obs)');
-        $res -> bindParam(':idval',$var->getEvaluacion()->getIdEvaluacion()),PDO::PARAM_STR);
+        $res -> bindParam(':idval',$var->getEvaluacion()->getIdEvaluacion(),PDO::PARAM_STR);
         $res -> bindParam(':idcom',$var->getCompetencia()->getIdCompetencia(),PDO::PARAM_STR);
         $res -> bindParam(':cali',$var->getCalifiacion(),PDO::PARAM_STR);
         $res -> bindParam(':obs',$var->getObservacion(),PDO::PARAM_STR);
@@ -29,7 +29,7 @@ class DBDetalleEValuacion implements ICrud
     
     public function delete($var)
     {
-    	con = DBSingleton::getInstance()->getDB();
+    	$con = DBSingleton::getInstance()->getDB();
         $dbh = $con->prepare('DELETE FROM evaluacion WHERE ID_EVALUACION =:idval AND ID_COMPETENCIA =:idcom');
         $dbh->bindParam(':idval',$var->getEvaluacion()->getIdEvaluacion(),PDO::PARAM_STR);
         $dbh->bindParam(':idcom',$var->getCompetencia()->getIdCompetencia(),PDO::PARAM_STR);
