@@ -2,27 +2,22 @@
 
 class Especificacion{
 
-	private $idEspecificacion;
+	private $idAsignatura;
     private $idCompetencia;
 	private $nivelCompetencia;
     private $dbespecificacion;
-    private $descripcion;
 
 	function __construct(){
         $this->dbespecificacion = new DBEspecificacion(); 
 	}
-    //GETTERS
-    function getDescripcion(){
-        return $this->descripcion;
-    }
-    
+    //GETTERS 
     function getIdCompetencia(){
         return $this->idCompetencia;
     } 
 
-	function getIdEspecificacion()
+	function getIdAsignatura()
 	{
-		return $this->idEspecificacion;
+		return $this->idAsignatura;
 	}
 
 	function getNivelCompetencia()
@@ -33,14 +28,10 @@ class Especificacion{
     function getDB(){
         return $this->dbespecificacion;
     }
-    //SETTERS
-    function setDescripcion($descripcion){
-        $this->descripcion = $descripcion;
-    }
-    
-	function setIdEspecificacion($idEspecificacion)
+    //SETTERS    
+	function setIdAsignatura($idAsignatura)
 	{
-		$this->idEspecificacion = $idEspecificacion;
+		$this->idAsignatura = $idAsignatura;
 	}
     
 	function setNivelCompetencia($nivelCompetencia)
