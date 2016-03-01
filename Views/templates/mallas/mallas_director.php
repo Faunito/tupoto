@@ -23,7 +23,7 @@
 								        <span class="table-title">Mallas</span>
 								        <div class="actions">
 								          <a href="mallas.php?action=nueva" class="modal-trigger waves-effect btn-flat nopadding"><i class="material-icons right">add_circle</i>Crear Malla</a>
-								          <a href="asignaturas.php?action=ver-asignatura" class="modal-trigger waves-effect btn-flat nopadding"><i class="material-icons right">add_circle</i>Listar Asignatura</a>
+								          <a href="asignaturas.php?action=ver-asignatura" class="modal-trigger waves-effect btn-flat nopadding"><i class="material-icons right">add_circle</i>Listar Asignaturas</a>
 								          <a href="#" class="search-toggle waves-effect btn-flat nopadding"><i class="material-icons">search</i></a>
 								        </div>
 								      </div>
@@ -33,6 +33,7 @@
 								            <th>Codigo</th>
 								            <th>Plan</th>
 								            <th>Niveles</th>
+								            <th class="center no-padding" style="width: 50px">Asignar</th>
 								            <th class="center no-padding" style="width: 50px">Ver</th>
 								            <th class="center no-padding" style="width: 60px">Modificar</th>
 								            <th class="center no-padding" style="width: 60">Eliminar</th>
@@ -47,6 +48,9 @@
 								    	    echo '<td>'.$malla->getPlan().'</td>';
 								    	    echo '<td>'.$malla->getNiveles().'</td>';
 								    	    ?>
+								    	    <td class="center no-padding">
+									            <a class="btn-floating waves-effect waves-light tooltipped" data-position="top" data-delay="50" data-tooltip="Asignar competencia" href="mallas.php?action=asignar&param=<?php echo $malla->getIdMalla(); ?>"><i class="material-icons orange white-text">note_add</i></a>
+											</td>
 								    	    <td class="center no-padding" >
 								            	<a class="btn-floating waves-effect waves-light tooltipped" data-position="top" data-delay="50" data-tooltip="Ver malla" href="mallas.php?action=ver&param=<?php echo $malla->getIdMalla(); ?>"><i class="mdi mdi-eye white-text right"></i></a>
 											</td>
@@ -54,7 +58,7 @@
 								            	<a class="btn-floating waves-effect waves-light tooltipped" data-position="top" data-delay="50" data-tooltip="Modificar" href="mallas.php?action=modificar&param=<?php echo $malla->getIdMalla(); ?>"><i class="material-icons color_primario white-text">edit</i></a>
 											</td>
 											<td class="center no-padding">
-								            	<a class="btn-floating waves-effect waves-light red  tooltipped" data-position="top" data-delay="50" data-tooltip="Eliminar" href="mallas.php?action=eliminar&param=<?php echo $malla->getIdMalla(); ?>"><i class="material-icons  white-text">clear</i></a>
+								            	<a class="btn-floating waves-effect waves-light red  tooltipped" data-position="top" data-delay="50" data-tooltip="Eliminar" href="mallas.php?result=eliminar&param=<?php echo $malla->getIdMalla(); ?>"><i class="material-icons  white-text">clear</i></a>
 											</td>
 								          </tr>
 								          <?php }} ?>
