@@ -18,7 +18,7 @@ class DBAsignatura Implements ICrud {
 
     public static function getAll(){
         $con = DBSingleton::getInstance()->getDB();
-        $resultado = $con -> prepare('SELECT * FROM asignatura');            
+        $resultado = $con -> prepare('SELECT * FROM asignatura  ORDER BY ID_MALLA DESC, NIVEL_ASIGNATURA ASC');            
         $resultado -> execute();
         $lista = $resultado->fetchAll();
         return $lista;

@@ -97,7 +97,8 @@
     $('#data').DataTable( {
     	"sSearchPlaceholder": "Ingrese palabra clave",
         "paging":   false,
-        "info":     false
+        "info":     false,
+        "ordering": false
     } );
 	} );
 	</script>
