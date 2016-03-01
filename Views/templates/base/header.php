@@ -1,15 +1,19 @@
 <?php 
 	if(isset($_SESSION["usuario"])){
 		$controller = unserialize($_SESSION['usuario']);
+		$tipo = '';
 		switch (get_class($controller)) {
 			case 'DirectorController':
 				$usuario = $controller->getDirector();
+				$tipo = 'director';
 				break;
 			case 'ProfesorController':
 				$usuario = $controller->getProfesor();
+				$tipo = 'profesor';
 				break;
 			case 'SecretariaController':
 				//$usuario = $controller->getSecretaria();
+				//$tipo = 'secretaria';
 				break;
 			
 			default:
@@ -53,3 +57,5 @@
             </div>
         </nav>			
     </header>
+    
+    <?php include('boton_flotante.php'); ?>
