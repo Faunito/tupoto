@@ -73,6 +73,7 @@ body{
 .materia{
   height:7em;
   width:10em;
+  color:white;
   border:solid #ccc 1px;
   background:white;
   border-radius:6px;
@@ -100,19 +101,13 @@ body{
 }
 
 .materia:hover {
-  -webkit-transform: scale(1.1);
-  -moz-transform:    scale(1.1);
-  -ms-transform:     scale(1.1);
-  -o-transform:      scale(1.1);
-  box-shadow:#222 5px 5px;
+  -webkit-transform: scale(1.2);
+  -moz-transform:    scale(1.2);
+  -ms-transform:     scale(1.2);
+  -o-transform:      scale(1.2);
   /*.agrandar(1.1)*/;
-  border:solid #000 1px;
   opacity:0.9;
   /*background:#ADE;*/
-}
-
-.materia header:after{
- content:'';//url(http://www.dustball.com/icons/icons/application_cascade.png); 
 }
 
 .det-mat{
@@ -149,7 +144,7 @@ body{
 
 /*Estilos de los departamentos*/
 .CB{
-  background:#B1E5FF;
+  background:#0288D1;
 }
 
 .ST{
