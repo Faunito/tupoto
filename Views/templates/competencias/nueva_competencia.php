@@ -26,8 +26,12 @@
 						            	
 										<div class="row">
 							                <div class=" col s4 input-field">
-							                    <input id="categoria" name="categoria" type="text" class="validate">
-							                    <label for="categoria">Categoria *</label>
+						                    	<select name="tipoCompetencia">
+											      	<option value="" disabled selected>Elija un tipo</option>
+											      	<option value="Genérica">Genérica</option>
+											    	<option value="Especéfica">Específica</option>
+											    </select>
+												<label >Tipo de competencia</label>
 							                </div>
 							                <div class=" col s8 input-field">       
 							                    <input id="nombre" name="nombre" type="text" class="validate">

@@ -15,7 +15,6 @@ class DBCompetencia Implements ICrud {
         $competencia->setDirector($res2->RUT);
         $competencia->setDesComp($res2->DESCRIPCION_DE_COMPETENCIA);
         $competencia->setNomComp($res2->NOMBRE_COMPETENCIA);
-        $competencia->setTipoComp($res2->TIPO_COMPETENCIA);
 	}
     //probar esta funcion con profesor y director
     public static function getAll(){
@@ -37,23 +36,21 @@ class DBCompetencia Implements ICrud {
 
 	function add($var){
         $con = DBSingleton::getInstance()->getDB();
-        $dbh = $con->prepare('INSERT INTO competencia (RUT, CATEGORIA, NOMBRE_COMPETENCIA, DESCRIPCION_DE_COMPETENCIA, TIPO_COMPETENCIA) VALUES (:rut,:cate,:nombre,:desc,:tipo)');
+        $dbh = $con->prepare('INSERT INTO competencia (RUT, CATEGORIA, NOMBRE_COMPETENCIA, DESCRIPCION_DE_COMPETENCIA) VALUES (:rut,:cate,:nombre,:desc)');
         $dbh->bindParam(':rut', $var->getDirector()->getRut(),PDO::PARAM_STR);
         $dbh->bindParam(':cate', $var->getCate(),PDO::PARAM_STR);
         $dbh->bindParam(':nombre', $var->getNomComp(),PDO::PARAM_STR);
         $dbh->bindParam(':desc', $var->getDesComp(),PDO::PARAM_STR);
-        $dbh->bindParam(':tipo', $var->getTipoComp(),PDO::PARAM_STR);
         $dbh->execute();
 	}
 
 	function modify($var){
         $con = DBSingleton::getInstance()->getDB();
         $dbh = $con->prepare('UPDATE competencia SET CATEGORIA = :cate, NOMBRE_COMPETENCIA = :nombre,
-                        DESCRIPCION_DE_COMPETENCIA = :desc, TIPO_COMPETENCIA =:tipo WHERE ID_COMPETENCIA = :id');
+                        DESCRIPCION_DE_COMPETENCIA = :desc WHERE ID_COMPETENCIA = :id');
         $dbh->bindParam(':id',$var->getIdComp(),PDO::PARAM_STR);        
         $dbh->bindParam(':cate',$var->getCate(),PDO::PARAM_STR);
         $dbh->bindParam(':nombre',$var->getNomComp(),PDO::PARAM_STR);
-        $dbh->bindParam(':tipo',$var->getTipoComp(),PDO::PARAM_STR);
         $dbh->bindParam(':desc',$var->getDesComp(),PDO::PARAM_STR);
         $dbh->execute();
 	}
