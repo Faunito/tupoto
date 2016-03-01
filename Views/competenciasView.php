@@ -35,9 +35,7 @@
 	    			$this->controller->getTemplate()->setData('competencias', $competencias);
 					$this->controller->getTemplate()->load(ROOT_DIR.TEMPLATES_DIR.'competencias/listar_competencias.php');
 	    			break;
-	    		case 'asignar':
-					
-	    			break;	    		
+					  		
 	    		default:
 	    			break;
 	    	}
@@ -74,6 +72,10 @@
 	    			$this->controller->getTemplate()->setData('competencia', $competencia);
 	    			var_dump($competencia);
 	    			$this->controller->getTemplate()->load(ROOT_DIR.TEMPLATES_DIR.'competencias/modificar_competencia.php');
+	    			break;
+	    		case 'mostrar':
+	    			$this->controller->getTemplate()->load(ROOT_DIR.TEMPLATES_DIR.'competencias/ver_competencia.php');
+					
 	    			break;
 	    		default:
 	    			break;

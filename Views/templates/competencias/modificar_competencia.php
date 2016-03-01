@@ -30,7 +30,7 @@
 					                </div>
 					            </div>
 					            <div class="row">
-						            <div class=" col s4 offset-s4 input-field">      
+						            <div class=" col s4 offset-s4 input-field">
 					                    <textarea id="descripcion" name="descripcion" class="materialize-textarea" length="1000"><?php echo $this->data['competencia']->getDesComp(); ?></textarea>
 	        							<label for="descripcion">Descripción</label>
 					                </div>
