@@ -96,6 +96,18 @@
 	    			$this->controller->getTemplate()->load(ROOT_DIR.TEMPLATES_DIR.'competencias/modificar_competencia.php');
 	    			break;
 	    		case 'mostrar':
+	    			$competencia = $this->controller->consultarCompetencia($result['param']);
+	    			$evidencias = $this->controller->getEvidenciasCompetencia($competencia->getIdComp());
+	    			$this->controller->getTemplate()->setData('competencia', $competencia);
+	    			foreach ($evidencias as $evidencia) {
+	    				if($evidencia->getNivel() == 1){
+	    					$this->controller->getTemplate()->setData('basico', $evidencia);
+	    				}elseif ($evidencia->getNivel() == 2) {
+	    					$this->controller->getTemplate()->setData('medio', $evidencia);
+	    				}elseif ($evidencia->getNivel() == 3) {
+	    					$this->controller->getTemplate()->setData('avanzado', $evidencia);
+	    				}
+	    			}
 	    			$this->controller->getTemplate()->load(ROOT_DIR.TEMPLATES_DIR.'competencias/ver_competencia.php');
 					
 	    			break;

@@ -5,6 +5,7 @@
 	require_once(ROOT_DIR . MODELS_DIR . 'Competencia.php');
 	?>
 	<main id="sb-site" class="blue-grey lighten-5">
+	<link rel="stylesheet" href="<?php echo RESOURCES_DIR ?>css/jquery.jqplot.css">
 		<div class="row margen-top">
 			<div class="col s10 offset-s1">
 				<div class="card">
@@ -13,11 +14,12 @@
 				        <span class="card-title"><strong><h4><a href="javascript:history.go(-1)"><i class="material-icons small white-text left" style="font-size: 40px">arrow_back</i></a>Competencia</h4></strong></span>
 				    </div>
 					<div class="card-content">
-						<div style="margin-bottom: 0%;" class="row">
+						<div class="row">
+					    	<div style="margin-bottom: 0%;" class="row">
 							<div class="col s3">
 								<div style="height: 22%; font-size: 18px;" class="z-depth-2 card teal darken-3 white-text">
 									<div  class="card-content center">
-										<h7>Competencia</h7>
+										<h7><?php echo $this->data['competencia']->getNomComp(); ?></h7>
 									</div>
 								</div>
 							</div>
@@ -59,9 +61,9 @@
 							<div class="col s3">
 								<div style="height: 50%;" class="z-depth-2 card teal darken-3 white-text">
 									<div  class="card-content">
-										<h6 style="font-size: 18px;">Soluciones informáticas (DISSOL)</h6>
+										<h6 style="font-size: 18px;">Descripción de competencia:</h6>
 										<p>
-										Diseña, construye e integra soluciones tecnológicas considerando elementos de software, hardware, telecomunicaciones y automatización, para agregar valor a las organizaciones públicas y privadas, y a través de éstas a la sociedad.
+										<?php echo $this->data['competencia']->getDesComp(); ?>
 										</p>
 									</div>
 								</div>
@@ -71,9 +73,7 @@
 									<div style="height: 50%;" class="z-depth-2 card teal darken-3 white-text">
 										<div  class="card-content">
 											<p>
-											Construya algoritmos utilizando un lenguaje de programación.
-											Implemente medios de comunicación entre dispositivos digitales.
-											Realice un levantamiento de requerimientos
+											<?php echo $this->data['basico']->getDescripcion(); ?>
 											</p>
 										</div>
 									</div>
@@ -82,8 +82,7 @@
 									<div style="height: 50%;" class="z-depth-2 card teal darken-3 white-text">
 										<div  class="card-content">
 											<p>
-											Implemente una solucióninformática con metodologías orientadas a objetos o estructurados a partir de un diseño.
-											Diseñar un sistema de comunicaciones utilizando protocolos y hardware apropiado.
+											<?php echo $this->data['medio']->getDescripcion(); ?>
 											</p>
 										</div>
 									</div>
@@ -92,24 +91,41 @@
 									<div style="height: 50%;" class="z-depth-2 card teal darken-3 white-text">
 										<div  class="card-content">
 											<p>
-											Realice un diseño e implementación de sistemas de software orientados a objetos o estructurado, utilizando un proceso de desarrollo de software.
-											Realice un diseño e implementación de sistemas de software de apoyo a la toma de decisiones.
+											<?php echo $this->data['avanzado']->getDescripcion(); ?>
 											</p>
 										</div>
 									</div>
 								</div>
 							</div>
-						</div>			      
+						</div>
+					    </div>
+					    <div id="Grafic"></div>
+					  	</div>
 					</div>
 				</div>
 			</div>
 		</div>
 	</main>
-
-
-	<?php
+	<?php 
 	require_once(ROOT_DIR . TEMPLATES_DIR . 'base/scripts.php');
 	?>
+	<script src="<?php echo RESOURCES_DIR ?>js/jquery.jqplot.js"></script>
+	<script src="<?php echo RESOURCES_DIR ?>js/jqplot.bubbleRenderer.js"></script>
+	<script>
+	$(document).ready(function(){
+    var arr = [[10, 10, 20, {label:"Acura", color:'sandybrown'}], 
+    [15, 15, 20, {label:"Alfa Romeo", color:'skyblue'}], 
+    [8, 4, 20, {label:"AM General", color:"salmon"}], [6, 2, 10, {color:"papayawhip"}], 
+    [5, 15, 21, "Audi"], [1, 2,20], [2, 13, 5, "Bugatti"]];
+     
+    plot1c = $.jqplot('Grafic',[arr],{
+        title: '<?php echo $this->data['competencia']->getNomComp(); ?>',
+        seriesDefaults:{
+            renderer: $.jqplot.BubbleRenderer
+        	}              
+    	});
+	});
+	</script>
 	<?php
 	require_once(ROOT_DIR . TEMPLATES_DIR . 'base/footer.php');
     ?>

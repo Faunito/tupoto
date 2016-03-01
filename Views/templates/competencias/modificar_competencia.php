@@ -27,27 +27,27 @@
 					            <div class="card">
 									<div class="card-content">
 										<div class="row">
-		<!-- SELECT Tipo competencia -->
-        <div class=" col s4 input-field">
-        	<select name="tipoCompetencia">
-		      	<option value="" disabled>Elija un tipo</option>
-		      	<option value="Generica"
-	      	<?php 
-		      	if(strcmp($this->data['competencia']->getCate(), 'Generica') == 0){
-		      		echo 'selected'; 
-		      	}
-	      	?>
-		      	>Genérica</option>
-		    	<option value="Especifica"
-			<?php 
-		      	if(strcmp($this->data['competencia']->getCate(), 'Especifica') == 0){
-		      		echo 'selected'; 
-		      	}
-	      	?>
-		    	>Específica</option>
-		    </select>
-			<label >Tipo de competencia</label>
-        </div>
+											<!-- SELECT Tipo competencia -->
+									        <div class=" col s4 input-field">
+									        	<select name="tipoCompetencia">
+											      	<option value="" disabled>Elija un tipo</option>
+											      	<option value="Generica"
+										      	<?php 
+											      	if(strcmp($this->data['competencia']->getCate(), 'Generica') == 0){
+											      		echo 'selected'; 
+											      	}
+										      	?>
+											      	>Genérica</option>
+											    	<option value="Especifica"
+												<?php 
+											      	if(strcmp($this->data['competencia']->getCate(), 'Especifica') == 0){
+											      		echo 'selected'; 
+											      	}
+										      	?>
+											    	>Específica</option>
+											    </select>
+												<label >Tipo de competencia</label>
+									        </div>
 											<!-- Nombre -->
 							                <div class=" col s8 input-field">       
 							                    <input id="nombre" name="nombre" type="text" class="validate" value="<?php echo $this->data['competencia']->getNomComp(); ?>">

@@ -33,7 +33,7 @@
 									            <th class="no-padding" style="width: 80px">Malla</th>
 									            <th class="center no-padding" style="width: 60px">Asignar</th>
 									            <th class="center no-padding" style="width: 60px">Modificar</th>
-								            	<th class="center no-padding" style="width: 60">Eliminar</th>
+								            	<th class="center no-padding" style="width: 60px">Eliminar</th>
 									          </tr>
 									        </thead>
 									        <tbody>
