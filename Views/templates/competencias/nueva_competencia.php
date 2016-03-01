@@ -59,7 +59,7 @@
 									            </div>
 									            <div class="row">
 										            <div class=" col s12 input-field">      
-									                    <textarea id="descripcion" name="descripcion" class="materialize-textarea" length="1000"></textarea>
+									                    <textarea id="descripcion" name="basico" class="materialize-textarea" length="1000"></textarea>
 					        							<label for="descripcion">Descripción</label>
 									                </div>
 										      	</div> 
@@ -76,7 +76,7 @@
 									            </div>
 									            <div class="row">
 										            <div class=" col s12 input-field">      
-									                    <textarea id="descripcion" name="descripcion" class="materialize-textarea" length="1000"></textarea>
+									                    <textarea id="descripcion" name="medio" class="materialize-textarea" length="1000"></textarea>
 					        							<label for="descripcion">Descripción</label>
 									                </div>
 										      	</div> 
@@ -93,7 +93,7 @@
 									            </div>
 									            <div class="row">
 										            <div class=" col s12 input-field">      
-									                    <textarea id="descripcion" name="descripcion" class="materialize-textarea" length="1000"></textarea>
+									                    <textarea id="descripcion" name="avanzado" class="materialize-textarea" length="1000"></textarea>
 					        							<label for="descripcion">Descripción</label>
 									                </div>
 										      	</div> 
