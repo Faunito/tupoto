@@ -28,6 +28,13 @@ class Director extends Profesor
     }  
 
         //============ Competencias ================
+        function consultarCompetencia($id){            
+            $this->competencia = new Competencia();
+            $this->competencia->setIdComp($id);
+            $this->competencia->setDirector($this);
+            return $this->competencia->getDBCompetencia()->GetInstance($this->competencia); 
+        }
+
     	function crearCompetencia($cate,$nomb,$desc){
             $this->competencia = new Competencia();
             $this->competencia->setCate($cate);

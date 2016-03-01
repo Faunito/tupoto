@@ -43,15 +43,9 @@ class DirectorController extends ProfesorController{
             return $this->arrayCompetencias;
         }
         
-        function listarCompetencia($id){
-            $res = Competencia::getCompetencia($id);
-            $aux = new Competencia();
-            $aux->setIdComp($res['ID_COMPETENCIA']);
-            $aux->setCate($res['CATEGORIA']);
-            $aux->setDirector($this->dir);
-            $aux->setDesComp($res['DESCRIPCION_DE_COMPETENCIA']);
-            $aux->setNomComp($res['NOMBRE_COMPETENCIA']);
-            return $aux;            
+        function consultarCompetencia($id){
+            $competencia = $this->dir->consultarCompetencia($id);
+            return $competencia;
         }
         
         function crearCompetencia($cate,$nomb,$desc){

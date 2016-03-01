@@ -69,7 +69,7 @@
 
 	    			break;
 	    		case 'consultar':
-	    			$competencia = $this->controller->listarCompetencia($result['param']);
+	    			$competencia = $this->controller->consultarCompetencia($result['param']);
 	    			$this->controller->getTemplate()->setData('competencia', $competencia);
 	    			$this->controller->getTemplate()->load(ROOT_DIR.TEMPLATES_DIR.'competencias/modificar_competencia.php');
 	    			break;
