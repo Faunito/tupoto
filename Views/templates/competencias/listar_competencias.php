@@ -31,7 +31,7 @@
 								        <thead>
 								          <tr>
 								            <th>Nombre</th>
-								            <th style="width: 180px">Categoria</th>
+								            <th class="no-padding" style="width: 100px">Categoria</th>
 								            <th class="center no-padding" style="width: 60px">Modificar</th>
 								            <th class="center no-padding" style="width: 60">Eliminar</th>
 								          </tr>
@@ -42,12 +42,12 @@
 								        foreach ($this->data['competencias'] as $key) {
 								        	echo '<tr>';
 								        	echo '<td>'.$key->getNomComp().'</td>';
-								    	    echo '<td>'.$key->getCate().'</td>';
+								    	    echo '<td class="no-padding">'.$key->getCate().'</td>';
 								    	    ?>
-								            <td class="center">
+								            <td class="center no-padding">
 								            	<a class="btn-floating waves-effect waves-light tooltipped" data-position="top" data-delay="50" data-tooltip="Modificar" href="competencias.php?result=consultar&param=<?php echo $key->getIdComp(); ?>"><i class="material-icons color_primario white-text">edit</i></a>
 											</td>
-											<td class="center">
+											<td class="center no-padding">
 								            	<a class="btn-floating waves-effect waves-light red  tooltipped" data-position="top" data-delay="50" data-tooltip="Eliminar" href="competencias.php?result=eliminar&param=<?php echo $key->getIdComp(); ?>"><i class="material-icons  white-text">clear</i></a>
 											</td>
 								          </tr>
