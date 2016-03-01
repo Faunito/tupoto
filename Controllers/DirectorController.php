@@ -91,7 +91,24 @@ class DirectorController extends ProfesorController{
        
         function eliminarEvidencia($id){            
             $this->dir->eliminarEvidencia($id); 
-        } 
+        }
+        
+        //============ Especificacion de evidencias ================
+        function crearEspecificcion($idAsignatura,$idCompetencia,$nivelCompetencia){
+           $this->dir->crearEspecificacion($idEspecificacion,$idCompetencia,$nivelCompetencia,$descripcion); 
+        }
+        
+        function modificarEspecificacion($idAsignatura,$idCompetencia,$nivelCompetencia){            
+            $this->dir->modificarEspecificacion($idAsignatura,$idCompetencia,$nivelCompetencia); 
+        }
+       
+        function eliminarEspecificacion($idAsignatura,$idCompetencia){            
+            $this->dir->eliminarEvidencia($idAsignatura,$idCompetencia); 
+        }
+        
+        function listarEspecificacion($idAsignatura){
+            $this->dir->listarEspecificacion($idAsignatura);
+        }
 
         //============ Mallas ================ 
         function ConsultarMalla($id){
