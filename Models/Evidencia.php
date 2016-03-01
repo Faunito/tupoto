@@ -6,10 +6,9 @@ class Evaluacion
 {
 
 	private $idEvidencia;    
-	private $idCompetencia;
+	private $competencia;
 	private $descripcion;
 	private $nivelEvidencia;
-  
 	private $dbevidencia;
 
 	function __construct()
@@ -27,7 +26,7 @@ class Evaluacion
 
 	function getIdCompetencia()
 	{
-		return $this->idCompetencia;
+		return $this->competencia;
 	}
 
 	function getDescripcion()
@@ -40,6 +39,11 @@ class Evaluacion
 		return $this->nivelEvidencia;
 	}
 
+    function getDBEvidencia()
+    {
+        return $this->dbevidencia;
+    }
+    
 	//SETTERS
 	function setIdEvidencia($idEvidencia)
 	{
@@ -48,7 +52,7 @@ class Evaluacion
 
 	function setIdCompetencia($idCompetencia)
 	{
-		$this->idCompetencia = $idCompetencia;
+		$this->competencia = $idCompetencia;
 	}
 
 	function setDescripcion($descripcion)
