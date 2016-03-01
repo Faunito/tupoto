@@ -8,7 +8,6 @@ class DBEvidencia Implements ICrud {
         $res = $con->prepare('SELECT * FROM evidencia where ID_EVIDENCIA = :id');
         $res->bindParam(':id', $evidencia->getIdEvidencia(), PDO::PARAM_STR);        
         $res->execute();
-
         $res2 = $res->fetchObject(__CLASS__);
         $evidencia->setIdEvidencia($res2->ID_EVIDENCIA);
         $evidencia->setDescripcion($res2->DESCRIPCION_EVIDENCIA);
