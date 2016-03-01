@@ -52,27 +52,28 @@
 									          </tr>
 									        </thead>
 									        <tbody>
-									           <?php 
-										        if(!empty($this->data['asignaturas'])){
-										        	foreach ($this->data['asignaturas'] as $asignatura) 
-										        	{
-										        	echo '<tr>';
-										        	echo '<td>'.$asignatura->getNombre().'</td>';
-										    	    echo '<td class="no-padding">'.$asignatura->getCodigo().'</td>';
-										    	    echo '<td class="no-padding">'.$asignatura->getNivel().'</td>';
-										    	    ?>
-									            <td class="center">
-											       <div class="switch">
-											       	<label>
-											       	Quitar
-												    <input id="<?php echo $asignatura->getId(); ?>" <?php if(!empty($asignatura->getMalla())){ echo 'checked';} ?> name="<?php echo $asignatura->getId(); ?>" type="checkbox">
-												    <span class="lever"></span>
-												    Agregar
-												    </label>
-												  </div>									     
-												</td>
-									          </tr>
-									          <?php }} ?>
+           <?php 
+	        if(!empty($this->data['asignaturas'])){
+	        	foreach ($this->data['asignaturas'] as $asignatura) 
+	        	{
+	        		if(empty($asignatura->getMalla()) || $asignatura->getMalla() == $this->data['malla']->getIdMalla() ){
+	        			echo '<tr>';
+	        	echo '<td>'.$asignatura->getNombre().'</td>';
+	    	    echo '<td class="no-padding">'.$asignatura->getCodigo().'</td>';
+	    	    echo '<td class="no-padding">'.$asignatura->getNivel().'</td>';
+	    	    ?>
+            <td class="center">
+		       <div class="switch">
+		       	<label>
+		       	Quitar
+			    <input id="<?php echo $asignatura->getId(); ?>" <?php if(!empty($asignatura->getMalla()) && $asignatura->getMalla() == $this->data['malla']->getIdMalla()){ echo 'checked';} ?> name="<?php echo $asignatura->getId(); ?>" type="checkbox">
+			    <span class="lever"></span>
+			    Agregar
+			    </label>
+			  </div>									     
+			</td>
+          </tr>
+          <?php }} }?>
 								        	</tbody>
 							      		</table>
 							    	</div>
