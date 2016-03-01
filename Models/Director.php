@@ -3,6 +3,7 @@ require_once ('Malla.php');
 require_once ('Profesor.php');
 require_once ('DBConexion/DBDirector.php');
 require_once ('Competencia.php');
+require_once ('Evidencia.php');
 //require_once ('../autoload.php');
 //equire_once ('ActividaddCompensacion.php');
 
@@ -12,6 +13,7 @@ class Director extends Profesor
 	private $carrera;
 	private $facultad;
 	private $competencia;
+    private $evidencia;
     private $asignatura;
     private $malla;
 
@@ -41,7 +43,7 @@ class Director extends Profesor
             $this->competencia->setNomComp($nomb);
             $this->competencia->setDesComp($desc);
             $this->competencia->setDirector($this);
-            $this->competencia->getDBCompetencia()->add($this->competencia);        
+            return $this->competencia->getDBCompetencia()->add($this->competencia);        
     	}
         
         function modificarCompetencia($id,$cate,$nomb,$desc){
@@ -58,6 +60,35 @@ class Director extends Profesor
             $this->competencia = new Competencia();
             $this->competencia->setIdComp($id);
             $this->competencia->getDBCompetencia()->delete($this->competencia);
+        }
+
+        //============ Evidencias ================
+        function consultarEvidencia($id){  
+            $this->competencia = new Evidencia();
+            $this->competencia->setIdEvidencia($id);
+            return $this->competencia->getDBEvidencia()->GetInstance($this->competencia); 
+        }
+
+        function crearEvidencia($descripcion, $nivel, $idCompetencia){
+            $this->evidencia = new Evidencia();
+            $this->evidencia->setDescripcion($descripcion);
+            $this->evidencia->setNivel($nivel);
+            $this->evidencia->setIdCompetencia($idCompetencia);
+            $this->evidencia->getDBEvidencia()->add($this->evidencia);        
+        }
+
+        function modificarEvidencia($idCompetencia, $descripcion, $nivel){
+            $this->evidencia = new Evidencia();
+            $this->evidencia->setIdCompetencia($idCompetencia);
+            $this->evidencia->setDescripcion($descripcion);
+            $this->evidencia->setNivel($nivel);
+            $this->evidencia->getDBEvidencia()->modify($this->evidencia);
+        }
+        
+        function eliminarEvidencia($id){
+            $this->evidencia = new Evidencia();
+            $this->evidencia->setIdEvidencia($id);
+            $this->evidencia->getDBEvidencia()->delete($this->evidencia);
         }
 
         //============ Asignaturas ================

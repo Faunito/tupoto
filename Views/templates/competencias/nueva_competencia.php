@@ -23,11 +23,14 @@
 				            <div class="col s6 offset-s3">
 					            <div class="card">
 									<div class="card-content">
-						            	
 										<div class="row">
 							                <div class=" col s4 input-field">
-							                    <input id="categoria" name="categoria" type="text" class="validate">
-							                    <label for="categoria">Categoria *</label>
+						                    	<select name="tipoCompetencia">
+											      	<option value="" disabled selected>Elija un tipo</option>
+											      	<option value="Generica">Genérica</option>
+											    	<option value="Especifica">Específica</option>
+											    </select>
+												<label >Tipo de competencia</label>
 							                </div>
 							                <div class=" col s8 input-field">       
 							                    <input id="nombre" name="nombre" type="text" class="validate">
@@ -35,7 +38,7 @@
 							                </div>
 								        </div>
 								        <div class="row">
-								            <div class=" col s12 input-field">      
+								            <div class=" col s12 input-field">
 							                    <textarea id="descripcion" name="descripcion" class="materialize-textarea" length="1000"></textarea>
 			        							<label for="descripcion">Descripción</label>
 							                </div>

@@ -46,16 +46,30 @@
 	    public function result($result, $post){
 	    	switch ($result['result']) {
 	    		case 'nueva':
-	    			$this->controller->crearCompetencia(	$post['categoria'], 
-										    				$post['nombre'], 
-										    				$post['descripcion']);
+	    			$competencia = $this->controller->crearCompetencia(	$post['tipoCompetencia'], 
+													    				$post['nombre'], 
+													    				$post['descripcion']);
+	    			$this->controller->crearEvidencia($post['basico'], 1, $competencia);
+	    			$this->controller->crearEvidencia($post['medio'], 2, $competencia);
+	    			$this->controller->crearEvidencia($post['avanzado'], 3, $competencia);
 	    			$this->controller->getTemplate()->redirect('competencias.php?action=ver');
 	    			break;
 	    		case 'modificar':
 	    			$this->controller->modificarCompetencia($result['param'],	
-			    											$post['categoria'], 
+			    											$post['tipoCompetencia'], 
 										    				$post['nombre'], 
 										    				$post['descripcion']);
+
+	    			$this->controller->modificarEvidencia(	$result['param'], 
+										    				$post['basico'], 
+										    				1);
+	    			$this->controller->modificarEvidencia(	$result['param'], 
+										    				$post['medio'], 
+										    				2);
+	    			$this->controller->modificarEvidencia(	$result['param'], 
+										    				$post['avanzado'], 
+										    				3);
+
 	    			$this->controller->getTemplate()->redirect('competencias.php?action=ver');		    		
 	    			break;
 	    		case 'ver':
@@ -68,9 +82,19 @@
 	    		case 'asignar':
 
 	    			break;
-	    		case 'consultar':
+	    		case 'consultar':	//muestra los datos en el form para modificarlos
 	    			$competencia = $this->controller->consultarCompetencia($result['param']);
+	    			$evidencias = $this->controller->getEvidenciasCompetencia($competencia->getIdComp());
 	    			$this->controller->getTemplate()->setData('competencia', $competencia);
+	    			foreach ($evidencias as $evidencia) {
+	    				if($evidencia->getNivel() == 1){
+	    					$this->controller->getTemplate()->setData('basico', $evidencia);
+	    				}elseif ($evidencia->getNivel() == 2) {
+	    					$this->controller->getTemplate()->setData('medio', $evidencia);
+	    				}elseif ($evidencia->getNivel() == 3) {
+	    					$this->controller->getTemplate()->setData('avanzado', $evidencia);
+	    				}
+	    			}
 	    			$this->controller->getTemplate()->load(ROOT_DIR.TEMPLATES_DIR.'competencias/modificar_competencia.php');
 	    			break;
 	    		default:

@@ -32,6 +32,7 @@
 								          <tr>
 								            <th>Nombre</th>
 								            <th class="no-padding" style="width: 100px">Categoria</th>
+								            <th class="center no-padding" style="width: 60px">Ver</th>
 								            <th class="center no-padding" style="width: 60px">Modificar</th>
 								            <th class="center no-padding" style="width: 60">Eliminar</th>
 								          </tr>
@@ -44,6 +45,9 @@
 								        	echo '<td>'.$key->getNomComp().'</td>';
 								    	    echo '<td class="no-padding">'.$key->getCate().'</td>';
 								    	    ?>
+								    	    <td class="center no-padding" >
+								            	<a class="btn-floating waves-effect waves-light tooltipped" data-position="top" data-delay="50" data-tooltip="Ver competencia" href="competencia.php?action=consultar&param=<?php echo $key->getIdComp(); ?>"><i class="mdi mdi-eye white-text right"></i></a>
+											</td>
 								            <td class="center no-padding">
 								            	<a class="btn-floating waves-effect waves-light tooltipped" data-position="top" data-delay="50" data-tooltip="Modificar" href="competencias.php?result=consultar&param=<?php echo $key->getIdComp(); ?>"><i class="material-icons color_primario white-text">edit</i></a>
 											</td>

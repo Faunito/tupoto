@@ -2,7 +2,7 @@
 require_once ('Competencia.php');
 require_once ('DBConexion/DBEvidencia.php');
 
-class Evaluacion
+class Evidencia
 {
 
 	private $idEvidencia;    
@@ -17,6 +17,9 @@ class Evaluacion
 	}
 
 	//METODOS
+	public static function getEvidenciasCompetencia($idCompetencia){
+		return DBEvidencia::getAllAsoc($idCompetencia);
+	}
 
 	//GETTER
 	function getIdEvidencia()
@@ -62,7 +65,7 @@ class Evaluacion
 
 	function setNivel($nivel)
 	{
-		$this->nivel = $nivel;
+		$this->nivelEvidencia = $nivel;
 	}
 }
 ?>

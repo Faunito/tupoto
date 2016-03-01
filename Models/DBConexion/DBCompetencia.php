@@ -4,10 +4,10 @@ require_once('ICrud.php');
 class DBCompetencia Implements ICrud {
 
 	function GetInstance($competencia){
-       $con = DBSingleton::getInstance()->getDB();
-       $res = $con -> prepare('SELECT * FROM competencia where ID_COMPETENCIA =:id');
-        $res -> bindParam(':id',$competencia->getIdComp(),PDO::PARAM_STR);        
-        $res -> execute();
+        $con = DBSingleton::getInstance()->getDB();
+        $res = $con->prepare('SELECT * FROM competencia where ID_COMPETENCIA =:id');
+        $res->bindParam(':id', $competencia->getIdComp(), PDO::PARAM_STR);        
+        $res->execute();
         //guardar respuesta en objeto php
         $res2 = $res -> fetchObject(__CLASS__);
         $competencia->setIdComp($res2->ID_COMPETENCIA);
@@ -44,12 +44,15 @@ class DBCompetencia Implements ICrud {
         $dbh->bindParam(':nombre', $var->getNomComp(),PDO::PARAM_STR);
         $dbh->bindParam(':desc', $var->getDesComp(),PDO::PARAM_STR);
         $dbh->execute();
+        $idevidencia = $con->lastInsertId();
+        return $idevidencia;
 	}
 
 	function modify($var){
         $con = DBSingleton::getInstance()->getDB();
         $dbh = $con->prepare('UPDATE competencia SET CATEGORIA = :cate, NOMBRE_COMPETENCIA = :nombre,
                         DESCRIPCION_DE_COMPETENCIA = :desc WHERE ID_COMPETENCIA = :id');
+
         $dbh->bindParam(':id',$var->getIdComp(),PDO::PARAM_STR);        
         $dbh->bindParam(':cate',$var->getCate(),PDO::PARAM_STR);
         $dbh->bindParam(':nombre',$var->getNomComp(),PDO::PARAM_STR);
