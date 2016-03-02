@@ -79,8 +79,21 @@
 	    		case 'asignar':
 	    			$competencia = $this->controller->consultarCompetencia($result['param']);
 	    			$asignaturas = $this->controller->listarAsignaturas();
+	    			$evidencias = $this->controller->getEvidenciasCompetencia($result['param']);
+	    			//PROBLEMAS CON VARIAS EVIDENCIAS DEL MISMO NIVEL
+	    			foreach ($evidencias as $evidencia) {
+	    				if($evidencia->getNivel()==1)
+	    				{
+	    					$this->controller->getTemplate()->setData('basico', $evidencia);
+	    				}elseif ($evidencia->getNivel()==2) {
+	    					$this->controller->getTemplate()->setData('medio', $evidencia);
+	    				}elseif ($evidencia->getNivel()==3) {
+	    					$this->controller->getTemplate()->setData('avanzado', $evidencia);
+	    				}
+	    			}
 	    			$this->controller->getTemplate()->setData('competencia', $competencia);
 	    			$this->controller->getTemplate()->setData('asignaturas', $asignaturas);
+	    			
 	    			$this->controller->getTemplate()->load(ROOT_DIR.TEMPLATES_DIR.'competencias/asignar_competencia.php');
 	    			break;
 	    		case 'consultar':	//muestra los datos en el form para modificarlos

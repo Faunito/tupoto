@@ -134,7 +134,6 @@
 	    			$this->controller->eliminarMalla( $result['param']);
 	    			$this->controller->getTemplate()->redirect('mallas.php');	
 	    			break;
-	    			break;
 	    		case 'asignar':
 	    			$competencias=$this->controller->listarCompetencias();	
 	    			$i=0;
