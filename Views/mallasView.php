@@ -109,10 +109,10 @@
 									}
 									$listaOn[$i]=$asignatura;
 									$i++;
-	    					}
-	    				}
-	    				
-	    			}
+		    					}
+		    				}
+		    				
+		    			}
 	    			}
 	    			foreach ($asignaturas as $asignatura) {
 	    				$existe=false;
