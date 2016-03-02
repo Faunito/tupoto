@@ -109,7 +109,12 @@ class DirectorController extends ProfesorController{
         function listarEspecificacion($idAsignatura){
             $this->dir->listarEspecificacion($idAsignatura);
         }
-
+        //============ Mallas Puede_Impartir Competencias ================
+        function asignarCompetenciaMalla($idMalla,$lista){
+            foreach ($lista as $competencia) {
+                $this->dir->asignarCompetenciaMalla($idMalla,$competencia->getIdComp());           
+            }
+        }       
         //============ Mallas ================ 
         function ConsultarMalla($id){
             $malla = Malla::getMalla($id);
@@ -137,6 +142,10 @@ class DirectorController extends ProfesorController{
             $this->serializar($this);
             return $this->arrayMallas;
         }
+        
+        function eliminarMalla($id){            
+            $this->dir->eliminarMalla($id); 
+        }   
 
         function crearMalla($codigo, $plan, $lvl, $asignaturas){
             $this->dir->crearMalla($codigo, $plan, $lvl, $asignaturas);
