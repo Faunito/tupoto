@@ -1,9 +1,12 @@
 <?php //namespace Models;
 require_once ('Malla.php');
 require_once ('Profesor.php');
+require_once ('PuedeImpartir.php');
 require_once ('DBConexion/DBDirector.php');
+require_once ('DBConexion/DBPuedeImpartir.php');
 require_once ('Competencia.php');
 require_once ('Evidencia.php');
+
 //require_once ('../autoload.php');
 //equire_once ('ActividaddCompensacion.php');
 
@@ -16,6 +19,7 @@ class Director extends Profesor
     private $evidencia;
     private $asignatura;
     private $malla;
+    private $asignaCompetencia;
 
 	function __construct()
 	{
@@ -116,7 +120,13 @@ class Director extends Profesor
             $this->asignatura->setId($id);
             $this->asignatura->getDBAsignatura()->delete($this->asignatura);
         }
-
+        //============ Asignar competencia a malla ================
+        function asignarCompetenciaMalla($idMalla,$idCompetencia){
+            $this->asignaCompetencia = new PuedeImpartir();
+            $this->asignaCompetencia->setIdMalla($idMalla);
+            $this->asignaCompetencia->setIdCompetencia($idCompetencia);
+            $this->asignaCompetencia->getDBPuede()->add($this->asignaCompetencia);
+        }
         //============ Mallas ================
         function crearMalla($codigo, $plan, $lvl, $asignaturas)
         {

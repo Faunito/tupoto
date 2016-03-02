@@ -148,7 +148,7 @@
 	    					}
 	    				}
 	    			}
-	    			$this->controller->asignarCompetenciaMalla($post['codigo'], $lista);
+	    			$this->controller->asignarCompetenciaMalla($result['param'], $lista);
 	    			$this->controller->getTemplate()->redirect('mallas.php');
 	    			break;
 	    		
