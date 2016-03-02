@@ -139,7 +139,7 @@ class Director extends Profesor
             $this->malla->getDBMalla()->add($this->malla);
         }
 
-         function modificarMalla($id, $codigo, $plan, $lvl, $listaOn, $listaOff)
+        function modificarMalla($id, $codigo, $plan, $lvl, $listaOn, $listaOff)
         {
             $this->malla = new Malla();
             $this->malla->setIdMalla($id);
@@ -151,17 +151,16 @@ class Director extends Profesor
             $this->malla->unsetAsignaturas($listaOff);
             $this->malla->getDBMalla()->modify($this->malla);
         }
+        
+        function eliminarMalla($id)
+        {
+            $this->malla = new Malla();
+            $this->malla->setIdMalla($id);
+            $this->malla->getDBMalla()->delete($this->malla);
+        }
 
         //============ Alumnos ================
 
-
-
-    //mallas
-	function crearMallaCurricular($codigoMalla, $codigoCarrera , $duracionMalla, $anioMalla){
-	}
-    
-	function extraerMallaCurricular($codigoMallaCurricular){
-	}
     //GETTERS
 	function getCarrera()
 	{
