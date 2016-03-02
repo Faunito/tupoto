@@ -90,7 +90,9 @@ class Asignatura
 	}
 
 	function unsetMalla(){
-		unset($this->malla);
+		if (isset($this->malla)) {
+			unset($this->malla);			
+		}
 	}
 
 	function setDirector($director){

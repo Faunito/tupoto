@@ -138,9 +138,12 @@ class DirectorController extends ProfesorController{
                 $array[$i] = $nueva;
                 $i++;
             }
-            $this->arrayMallas = $array;
-            $this->serializar($this);
-            return $this->arrayMallas;
+            if(isset($array)){
+                $this->arrayMallas = $array;
+                $this->serializar($this);
+                return $this->arrayMallas;    
+            }
+            //return $this->arrayMallas;
         }
         
         function eliminarMalla($id){            
