@@ -20,6 +20,7 @@ class Director extends Profesor
     private $asignatura;
     private $malla;
     private $asignaCompetencia;
+    private $desasignaCompetencia;
 
 	function __construct()
 	{
@@ -34,6 +35,38 @@ class Director extends Profesor
     }  
 
         //============ Competencias ================
+        function consultarCompetenciasMalla($id){
+            $res = Competencia::getCompetenciasMalla($id);
+            $i=0;
+            $array=array();
+            foreach ($res as $key) {
+                $aux = new Competencia();
+                $aux->setIdComp($key['ID_COMPETENCIA']);
+                $aux->setCate($key['CATEGORIA']);
+                $aux->setDesComp($key['DESCRIPCION_DE_COMPETENCIA']);
+                $aux->setNomComp($key['NOMBRE_COMPETENCIA']);
+                $array[$i] = $aux;
+                $i++;
+            }
+            return $array;
+        }
+
+        function consultarCompetenciasNoMalla($id){
+            $res = Competencia::getCompetenciasNoMalla($id);
+            $i=0;
+            $array=array();
+            foreach ($res as $key) {
+                $aux = new Competencia();
+                $aux->setIdComp($key['ID_COMPETENCIA']);
+                $aux->setCate($key['CATEGORIA']);
+                $aux->setDesComp($key['DESCRIPCION_DE_COMPETENCIA']);
+                $aux->setNomComp($key['NOMBRE_COMPETENCIA']);
+                $array[$i] = $aux;
+                $i++;
+            }
+            return $array;
+        }
+
         function consultarCompetencia($id){            
             $this->competencia = new Competencia();
             $this->competencia->setIdComp($id);
@@ -127,7 +160,13 @@ class Director extends Profesor
             $this->asignaCompetencia->setIdCompetencia($idCompetencia);
             $this->asignaCompetencia->getDBPuede()->add($this->asignaCompetencia);
         }
-        //============ Mallas ================
+        function desasignarCompetenciaMalla($idMalla,$idCompetencia){
+            $this->desasignaCompetencia = new PuedeImpartir();
+            $this->desasignaCompetencia->setIdMalla($idMalla);
+            $this->desasignaCompetencia->setIdCompetencia($idCompetencia);
+            $this->desasignaCompetencia->getDBPuede()->delete($this->desasignaCompetencia);
+        }
+        //============== Mallas ================
         function crearMalla($codigo, $plan, $lvl, $asignaturas)
         {
             $this->malla = new Malla();

@@ -3,7 +3,7 @@
 	require_once(ROOT_DIR . TEMPLATES_DIR . 'base/header.php');
 	require_once(ROOT_DIR . TEMPLATES_DIR . 'base/sidenav/sidenav_director.php');
 	?>
-	<main id="sb-site" class="blue-grey lighten-5">
+	<main id="sb-site" class="blue-grey lighten-5">	
 		<div class="container">		
 
 			<!-- contenido del contenido principal -->
@@ -17,54 +17,51 @@
 			            <div class="card-content">
 			            <form id="myForm" action="mallas.php?result=nueva" method="POST">
 					       	<div class="row">
-					       		<div class="col s9">
-					            <div class="card teal darken-3 white-text">
-					            	<div class="card-content">
-					            	<div class="row">
-						            	<div class="col s4">
-						            		<div class="row">
-						            			<div class="col s12">
-						            				<h6>Nivel Básico:</h6>
-						            				<p style="text-align: justify;">
+					       		<div class="col s10 offset-s1">
+					            <div class="card indigo white-text" style="padding-top: 1px; padding-bottom: 10px">
+					            <span class="card-title" ><strong><h4>Niveles</h4></strong></span>
+					            	<div class="card-content" style="padding-top: 0px">
+					            		<div class="contenedor">
+					            			<div class="card amber white-text elemento">
+					            			<div class="card-content"> 
+					            			<h6>Nivel Básico:</h6>
+						            		<p style="text-align: justify;">
 						            				<?php echo $this->data['basico']->getDescripcion(); ?>
-						            				</p>
-						            			</div>
-								            </div>
-							            </div>
-							            <div class="col s4">
-						            		<div class="row">
-						            			<div class="col s12">
-						            				<h6>Nivel Medio:</h6>
-						            				<p style="text-align: justify;">
+						            		</p>
+					            			</div>
+					            			</div>
+					            			<div class="card green white-text elemento">
+					            			<div class="card-content"> 
+					            			<h6>Nivel Medio:</h6>
+						            		<p style="text-align: justify;">
 						            				<?php echo $this->data['medio']->getDescripcion(); ?>
-						            				</p>
-						            			</div>
-								            </div>
-							            </div>
-							            <div class="col s4">
-						            		<div class="row">
-						            			<div class="col s12">
-						            				<h6>Nivel Avanzado:</h6>
-						            				<p style="text-align: justify;">
-						            				<?php echo $this->data['avanzado']->getDescripcion(); ?>
-						            				</p>
-						            			</div>							            		
-								            </div>
-							            </div>
-							        </div>
+						            		</p>
+					            			</div>
+					            			</div>
+					            			<div class="card blue white-text elemento">
+					            			<div class="card-content"> 
+					            			<h6>Nivel Avanzado:</h6>
+						            		<p style="text-align: justify;">
+						            				<?php echo $this->data['avanzado']->getDescripcion(); ?>	
+						            		</p>
+					            			</div>
+					            			</div>
+					            		</div>
 							        </div>
 							    </div>
 							    </div>
-					            <div class="col s3">
-					            	<div class="row">
-						            	<div class="col s12">
-								            <button id="btn" style="margin-top: 20px;" class="btn-large center waves-effect waves-light color_primario"  type="submit" name="action">Asignar
-								            <i class="material-icons right">send</i>
-								            </button>
-						            	</div>
+					            <div class="row">
+						       </div>	
+							       <div class="col s2 offset-s5">
+						            	<div class="row">
+							            	<div class="col s12">
+									            <button id="btn" style="margin-top: 20px;" class="btn-large center waves-effect waves-light color_primario"  type="submit" name="action">Asignar
+									            <i class="material-icons right">send</i>
+									            </button>
+							            	</div>
+							            </div>
 						            </div>
 					            </div>
-						       </div>	
 					           <div class="row">
 								  <div id="admin" class="col s12">
 								    <div class="card material-table">

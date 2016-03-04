@@ -55,10 +55,12 @@
 	    			$this->controller->getTemplate()->load(ROOT_DIR.TEMPLATES_DIR.'mallas/ver_malla.php');
 	    			break;
 	    		case 'asignar':
-	    			$malla=$this->controller->consultarMalla($action['param']);
-	    			$competencias = $this->controller->listarCompetencias();
+	    			$malla=$this->controller->consultarMalla($action['param']);	
+	    			$competenciasMalla = $this->controller->consultarCompetenciasMalla($action['param']);
+	    			$competenciasNoMalla = $this->controller->consultarCompetenciasNoMalla($action['param']);
 	    			$this->controller->getTemplate()->setData('malla',$malla);
-	    			$this->controller->getTemplate()->setData('competencias', $competencias);
+	    			$this->controller->getTemplate()->setData('competenciasMalla', $competenciasMalla);
+	    			$this->controller->getTemplate()->setData('competenciasNoMalla', $competenciasNoMalla);
 	    			$this->controller->getTemplate()->load(ROOT_DIR.TEMPLATES_DIR.'mallas/asignar_competencia_malla.php');
 	    			break;
 	    			
@@ -135,19 +137,34 @@
 	    			$this->controller->getTemplate()->redirect('mallas.php');	
 	    			break;  
 	    		case 'asignar':
-	    			$competencias=$this->controller->listarCompetencias();	
+	    			$competencias=$this->controller->listarCompetencias();
+	    			$competenciasMalla=$this->controller->consultarCompetenciasMalla($result['param']);	
 	    			$i=0;
+	    			$j=0;
 	    			foreach ($post as $key => $value) {
 	    				if(strcmp($value,'on') == 0){
 	    					foreach ($competencias as $competencia) {
 								if(strcmp($key,$competencia->getIdComp()) == 0){
-									$lista[$i]=$competencia;
+									$listaOn[$i]=$competencia;
 									$i++;
 								}
 	    					}
 	    				}
 	    			}
-	    			$this->controller->asignarCompetenciaMalla($result['param'], $lista);
+	    			foreach ($competencias as $competencia) {
+	    				$existe=false;
+	    				foreach ($listaOn as $On){	    				
+	    				if(strcmp($competencia->getIdComp(),$On->getIdComp())==0){
+	    					$existe=true;
+	    					}	    				
+	    				}
+	    				if(!$existe){
+	    					$listaOff[$j]=$competencia;
+	    					$j++;
+	    				}
+	    			}
+	    			$this->controller->asignarCompetenciaMalla($result['param'], $listaOn);
+	    			$this->controller->desasignarCompetenciaMalla($result['param'], $listaOff);
 	    			$this->controller->getTemplate()->redirect('mallas.php');
 	    			break;
 	    		

@@ -88,5 +88,14 @@ class Competencia
 		$this->nomComp = $newVal;
 	}
 
+	function getCompetenciasMalla($id)
+	{        
+      	return DBCompetencia::getCompetenciasMalla($id);
+    }
+
+	function getCompetenciasNoMalla($id)
+	{        
+      	return DBCompetencia::getCompetenciasNoMalla($id);
+    }
 }
 ?>

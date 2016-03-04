@@ -28,7 +28,8 @@
 						                    	<select name="tipoCompetencia">
 											      	<option value="" disabled selected>Elija un tipo</option>
 											      	<option value="Generica">Genérica</option>
-											    	<option value="Especifica">Específica</option>
+											    	<option value="Especialidad">Especialidad</option>
+											    	<option value="Licenciatura">Licenciatura</option>
 											    </select>
 												<label >Tipo de competencia</label>
 							                </div>

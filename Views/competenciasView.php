@@ -79,6 +79,7 @@
 	    		case 'asignar':
 	    			$competencia = $this->controller->consultarCompetencia($result['param']);
 	    			$asignaturas = $this->controller->listarAsignaturas();
+	    			
 	    			$evidencias = $this->controller->getEvidenciasCompetencia($result['param']);
 	    			//PROBLEMAS CON VARIAS EVIDENCIAS DEL MISMO NIVEL
 	    			foreach ($evidencias as $evidencia) {

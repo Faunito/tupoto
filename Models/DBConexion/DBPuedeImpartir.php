@@ -5,7 +5,7 @@ require_once(ROOT_DIR . MODELS_DIR . 'PuedeImpartir.php');
 class DBPuedeImpartir Implements ICrud{
     function add($var){
         $con = DBSingleton::getInstance()->getDB();        
-        $res = $con -> prepare('INSERT INTO puede_impartir VALUES(:idMalla,:idComp)');
+        $res = $con -> prepare('INSERT INTO puede_impartir VALUES(:idMalla,:idComp) ON DUPLICATE KEY UPDATE ID_COMPETENCIA=:idComp');
         $res -> bindParam(':idMalla',$var->getIdMalla(),PDO::PARAM_STR);
         $res -> bindParam(':idComp',$var->getIdCompetencia(),PDO::PARAM_STR);
         $res -> execute();
@@ -13,7 +13,7 @@ class DBPuedeImpartir Implements ICrud{
     
     function modify($var){
         $con = DBSingleton::getInstance()->getDB();        
-        $res = $con -> prepare('UPDTE puede_impartir SET ID_MALLA=:idMalla,ID_COMPETENCIA=:idComp)');
+        $res = $con -> prepare('UPDATE puede_impartir SET ID_MALLA=:idMalla,ID_COMPETENCIA=:idComp)');
         $res -> bindParam(':idMalla',$var->getIdMalla(),PDO::PARAM_STR);
         $res -> bindParam(':idComp',$var->getIdCompetencia(),PDO::PARAM_STR);
         $res -> execute();
@@ -21,7 +21,7 @@ class DBPuedeImpartir Implements ICrud{
     
     function delete($var){
         $con = DBSingleton::getInstance()->getDB();        
-        $res = $con -> prepare('DELETE * FROM puede_impartir WHERE ID_MALLA=:idMalla AND ID_COMPETENCIA=:idComp)');
+        $res = $con -> prepare('DELETE FROM puede_impartir WHERE ID_MALLA=:idMalla AND ID_COMPETENCIA=:idComp');
         $res -> bindParam(':idMalla',$var->getIdMalla(),PDO::PARAM_STR);
         $res -> bindParam(':idComp',$var->getIdCompetencia(),PDO::PARAM_STR);
         $res -> execute();

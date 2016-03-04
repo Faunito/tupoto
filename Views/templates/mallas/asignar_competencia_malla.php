@@ -40,8 +40,8 @@
 									        </thead>
 									        <tbody>
 									           <?php 
-										        if(!empty($this->data['competencias'])){
-										        foreach ($this->data['competencias'] as $key) {
+										        if(!empty($this->data['competenciasMalla'])){
+										        foreach ($this->data['competenciasMalla'] as $key) {
 										        	echo '<tr>';
 										        	echo '<td>'.$key->getNomComp().'</td>';
 										    	    echo '<td class="no-padding">'.$key->getCate().'</td>';
@@ -50,7 +50,27 @@
 											       <div class="switch">
 											       	<label>
 											       	Quitar
-												    <input id="<?php echo $key->getIdComp(); ?>"  name="<?php echo $key->getIdComp(); ?>" type="checkbox">
+												    <input id="<?php echo $key->getIdComp(); ?>" checked name="<?php echo $key->getIdComp(); ?>" type="checkbox">
+												    <span class="lever"></span>
+												    Agregar
+												    </label>
+												  </div>
+																								     
+												</td>
+									          </tr>
+									          <?php }} ?>
+									          <?php 
+										        if(!empty($this->data['competenciasNoMalla'])){
+										        foreach ($this->data['competenciasNoMalla'] as $key) {
+										        	echo '<tr>';
+										        	echo '<td>'.$key->getNomComp().'</td>';
+										    	    echo '<td class="no-padding">'.$key->getCate().'</td>';
+										    	    ?>
+									            <td class="center">
+											       <div class="switch">
+											       	<label>
+											       	Quitar
+												    <input id="<?php echo $key->getIdComp(); ?>" name="<?php echo $key->getIdComp(); ?>" type="checkbox">
 												    <span class="lever"></span>
 												    Agregar
 												    </label>
@@ -81,7 +101,8 @@
     $('#data').DataTable( {
     	"sSearchPlaceholder": "Ingrese palabra clave",
         "paging":   false,
-        "info":     false
+        "info":     false,
+        "ordering": false 
     } );
 	} );
 	</script>

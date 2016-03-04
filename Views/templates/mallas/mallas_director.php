@@ -33,10 +33,10 @@
 								            <th>Codigo</th>
 								            <th>Plan</th>
 								            <th>Niveles</th>
-								            <th class="center no-padding" style="width: 50px">Asignar</th>
-								            <th class="center no-padding" style="width: 50px">Ver</th>
-								            <th class="center no-padding" style="width: 60px">Modificar</th>
-								            <th class="center no-padding" style="width: 60">Eliminar</th>
+								            <th class="center no-padding" style="width: 60px;">Asignar</th>
+								            <th class="center no-padding" style="width: 60px;">Ver</th>
+								            <th class="center no-padding" style="width: 60px;">Modificar</th>
+								            <th class="center no-padding" style="width: 60px;">Eliminar</th>
 								          </tr>
 								        </thead>
 								        <tbody>

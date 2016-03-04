@@ -26,6 +26,38 @@ class DBCompetencia Implements ICrud {
             $res1 = $res->fetchAll();
             return $res1;
     }
+
+    public static function getCompetenciasMalla($id){
+        $con = DBSingleton::getInstance()->getDB();
+        $dbh = $con->prepare('SELECT A.*, B.ID_COMPETENCIA, B.ID_MALLA
+                            FROM competencia A
+                            INNER JOIN puede_impartir B
+                            ON A.ID_COMPETENCIA=B.ID_COMPETENCIA AND B.ID_MALLA =:id ORDER BY A.CATEGORIA ASC');
+        $dbh->bindParam(':id',$id,PDO::PARAM_STR);
+        $dbh->execute();
+        $res1 = $dbh -> fetchAll();
+        return $res1;        
+    }
+
+    public static function getCompetenciasNoMalla($id){
+        $con = DBSingleton::getInstance()->getDB();
+        $dbh = $con->prepare('SELECT c.* FROM competencia c
+                            WHERE c.ID_COMPETENCIA NOT IN
+
+                            (SELECT A.ID_COMPETENCIA
+                            FROM competencia A
+                            INNER JOIN puede_impartir B
+                            ON A.ID_COMPETENCIA=B.ID_COMPETENCIA) 
+
+                            OR (c.CATEGORIA = "Generica" AND c.ID_COMPETENCIA NOT IN (SELECT A.ID_COMPETENCIA
+                                        FROM competencia A
+                                        INNER JOIN puede_impartir B
+                                        ON A.ID_COMPETENCIA=B.ID_COMPETENCIA AND B.ID_MALLA =:id)) ORDER BY c.CATEGORIA ASC;');
+        $dbh->bindParam(':id',$id,PDO::PARAM_STR);
+        $dbh->execute();
+        $res1 = $dbh -> fetchAll();
+        return $res1;        
+    }
     
     function getCompetencia($id){
         $con = DBSingleton::getInstance()->getDB();

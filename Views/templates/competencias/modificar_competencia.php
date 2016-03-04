@@ -38,13 +38,20 @@
 											      	}
 										      	?>
 											      	>Genérica</option>
-											    	<option value="Especifica"
+											    	<option value="Especialidad"
 												<?php 
-											      	if(strcmp($this->data['competencia']->getCate(), 'Especifica') == 0){
+											      	if(strcmp($this->data['competencia']->getCate(), 'Especialidad') == 0){
 											      		echo 'selected'; 
 											      	}
 										      	?>
-											    	>Específica</option>
+											    	>Especialidad</option>
+											    	<option value="Licenciatura"
+												<?php 
+											      	if(strcmp($this->data['competencia']->getCate(), 'Licenciatura') == 0){
+											      		echo 'selected'; 
+											      	}
+										      	?>
+											    	>Licenciatura</option>
 											    </select>
 												<label >Tipo de competencia</label>
 									        </div>

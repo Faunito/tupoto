@@ -17,7 +17,7 @@
 						<div class="row">
 					    	<div style="margin-bottom: 0%;" class="row">
 							<div class="col s3">
-								<div style="height: 22%; font-size: 18px;" class="z-depth-2 card teal darken-3 white-text">
+								<div style="height: 22%; font-size: 18px;" class="z-depth-2 card teal white-text">
 									<div  class="card-content center">
 										<h7><?php echo $this->data['competencia']->getNomComp(); ?></h7>
 									</div>
@@ -25,7 +25,7 @@
 							</div>
 							<div class="col s9">
 								<div class="col s12">
-									<div style="height: 10%;" class="z-depth-2 card teal darken-3 white-text">
+									<div style="height: 10%;" class="z-depth-2 card red white-text">
 										<div class="card-content center">
 											<h7 style="font-size: 18px;">Detalle por nivel</h7>
 											<p class=center>
@@ -35,21 +35,21 @@
 									</div>
 								</div>
 								<div class="col s4">
-									<div style="height: 10%; margin-top: 0%; font-size: 18px;" class="z-depth-2 card teal darken-3 white-text">
+									<div style="height: 10%; margin-top: 0%; font-size: 18px;" class="z-depth-2 card amber white-text">
 										<div  class="card-content center">
 										Inicial
 										</div>
 									</div>
 								</div>
 								<div class="col s4">
-									<div style="height: 10%; margin-top: 0%; font-size: 18px;" class="z-depth-2 card teal darken-3 white-text">
+									<div style="height: 10%; margin-top: 0%; font-size: 18px;" class="z-depth-2 card green white-text">
 										<div class="card-content center">
 										Intermedio
 										</div>
 									</div>
 								</div>
 								<div class="col s4">
-									<div style="height: 10%; margin-top: 0%; font-size: 18px;" class="z-depth-2 card teal darken-3 white-text">
+									<div style="height: 10%; margin-top: 0%; font-size: 18px;" class="z-depth-2 card blue white-text">
 										<div class="card-content center">
 										Avanzado
 										</div>
@@ -59,7 +59,7 @@
 						</div>
 						<div style="margin-top: 0%;" class="row">
 							<div class="col s3">
-								<div style="height: 50%;" class="z-depth-2 card teal darken-3 white-text">
+								<div style="height: 50%;" class="z-depth-2 card cyan darken-1 white-text">
 									<div  class="card-content">
 										<h6 style="font-size: 18px;">Descripción de competencia:</h6>
 										<p>
@@ -70,7 +70,7 @@
 							</div>
 							<div class="col s9">
 								<div class="col s4">
-									<div style="height: 50%;" class="z-depth-2 card teal darken-3 white-text">
+									<div style="height: 50%;" class="z-depth-2 card orange white-text">
 										<div  class="card-content">
 											<p>
 											<?php echo $this->data['basico']->getDescripcion(); ?>
@@ -79,7 +79,7 @@
 									</div>
 								</div>
 								<div class="col s4">
-									<div style="height: 50%;" class="z-depth-2 card teal darken-3 white-text">
+									<div style="height: 50%;" class="z-depth-2 card green darken-2 white-text">
 										<div  class="card-content">
 											<p>
 											<?php echo $this->data['medio']->getDescripcion(); ?>
@@ -88,7 +88,7 @@
 									</div>
 								</div>
 								<div  class="col s4">
-									<div style="height: 50%;" class="z-depth-2 card teal darken-3 white-text">
+									<div style="height: 50%;" class="z-depth-2 card indigo white-text">
 										<div  class="card-content">
 											<p>
 											<?php echo $this->data['avanzado']->getDescripcion(); ?>
@@ -99,8 +99,12 @@
 							</div>
 						</div>
 					    </div>
-					    <div id="Grafic"></div>
 					  	</div>
+					</div>
+					<div class="card">
+						<div class="card-content">
+							<div id="Grafic"></div>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -119,7 +123,7 @@
     [5, 15, 21, "Audi"], [1, 2,20], [2, 13, 5, "Bugatti"]];
      
     plot1c = $.jqplot('Grafic',[arr],{
-        title: '<?php echo $this->data['competencia']->getNomComp(); ?>',
+        title: 'GRÁFICO DE LA COMPETENCIA: <?php echo $this->data['competencia']->getNomComp(); ?>',
         seriesDefaults:{
             renderer: $.jqplot.BubbleRenderer
         	}              
