@@ -1,4 +1,5 @@
 <?php
+	require_once ('DBConexion/DBEspecificacion.php');
 
 class Especificacion{
 
@@ -6,6 +7,7 @@ class Especificacion{
     private $idCompetencia;
 	private $nivelCompetencia;
     private $dbespecificacion;
+
 
 	function __construct(){
         $this->dbespecificacion = new DBEspecificacion(); 
@@ -25,7 +27,7 @@ class Especificacion{
 		return $this->nivelCompetencia;
 	}
     
-    function getDB(){
+    function getDBEspecificacion(){
         return $this->dbespecificacion;
     }
     //SETTERS    

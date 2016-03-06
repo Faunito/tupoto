@@ -7,8 +7,10 @@ class DBEspecificacion implements ICrud {
     
     public function add($var){
         $con = DBSingleton::getInstance()->getDB();       
-        $res = $con->prepare('INSERT INTO especificacion_de_evidencia(NIVEL_EVIDENCIA) VALUES (:nivel)');
+        $res = $con->prepare('INSERT INTO especificacion_de_evidencia(  ID_ASIGNATURA, ID_COMPETENCIA, NIVELES_COMPETENCIA) VALUES (:idAsignatura,:idCompetencia,:nivel)');
         $res->bindParam(':nivel',$var->getNivelCompetencia(),PDO::PARAM_STR);
+        $res->bindParam(':idAsignatura',$var->getIdAsignatura(),PDO::PARAM_STR);
+        $res->bindParam(':idCompetencia',$var->getIdCompetencia(),PDO::PARAM_STR);
         $res->execute();       
     }
     

@@ -126,7 +126,29 @@
 	    				}
 	    			}
 	    			$this->controller->getTemplate()->load(ROOT_DIR.TEMPLATES_DIR.'competencias/ver_competencia.php');
-					
+				case 'cambiar':
+					$lista=array();
+					$values=array();
+					$selects=array();					
+					$i=0;
+					$j=0;					$competencia = $this->controller->consultarCompetencia($result['param']);
+					foreach ($post as $key => $value) {
+	    				if(strcmp($value,'on') == 0){
+	    					$lista[$i]=$key;
+	    					$i++;
+	    					}
+	    			}
+	    			foreach ($post as $key => $value) {
+	    				if(strcmp($value,'on')!= 0){
+	    				$cadena=explode('_',$key);
+	    				$valor=$cadena[1];
+	    				foreach ($lista as $id) {
+	    					if(strcmp($valor,$id)==0){
+	    						$this->controller->asignarAsignaturaCompetencia($result['param'],$id,$value);
+	    					}
+	    				}
+	    				}
+	    			}
 	    			break;
 	    		default:
 	    			break;

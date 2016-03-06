@@ -15,14 +15,14 @@
 				            <span class="card-title"><strong><h4><a href="javascript:history.go(-1)"><i class="material-icons small white-text left" style="font-size: 40px">arrow_back</i></a>Competencia: <?php echo $this->data['competencia']->getNomComp(); ?></h4></strong></span>
 				        </div>
 			            <div class="card-content">
-			            <form id="myForm" action="mallas.php?result=nueva" method="POST">
+			            <form id="myForm" action="competencias.php?result=cambiar&param=<?php echo $this->data['competencia']->getIdComp(); ?>" method="POST">
 					       	<div class="row">
-					       		<div class="col s10 offset-s1">
-					            <div class="card indigo white-text" style="padding-top: 1px; padding-bottom: 10px">
+					       		<div class="col s121">
+					            <div class="card teal white-text" style="padding-top: 1px; padding-bottom: 10px">
 					            <span class="card-title" ><strong><h4>Niveles</h4></strong></span>
 					            	<div class="card-content" style="padding-top: 0px">
 					            		<div class="contenedor">
-					            			<div class="card amber white-text elemento">
+					            			<div class="card red white-text elemento">
 					            			<div class="card-content"> 
 					            			<h6>Nivel Básico:</h6>
 						            		<p style="text-align: justify;">
@@ -42,8 +42,7 @@
 					            			<div class="card-content"> 
 					            			<h6>Nivel Avanzado:</h6>
 						            		<p style="text-align: justify;">
-						            				<?php echo $this->data['avanzado']->getDescripcion(); ?>	
-						            		</p>
+						            				<?php echo $this->data['avanzado']->getDescripcion(); ?>					   </p>
 					            			</div>
 					            			</div>
 					            		</div>
@@ -55,7 +54,7 @@
 							       <div class="col s2 offset-s5">
 						            	<div class="row">
 							            	<div class="col s12">
-									            <button id="btn" style="margin-top: 20px;" class="btn-large center waves-effect waves-light color_primario"  type="submit" name="action">Asignar
+									            <button id="btn" style="margin-top: 20px;" class="btn-large center waves-effect waves-light color_primario"  type="submit">Asignar
 									            <i class="material-icons right">send</i>
 									            </button>
 							            	</div>
@@ -78,9 +77,7 @@
 									            <th class="no-padding" style="width: 100px">Código</th>
 									            <th class="no-padding" style="width: 20px">Nivel</th>
 									            <th class="center no-padding" style="width: 150px">Estado</th>
-									          	<th class="center no-padding" style="width: 70px">Niveles</th>
-									          	<th class="center no-padding" style="width: 70px"></th>
-									          	<th class="center no-padding" style="width: 90px;"></th>
+									          	<th class="center" style="width: 100px;">Niveles</th>
 									          </tr>
 									        </thead>
 									        <tbody>
@@ -96,23 +93,19 @@
 											      	<div class="switch">
 											       	<label>
 											       	Quitar
-												    <input name="<?php echo $asignatura->getId(); ?>" type="checkbox">
+												    <input name="<?php echo $asignatura->getId(); ?>" id="<?php echo $asignatura->getId(); ?>" type="checkbox">
 												    <span class="lever"></span>
 												    Agregar
 												    </label>
 												  </div>											     
 												</td>
-												<td class="center no-padding">
-													<input name="<?php echo $asignatura->getId(); ?>" type="radio" id="basico_<?php echo $asignatura->getId(); ?>" /> 
-													<label for="basico_<?php echo $asignatura->getId(); ?>">Básico</label>  
-												</td>
-												<td class="center no-padding">
-													<input name="<?php echo $asignatura->getId(); ?>" type="radio" id="medio_<?php echo $asignatura->getId(); ?>" /> 
-													<label for="medio_<?php echo $asignatura->getId(); ?>">Medio</label>  
-												</td>
-												<td class="center no-padding">
-													<input name="<?php echo $asignatura->getId(); ?>" type="radio" id="avanzado_<?php echo $asignatura->getId(); ?>" /> 
-													<label for="avanzado_<?php echo $asignatura->getId(); ?>">Avanzado</label>
+												<td class="center" style="overflow: visible;">
+												<select name="select_<?php echo $asignatura->getId(); ?>" id="select<?php echo $asignatura->getId(); ?>">
+											      	<option value="" selected>Ninguno</option>
+											      	<option value="Básico">Básico</option>
+											    	<option value="Intermedio">Intermedio</option>
+											    	<option value="Avanzado">Avanzado</option>	
+											   	</select>				
 												</td>
 								          </tr>
 								          <?php }} ?>
@@ -140,7 +133,7 @@
         "paging":   false,
         "info":     false
     } );
-	} );
+	});
 	</script>
 <?php
 	require_once(ROOT_DIR . TEMPLATES_DIR . 'base/footer.php');

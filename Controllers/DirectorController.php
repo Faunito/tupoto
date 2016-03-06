@@ -109,6 +109,10 @@ class DirectorController extends ProfesorController{
         function listarEspecificacion($idAsignatura){
             $this->dir->listarEspecificacion($idAsignatura);
         }
+        
+        function asignarAsignaturaCompetencia($idCompetencia,$idAsignatura,$Nivel){
+            $this->dir->asignarAsignaturaCompetencia($idCompetencia,$idAsignatura,$Nivel);
+        }
         //============ Mallas Puede_Impartir Competencias ================
         function consultarCompetenciasMalla($idMalla){
             $competencias=$this->dir->consultarCompetenciasMalla($idMalla);

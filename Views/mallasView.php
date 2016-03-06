@@ -130,11 +130,10 @@
 	    			}
 	    			$this->controller->modificarMalla($result['param'],$post['codigo'], $post['plan'], $lvl, $listaOn, $listaOff);
 	    			$this->controller->getTemplate()->redirect('mallas.php');
-	    		
 	    			break;
 	    		case 'eliminar':
 	    			$this->controller->eliminarMalla( $result['param']);
-	    			$this->controller->getTemplate()->redirect('mallas.php');	
+	    			$this->controller->getTemplate()->redirect('mallas.php');
 	    			break;  
 	    		case 'asignar':
 	    			$competencias=$this->controller->listarCompetencias();

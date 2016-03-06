@@ -6,6 +6,7 @@ require_once ('DBConexion/DBDirector.php');
 require_once ('DBConexion/DBPuedeImpartir.php');
 require_once ('Competencia.php');
 require_once ('Evidencia.php');
+require_once ('Especificacion.php');
 
 //require_once ('../autoload.php');
 //equire_once ('ActividaddCompensacion.php');
@@ -126,6 +127,14 @@ class Director extends Profesor
             $this->evidencia = new Evidencia();
             $this->evidencia->setIdEvidencia($id);
             $this->evidencia->getDBEvidencia()->delete($this->evidencia);
+        }
+        //============ Especificacion ================
+        function asignarAsignaturaCompetencia($idCompetencia,$idAsignatura,$Nivel){
+            $this->especificacion = new Especificacion();
+            $this->especificacion->setIdAsignatura($idAsignatura);
+            $this->especificacion->setNivelCompetencia($Nivel);
+            $this->especificacion->setIdCompetencia($idCompetencia);
+            $this->especificacion->getDBEspecificacion()->add($this->especificacion);        
         }
 
         //============ Asignaturas ================
