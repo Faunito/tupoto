@@ -7,6 +7,7 @@ require_once(ROOT_DIR . MODELS_DIR . 'Competencia.php');
 require_once(ROOT_DIR . MODELS_DIR . 'Asignatura.php');
 require_once(ROOT_DIR . MODELS_DIR . 'Malla.php');
 require_once(ROOT_DIR . MODELS_DIR . 'Alumno.php');
+require_once(ROOT_DIR . MODELS_DIR . 'Persona.php');
 
 class DirectorController extends ProfesorController{
     private $dir;
@@ -279,6 +280,18 @@ class DirectorController extends ProfesorController{
             $this->arrayAlumnos=$array;
             $this->serializar($this);
             return $this->arrayAlumnos;
+        }
+
+        function consultarAlumno($rut){
+            $alumno = Alumno::consultarAlumno($rut);
+            $nuevo = new Alumno();
+            $nuevo->setRut($alumno['RUT']);
+            $nuevo->setCarrera($alumno['CARRERA']);
+            $nuevo->setNivelAcademico($alumno['NIVEL_ACADEMICO']);
+            $nuevo->setNombre($alumno['NOMBRE']);
+            $nuevo->setApaterno($alumno['APATERNO']);
+            $nuevo->setAmaterno($alumno['AMATERNO']);
+            return $nuevo;        
         }
 
     //============ Getters ================

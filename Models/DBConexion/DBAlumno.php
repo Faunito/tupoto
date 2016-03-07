@@ -33,6 +33,15 @@ class DBAlumno Implements ICrud{
         $res1 = $res->fetchAll();
         return $res1;        
     }
+
+    function consultarAlumno($rut){
+        $con = DBSingleton::getInstance()->getDB();
+        $res = $con -> prepare('SELECT * FROM alumno WHERE RUT=:rut');
+        $res -> bindParam(':rut',$rut,PDO::PARAM_STR);
+        $res -> execute();        
+        $res1 = $res->fetch();
+        return $res1;
+    }
     
     function add($var){
         $con = DBSingleton::getInstance()->getDB();        

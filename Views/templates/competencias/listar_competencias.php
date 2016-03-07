@@ -50,7 +50,7 @@
 								            	<a class="btn-floating waves-effect waves-light tooltipped" data-position="top" data-delay="50" data-tooltip="Ver competencia" href="competencias.php?result=mostrar&param=<?php echo $key->getIdComp(); ?>"><i class="mdi mdi-eye white-text right"></i></a>
 											</td>
 											<td class="center no-padding">
-									            	<a class="btn-floating waves-effect waves-light tooltipped" data-position="top" data-delay="50" data-tooltip="Asignar competencia" href="competencias.php?result=asignar&param=<?php echo $key->getIdComp(); ?>"><i class="material-icons orange white-text">note_add</i></a>
+									            	<a class="btn-floating waves-effect waves-light tooltipped" data-position="top" data-delay="50" data-tooltip="Asignar competencia" href="competencias.php?result=asignar&param=<?php echo $key->getIdComp(); ?>"><i class="mdi mdi-book green white-text right"></i></a>
 												</td>
 								            <td class="center no-padding">
 								            	<a class="btn-floating waves-effect waves-light tooltipped" data-position="top" data-delay="50" data-tooltip="Modificar" href="competencias.php?result=consultar&param=<?php echo $key->getIdComp(); ?>"><i class="material-icons color_primario white-text">edit</i></a>

@@ -1,6 +1,7 @@
 <?php 
 	require_once('View.php');
 
+
 	class AlumnosView extends View {
 
 		private $controller;    
@@ -23,15 +24,17 @@
 	    }
 
 	    public function action($action){
-	    	switch ($action) {
+	    	switch ($action['action']) {
 	    		case 'nuevo':
-					$this->controller->getTemplate()->load(ROOT_DIR.TEMPLATES_DIR.'alumnos/nuevo_alumno.php');
+	    			
 	    			break;
 	    		case 'modificar':
 	    		
 	    			break;
 	    		case 'ver':
-
+					$alumno = $this->controller->consultarAlumno($action['param']);
+	    			$this->controller->getTemplate()->setData('alumno', $alumno);
+					$this->controller->getTemplate()->load(ROOT_DIR.TEMPLATES_DIR.'alumnos/ver_alumno.php');
 	    			break;
 	    		
 	    		default:

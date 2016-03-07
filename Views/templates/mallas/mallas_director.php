@@ -49,7 +49,7 @@
 								    	    echo '<td>'.$malla->getNiveles().'</td>';
 								    	    ?>
 								    	    <td class="center no-padding">
-									            <a class="btn-floating waves-effect waves-light tooltipped" data-position="top" data-delay="50" data-tooltip="Asignar competencia" href="mallas.php?action=asignar&param=<?php echo $malla->getIdMalla(); ?>"><i class="material-icons orange white-text">note_add</i></a>
+									            <a class="btn-floating waves-effect waves-light tooltipped" data-position="top" data-delay="50" data-tooltip="Asignar competencia" href="mallas.php?action=asignar&param=<?php echo $malla->getIdMalla(); ?>"><i class="mdi mdi-book green white-text right"></i></a>
 											</td>
 								    	    <td class="center no-padding" >
 								            	<a class="btn-floating waves-effect waves-light tooltipped" data-position="top" data-delay="50" data-tooltip="Ver malla" href="mallas.php?action=ver&param=<?php echo $malla->getIdMalla(); ?>"><i class="mdi mdi-eye white-text right"></i></a>

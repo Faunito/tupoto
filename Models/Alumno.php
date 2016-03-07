@@ -32,6 +32,11 @@ class Alumno extends Persona
 	{
         return DBAlumno::getAll();
 	}
+
+	function consultarAlumno($rut)
+	{
+        return DBAlumno::consultarAlumno($rut);
+	}
     
     public static function getAlumnosAsoc($rutProfesor)
 	{
