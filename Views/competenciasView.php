@@ -78,8 +78,9 @@
 	    			break;
 	    		case 'asignar':
 	    			$competencia = $this->controller->consultarCompetencia($result['param']);
-	    			$asignaturas = $this->controller->listarAsignaturas();
-	    			
+	    			$mallas = $this->controller->consultarMallasCompetencia($action['param']);
+	    			$asignaturas = $this->controller->asignaturasNoRepetidas($mallas);
+
 	    			$evidencias = $this->controller->getEvidenciasCompetencia($result['param']);
 	    			//PROBLEMAS CON VARIAS EVIDENCIAS DEL MISMO NIVEL
 	    			foreach ($evidencias as $evidencia) {
@@ -91,10 +92,9 @@
 	    				}elseif ($evidencia->getNivel()==3) {
 	    					$this->controller->getTemplate()->setData('avanzado', $evidencia);
 	    				}
-	    			}
+	    			}	
 	    			$this->controller->getTemplate()->setData('competencia', $competencia);
 	    			$this->controller->getTemplate()->setData('asignaturas', $asignaturas);
-	    			
 	    			$this->controller->getTemplate()->load(ROOT_DIR.TEMPLATES_DIR.'competencias/asignar_competencia.php');
 	    			break;
 	    		case 'consultar':	//muestra los datos en el form para modificarlos
@@ -131,7 +131,8 @@
 					$values=array();
 					$selects=array();					
 					$i=0;
-					$j=0;					$competencia = $this->controller->consultarCompetencia($result['param']);
+					$j=0;					
+					$competencia = $this->controller->consultarCompetencia($result['param']);
 					foreach ($post as $key => $value) {
 	    				if(strcmp($value,'on') == 0){
 	    					$lista[$i]=$key;

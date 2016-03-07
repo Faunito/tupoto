@@ -31,6 +31,9 @@ class Malla
 	{
         return DBMalla::getMalla($id);
 	}
+	function getMallasCompetencia($idCompetencia){
+		return DBMalla::getMallasCompetencia($idCompetencia);
+	}
 	
     //GETTERS
 	function getDBMalla()

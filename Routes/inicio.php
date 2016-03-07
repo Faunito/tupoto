@@ -18,10 +18,10 @@
                 break;
             case 'DirectorController':
                 $view->output(get_class($controller->getDirector()));
-                break;/*    
+                break; 
             case 'SecretariaController':
-                view->output(get_class($controller->getSecretaria()));
-                break;*/
+                $view->output(get_class($controller->getSecretaria()));
+                break;
         }
 
 	}else{

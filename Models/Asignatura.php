@@ -37,6 +37,10 @@ class Asignatura
         return DBAsignatura::getAsignatura($codigo);
     }
 
+    public static function asignaturasNoRepetidas($mallas){
+    	return DBAsignatura::getAsignaturasNoRepetidas($mallas);
+    }
+
 	//============ Getters ================
 
 	function getId(){

@@ -63,7 +63,17 @@ class DBMalla Implements ICrud{
         $malla = $res->fetch();
         return $malla;
     }
-
+    public static function getMallasCompetencia($id){
+        $con = DBSingleton::getInstance()->getDB();
+        $res = $con->prepare('SELECT A.*, B.ID_COMPETENCIA, B.ID_MALLA
+                            FROM malla_curricular A
+                            INNER JOIN puede_impartir B
+                            ON A.ID_MALLA=B.ID_MALLA AND B.ID_COMPETENCIA =:id ORDER BY A.ID_MALLA ASC');
+        $res->bindParam(':id',$id,PDO::PARAM_STR);
+        $res->execute();
+        $res1 = $res -> fetchAll();
+        return $res1;  
+    }
 
     function GetInstance($var){
         $con = DBSingleton::getInstance()->getDB();

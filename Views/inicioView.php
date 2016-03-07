@@ -14,9 +14,9 @@
 	    		case 'Profesor':
 					$this->controller->getTemplate()->load(ROOT_DIR.TEMPLATES_DIR.'inicio/inicio_profesor.php');
 	    			break;
-	    		case 'Secretaria':
+	    		/*case 'Secretaria':
 					$this->controller->getTemplate()->load(ROOT_DIR.TEMPLATES_DIR.'inicio/inicio_secretaria.php');
-	    			break;
+	    			break;*/
 	    		case 'Director':
 					$this->controller->getTemplate()->load(ROOT_DIR.TEMPLATES_DIR.'inicio/inicio_director.php');
 	    			break;

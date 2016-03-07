@@ -167,6 +167,11 @@ class DirectorController extends ProfesorController{
             //return $this->arrayMallas;
         }
         
+        function consultarMallasCompetencia($idCompetencia){
+            $mallas=$this->dir->consultarMallasCompetencia($idCompetencia);
+            return $mallas;
+        }
+
         function eliminarMalla($id){            
             $this->dir->eliminarMalla($id); 
         }   
@@ -247,6 +252,25 @@ class DirectorController extends ProfesorController{
             $nueva->setNivel($asignatura['NIVEL_ASIGNATURA']);
             $nueva->setDirector($this->dir);
             return $nueva;            
+        }
+
+
+        function asignaturasNoRepetidas($mallas){
+            $asignaturas = Asignatura::asignaturasNoRepetidas($mallas);
+            $i=0;
+            $array=array();
+            foreach ($asignaturas as $asignatura) {
+                $nueva = new Asignatura();                
+                $nueva->setId($asignatura['ID_ASIGNATURA']);
+                $nueva->setCodigo($asignatura['CODIGO_ASIGNATURA']);
+                $nueva->setMalla($asignatura['ID_MALLA']);
+                $nueva->setNombre($asignatura['NOMBRE_ASIGNATURA']);
+                $nueva->setNivel($asignatura['NIVEL_ASIGNATURA']);
+                $nueva->setDirector($this->dir);
+                $array[$i] = $nueva;
+                $i++;
+            }
+            return $array;
         }
         
         function crearAsignatura($codigo, $nombre, $nivel){

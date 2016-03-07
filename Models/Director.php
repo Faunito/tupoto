@@ -138,6 +138,8 @@ class Director extends Profesor
         }
 
         //============ Asignaturas ================
+
+
         function crearAsignatura($codigo, $nombre, $nivel){
             $this->asignatura = new Asignatura();
             $this->asignatura->setCodigo($codigo);
@@ -206,6 +208,23 @@ class Director extends Profesor
             $this->malla->setIdMalla($id);
             $this->malla->getDBMalla()->delete($this->malla);
         }
+
+        function consultarMallasCompetencia($idCompetencia){
+            $res = Malla::getMallasCompetencia($idCompetencia);
+            $i=0;
+            $array=array();
+            foreach ($res as $key) {
+                $array = new Malla();                
+                $array->setIdMalla($malla['ID_MALLA']);
+                $array->setPlan($malla['PLAN']);
+                $array->setCodCarrera($malla['CODIGO_CARRERA']);
+                $array->setNiveles($malla['NIVELES']);
+                $array[$i] = $array;
+                $i++;
+            }
+            return $array;
+        }
+
 
         //============ Alumnos ================
 

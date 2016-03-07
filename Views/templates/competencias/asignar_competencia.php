@@ -76,6 +76,7 @@
 									            <th style="width: 250px">Nombre</th>
 									            <th class="no-padding" style="width: 100px">Código</th>
 									            <th class="no-padding" style="width: 20px">Nivel</th>
+									            <th class="no-padding" style="width: 20px">Malla</th>
 									            <th class="center no-padding" style="width: 150px">Estado</th>
 									          	<th class="center" style="width: 100px;">Niveles</th>
 									          </tr>
@@ -87,7 +88,7 @@
 										        	echo '<tr>';
 										        	echo '<td>'.$asignatura->getNombre().'</td>';
 								    	    		echo '<td class="no-padding">'.$asignatura->getCodigo().'</td>';
-								    	    		echo '<td class="no-padding">'.$asignatura->getNivel().'</td>';
+								    	    		echo '<td class="no-padding">'.$asignatura->getNivel().'-'.$asignatura->getMalla().'</td>';
 								        			?>	
 								    	    		<td class="center no-padding">
 											      	<div class="switch">
@@ -131,7 +132,8 @@
     $('#data').DataTable( {
     	"sSearchPlaceholder": "Ingrese palabra clave",
         "paging":   false,
-        "info":     false
+        "info":     false,
+        "ordering": false
     } );
 	});
 	</script>

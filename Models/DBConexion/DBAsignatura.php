@@ -42,6 +42,7 @@ class DBAsignatura Implements ICrud {
         return $asignatura;        
     }
 
+
     function actualizaIdMalla($idmalla, $asignatura)
     {
         $con = DBSingleton::getInstance()->getDB();
