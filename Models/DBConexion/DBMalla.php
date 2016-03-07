@@ -29,14 +29,15 @@ class DBMalla Implements ICrud{
         $res->bindParam(':codigo',$var->getCodCarrera(),PDO::PARAM_STR);
         $res->bindParam(':niveles',$var->getNiveles(),PDO::PARAM_STR);
         $res->execute();
+        DBAsignatura::quitarIdMalla($var->getIdMalla());
         foreach ($var->getAsignaturas() as $asignatura) 
         {
             $asignatura->getDBAsignatura()->actualizaIdMalla($var->getIdMalla(), $asignatura);
         }
-        foreach ($var->getAsignaturasOff() as $asignaturaOff) 
-        {
-            $asignaturaOff->getDBAsignatura()->actualizaIdMalla($asignaturaOff->getMalla(), $asignaturaOff);
-        }
+        // foreach ($var->getAsignaturasOff() as $asignaturaOff) 
+        // {
+        //     $asignaturaOff->getDBAsignatura()->quitarIdMalla($asignaturaOff->getMalla(), $asignaturaOff);
+        // }
     }
     
     public function delete($var){

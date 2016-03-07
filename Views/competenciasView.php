@@ -78,9 +78,8 @@
 	    			break;
 	    		case 'asignar':
 	    			$competencia = $this->controller->consultarCompetencia($result['param']);
-	    			$mallas = $this->controller->consultarMallasCompetencia($action['param']);
+	    			$mallas = $this->controller->consultarMallasCompetencia($result['param']);
 	    			$asignaturas = $this->controller->asignaturasNoRepetidas($mallas);
-
 	    			$evidencias = $this->controller->getEvidenciasCompetencia($result['param']);
 	    			//PROBLEMAS CON VARIAS EVIDENCIAS DEL MISMO NIVEL
 	    			foreach ($evidencias as $evidencia) {
@@ -92,7 +91,8 @@
 	    				}elseif ($evidencia->getNivel()==3) {
 	    					$this->controller->getTemplate()->setData('avanzado', $evidencia);
 	    				}
-	    			}	
+	    			}
+	    			$this->controller->getTemplate()->setData('mallas', $mallas);
 	    			$this->controller->getTemplate()->setData('competencia', $competencia);
 	    			$this->controller->getTemplate()->setData('asignaturas', $asignaturas);
 	    			$this->controller->getTemplate()->load(ROOT_DIR.TEMPLATES_DIR.'competencias/asignar_competencia.php');

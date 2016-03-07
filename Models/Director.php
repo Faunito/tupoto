@@ -210,16 +210,16 @@ class Director extends Profesor
         }
 
         function consultarMallasCompetencia($idCompetencia){
-            $res = Malla::getMallasCompetencia($idCompetencia);
+            $mallas = Malla::getMallasCompetencia($idCompetencia);
             $i=0;
             $array=array();
-            foreach ($res as $key) {
-                $array = new Malla();                
-                $array->setIdMalla($malla['ID_MALLA']);
-                $array->setPlan($malla['PLAN']);
-                $array->setCodCarrera($malla['CODIGO_CARRERA']);
-                $array->setNiveles($malla['NIVELES']);
-                $array[$i] = $array;
+            foreach ($mallas as $malla) {
+                $res = new Malla();                
+                $res->setIdMalla($malla['ID_MALLA']);
+                $res->setPlan($malla['PLAN']);
+                $res->setCodCarrera($malla['CODIGO_CARRERA']);
+                $res->setNiveles($malla['NIVELES']);
+                $array[$i] = $res;
                 $i++;
             }
             return $array;

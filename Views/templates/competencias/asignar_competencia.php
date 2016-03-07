@@ -88,7 +88,8 @@
 										        	echo '<tr>';
 										        	echo '<td>'.$asignatura->getNombre().'</td>';
 								    	    		echo '<td class="no-padding">'.$asignatura->getCodigo().'</td>';
-								    	    		echo '<td class="no-padding">'.$asignatura->getNivel().'-'.$asignatura->getMalla().'</td>';
+								    	    		echo '<td class="no-padding">'.$asignatura->getNivel().'</td>';
+								    	    		echo '<td class="no-padding">'.$asignatura->getMalla().'</td>';
 								        			?>	
 								    	    		<td class="center no-padding">
 											      	<div class="switch">

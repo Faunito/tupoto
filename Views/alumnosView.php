@@ -20,6 +20,9 @@
 	    		case 'Director':
 					$this->controller->getTemplate()->load(ROOT_DIR.TEMPLATES_DIR.'alumnos/alumnos_director.php');
 	    			break;
+	    		case 'Secretaria':
+					$this->controller->getTemplate()->load(ROOT_DIR.TEMPLATES_DIR.'alumnos/alumnos_secretaria.php');
+	    			break;
 	    	}
 	    }
 

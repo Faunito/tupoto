@@ -18,6 +18,19 @@ class Secretaria extends Funcionario
     //FUNCTIONS
     function existeSecre($email,$pass){
         return $this->dbsecretaria->existeSecre($email,$pass);
+    }
+    
+    function registrarPractica($alumno,$direccion,$estado,$fechaInicio,$fechaTermino,$intento,$nivelPractica,$horas){
+        $this->practica = new Practica();
+        $this->practica->setAlumno($alumno);
+        $this->practica->setDireccion($direccion);
+        $this->practica->setEstado($estado);
+        $this->practica->setFechaInicio($fechaInicio);
+        $this->practica->setTermino($fechaTermino);
+        $this->practica->setIntento($intento);
+        $this->practica->setNivelPracica($nivelPractica);
+        $this->practica->setHoras($horas);
+        return $this->practica->getDBPractica()->add($this->practica); 
     }    
     
     //SETTERS

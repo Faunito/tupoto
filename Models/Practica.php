@@ -1,8 +1,8 @@
 <?php
 require_once ('DBSingleton.php');
 require_once ('DBConexion/DBPractica.php');
-require_once ('Alumno.php');
-require_once ('Empleador.php');
+//require_once ('Alumno.php');
+//require_once ('Empleador.php');
 
 class Practica{
     
@@ -20,6 +20,8 @@ class Practica{
   public function __construct(){
       $this->dbpractica = new DBPractica();
   }
+  
+  //FUNCTIONS
   
   //GETTERS
   function getDBPractica(){

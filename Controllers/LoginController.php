@@ -2,10 +2,10 @@
 	require_once ('/Config/Constantes.php');
 	require_once(ROOT_DIR . CONTROLLERS_DIR . 'DirectorController.php');
 	require_once(ROOT_DIR . CONTROLLERS_DIR . 'ProfesorController.php');
-	//require_once(ROOT_DIR . CONTROLLERS_DIR . 'SecretariaController.php');
+	require_once(ROOT_DIR . CONTROLLERS_DIR . 'SecretariaController.php');
 	require_once (ROOT_DIR . MODELS_DIR . 'Profesor.php');
 	require_once (ROOT_DIR . MODELS_DIR . 'Director.php');
-	//require_once (ROOT_DIR . MODELS_DIR . 'Secretaria.php');
+	require_once (ROOT_DIR . MODELS_DIR . 'Secretaria.php');
 	require_once(ROOT_DIR . VIEWS_DIR . 'Template.php');
 
 	class LoginController{
@@ -36,9 +36,9 @@
             			}
 						break;
 
-					/*case 'secretaria':
+					case 'secretaria':
 						$this->usuario = new Secretaria();
-						$this->controller = new SecretariaController($this->usuario);
+						$this->controller = new SecretariaController($this->usuario, $this->template);
 						if($this->usuario->existeSecre($request['email'], $request['password'])){	
 							$this->usuario->getSecretaria($request['email'], $request['password']);
 				            $this->iniciarSesion();
@@ -46,7 +46,7 @@
             			}else{
             				return false;
             			}
-						break;*/
+						break;
 
 					case 'director':
 						$this->usuario = new Director();

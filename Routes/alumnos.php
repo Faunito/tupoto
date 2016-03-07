@@ -5,6 +5,7 @@
 	require_once(ROOT_DIR . VIEWS_DIR . 'alumnosView.php');
 	require_once(ROOT_DIR . CONTROLLERS_DIR . 'ProfesorController.php');
 	require_once(ROOT_DIR . CONTROLLERS_DIR . 'DirectorController.php');
+	require_once(ROOT_DIR . CONTROLLERS_DIR . 'SecretariaController.php');
 
 	session_start();
 	if(isset($_SESSION["usuario"])){
@@ -17,7 +18,10 @@
 				break;	
 			case 'DirectorController':
 				router($view, get_class($controller->getDirector()));
-				break;				
+				break;
+			case 'SecretariaController':
+				router($view, get_class($controller->getSecretaria()));
+				break;					
 			default:
 				header('Location: inicio.php');
 				break;

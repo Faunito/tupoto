@@ -5,7 +5,7 @@
 	require_once(ROOT_DIR . MODELS_DIR . 'Secretaria.php');
 	require_once(ROOT_DIR . CONTROLLERS_DIR . 'DirectorController.php');
 	require_once(ROOT_DIR . CONTROLLERS_DIR . 'ProfesorController.php');
-	//require_once(ROOT_DIR . CONTROLLERS_DIR . 'SecretariaController.php');
+	require_once(ROOT_DIR . CONTROLLERS_DIR . 'SecretariaController.php');
 	require_once(ROOT_DIR . VIEWS_DIR . 'inicioView.php');
 
 	session_start();
@@ -18,10 +18,11 @@
                 break;
             case 'DirectorController':
                 $view->output(get_class($controller->getDirector()));
-                break; 
+
+                break;
             case 'SecretariaController':
                 $view->output(get_class($controller->getSecretaria()));
-                break;
+                break;  	
         }
 
 	}else{

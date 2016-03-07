@@ -1,0 +1,27 @@
+
+======= consulta competencias que 
+======= no estan asociadas a ninguna malla
+
+SELECT c.* FROM competencia c
+WHERE c.ID_COMPETENCIA NOT IN
+
+(SELECT A.ID_COMPETENCIA
+FROM competencia A
+INNER JOIN puede_impartir B
+ON A.ID_COMPETENCIA=B.ID_COMPETENCIA) 
+
+OR (c.CATEGORIA = 'Generica' AND c.ID_COMPETENCIA NOT IN (SELECT A.ID_COMPETENCIA
+										FROM competencia A
+										INNER JOIN puede_impartir B
+										ON A.ID_COMPETENCIA=B.ID_COMPETENCIA AND B.ID_MALLA = X));
+
+==============================================
+
+======= competencias asociadas a una malla X
+
+SELECT A.*, B.ID_COMPETENCIA, B.ID_MALLA
+FROM competencia A
+INNER JOIN puede_impartir B
+ON A.ID_COMPETENCIA=B.ID_COMPETENCIA AND B.ID_MALLA = X
+
+==============================================
