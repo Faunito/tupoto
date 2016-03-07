@@ -38,7 +38,7 @@
 
 					case 'secretaria':
 						$this->usuario = new Secretaria();
-						$this->controller = new SecretariaController($this->usuario);
+						$this->controller = new SecretariaController($this->usuario, $this->template);
 						if($this->usuario->existeSecre($request['email'], $request['password'])){	
 							$this->usuario->getSecretaria($request['email'], $request['password']);
 				            $this->iniciarSesion();

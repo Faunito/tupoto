@@ -49,13 +49,30 @@ class DBAsignatura Implements ICrud {
         $dbh->bindParam(':idmalla', $idmalla,PDO::PARAM_STR);
         $dbh->bindParam(':idasignatura', $asignatura->getId(),PDO::PARAM_STR);
         $dbh->execute();
-        /*$dbh = $con->prepare(' INSERT INTO asignatura(CODIGO_ASIGNATURA, NOMBRE_ASIGNATURA, NIVEL_ASIGNATURA,ID_MALLA) 
-                               VALUES (:codigo, :nombre, :nivel, :malla)');
-        $dbh->bindParam(':codigo', $asignatura->getCodigo(),PDO::PARAM_STR);
-        $dbh->bindParam(':nombre', $asignatura->getNombre(),PDO::PARAM_STR);
-        $dbh->bindParam(':nivel', $asignatura->getNivel(),PDO::PARAM_STR);
-        $dbh->bindParam(':malla',$asignatura->getMalla()->getIdMalla(),PDO::PARAM_STR);
-        $dbh->execute();*/
+    }
+
+    public static function quitarIdMalla($idmalla)
+    {
+        $con = DBSingleton::getInstance()->getDB();
+        $dbh = $con->prepare('  SELECT ID_ASIGNATURA 
+                                FROM asignatura 
+                                WHERE ID_MALLA = :idmalla');
+
+        $dbh->bindParam(':idmalla', $idmalla,PDO::PARAM_STR);
+        $dbh->execute();
+        $asignaturas = $dbh->fetchAll(PDO::FETCH_COLUMN);
+
+        $cantidad = str_repeat("?,", count($asignaturas)-1) . "?";
+        $dbh = $con->prepare('  UPDATE asignatura
+                                SET ID_MALLA = NULL
+                                WHERE ID_ASIGNATURA IN ('.$cantidad.')');
+        $i = 1;
+        foreach ($asignaturas as $asig) {
+            $dbh->bindParam($i, intval($asig), PDO::PARAM_STR);
+            $i++;
+        }
+        $dbh->execute();
+
     }
 
 	function add($asignatura){
