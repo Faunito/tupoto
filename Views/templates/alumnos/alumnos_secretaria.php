@@ -22,7 +22,8 @@
 							    <div class="card material-table">
 							      <div class="table-header">
 							        <span class="table-title">Alumnos</span>
-							        <div class="actions">				
+							        <div class="actions">	
+							      		<a href="alumnos.php?action=nuevo" class="modal-trigger waves-effect btn-flat nopadding"><i class="material-icons right">add_circle</i>Ingresar Alumno</a>			
 							          	<a href="#" class="search-toggle waves-effect btn-flat nopadding"><i class="material-icons">search</i></a>
 							        </div>
 							      </div>
@@ -33,6 +34,7 @@
 								            <th class="no-padding">Nombre</th>
 								            <th class="no-padding">Apellido paterno</th>
 								            <th class="no-padding">Apellido materno</th>
+								            <th class="center no-padding" style="width: 60px;">Práctica</th>
 								            <th class="center no-padding" style="width: 60px;">Ver</th>
 								            <th class="center no-padding" style="width: 60px;">Modificar</th>
 								            <th class="center no-padding" style="width: 60px;">Eliminar</th>
@@ -48,6 +50,9 @@
 								    	    echo '<td class="no-padding">'.$persona->getApaterno().'</td>';
 								    	    echo '<td class="no-padding">'.$persona->getAmaterno().'</td>';
 								    	    ?>
+								    	    <td class="center no-padding">
+								            	<a class="btn-floating waves-effect waves-light tooltipped" data-position="top" data-delay="50" data-tooltip="Ingresar práctica" href="practicas.php?action=nueva&param=<?php echo $persona->getRut(); ?>"><i class="material-icons orange white-text">note_add</i></a>
+											</td>
 								    	    <td class="center no-padding">
 								            	<a class="btn-floating waves-effect waves-light tooltipped" data-position="top" data-delay="50" data-tooltip="Ver alumno" href="alumnos.php?action=ver&param=<?php echo $persona->getRut(); ?>"><i class="mdi mdi-eye white-text right"></i></a>
 											</td>

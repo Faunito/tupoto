@@ -21,9 +21,9 @@
 	    }
 
 	    public function action($action){
-	    	switch ($action) {
-	    		case 'nuevo':
-
+	    	switch ($action['action']) {
+	    		case 'nueva':
+	    			$this->controller->getTemplate()->load(ROOT_DIR.TEMPLATES_DIR.'practicas/nueva_practica.php');
 	    			break;
 	    		case 'modificar':	
 
