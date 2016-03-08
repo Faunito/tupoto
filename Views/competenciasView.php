@@ -105,7 +105,6 @@
 	    					$this->controller->getTemplate()->setData('avanzado', $evidencia);
 	    				}
 	    			}
-	    			$this->controller->getTemplate()->setData('especificaciones', $especificaciones);
 	    			$this->controller->getTemplate()->setData('mallas', $mallas);
 	    			$this->controller->getTemplate()->setData('competencia', $competencia);
 	    			$this->controller->getTemplate()->load(ROOT_DIR.TEMPLATES_DIR.'competencias/asignar_competencia.php');

@@ -107,6 +107,8 @@
 	<?php 
 	require_once(ROOT_DIR . TEMPLATES_DIR . 'base/scripts.php');
 	?>
+	<script src="<?php echo RESOURCES_DIR ?>js/jquery.jqplot.js"></script>
+	<script src="<?php echo RESOURCES_DIR ?>js/jqplot.bubbleRenderer.js"></script>
 	<?php
 	require_once(ROOT_DIR . TEMPLATES_DIR . 'base/footer.php');
     ?>

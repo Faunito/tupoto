@@ -27,15 +27,17 @@
     } ?>      
     </div>
   </div>
+  <?php foreach ($this->data['competencias'] as $competencia) { ?>
   <div class="card">
     <div class="card-content">
       <div class="row">
       <div class="col s10 offset-s1">
-      <div id="chart1" style="height:500px;"></div>
+      <div id="chart<?php echo $competencia->getIdComp(); ?>" style="height:500px;"></div>
       </div>
       </div>
     </div>
   </div>  
+  <?php  }?>
 </main>
     <?php
     require_once(ROOT_DIR . TEMPLATES_DIR . 'base/scripts.php');
@@ -48,17 +50,58 @@
     <script src="<?php echo RESOURCES_DIR ?>js/jqplot.canvasAxisLabelRenderer.js"></script>
     <script src="<?php echo RESOURCES_DIR ?>js/jqplot.canvasAxisTickRenderer.js"></script>
     <script src="<?php echo RESOURCES_DIR ?>js/jqplot.categoryAxisRenderer.js"></script>
+    <?php 
+    $k=0;
+    foreach ($this->data['competencias'] as $competencia) {
+
+      $nivel_academico = $this->data['malla']->getNiveles();
+      $semestres = array();
+      $semestres['basico'] = array();
+      $semestres['intermedio'] = array();
+      $semestres['avanzado'] = array();
+
+      for ($i = 0; $i < $nivel_academico; $i++) { 
+        $semestres['basico'][$i] = 0;
+        $semestres['intermedio'][$i] = 0;
+        $semestres['avanzado'][$i] = 0;
+      }
+
+      $contador = count($this->data['graficos'][$k]['asignaturas']);
+      for ($i = 0; $i < $nivel_academico; $i++) {
+
+        for ($j = 0; $j < count($this->data['graficos'][$k]['asignaturas']); $j++) { 
+          if( $this->data['graficos'][$k]['asignaturas'][$j]->getNivel() == ($i+1) ){
+            switch ($this->data['graficos'][$k]['especificaciones'][$j]->getNivelCompetencia()) {
+              case 'Básico':
+                $semestres['basico'][$i]++;
+                break;
+              case 'Intermedio':
+                $semestres['intermedio'][$i]++;
+                break;
+              case 'Avanzado':
+                $semestres['avanzado'][$i]++;
+                break;
+            } 
+          }
+        }
+      }
+    ?>
     <script>
     $(document).ready(function(){
      
-    var hola = [[1, 1,<?php echo '10'; ?>], [2, 1, 20], 
-    [3, 2, 20], [4, 2, 20], 
-    [5, 2, 20], [6, 3, 20], [7, 3, 50]];
-    
-    var ticks = ['This is how to tick'];
+    var hola = [
+    <?php for($i=0;$i<$nivel_academico;$i++){
+              echo '[';echo $i+1;echo ',';echo 1;echo ',';echo $semestres['basico'][$i]*10;echo '],';
+              echo '[';echo $i+1;echo ',';echo 2;echo ',';echo $semestres['intermedio'][$i]*10;echo '],';
+              echo '[';echo $i+1;echo ',';echo 3;echo ',';echo $semestres['avanzado'][$i]*10;echo ']';
+              if($i!=$nivel_academico-1)
+                echo ',';
+            }
+    ?>
+    ];
 
-    plot1 = $.jqplot('chart1',[hola],{
-        title: '<?php echo 'Competencia 1'; ?>',
+    plot1 = $.jqplot('chart<?php echo $competencia->getIdComp(); ?>',[hola],{
+        title: '<?php echo $competencia->getNomComp(); ?>',
         seriesDefaults:{
             renderer: $.jqplot.BubbleRenderer,
             rendererOptions: {
@@ -69,7 +112,7 @@
             shadowAlpha: 0.05
         },
          axes:{
-          xaxis: {min:0, max: <?php echo '8'; ?>,
+          xaxis: {min:0, max: <?php echo $nivel_academico+1; ?>,
            tickOptions:{ 
             angle: 0
           },
@@ -108,6 +151,8 @@
 });
   </script>
     <?php
+    $k++;
+  }
     require_once(ROOT_DIR . TEMPLATES_DIR . 'base/footer.php');
     ?>
 
