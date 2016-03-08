@@ -166,11 +166,8 @@ class DirectorController extends ProfesorController{
         //============ Mallas ================ 
         function ConsultarMalla($id){
             $malla = new Malla();
-<<<<<<< HEAD
             $malla->setId($id);
-=======
             $malla->setIdMalla($id);
->>>>>>> ea4ceda88ea1a6b7020ca9e4a488c701d06b7e65
             $malla->getDBMalla()->GetInstance($malla);
             return $malla;
         }
