@@ -79,14 +79,13 @@ class DBMalla Implements ICrud{
     function GetInstance($var){
         $con = DBSingleton::getInstance()->getDB();
         $res = $con -> prepare('SELECT * FROM malla_curricular where ID_MALLA =:id');
-        $res -> bindParam(':email',$profesor -> getIdMalla(),PDO::PARAM_STR);
+        $res -> bindParam(':id',$var -> getIdMalla(),PDO::PARAM_STR);
         $res -> execute();
         $res2 = $res -> fetchObject(__CLASS__);
         $var->setCodCarrera($res2->CODIGO_CARRERA);
         $var->setPLan($res2->PLAN);
         $var->setIdMAlla($res2->ID_MALLA);
         $var->setNiveles($res2->NIVELES);
-        return $var;
     }
 }
 ?>

@@ -138,8 +138,6 @@ class Director extends Profesor
         }
 
         //============ Asignaturas ================
-
-
         function crearAsignatura($codigo, $nombre, $nivel){
             $this->asignatura = new Asignatura();
             $this->asignatura->setCodigo($codigo);
