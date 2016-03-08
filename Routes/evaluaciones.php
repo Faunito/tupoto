@@ -6,7 +6,7 @@
 	require_once(ROOT_DIR . VIEWS_DIR . 'evaluacionesView.php');
 	require_once(ROOT_DIR . CONTROLLERS_DIR . 'DirectorController.php');
 	require_once(ROOT_DIR . CONTROLLERS_DIR . 'ProfesorController.php');
-	//require_once(ROOT_DIR . CONTROLLERS_DIR . 'SecretariaController.php');
+	require_once(ROOT_DIR . CONTROLLERS_DIR . 'SecretariaController.php');
 
 	session_start();
 	if(isset($_SESSION["usuario"])){

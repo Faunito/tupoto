@@ -18,13 +18,8 @@
 			                <form id="myForm" action="#" method="POST">
 			               		<div class="row">
 					                 <div class="input-field col s4 offset-s3">
-			                    	<select name="tipoFuncionario">
-								      	<option value="" disabled selected>Elija un alumno</option>
-								      	<option value="alumno1">Fredy</option>
-								    	<option value="alumno2">Frodo</option>
-								    	<option value="alumno3">Fredo</option>								    
-								    </select>
-									<label >Alumno</label>
+			                    	        <input id="alumno" name="alumno" type="text" class="validate" disabled value='<?php echo $this->data['alumno']->getNombre().' '.$this->data['alumno']->getApaterno().' '.$this->data['alumno']->getAmaterno();?>'>
+									        <label for='alumno'>Alumno</label>
 			                    	</div>	
 
 					                <div class=" col s2 input-field">       
