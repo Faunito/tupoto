@@ -62,17 +62,18 @@ class DBAsignatura Implements ICrud {
         $dbh->bindParam(':idmalla', $idmalla,PDO::PARAM_STR);
         $dbh->execute();
         $asignaturas = $dbh->fetchAll(PDO::FETCH_COLUMN);
-
-        $cantidad = str_repeat("?,", count($asignaturas)-1) . "?";
-        $dbh = $con->prepare('  UPDATE asignatura
-                                SET ID_MALLA = NULL
-                                WHERE ID_ASIGNATURA IN ('.$cantidad.')');
-        $i = 1;
-        foreach ($asignaturas as $asig) {
-            $dbh->bindParam($i, intval($asig), PDO::PARAM_STR);
-            $i++;
+        if(!empty($asignaturas)){
+            $cantidad = str_repeat("?,", count($asignaturas)-1) . "?";
+            $dbh = $con->prepare('  UPDATE asignatura
+                                    SET ID_MALLA = NULL
+                                    WHERE ID_ASIGNATURA IN ('.$cantidad.')');
+            $i = 1;
+            foreach ($asignaturas as $asig) {
+                $dbh->bindParam($i, intval($asig), PDO::PARAM_STR);
+                $i++;
+            }
+            $dbh->execute();            
         }
-        $dbh->execute();
 
     }
 
@@ -122,6 +123,23 @@ class DBAsignatura Implements ICrud {
         $dbh->execute();
         $asignaturas = $dbh->fetchAll();
         return $asignaturas; 
+    }
+
+    public static function getAsignaturasGrafico($malla, $competencia){
+        $array=array();
+        $i=0;
+        $con = DBSingleton::getInstance()->getDB();
+        $dbh = $con->prepare('  SELECT A.*, E.NIVELES_COMPETENCIA FROM asignatura A
+                                INNER JOIN especificacion_de_evidencia E 
+                                ON A.ID_ASIGNATURA = E.ID_ASIGNATURA 
+                                AND E.ID_COMPETENCIA = :competencia AND E.NIVELES_COMPETENCIA IS NOT NULL
+                                INNER JOIN malla_curricular M 
+                                ON A.ID_MALLA = M.ID_MALLA AND M.ID_MALLA = :malla');
+        $dbh->bindParam(':competencia', $competencia->getIdComp(), PDO::PARAM_STR);
+        $dbh->bindParam(':malla', $malla->getIdMalla(), PDO::PARAM_STR);
+        $dbh->execute();
+        $grafico = $dbh->fetchAll();
+        return $grafico;
     }
 
 	function add($asignatura){
