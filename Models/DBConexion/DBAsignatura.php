@@ -124,6 +124,23 @@ class DBAsignatura Implements ICrud {
         return $asignaturas; 
     }
 
+    public static function getAsignaturasGrafico($malla, $competencia){
+        $array=array();
+        $i=0;
+        $con = DBSingleton::getInstance()->getDB();
+        $dbh = $con->prepare('  SELECT A.*, E.NIVELES_COMPETENCIA FROM asignatura A
+                                INNER JOIN especificacion_de_evidencia E 
+                                ON A.ID_ASIGNATURA = E.ID_ASIGNATURA 
+                                AND E.ID_COMPETENCIA = :competencia AND E.NIVELES_COMPETENCIA IS NOT NULL
+                                INNER JOIN malla_curricular M 
+                                ON A.ID_MALLA = M.ID_MALLA AND M.ID_MALLA = :malla');
+        $dbh->bindParam(':competencia', $competencia->getIdComp(), PDO::PARAM_STR);
+        $dbh->bindParam(':malla', $malla->getIdMalla(), PDO::PARAM_STR);
+        $dbh->execute();
+        $grafico = $dbh->fetchAll();
+        return $grafico;
+    }
+
 	function add($asignatura){
         $con = DBSingleton::getInstance()->getDB();
         $dbh = $con->prepare(' INSERT INTO asignatura(CODIGO_ASIGNATURA, NOMBRE_ASIGNATURA, NIVEL_ASIGNATURA) 
