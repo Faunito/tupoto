@@ -47,15 +47,10 @@ class SecretariaController{
         }
 
         function consultarAlumno($rut){
-            $alumno = Alumno::consultarAlumno($rut);
-            $nuevo = new Alumno();
-            $nuevo->setRut($alumno['RUT']);
-            $nuevo->setCarrera($alumno['CARRERA']);
-            $nuevo->setNivelAcademico($alumno['NIVEL_ACADEMICO']);
-            $nuevo->setNombre($alumno['NOMBRE']);
-            $nuevo->setApaterno($alumno['APATERNO']);
-            $nuevo->setAmaterno($alumno['AMATERNO']);
-            return $nuevo;        
+            $alumno = new Alumno();
+            $alumno->setRut($rut);
+            $alumno->getDBAlumno()->GetInstance($alumno);
+            return $alumno;
         }
         
         function registrarAlumno($rut,$carrera,$nombre,$apaterno,$amaterno){
