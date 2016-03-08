@@ -10,7 +10,7 @@ class DBAsignatura Implements ICrud {
         $resultado->execute();
         $objeto = $resultado->fetchObject(__CLASS__);
         //puede que falten datos
-        $asignatura->setCodigo($objeto->ID_ASIGNATURA);
+        $asignatura->setCodigo($objeto->CODIGO_ASIGNATURA);
         $asignatura->setNombre($objeto->NOMBRE_ASIGNATURA);
         $asignatura->setNivel($objeto->NIVEL_ASIGNATURA);
 	}

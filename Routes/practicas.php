@@ -4,7 +4,7 @@
 	require_once(ROOT_DIR . MODELS_DIR . 'Secretaria.php');
 	require_once(ROOT_DIR . VIEWS_DIR . 'practicasView.php');
 	require_once(ROOT_DIR . CONTROLLERS_DIR . 'DirectorController.php');
-	//require_once(ROOT_DIR . CONTROLLERS_DIR . 'SecretariaController.php');
+	require_once(ROOT_DIR . CONTROLLERS_DIR . 'SecretariaController.php');
 
 	session_start();
 	if(isset($_SESSION["usuario"])){
@@ -16,7 +16,7 @@
 				router($view, get_class($controller->getDirector()));
 				break;
 			case 'SecretariaController':
-				router($view, get_class($controller->getDirector()));
+				router($view, get_class($controller->getSecretaria()));
 				break;
 			default:
 				header('Location: inicio.php');
@@ -29,7 +29,7 @@
 
 	function router($view, $usuario){
 		if (isset($_GET['action'])) {
-			$view->action($_GET['action']);		
+			$view->action($_GET);		
 		}elseif (isset($_GET['result'])){
 			$view->result($_GET, $_POST);
 		}else{

@@ -29,7 +29,7 @@
 	    public function action($action){
 	    	switch ($action['action']) {
 	    		case 'nuevo':
-	    			
+	    			$this->controller->getTemplate()->load(ROOT_DIR.TEMPLATES_DIR.'alumnos/nuevo_alumno.php');
 	    			break;
 	    		case 'modificar':
 	    		
