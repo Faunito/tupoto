@@ -31,6 +31,21 @@ class Secretaria extends Funcionario
         $this->practica->setNivelPracica($nivelPractica);
         $this->practica->setHoras($horas);
         return $this->practica->getDBPractica()->add($this->practica); 
+    } 
+    
+    function modificarAlumno($rut,$nombre,$apaterno,$amaterno){
+        $this->alumno = new Alumno();
+        $this->alumno->setRut($rut);
+        $this->alumno->setNombre($nombre);
+        $this->alumno->setApaterno($apaterno);
+        $this->alumno->setAmaterno($amaterno);
+        $this->alumno->getDBAlumno()->modify($this->alumno);
+    }
+    
+    function eliminarAlumno($rut){
+        $this->alumno = new Alumno();
+        $this->alumno->setRut($rut);
+        $this->alumno->getDBAlumno()->delete($this->alumno);
     }    
     
     //SETTERS
@@ -51,7 +66,7 @@ class Secretaria extends Funcionario
     }
     
     function getSecretaria($email,$pass){
-        $this->setCorreoElectronico($email);
+        $this->ssecretariactronico($email);
         $this->setPassword($pass);
         $this->dbsecretaria -> GetInstance($this);
     }
