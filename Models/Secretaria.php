@@ -66,7 +66,7 @@ class Secretaria extends Funcionario
     }
     
     function getSecretaria($email,$pass){
-        $this->ssecretariactronico($email);
+        $this->setCorreoElectronico($email);
         $this->setPassword($pass);
         $this->dbsecretaria -> GetInstance($this);
     }

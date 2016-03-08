@@ -23,6 +23,8 @@
 	    public function action($action){
 	    	switch ($action['action']) {
 	    		case 'nueva':
+                    $alumno = $this->controller->consultarAlumno($action['param']);                   
+                    $this->controller->getTemplate()->setData('alumno',$alumno);
 	    			$this->controller->getTemplate()->load(ROOT_DIR.TEMPLATES_DIR.'practicas/nueva_practica.php');
 	    			break;
 	    		case 'modificar':	

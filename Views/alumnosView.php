@@ -56,7 +56,7 @@
                                                         $post['apaterno'],
                                                         $post['amaterno']);
 	    			//TOAST
-	    			$this->controller->getTemplate()->redirect('alumnos.php?action=ver');
+	    			$this->controller->getTemplate()->redirect('alumnos.php');
 
 	    			break;
 	    		case 'modificar':
@@ -64,16 +64,16 @@
 								    				    $post['nombre'],
                                                         $post['apaterno'],
                                                         $post['amaterno']); 
-                    $this->controller->getTemplate()->redirect('alumnos.php?action=ver');
+                    $this->controller->getTemplate()->redirect('alumnos.php');
 	    			break;
 	    		case 'consultar':
                     $alumno = $this->controller->consultarAlumno($result['param']);
 	    			$this->controller->getTemplate()->setData('alumno', $alumno);
-	    			$this->controller->getTemplate()->load(ROOT_DIR.TEMPLATES_DIR.'alumnos/modificar_alumno.php');
+	    			$this->controller->getTemplate()->load(ROOT_DIR.TEMPLATES_DIR.'alumnos/<modific></modific>ar_alumno.php');
 	    			break;
 	    		case 'eliminar':
 	    			$this->controller->eliminarAlumno($result['param']);
-					$this->controller->getTemplate()->redirect('alumnos.php?action=ver');
+					$this->controller->getTemplate()->redirect('alumnos.php');
 	    			break;
 	    		
 	    		default:

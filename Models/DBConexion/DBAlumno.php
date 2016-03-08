@@ -4,6 +4,7 @@ require_once('ICrud.php');
 class DBAlumno Implements ICrud{
     
     function GetInstance($alumno){
+        $con = DBSingleton::getInstance()->getDB();
         $res = $con -> prepare('SELECT * FROM alumno where RUT=:rut');
         $res -> bindParam(':rut',$alumno->getRut(),PDO::PARAM_STR);        
         $res -> execute();
