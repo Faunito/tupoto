@@ -62,17 +62,18 @@ class DBAsignatura Implements ICrud {
         $dbh->bindParam(':idmalla', $idmalla,PDO::PARAM_STR);
         $dbh->execute();
         $asignaturas = $dbh->fetchAll(PDO::FETCH_COLUMN);
-
-        $cantidad = str_repeat("?,", count($asignaturas)-1) . "?";
-        $dbh = $con->prepare('  UPDATE asignatura
-                                SET ID_MALLA = NULL
-                                WHERE ID_ASIGNATURA IN ('.$cantidad.')');
-        $i = 1;
-        foreach ($asignaturas as $asig) {
-            $dbh->bindParam($i, intval($asig), PDO::PARAM_STR);
-            $i++;
+        if(!empty($asignaturas)){
+            $cantidad = str_repeat("?,", count($asignaturas)-1) . "?";
+            $dbh = $con->prepare('  UPDATE asignatura
+                                    SET ID_MALLA = NULL
+                                    WHERE ID_ASIGNATURA IN ('.$cantidad.')');
+            $i = 1;
+            foreach ($asignaturas as $asig) {
+                $dbh->bindParam($i, intval($asig), PDO::PARAM_STR);
+                $i++;
+            }
+            $dbh->execute();            
         }
-        $dbh->execute();
 
     }
 
