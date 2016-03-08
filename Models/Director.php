@@ -134,12 +134,10 @@ class Director extends Profesor
             $this->especificacion->setIdAsignatura($idAsignatura);
             $this->especificacion->setNivelCompetencia($Nivel);
             $this->especificacion->setIdCompetencia($idCompetencia);
-            $this->especificacion->getDBEspecificacion()->add($this->especificacion);        
+            $this->especificacion->getDBEspecificacion()->add($this->especificacion);
         }
 
         //============ Asignaturas ================
-
-
         function crearAsignatura($codigo, $nombre, $nivel){
             $this->asignatura = new Asignatura();
             $this->asignatura->setCodigo($codigo);

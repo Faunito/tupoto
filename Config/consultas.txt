@@ -25,3 +25,18 @@ INNER JOIN puede_impartir B
 ON A.ID_COMPETENCIA=B.ID_COMPETENCIA AND B.ID_MALLA = X
 
 ==============================================
+
+======= todas las asignaturas asociadas a todas las mallas asociadas a la competencia X
+
+SELECT DISTINCT A.*,E.ID_COMPETENCIA, E.NIVELES_COMPETENCIA FROM asignatura A 
+LEFT JOIN especificacion_de_evidencia E 
+ON A.ID_ASIGNATURA = E.ID_ASIGNATURA 
+WHERE A.ID_MALLA IN (5,1) ORDER BY E.ID_COMPETENCIA DESC; //ids mallas
+
+==============================================
+
+DELETE FROM especificacion_de_evidencia
+WHERE ID_COMPETENCIA = 23 
+AND ID_ASIGNATURA IN (	SELECT ID_ASIGNATURA 
+						FROM asignatura A 
+						WHERE A.ID_MALLA IN(5,1) )

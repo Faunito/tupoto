@@ -98,13 +98,7 @@
 								</div>
 							</div>
 						</div>
-					    </div>
-					  	</div>
-					</div>
-					<div class="card">
-						<div class="card-content">
-							<div id="Grafic"></div>
-						</div>
+					  </div>
 					</div>
 				</div>
 			</div>
@@ -113,23 +107,6 @@
 	<?php 
 	require_once(ROOT_DIR . TEMPLATES_DIR . 'base/scripts.php');
 	?>
-	<script src="<?php echo RESOURCES_DIR ?>js/jquery.jqplot.js"></script>
-	<script src="<?php echo RESOURCES_DIR ?>js/jqplot.bubbleRenderer.js"></script>
-	<script>
-	$(document).ready(function(){
-    var arr = [[10, 10, 20, {label:"Acura", color:'sandybrown'}], 
-    [15, 15, 20, {label:"Alfa Romeo", color:'skyblue'}], 
-    [8, 4, 20, {label:"AM General", color:"salmon"}], [6, 2, 10, {color:"papayawhip"}], 
-    [5, 15, 21, "Audi"], [1, 2,20], [2, 13, 5, "Bugatti"]];
-     
-    plot1c = $.jqplot('Grafic',[arr],{
-        title: 'GRÁFICO DE LA COMPETENCIA: <?php echo $this->data['competencia']->getNomComp(); ?>',
-        seriesDefaults:{
-            renderer: $.jqplot.BubbleRenderer
-        	}              
-    	});
-	});
-	</script>
 	<?php
 	require_once(ROOT_DIR . TEMPLATES_DIR . 'base/footer.php');
     ?>

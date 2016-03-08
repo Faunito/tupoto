@@ -137,14 +137,11 @@ class DirectorController extends ProfesorController{
             }
         }           
         //============ Mallas ================ 
-        function ConsultarMalla($id){
-            $malla = Malla::getMalla($id);
-            $nueva = new Malla();                
-            $nueva->setIdMalla($malla['ID_MALLA']);
-            $nueva->setPlan($malla['PLAN']);
-            $nueva->setCodCarrera($malla['CODIGO_CARRERA']);
-            $nueva->setNiveles($malla['NIVELES']);
-            return $nueva;
+        function consultarMalla($id){
+            $malla = new Malla();
+            $malla->setIdMalla($id);
+            $malla->getDBMalla()->GetInstance($malla);
+            return $malla;
         }
 
         function listarMallas(){
@@ -258,22 +255,19 @@ class DirectorController extends ProfesorController{
         }
         
         function consultarAsignatura($codigo){
-            $asignatura = Asignatura::getAsignatura($codigo);
-            $nueva = new Asignatura();
-            $nueva->setId($asignatura['ID_ASIGNATURA']);
-            $nueva->setCodigo($asignatura['CODIGO_ASIGNATURA']);
-            //$nueva->setMalla($asignatura['ID_MALLA']);
-            $nueva->setNombre($asignatura['NOMBRE_ASIGNATURA']);
-            $nueva->setNivel($asignatura['NIVEL_ASIGNATURA']);
-            $nueva->setDirector($this->dir);
-            return $nueva;            
+            $asignatura = new Asignatura();
+            $asignatura->setId($codigo);
+            $asignatura->getDBAsignatura()->GetInstance($asignatura);
+            return $asignatura;            
         }
 
 
         function asignaturasNoRepetidas($mallas){
             $asignaturas = Asignatura::asignaturasNoRepetidas($mallas);
             $i=0;
-            $array=array();
+            $array = array();
+            $array['asignaturas'] = array();
+            $array['especificaciones'] = array();
             foreach ($asignaturas as $asignatura) {
                 $nueva = new Asignatura();                
                 $nueva->setId($asignatura['ID_ASIGNATURA']);
@@ -282,10 +276,21 @@ class DirectorController extends ProfesorController{
                 $nueva->setNombre($asignatura['NOMBRE_ASIGNATURA']);
                 $nueva->setNivel($asignatura['NIVEL_ASIGNATURA']);
                 $nueva->setDirector($this->dir);
-                $array[$i] = $nueva;
+                $array['asignaturas'][$i] = $nueva;
+
+                $nuevaE = new Especificacion();
+                $nuevaE->setIdAsignatura($asignatura['ID_ASIGNATURA']);
+                $nuevaE->setIdCompetencia($asignatura['ID_COMPETENCIA']);
+                $nuevaE->setNivelCompetencia($asignatura['NIVELES_COMPETENCIA']);
+                $array['especificaciones'][$i] = $nuevaE;
+
                 $i++;
             }
             return $array;
+        }        
+
+        function borraAsignaturasCompetencia($mallas, $competencia){
+            Asignatura::borraAsignaturasCompetencia($mallas, $competencia);
         }
         
         function crearAsignatura($codigo, $nombre, $nivel){
@@ -322,15 +327,10 @@ class DirectorController extends ProfesorController{
         }
 
         function consultarAlumno($rut){
-            $alumno = Alumno::consultarAlumno($rut);
-            $nuevo = new Alumno();
-            $nuevo->setRut($alumno['RUT']);
-            $nuevo->setCarrera($alumno['CARRERA']);
-            $nuevo->setNivelAcademico($alumno['NIVEL_ACADEMICO']);
-            $nuevo->setNombre($alumno['NOMBRE']);
-            $nuevo->setApaterno($alumno['APATERNO']);
-            $nuevo->setAmaterno($alumno['AMATERNO']);
-            return $nuevo;        
+            $alumno = new Alumno();
+            $alumno->setRut($rut);
+            $alumno->getDBalumno()->GetInstancce($alumno);
+            return $alumno;
         }
 
     //============ Getters ================

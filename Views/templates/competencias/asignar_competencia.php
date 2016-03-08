@@ -83,63 +83,61 @@
 									        </thead>
 									        <tbody>
 									        <?php 
-										        if(!empty($this->data['asignaturasOn'])){
-										        foreach ($this->data['asignaturasOn'] as $asignatura) {
+										        if(!empty($this->data['asignaturas'])){
+
+										        for ($i=0; $i < $this->data['contador']; $i++) { 
 										        	echo '<tr>';
-										        	echo '<td>'.$asignatura->getNombre().'</td>';
-								    	    		echo '<td class="no-padding">'.$asignatura->getCodigo().'</td>';
-								    	    		echo '<td class="no-padding">'.$asignatura->getNivel().'</td>';
-								    	    		echo '<td class="no-padding">'.$asignatura->getMalla().'</td>';
+										        	echo '<td>'.$this->data['asignaturas'][$i]->getNombre().'</td>';
+								    	    		echo '<td class="no-padding">'.$this->data['asignaturas'][$i]->getCodigo().'</td>';
+								    	    		echo '<td class="no-padding">'.$this->data['asignaturas'][$i]->getNivel().'</td>';
+								    	    		echo '<td class="no-padding">'.$this->data['asignaturas'][$i]->getMalla().'</td>';
 								        			?>	
 								    	    		<td class="center no-padding">
 											      	<div class="switch">
 											       	<label>
 											       	Quitar
-												    <input name="<?php echo $asignatura->getId(); ?>" id="<?php echo $asignatura->getId(); ?>" type="checkbox" checked>
+												    <input name="<?php echo $this->data['asignaturas'][$i]->getId(); ?>" id="<?php echo $this->data['asignaturas'][$i]->getId(); ?>" type="checkbox"
+												    <?php if($this->data['especificaciones'][$i]->getIdCompetencia() != null) echo 'checked'; ?> >
 												    <span class="lever"></span>
 												    Agregar
 												    </label>
 												  </div>											     
 												</td>
 												<td class="center" style="overflow: visible;">
-												<select name="select_<?php echo $asignatura->getId(); ?>" id="select<?php echo $asignatura->getId(); ?>">
-											      	<option value="" checked>Ninguno</option>
-											      	<option value="Básico">Básico</option>
-											    	<option value="Intermedio">Intermedio</option>
-											    	<option value="Avanzado">Avanzado</option>	
+												<select name="select_<?php echo $this->data['asignaturas'][$i]->getId(); ?>" id="select<?php echo $this->data['asignaturas'][$i]->getId(); ?>">
+													<?php 
+														switch ($this->data['especificaciones'][$i]->getNivelCompetencia()) {
+															case 'Básico':																
+														      	echo '<option value="">Ninguno</option>';
+														      	echo '<option value="Básico" selected >Básico</option>';
+														    	echo '<option value="Intermedio">Intermedio</option>';
+														    	echo '<option value="Avanzado">Avanzado</option>	';
+																break;
+															case 'Intermedio':
+																echo '<option value="">Ninguno</option>';
+														      	echo '<option value="Básico">Básico</option>';
+														    	echo '<option value="Intermedio" selected>Intermedio</option>';
+														    	echo '<option value="Avanzado">Avanzado</option>';
+																break;
+															case 'Avanzado':
+																echo '<option value="">Ninguno</option>';
+														      	echo '<option value="Básico">Básico</option>';
+														    	echo '<option value="Intermedio">Intermedio</option>';
+														    	echo '<option value="Avanzado" selected>Avanzado</option>';
+																break;
+															default:
+																echo '<option value="" selected>Ninguno</option>';
+														      	echo '<option value="Básico">Básico</option>';
+														    	echo '<option value="Intermedio">Intermedio</option>';
+														    	echo '<option value="Avanzado">Avanzado</option>';
+																break;
+														}
+													 ?>
 											   	</select>				
 												</td>
 								          </tr>
-								          <?php }} ?>
-								          <?php 
-										        if(!empty($this->data['asignaturasOff'])){
-										        foreach ($this->data['asignaturasOff'] as $asignatura) {
-										        	echo '<tr>';
-										        	echo '<td>'.$asignatura->getNombre().'</td>';
-								    	    		echo '<td class="no-padding">'.$asignatura->getCodigo().'</td>';
-								    	    		echo '<td class="no-padding">'.$asignatura->getNivel().'</td>';
-								    	    		echo '<td class="no-padding">'.$asignatura->getMalla().'</td>';
-								        			?>	
-								    	    		<td class="center no-padding">
-											      	<div class="switch">
-											       	<label>
-											       	Quitar
-												    <input name="<?php echo $asignatura->getId(); ?>" id="<?php echo $asignatura->getId(); ?>" type="checkbox">
-												    <span class="lever"></span>
-												    Agregar
-												    </label>
-												  </div>											     
-												</td>
-												<td class="center" style="overflow: visible;">
-												<select name="select_<?php echo $asignatura->getId(); ?>" id="select<?php echo $asignatura->getId(); ?>">
-											      	<option value="" selected>Ninguno</option>
-											      	<option value="Básico">Básico</option>
-											    	<option value="Intermedio">Intermedio</option>
-											    	<option value="Avanzado">Avanzado</option>	
-											   	</select>				
-												</td>
-								          </tr>
-								          <?php }} ?>
+								          <?php }
+								          } ?>
 							        	</tbody>
 							      		</table>
 							    	</div>

@@ -10,7 +10,7 @@ class DBAsignatura Implements ICrud {
         $resultado->execute();
         $objeto = $resultado->fetchObject(__CLASS__);
         //puede que falten datos
-        $asignatura->setCodigo($objeto->ID_ASIGNATURA);
+        $asignatura->setCodigo($objeto->CODIGO_ASIGNATURA);
         $asignatura->setNombre($objeto->NOMBRE_ASIGNATURA);
         $asignatura->setNivel($objeto->NIVEL_ASIGNATURA);
 	}
@@ -76,6 +76,30 @@ class DBAsignatura Implements ICrud {
 
     }
 
+    public static function borraAsignaturasCompetencia($mallas, $competencia){
+        $array=array();
+        $i=0;
+        $con = DBSingleton::getInstance()->getDB();
+        foreach ($mallas as $malla) {
+            $array[$i]=$malla->getIdMalla();
+            $i++;
+        }
+        $cantidad = str_repeat("?,", count($array)-1) . "?";
+        $dbh = $con->prepare('  DELETE FROM especificacion_de_evidencia 
+                                WHERE ID_COMPETENCIA = ? 
+                                AND ID_ASIGNATURA IN (SELECT A.ID_ASIGNATURA 
+                                                        FROM asignatura A 
+                                                        WHERE A.ID_MALLA IN('.$cantidad.') )');
+
+        $dbh->bindParam(1, intval($competencia->getIdComp()), PDO::PARAM_STR);
+        $i = 2;
+        foreach ($array as $id) {
+            $dbh->bindParam($i, intval($id), PDO::PARAM_STR);
+            $i++;
+        }
+        $dbh->execute();
+    }
+
     public static function getAsignaturasNoRepetidas($mallas){
         $array=array();
         $i=0;
@@ -85,7 +109,11 @@ class DBAsignatura Implements ICrud {
             $i++;
         }
         $cantidad = str_repeat("?,", count($array)-1) . "?";
-        $dbh = $con->prepare('SELECT DISTINCT * FROM asignatura WHERE ID_MALLA IN ('.$cantidad.')');
+        $dbh = $con->prepare('  SELECT DISTINCT A.*,E.ID_COMPETENCIA, E.NIVELES_COMPETENCIA FROM asignatura A 
+                                LEFT JOIN especificacion_de_evidencia E 
+                                ON A.ID_ASIGNATURA = E.ID_ASIGNATURA 
+                                WHERE A.ID_MALLA IN ('.$cantidad.') ORDER BY E.ID_COMPETENCIA DESC');
+
         $i = 1;
         foreach ($array as $id) {
             $dbh->bindParam($i, intval($id), PDO::PARAM_STR);

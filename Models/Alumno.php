@@ -18,6 +18,11 @@ class Alumno extends Persona
 	}
 
     //GETTERS
+    function getDBAlumno()
+    {
+        return $this->dbalumno;
+    }
+    
 	function getCarrera()
 	{
 		return $this->carrera;

@@ -83,27 +83,15 @@
 	    			$j=0;
 	    			$competencia = $this->controller->consultarCompetencia($result['param']);
 	    			$mallas = $this->controller->consultarMallasCompetencia($result['param']);
-	    			$asignaturas = $this->controller->asignaturasNoRepetidas($mallas);
-	    			$especificaciones = $this->controller->listarAsignaturasCompetencia($result['param']);
-	    			foreach ($asignaturas as $asignatura) {
-	    				foreach ($especificaciones as $especificacion) {
-	    					if (strcmp($asignatura->getId(),$especificacion->getIdAsignatura())==0) {
-	    					$asignaturasOn[$i]=$asignatura;
-	    					$i++;
-	    					}
-	    				}
-	    			}
-	    			foreach ($asignaturas as $asignatura) {
-	    				$existe=false;
-	    				foreach ($asignaturasOn as $On){	    				
-	    				if(strcmp($asignatura->getId(),$On->getId())==0){
-	    					$existe=true;
-	    					}	    				
-	    				}
-	    				if(!$existe){
-	    					$asignaturasOff[$j]=$asignatura;
-	    					$j++;
-	    				}
+
+	    			if(!empty($mallas)){
+	    				$asignaturas = $this->controller->asignaturasNoRepetidas($mallas);
+	    				$contador = count($asignaturas['asignaturas']);
+	    				$this->controller->getTemplate()->setData('contador', $contador);
+	    				$this->controller->getTemplate()->setData('asignaturas', $asignaturas['asignaturas']);
+	    				$this->controller->getTemplate()->setData('especificaciones', $asignaturas['especificaciones']);
+	    			}else{
+	    				$asignaturas = array();
 	    			}
 	    			$evidencias = $this->controller->getEvidenciasCompetencia($result['param']);
 	    			//PROBLEMAS CON VARIAS EVIDENCIAS DEL MISMO NIVEL
@@ -120,8 +108,6 @@
 	    			$this->controller->getTemplate()->setData('especificaciones', $especificaciones);
 	    			$this->controller->getTemplate()->setData('mallas', $mallas);
 	    			$this->controller->getTemplate()->setData('competencia', $competencia);
-	    			$this->controller->getTemplate()->setData('asignaturasOn', $asignaturasOn);
-	    			$this->controller->getTemplate()->setData('asignaturasOff', $asignaturasOff);
 	    			$this->controller->getTemplate()->load(ROOT_DIR.TEMPLATES_DIR.'competencias/asignar_competencia.php');
 	    			break;
 	    		case 'consultar':	//muestra los datos en el form para modificarlos
@@ -158,14 +144,20 @@
 					$values=array();
 					$selects=array();					
 					$i=0;
-					$j=0;					
+					$j=0;	
+
 					$competencia = $this->controller->consultarCompetencia($result['param']);
+	    			$mallas = $this->controller->consultarMallasCompetencia($result['param']);	
+
+	    			$this->controller->borraAsignaturasCompetencia($mallas, $competencia);
+					
 					foreach ($post as $key => $value) {
 	    				if(strcmp($value,'on') == 0){
 	    					$lista[$i]=$key;
 	    					$i++;
-	    					}
+	    				}
 	    			}
+
 	    			foreach ($post as $key => $value) {
 	    				if(strcmp($value,'on')!= 0){
 	    				$cadena=explode('_',$key);
