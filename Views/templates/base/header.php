@@ -12,12 +12,11 @@
 				$tipo = 'profesor';
 				break;
 			case 'SecretariaController':
-				//$usuario = $controller->getSecretaria();
-				//$tipo = 'secretaria';
+				$usuario = $controller->getSecretaria();
+				$tipo = 'secretaria';
 				break;
 			
 			default:
-				# code...
 				break;
 		}
 	}

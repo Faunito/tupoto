@@ -241,6 +241,21 @@ class DirectorController extends ProfesorController{
             }
             return $array;
         }
+
+        function listarAsignaturasCompetencia($id){
+            $especificaciones = Especificacion::getAsignaturasCompetencia($id);
+            $i=0;
+            $array=array();
+            foreach ($especificaciones as $especificacion) {
+                $nueva = new Especificacion();                
+                $nueva->setIdAsignatura($especificacion['ID_ASIGNATURA']);
+                $nueva->setIdCompetencia($especificacion['ID_COMPETENCIA']);
+                $nueva->setNivelCompetencia($especificacion['NIVELES_COMPETENCIA']);
+                $array[$i] = $nueva;
+                $i++;
+            }
+            return $array;
+        }
         
         function consultarAsignatura($codigo){
             $asignatura = Asignatura::getAsignatura($codigo);

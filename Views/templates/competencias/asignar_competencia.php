@@ -83,8 +83,37 @@
 									        </thead>
 									        <tbody>
 									        <?php 
-										        if(!empty($this->data['asignaturas'])){
-										        foreach ($this->data['asignaturas'] as $asignatura) {
+										        if(!empty($this->data['asignaturasOn'])){
+										        foreach ($this->data['asignaturasOn'] as $asignatura) {
+										        	echo '<tr>';
+										        	echo '<td>'.$asignatura->getNombre().'</td>';
+								    	    		echo '<td class="no-padding">'.$asignatura->getCodigo().'</td>';
+								    	    		echo '<td class="no-padding">'.$asignatura->getNivel().'</td>';
+								    	    		echo '<td class="no-padding">'.$asignatura->getMalla().'</td>';
+								        			?>	
+								    	    		<td class="center no-padding">
+											      	<div class="switch">
+											       	<label>
+											       	Quitar
+												    <input name="<?php echo $asignatura->getId(); ?>" id="<?php echo $asignatura->getId(); ?>" type="checkbox" checked>
+												    <span class="lever"></span>
+												    Agregar
+												    </label>
+												  </div>											     
+												</td>
+												<td class="center" style="overflow: visible;">
+												<select name="select_<?php echo $asignatura->getId(); ?>" id="select<?php echo $asignatura->getId(); ?>">
+											      	<option value="" checked>Ninguno</option>
+											      	<option value="Básico">Básico</option>
+											    	<option value="Intermedio">Intermedio</option>
+											    	<option value="Avanzado">Avanzado</option>	
+											   	</select>				
+												</td>
+								          </tr>
+								          <?php }} ?>
+								          <?php 
+										        if(!empty($this->data['asignaturasOff'])){
+										        foreach ($this->data['asignaturasOff'] as $asignatura) {
 										        	echo '<tr>';
 										        	echo '<td>'.$asignatura->getNombre().'</td>';
 								    	    		echo '<td class="no-padding">'.$asignatura->getCodigo().'</td>';

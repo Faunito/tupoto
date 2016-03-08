@@ -12,6 +12,12 @@ class Especificacion{
 	function __construct(){
         $this->dbespecificacion = new DBEspecificacion(); 
 	}
+
+	public static function getAsignaturasCompetencia($id){
+		return DBEspecificacion::getAsignaturasCompetencia($id);
+	}
+
+
     //GETTERS 
     function getIdCompetencia(){
         return $this->idCompetencia;
@@ -44,5 +50,7 @@ class Especificacion{
     function setIdCompetencia($idCompetencia){
         $this->idCompetencia = $idCompetencia;
     }
+
+
 }
 ?>

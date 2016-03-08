@@ -77,9 +77,34 @@
 	    			$this->controller->getTemplate()->redirect('competencias.php');	
 	    			break;
 	    		case 'asignar':
+	    			$asignaturasOn=array();
+	    			$asignaturasOff=array();
+	    			$i=0;
+	    			$j=0;
 	    			$competencia = $this->controller->consultarCompetencia($result['param']);
 	    			$mallas = $this->controller->consultarMallasCompetencia($result['param']);
 	    			$asignaturas = $this->controller->asignaturasNoRepetidas($mallas);
+	    			$especificaciones = $this->controller->listarAsignaturasCompetencia($result['param']);
+	    			foreach ($asignaturas as $asignatura) {
+	    				foreach ($especificaciones as $especificacion) {
+	    					if (strcmp($asignatura->getId(),$especificacion->getIdAsignatura())==0) {
+	    					$asignaturasOn[$i]=$asignatura;
+	    					$i++;
+	    					}
+	    				}
+	    			}
+	    			foreach ($asignaturas as $asignatura) {
+	    				$existe=false;
+	    				foreach ($asignaturasOn as $On){	    				
+	    				if(strcmp($asignatura->getId(),$On->getId())==0){
+	    					$existe=true;
+	    					}	    				
+	    				}
+	    				if(!$existe){
+	    					$asignaturasOff[$j]=$asignatura;
+	    					$j++;
+	    				}
+	    			}
 	    			$evidencias = $this->controller->getEvidenciasCompetencia($result['param']);
 	    			//PROBLEMAS CON VARIAS EVIDENCIAS DEL MISMO NIVEL
 	    			foreach ($evidencias as $evidencia) {
@@ -92,9 +117,11 @@
 	    					$this->controller->getTemplate()->setData('avanzado', $evidencia);
 	    				}
 	    			}
+	    			$this->controller->getTemplate()->setData('especificaciones', $especificaciones);
 	    			$this->controller->getTemplate()->setData('mallas', $mallas);
 	    			$this->controller->getTemplate()->setData('competencia', $competencia);
-	    			$this->controller->getTemplate()->setData('asignaturas', $asignaturas);
+	    			$this->controller->getTemplate()->setData('asignaturasOn', $asignaturasOn);
+	    			$this->controller->getTemplate()->setData('asignaturasOff', $asignaturasOff);
 	    			$this->controller->getTemplate()->load(ROOT_DIR.TEMPLATES_DIR.'competencias/asignar_competencia.php');
 	    			break;
 	    		case 'consultar':	//muestra los datos en el form para modificarlos
@@ -150,6 +177,7 @@
 	    				}
 	    				}
 	    			}
+	    			$this->controller->getTemplate()->redirect('competencias.php');
 	    			break;
 	    		default:
 	    			break;
