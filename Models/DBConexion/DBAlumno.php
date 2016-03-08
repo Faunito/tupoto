@@ -9,8 +9,7 @@ class DBAlumno Implements ICrud{
         $res -> execute();
         //guardar respuesta en objeto php
         $res2 = $res -> fetchObject(__CLASS__);
-        $alumno->setRut($res2->RUT);
-        $alumno->setNivAca($res2->NIVEL_ACADEMICO);        
+        $alumno->setRut($res2->RUT);       
         $alumno->setCarrera($res2->CARRERA);
         $alumno->setNombre($res2->NOMBRE);
         $alumno->setApaterno($res2->APATERNO);
@@ -45,10 +44,9 @@ class DBAlumno Implements ICrud{
     
     function add($var){
         $con = DBSingleton::getInstance()->getDB();        
-        $res = $con -> prepare('INSERT INTO alumno VALUES(:rut,:car,:niv,:nom,:apa,:ama)');
+        $res = $con -> prepare('INSERT INTO alumno(RUT,CARRERA,NOMBRE,APATERNO,AMATERNO) VALUES(:rut,:car,:nom,:apa,:ama)');
         $res -> bindParam(':rut',$var->getRut(),PDO::PARAM_STR);
-        $res -> bindParam(':car',$var->getCar(),PDO::PARAM_STR);
-        $res -> bindParam(':niv',$var->getNivAca(),PDO::PARAM_STR);
+        $res -> bindParam(':car',$var->getCarrera(),PDO::PARAM_STR);
         $res -> bindParam(':nom',$var->getNombre(),PDO::PARAM_STR);
         $res -> bindParam(':apa',$var->getApaterno(),PDO::PARAM_STR);        
         $res -> bindParam(':ama',$var->getAmaterno(),PDO::PARAM_STR);
@@ -57,11 +55,8 @@ class DBAlumno Implements ICrud{
     
     function modify($var){        
         $con = DBSingleton::getInstance()->getDB();        
-        $res = $con -> prepare('UPDATE alumno SET CARRERA=:car,NIVEL_ACADEMICO=:niv,
-                                NOMBRE=:nom,APATERNO=:apa,AMATERNO=:ama WHERE RUT=:rut)');
-        $res -> bindParam(':rut',$var->getRut(),PDO::PARAM_STR);
-        $res -> bindParam(':car',$var->getCar(),PDO::PARAM_STR);
-        $res -> bindParam(':niv',$var->getNivAca(),PDO::PARAM_STR);
+        $res = $con -> prepare('UPDATE alumno SET NOMBRE=:nom,APATERNO=:apa,AMATERNO=:ama WHERE RUT=:rut');
+        $res -> bindParam(':rut',$var->getRut(),PDO::PARAM_STR);        
         $res -> bindParam(':nom',$var->getNombre(),PDO::PARAM_STR);
         $res -> bindParam(':apa',$var->getApaterno(),PDO::PARAM_STR);        
         $res -> bindParam(':ama',$var->getAmaterno(),PDO::PARAM_STR);
@@ -70,7 +65,7 @@ class DBAlumno Implements ICrud{
     
     function delete($var){
         $con =DBSingleton::getInstance()->getDB();
-        $res = $con->prepare('DELETE * FROM alumno WHERE RUT=:rut');
+        $res = $con->prepare('DELETE FROM alumno WHERE RUT=:rut');
         $res -> bindParam(':rut',$var->getRut(),PDO::PARAM_STR);
         $res -> execute();        
     }

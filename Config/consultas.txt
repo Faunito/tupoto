@@ -35,8 +35,21 @@ WHERE A.ID_MALLA IN (5,1) ORDER BY E.ID_COMPETENCIA DESC; //ids mallas
 
 ==============================================
 
+======= borrar todas las especificaciones de una competencia
+
 DELETE FROM especificacion_de_evidencia
 WHERE ID_COMPETENCIA = 23 
 AND ID_ASIGNATURA IN (	SELECT ID_ASIGNATURA 
 						FROM asignatura A 
 						WHERE A.ID_MALLA IN(5,1) )
+
+==============================================
+
+======= seleccionar todas las asignaturas de una competencia y una malla en especifico
+======= sacar las mallas con el id de la competencia
+======= luego con cada id de malla sacar las asignaturas y sus niveles en la malla y en la competencia
+
+SELECT A.*, E.NIVELES_COMPETENCIA FROM asignatura A
+INNER JOIN especificacion_de_evidencia E 
+ON A.ID_ASIGNATURA = E.ID_ASIGNATURA AND E.ID_COMPETENCIA = 23 AND E.NIVELES_COMPETENCIA IS NOT NULL
+INNER JOIN malla_curricular M ON A.ID_MALLA = M.ID_MALLA AND M.ID_MALLA = 5

@@ -61,6 +61,33 @@ class DirectorController extends ProfesorController{
             $this->dir->eliminarCompetencia($id); 
         }   
 
+        function asignaturasGrafico($malla, $competencia){
+            $asignaturas = Asignatura::getAsignaturasGrafico($malla, $competencia);
+            $i=0;
+            $array = array();
+            $array['asignaturas'] = array();
+            $array['especificaciones'] = array();
+            foreach ($asignaturas as $asignatura) {
+                $nueva = new Asignatura();                
+                $nueva->setId($asignatura['ID_ASIGNATURA']);
+                $nueva->setCodigo($asignatura['CODIGO_ASIGNATURA']);
+                $nueva->setMalla($asignatura['ID_MALLA']);
+                $nueva->setNombre($asignatura['NOMBRE_ASIGNATURA']);
+                $nueva->setNivel($asignatura['NIVEL_ASIGNATURA']);
+                $nueva->setDirector($this->dir);
+                $array['asignaturas'][$i] = $nueva;
+
+                $nuevaE = new Especificacion();
+                $nuevaE->setIdAsignatura($asignatura['ID_ASIGNATURA']);
+                $nuevaE->setIdCompetencia($competencia->getIdComp());
+                $nuevaE->setNivelCompetencia($asignatura['NIVELES_COMPETENCIA']);
+                $array['especificaciones'][$i] = $nuevaE;
+
+                $i++;
+            }
+            return $array;
+        }
+
         //============ Evidencias ============
         function getEvidenciasCompetencia($idCompetencia){
             $evidencias = Evidencia::getEvidenciasCompetencia($idCompetencia);
@@ -137,7 +164,9 @@ class DirectorController extends ProfesorController{
             }
         }           
         //============ Mallas ================ 
+
         function consultarMalla($id){
+
             $malla = new Malla();
             $malla->setIdMalla($id);
             $malla->getDBMalla()->GetInstance($malla);

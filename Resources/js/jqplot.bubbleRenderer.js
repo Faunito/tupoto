@@ -90,12 +90,12 @@
         // the seriesColors array.  False to set each bubble to the color
         // specified on this series.  This has no effect if a css background color
         // option is specified in the renderer css options.
-        this.varyBubbleColors = true;
+        this.varyBubbleColors = false;
         // prop: autoscaleBubbles
         // True to scale the bubble radius based on plot size.
         // False will use the radius value as provided as a raw pixel value for
         // bubble radius.
-        this.autoscaleBubbles = true;
+        this.autoscaleBubbles = false;
         // prop: autoscaleMultiplier
         // Multiplier the bubble size if autoscaleBubbles is true.
         this.autoscaleMultiplier = 1.0;

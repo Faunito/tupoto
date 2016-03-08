@@ -32,7 +32,9 @@
 	    			$this->controller->getTemplate()->load(ROOT_DIR.TEMPLATES_DIR.'alumnos/nuevo_alumno.php');
 	    			break;
 	    		case 'modificar':
-	    		
+                    $alumno = $this->controller->consultarAlumno($action['param']);
+                    $this->controller->getTemplate()->setData('alumno',$alumno);
+	    		    $this->controller->getTemplate()->load(ROOT_DIR.TEMPLATES_DIR.'alumnos/modificar_alumno.php');                    
 	    			break;
 	    		case 'ver':
 					$alumno = $this->controller->consultarAlumno($action['param']);
@@ -47,17 +49,31 @@
 
 	    public function result($result, $post){
 	    	switch ($result['result']) {
-	    		case 'nueva':
+	    		case 'nuevo':
+                    $this->controller->registrarAlumno(	$post['rut'], 
+								    				    $post['carrera'], 
+								    				    $post['nombre'],
+                                                        $post['apaterno'],
+                                                        $post['amaterno']);
+	    			//TOAST
+	    			$this->controller->getTemplate()->redirect('alumnos.php?action=ver');
 
 	    			break;
 	    		case 'modificar':
-
+                    $this->controller->modificarAlumno(	$result['param'], 
+								    				    $post['nombre'],
+                                                        $post['apaterno'],
+                                                        $post['amaterno']); 
+                    $this->controller->getTemplate()->redirect('alumnos.php?action=ver');
 	    			break;
 	    		case 'consultar':
-
+                    $alumno = $this->controller->consultarAlumno($result['param']);
+	    			$this->controller->getTemplate()->setData('alumno', $alumno);
+	    			$this->controller->getTemplate()->load(ROOT_DIR.TEMPLATES_DIR.'alumnos/modificar_alumno.php');
 	    			break;
 	    		case 'eliminar':
-	    			
+	    			$this->controller->eliminarAlumno($result['param']);
+					$this->controller->getTemplate()->redirect('alumnos.php?action=ver');
 	    			break;
 	    		
 	    		default:

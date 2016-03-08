@@ -138,7 +138,41 @@
 	    					$this->controller->getTemplate()->setData('avanzado', $evidencia);
 	    				}
 	    			}
+
+	    			//================== Datos para el grafico =============================
+	    			$mallas = $this->controller->consultarMallasCompetencia($result['param']);
+	    			$this->controller->getTemplate()->setData('mallas', $mallas);
+
+	    			$graficos = array();
+	    			if(!empty($mallas)){
+	    				$i = 0;
+	    				foreach ($mallas as $malla) {
+	    					$graficos[$i] = $this->controller->asignaturasGrafico($malla, $competencia);
+	    					$i++;
+	    				}
+	    				$this->controller->getTemplate()->setData('graficos', $graficos);
+	    				//Hacer un for $i por cada grafico, dentro del template
+	    				//mostrando $mallas[$i],
+	    				//y dentro de otro for $j
+	    				//$graficos[$i]['asignaturas'][$j], $graficos[$i]['especificaciones'][$j]
+
+		    			// $contador = count($graficos);	//cantidad de mallas
+	    				// for($i = 0; $i < $contador; $i++) {
+	    				// 	echo $mallas[$i]->getCodCarrera() . ' - ' . $mallas[$i]->getPlan() . '<br>';
+	    				// 	$contadorAsignaturas = count($graficos[$i]['asignaturas']);
+	    				// 	for ($j = 0; $j < $contadorAsignaturas; $j++) { 
+	    				// 		echo $graficos[$i]['asignaturas'][$j]->getNombre() . ' -> ' . $graficos[$i]['especificaciones'][$j]->getNivelCompetencia() . '<br>';
+	    				// 	}
+	    				// }
+	    			
+	    			}
+
+
+
+	    			//======================================================================
+
 	    			$this->controller->getTemplate()->load(ROOT_DIR.TEMPLATES_DIR.'competencias/ver_competencia.php');
+	    			break;
 				case 'cambiar':
 					$lista=array();
 					$values=array();

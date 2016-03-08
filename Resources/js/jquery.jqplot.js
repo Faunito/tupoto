@@ -1117,7 +1117,7 @@
         this.fontFamily;
         // prop: fontSize
         // css font-size spec for the text.
-        this.fontSize ;
+        this.fontSize = 30 ;
         // prop: textAlign
         // css text-align spec for the text.
         this.textAlign;

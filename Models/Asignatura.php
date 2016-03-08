@@ -44,6 +44,10 @@ class Asignatura
     	DBAsignatura::borraAsignaturasCompetencia($mallas, $competencia);
     }
 
+    public static function getAsignaturasGrafico($malla, $competencia){
+    	return DBAsignatura::getAsignaturasGrafico($malla, $competencia);
+    }
+
 	//============ Getters ================
 
 	function getId(){

@@ -52,6 +52,24 @@ class SecretariaController{
             $alumno->getDBAlumno()->GetInstance($alumno);
             return $alumno;
         }
+        
+        function registrarAlumno($rut,$carrera,$nombre,$apaterno,$amaterno){
+            $alumno = new Alumno();
+            $alumno -> setRut($rut);
+            $alumno -> setCarrera($carrera);
+            $alumno -> setNombre($nombre);
+            $alumno -> setApaterno($apaterno);
+            $alumno -> setAmaterno($amaterno);
+            $alumno -> getDBAlumno() -> add($alumno);
+        }
+        
+        function modificarAlumno($rut,$nombre,$apaterno,$amaterno){
+            $this->secretaria->modificarAlumno($rut,$nombre,$apaterno,$amaterno);
+        }
+        
+        function eliminarAlumno($rut){
+             $this->secretaria->eliminarAlumno($rut);
+        }
 
     //============ Serializacion ==========
         function serializar($controller){
