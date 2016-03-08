@@ -41,6 +41,10 @@ class Asignatura
     	return DBAsignatura::getAsignaturasNoRepetidas($mallas);
     }
 
+    public static function borraAsignaturasCompetencia($mallas, $competencia){
+    	DBAsignatura::borraAsignaturasCompetencia($mallas, $competencia);
+    }
+
 	//============ Getters ================
 
 	function getId(){

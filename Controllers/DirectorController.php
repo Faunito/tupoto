@@ -258,7 +258,9 @@ class DirectorController extends ProfesorController{
         function asignaturasNoRepetidas($mallas){
             $asignaturas = Asignatura::asignaturasNoRepetidas($mallas);
             $i=0;
-            $array=array();
+            $array = array();
+            $array['asignaturas'] = array();
+            $array['especificaciones'] = array();
             foreach ($asignaturas as $asignatura) {
                 $nueva = new Asignatura();                
                 $nueva->setId($asignatura['ID_ASIGNATURA']);
@@ -267,10 +269,21 @@ class DirectorController extends ProfesorController{
                 $nueva->setNombre($asignatura['NOMBRE_ASIGNATURA']);
                 $nueva->setNivel($asignatura['NIVEL_ASIGNATURA']);
                 $nueva->setDirector($this->dir);
-                $array[$i] = $nueva;
+                $array['asignaturas'][$i] = $nueva;
+
+                $nuevaE = new Especificacion();
+                $nuevaE->setIdAsignatura($asignatura['ID_ASIGNATURA']);
+                $nuevaE->setIdCompetencia($asignatura['ID_COMPETENCIA']);
+                $nuevaE->setNivelCompetencia($asignatura['NIVELES_COMPETENCIA']);
+                $array['especificaciones'][$i] = $nuevaE;
+
                 $i++;
             }
             return $array;
+        }        
+
+        function borraAsignaturasCompetencia($mallas, $competencia){
+            Asignatura::borraAsignaturasCompetencia($mallas, $competencia);
         }
         
         function crearAsignatura($codigo, $nombre, $nivel){
