@@ -1,5 +1,5 @@
 <?php
-	$title = "Competencias";
+	$title = "Competencia " . $this->data['competencia']->getNomComp();
 	require_once(ROOT_DIR . TEMPLATES_DIR . 'base/header.php');
 	require_once(ROOT_DIR . TEMPLATES_DIR . 'base/sidenav/sidenav_director.php');
 	require_once(ROOT_DIR . MODELS_DIR . 'Competencia.php');
@@ -109,6 +109,7 @@
 	?>
 	<script src="<?php echo RESOURCES_DIR ?>js/jquery.jqplot.js"></script>
 	<script src="<?php echo RESOURCES_DIR ?>js/jqplot.bubbleRenderer.js"></script>
+	
 	<?php
 	require_once(ROOT_DIR . TEMPLATES_DIR . 'base/footer.php');
     ?>

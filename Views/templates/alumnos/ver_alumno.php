@@ -1,5 +1,7 @@
 <?php
-	$title = "Alumnos";
+	$title = 'Alumno ' . $this->data['alumno']->getNombre().' '.
+			        	 $this->data['alumno']->getApaterno().' '.
+			        	 $this->data['alumno']->getAmaterno();
 	require_once(ROOT_DIR . TEMPLATES_DIR . 'base/header.php');
 	require_once(ROOT_DIR . MODELS_DIR . 'Alumno.php');
 	?>

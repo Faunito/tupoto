@@ -26,20 +26,31 @@
 	    public function action($action){
 	    	switch ($action['action']) {
 	    		case 'nueva-profesor':
-	    		$this->controller->getTemplate()->load(ROOT_DIR.TEMPLATES_DIR.'evaluaciones/nueva_evaluacion_profesor.php');
+		    		$alumno = $this->controller->consultarAlumno($action['rut']);
+		    		$practica = $this->controller->consultarPractica($action['practica']);
+	    			$competencias = $this->controller->consultarCompetenciasMalla($alumno->getIdMalla());
+	    			$this->controller->getTemplate()->setData('alumno',$alumno);
+	    			$this->controller->getTemplate()->setData('practica',$practica);
+	    			$this->controller->getTemplate()->setData('competencias',$competencias);
+
+		    		$this->controller->getTemplate()->load(ROOT_DIR.TEMPLATES_DIR.'evaluaciones/nueva_evaluacion_profesor.php');
 	    			break;
+
 	    		case 'nueva-empleador':
 	    		$this->controller->getTemplate()->load(ROOT_DIR.TEMPLATES_DIR.'evaluaciones/nueva_evaluacion_empleador.php');
 	    			break;
+
 	    		case 'modificar':	    			
 	    			break;
+
 	    		case 'eliminar':
-	    			break;	    
+	    			break;	  
+
 	    		case 'ver':
-	    			$alumno = $this->controller->consultarAlumno($action['param']);
-	    			$practicas = $this->controller->consultarPracticasAlumno($action['param']);
+	    			$alumno = $this->controller->consultarAlumno($action['rut']);
+	    			$practica = $this->controller->consultarPractica($action['practica']);
 	    			$this->controller->getTemplate()->setData('alumno',$alumno);
-	    			$this->controller->getTemplate()->setData('practicas',$practicas);
+	    			$this->controller->getTemplate()->setData('practica',$practica);
 	    		    $this->controller->getTemplate()->load(ROOT_DIR.TEMPLATES_DIR.'evaluaciones/evaluaciones_director.php');
 	    			break;
 	    		case 'listar':

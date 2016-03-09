@@ -46,12 +46,16 @@
 					        </div>
 					        <div class="row">
 					        <div class="col s10 offset-s1">
-					        	<h5><strong>Alumno:</strong></h5>
+					        	<h5><strong>
+					        		Alumno: <?php echo 	$this->data['alumno']->getNombre() . ' ' .
+					        							$this->data['alumno']->getApaterno() . ' ' .
+					        							$this->data['alumno']->getAmaterno();  ?>
+					        	</strong></h5>
 					        </div>
 					        </div>
 					        <div class="row">
 					        <div class="col s10 offset-s1">
-					        	<h5><strong>Rut:</strong></h5>
+					        	<h5><strong>Rut: <?php echo $this->data['alumno']->getRut(); ?></strong></h5>
 					        </div>
 					        </div>
 					        <div class="row center">
@@ -66,22 +70,34 @@
 					        </div>
 					        <div class="row center">
 					        <div class="col s10 offset-s1">
+
 				       		  <table>
+
 						        <thead>
 						          <tr>
-						              <th style="width: 20%" data-field="id">Competencia</th>
-						              <th class="center" style="width: 17%" data-field="name">Evaluación externa</th>
-						              <th class="center" style="width: 17%" data-field="price">Evaluación academica</th>
-						              <th style="width: 46%" data-field="price">Observaciones</th>
+						              <th style="width:20%;" data-field="id">Competencia</th>
+						              <th class="center" style="width:17%;" data-field="name">Evaluación externa</th>
+						              <th class="center" style="width:17%;" data-field="price">Evaluación academica</th>
+						              <th style="width:46%;" data-field="price">Observaciones</th>
 						          </tr>
 						        </thead>
-						        <!-- REVIAR LA ALINEACION VERTICAL DE LAS CELDAS -->	
+
 						        <tbody>
+						        <?php
+						        foreach ($this->data['competencias'] as $competencia) {
+						        	echo '<tr>';
+
+						        	echo '<td style="text-align: justify;">';
+						        	echo '<h6><strong>' . $competencia->getNomComp() . '</strong></h6>';
+						        	echo $competencia->getDesComp();
+						        	echo '</td>';
+
+						        	echo '<td><input name="em" type="text" value="Bueno"><label for="em">Evaluación empleador</label></td>';
+
+						        	echo '</tr>';
+						        }
 						          <tr>
-						            <td style="text-align: justify;">
-						            	<h6><strong>Competencia 1:</strong></h6>
-						            	bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla dsadsad bla bla bla bla bla bla bla bla bla bla 
-						            </td>
+						            
 						            <td>
 						            	<!-- ESTO DEBE ESTAR DESHABILITADO PARA EL PROFESOR 
 						            		 Y DEBE MOSTRAR LOS VALORES DE LA EVALUACIÓN DEL EMPLEADOR-->
@@ -109,8 +125,11 @@
 						                </div> 
 						            </td>
 						          </tr>
+						          ?>
 						        </tbody>
+
 						      </table>
+
 					        </div>
 					        </div>
 					        <div class="row">

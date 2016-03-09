@@ -9,6 +9,7 @@ class Alumno extends Persona
     private $dbalumno;
 	private $carrera;   //carrera
 	private $nivelAcademico;//nivel academico
+	private $malla;
 	//private $m_Practica;
 	//private $m_ActividaddCompensacion;
 
@@ -31,6 +32,12 @@ class Alumno extends Persona
 	{
 		return $this->nivAcademico;
 	}
+
+	function getIdMalla(){
+		return $this->malla;
+	}
+
+	//===
 
 	public static function getAlumnos()
 	{
@@ -56,6 +63,10 @@ class Alumno extends Persona
 	function setNivelAcademico($nivel)
 	{
 		$this->nivelAcademico = $nivel;
+	}
+
+	function setIdMalla($malla){
+		$this->malla = $malla;
 	}
 
 }

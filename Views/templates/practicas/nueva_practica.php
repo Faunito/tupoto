@@ -1,5 +1,5 @@
 <?php
-	$title = "Practicas";
+	$title = "Nueva práctica";
 	require_once(ROOT_DIR . TEMPLATES_DIR . 'base/header.php');
 	require_once(ROOT_DIR . MODELS_DIR . 'Practica.php');
 	?>

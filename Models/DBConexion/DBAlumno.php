@@ -5,14 +5,14 @@ class DBAlumno Implements ICrud{
     
     function GetInstance($alumno){
         $con = DBSingleton::getInstance()->getDB();
-        $res = $con -> prepare('SELECT * FROM alumno where RUT=:rut');
+        $res = $con -> prepare('SELECT * FROM alumno where RUT = :rut');
         $res -> bindParam(':rut',$alumno->getRut(),PDO::PARAM_STR);        
         $res -> execute();
         //guardar respuesta en objeto php
-        $res2 = $res -> fetchObject(__CLASS__);        
-        $alumno->setRut($res2->RUT);       
+        $res2 = $res -> fetchObject(__CLASS__);
         $alumno->setCarrera($res2->CARRERA);
         $alumno->setNombre($res2->NOMBRE);
+        $alumno->setIdMalla($res2->ID_MALLA);
         $alumno->setApaterno($res2->APATERNO);
         $alumno->setAmaterno($res2->AMATERNO);
         return $alumno;
