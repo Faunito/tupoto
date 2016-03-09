@@ -2,6 +2,7 @@
 
 require_once ('DBSingleton.php');
 require_once ('Funcionario.php');
+require_once ('Practica.php');
 require_once ('DBConexion/DBSecretaria.php');
 
 class Secretaria extends Funcionario
@@ -26,12 +27,18 @@ class Secretaria extends Funcionario
         $this->practica->setDireccion($direccion);
         $this->practica->setEstado($estado);
         $this->practica->setFechaInicio($fechaInicio);
-        $this->practica->setTermino($fechaTermino);
+        $this->practica->setFechaTermino($fechaTermino);
         $this->practica->setIntento($intento);
-        $this->practica->setNivelPracica($nivelPractica);
+        $this->practica->setNivelPractica($nivelPractica);
         $this->practica->setHoras($horas);
         return $this->practica->getDBPractica()->add($this->practica); 
     } 
+    
+    function eliminarPractica($id){
+        $this->practica = new Practica();
+        $this->practica->setIdPractica($id);
+        $this->practica->getDBPractica()->delete($this->practica);
+    }
     
     function modificarAlumno($rut,$nombre,$apaterno,$amaterno){
         $this->alumno = new Alumno();

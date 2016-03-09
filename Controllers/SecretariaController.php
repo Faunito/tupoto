@@ -22,8 +22,44 @@ class SecretariaController{
     }
     //========FUNCTIONS===========
     function ingresarPractica($alumno,$direccion,$estado,$fechaInicio,$fechaTermino,$intento,$nivelPractica,$horas){
-        $this->secretaria->registrarPractica($alumno,$direccion,$estado,$fechaInicio,$fechaTermino,$fechaFin,$intento,$nivelPractica,$horas);
+        $fechaInicio = date ('Y-m-d',strtotime($fechaInicio));
+        $fechaTermino = date ('Y-m-d',strtotime($fechaTermino));
+        $this->secretaria->registrarPractica($alumno,$direccion,$estado,$fechaInicio,$fechaTermino,$intento,$nivelPractica,$horas);
     }
+    
+    function consultarPracticasAlumno($rut){
+            $practicas = Practica::getPracticasAlumno($rut);
+            $i=0;
+            $array=array();
+            foreach ($practicas as $practica) {
+                $nueva = new Practica();
+                $nueva->setIdPractica($practica['ID_PRACTICA']);
+                $nueva->setAlumno($practica['RUT']);
+                $nueva->setDireccion($practica['DIRECCION_PRACTICA']);
+                $nueva->setEstado($practica['ESTADO']);
+                $nueva->setFechaInicio($practica['FECHA_INICIO']);
+                $nueva->setFechaTermino($practica['FECHA_TERMINO']);
+                $nueva->setIntento($practica['INTENTO']);
+                $nueva->setNivelPractica($practica['NIVEL_PRACTICA']);
+                $nueva->setHoras($practica['HORAS']);
+                $array[$i]=$nueva;
+                $i++;
+            }
+            $this->arrayPracticas=$array;
+            $this->serializar($this);
+            return $this->arrayPracticas;
+        }
+        
+    function consultarPractica($rut){
+        $practica = new Practica();
+        $practica->setAlumno($rut);
+        $practica->getDBPractica()->GetInstance($practica);
+        return $practica;
+    }
+    
+    function eliminarPractica($id){
+             $this->secretaria->eliminarPractica($id);
+        }    
 
     //============ Alumnos ================ 
         function listarAlumnos(){

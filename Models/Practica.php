@@ -63,6 +63,10 @@ class Practica{
   function getHoras(){
       return $this->horas;
   }
+  
+  function getPracticasAlumno($rutAlumno){
+      return DBpractica::getPracticasAlumno($rutAlumno);
+  }
   //SETTERS
   function setIdPractica($newVal){
       $this->idPractica = $newVal;
