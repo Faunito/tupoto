@@ -41,7 +41,14 @@
 	    			$this->controller->getTemplate()->setData('alumno',$alumno);
 	    			$this->controller->getTemplate()->setData('practicas',$practicas);
 	    		    $this->controller->getTemplate()->load(ROOT_DIR.TEMPLATES_DIR.'evaluaciones/evaluaciones_director.php');
-	    			break;	 		
+	    			break;
+	    		case 'listar':
+	    			$alumno = $this->controller->consultarAlumno($action['param']);
+	    			$practicas = $this->controller->consultarPracticasAlumno($action['param']);
+	    			$this->controller->getTemplate()->setData('alumno',$alumno);
+	    			$this->controller->getTemplate()->setData('practicas',$practicas);
+	    		    $this->controller->getTemplate()->load(ROOT_DIR.TEMPLATES_DIR.'evaluaciones/evaluaciones_secretaria.php');
+	    			break;		 		
 	    		default:
 	    			break;
 	    	}

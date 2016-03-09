@@ -103,7 +103,7 @@
 								    	</select>
 						            </td>
 						            <td>
-						            	 <div class=" col s12 input-field">      
+						            	<div class=" col s12 input-field">      
 						                    <textarea id="observacion" name="basico" class="materialize-textarea" length="1000"></textarea>
 		        							<label for="observacion">Observación</label>
 						                </div> 
