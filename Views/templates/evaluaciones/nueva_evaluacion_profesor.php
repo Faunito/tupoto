@@ -54,15 +54,14 @@
 					        	<h5><strong>Rut:</strong></h5>
 					        </div>
 					        </div>
-					        <div class="row">
+					        <div class="row center">
 					        <div class="col s10 offset-s1">
-					        	<h5>Todos los factores propuestos a excepción del Nº 12, 13 y 14 deberán ser calificados como:</h5>
-					        </div>
+					        	<h5>Todos los factores deberán ser calificados como:</h5>
 					        </div>
 					        </div>
 					        <div class="row center">
 					        <div class="col s10 offset-s1">
-					        	<h5>BUENO – REGULAR – INSATISFACTORIO – NO APLICA</h5>
+					        	<h6>BUENO – REGULAR – INSATISFACTORIO – NO APLICA</h6>
 					        </div>
 					        </div>
 					        <div class="row center">
@@ -71,9 +70,9 @@
 						        <thead>
 						          <tr>
 						              <th style="width: 20%" data-field="id">Competencia</th>
-						              <th style="width: 20%" data-field="name">Evaluación externa</th>
-						              <th style="width: 20%" data-field="price">Evaluación academica</th>
-						              <th style="width: 40%" data-field="price">Observaciones</th>
+						              <th class="center" style="width: 17%" data-field="name">Evaluación externa</th>
+						              <th class="center" style="width: 17%" data-field="price">Evaluación academica</th>
+						              <th style="width: 46%" data-field="price">Observaciones</th>
 						          </tr>
 						        </thead>
 						        <!-- REVIAR LA ALINEACION VERTICAL DE LAS CELDAS -->	
@@ -103,8 +102,11 @@
 								    	<option value="No aplica">No aplica</option>	   
 								    	</select>
 						            </td>
-						            <td style="text-align: justify;">
-						            	observaciones observaciones observaciones observaciones observaciones observaciones observaciones observaciones observaciones observaciones observaciones observaciones observaciones observaciones observaciones observaciones observaciones observaciones observaciones observaciones observaciones observaciones observaciones observaciones 
+						            <td>
+						            	 <div class=" col s12 input-field">      
+						                    <textarea id="observacion" name="basico" class="materialize-textarea" length="1000"></textarea>
+		        							<label for="observacion">Observación</label>
+						                </div> 
 						            </td>
 						          </tr>
 						        </tbody>
@@ -119,22 +121,22 @@
 					        <div class="row">
 					        <div class="col s2 offset-s2">
 					        	<p>
-							      <input type="checkbox" id="test5" />
-							      <label for="test5">APRUEBA</label>
+							      <input type="checkbox" id="aprueba" />
+							      <label for="aprueba">APRUEBA</label>
 							    </p>
 							    <p> 
 					        </div>
 					       	<div class="col s2 offset-s4">
 					        	<p>
-							      <input type="checkbox" id="test5" />
-							      <label for="test5">RECHAZA</label>
+							      <input type="checkbox" id="rechaza" />
+							      <label for="rechaza">RECHAZA</label>
 							    </p>
 							    <p> 
 					        </div>
-					        </div>
-					        <div class="row">
-					        <div class="col s4 offset-s7">
-					        	<h6>Fecha dsadsadsadsadsad</h6>
+					        </div>					        
+					        <div class="row">	
+					        <div class="col s2 offset-s5">
+					        	<button class="btn btn-large waves-effect waves-light color_primario" type="submit" form="login" name="action">Ingresar</button>
 					        </div>
 					        </div>
 					        </div>
