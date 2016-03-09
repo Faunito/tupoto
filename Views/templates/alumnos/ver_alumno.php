@@ -33,32 +33,33 @@
 							      	<table id="datatable">
 								        <thead>
 								          <tr>
-								            <th style="width: 60px;">Id</th>
+                                            <th class="no-padding" style="width: 100px;">Nivel</th>								           
 								            <th class="no-padding" style="width: 100px;">Estado</th>
 								            <th class="no-padding" style="width: 100px;">Fecha inicio</th>
 								            <th class="no-padding" style="width: 100px;">Fecha Termino</th>
+                                            <th class="no-padding" style="width: 100px;">Duración</th>
 								            <th class="no-padding" style="width: 60px;">Intento</th>
-								            <th class="center no-padding" style="width: 60px;">Evaluaciones</th>
+								            <th class="center no-padding" style="width: 60px">Modificar</th>
+								            <th class="center no-padding" style="width: 60px">Eliminar</th>
 								          </tr>
 								        </thead>
 								        <tbody>
 								        <?php 
-								        if(!empty($this->data['alumnos'])){
-								        foreach ($this->data['alumnos'] as $persona) {
+								        if(!empty($this->data['practicas'])){
+								        foreach ($this->data['practicas'] as $practica) {
 								        	echo '<tr>';
-								        	echo '<td>'.$persona->getRut().'</td>';
-								    	    echo '<td class="no-padding">'.$persona->getNombre().'</td>';
-								    	    echo '<td class="no-padding">'.$persona->getApaterno().'</td>';
-								    	    echo '<td class="no-padding">'.$persona->getAmaterno().'</td>';
+								        	echo '<td>'.$practica->getNivelPractica().'</td>';
+								    	    echo '<td class="no-padding">'.$practica->getEstado().'</td>';
+								    	    echo '<td class="no-padding">'.$practica->getFechaInicio().'</td>';
+								    	    echo '<td class="no-padding">'.$practica->getFechaTermino().'</td>';
+                                            echo '<td class="no-padding">'.$practica->getHoras().'</td>';
+                                            echo '<td class="no-padding">'.$practica->getIntento().'</td>';
 								    	    ?>
-								    	    <td class="center no-padding">
-								            	<a class="btn-floating waves-effect waves-light tooltipped" data-position="top" data-delay="50" data-tooltip="Ver alumno" href="alumnos.php?action=ver&param=<?php echo $persona->getRut(); ?>"><i class="mdi mdi-eye white-text right"></i></a>
-											</td>
 								            <td class="center no-padding">
-								            	<a class="btn-floating waves-effect waves-light tooltipped" data-position="top" data-delay="50" data-tooltip="Modificar" href="alumnos.php?action=modificar&param=<?php echo $persona->getRut(); ?>"><i class="material-icons color_primario white-text">edit</i></a>
+								            	<a class="btn-floating waves-effect waves-light tooltipped" data-position="top" data-delay="50" data-tooltip="Modificar" href="practicas.php?action=modificar&param=<?php echo $practica->getIdPractica(); ?>"><i class="material-icons color_primario white-text">edit</i></a>
 											</td>
 											<td class="center no-padding">
-								            	<a class="btn-floating waves-effect waves-light red  tooltipped" data-position="top" data-delay="50" data-tooltip="Eliminar" href="alumnos	.php?result=eliminar&param=<?php echo $persona->getRut(); ?>"><i class="material-icons  white-text">clear</i></a>
+								            	<a class="btn-floating waves-effect waves-light red  tooltipped" data-position="top" data-delay="50" data-tooltip="Eliminar" href="practicas.php?result=eliminar&param=<?php echo $practica->getIdPractica(); ?>"><i class="material-icons  white-text">clear</i></a>
 											</td>
 								          </tr>
 								          <?php }} ?>

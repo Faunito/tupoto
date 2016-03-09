@@ -9,7 +9,7 @@ class DBAlumno Implements ICrud{
         $res -> bindParam(':rut',$alumno->getRut(),PDO::PARAM_STR);        
         $res -> execute();
         //guardar respuesta en objeto php
-        $res2 = $res -> fetchObject(__CLASS__);
+        $res2 = $res -> fetchObject(__CLASS__);        
         $alumno->setRut($res2->RUT);       
         $alumno->setCarrera($res2->CARRERA);
         $alumno->setNombre($res2->NOMBRE);

@@ -21,9 +21,48 @@ class SecretariaController{
         return $this->template;
     }
     //========FUNCTIONS===========
+    //============ Practicas ================
     function ingresarPractica($alumno,$direccion,$estado,$fechaInicio,$fechaTermino,$intento,$nivelPractica,$horas){
-        $this->secretaria->registrarPractica($alumno,$direccion,$estado,$fechaInicio,$fechaTermino,$fechaFin,$intento,$nivelPractica,$horas);
+        $fechaInicio = date ('Y-m-d',strtotime($fechaInicio));
+        $fechaTermino = date ('Y-m-d',strtotime($fechaTermino));
+        $this->secretaria->registrarPractica($alumno,$direccion,$estado,$fechaInicio,$fechaTermino,$intento,$nivelPractica,$horas);
     }
+    
+    function consultarPracticasAlumno($rut){
+            $practicas = Practica::getPracticasAlumno($rut);
+            $i=0;
+            $array=array();
+            foreach ($practicas as $practica) {
+                $nueva = new Practica();
+                $nueva->setIdPractica($practica['ID_PRACTICA']);
+                $nueva->setAlumno($practica['RUT']);
+                $nueva->setDireccion($practica['DIRECCION_PRACTICA']);
+                $nueva->setEstado($practica['ESTADO']);
+                $nueva->setFechaInicio($practica['FECHA_INICIO']);
+                $nueva->setFechaTermino($practica['FECHA_TERMINO']);
+                $nueva->setIntento($practica['INTENTO']);
+                $nueva->setNivelPractica($practica['NIVEL_PRACTICA']);
+                $nueva->setHoras($practica['HORAS']);
+                $array[$i]=$nueva;
+                $i++;
+            }
+            $this->arrayPracticas=$array;
+            $this->serializar($this);
+            return $this->arrayPracticas;
+        }
+        
+    function consultarPractica($id){
+        $practica = $this->secretaria->consultarPractica($id);        
+        return $practica;
+    }
+    
+    function modificarPractica($id,$direccion,$fechaInicio,$fechaTermino,$nivelPractica,$horas){
+        $this->secretaria->modificarPractica($id,$direccion,$fechaInicio,$fechaTermino,$nivelPractica,$horas);
+    }
+    
+    function eliminarPractica($id){
+             $this->secretaria->eliminarPractica($id);
+        }    
 
     //============ Alumnos ================ 
         function listarAlumnos(){
@@ -47,20 +86,12 @@ class SecretariaController{
         }
 
         function consultarAlumno($rut){
-            $alumno = new Alumno();
-            $alumno->setRut($rut);
-            $alumno->getDBAlumno()->GetInstance($alumno);
+            $alumno = $this->secretaria->consultarAlumno($rut);            
             return $alumno;
         }
         
         function registrarAlumno($rut,$carrera,$nombre,$apaterno,$amaterno){
-            $alumno = new Alumno();
-            $alumno -> setRut($rut);
-            $alumno -> setCarrera($carrera);
-            $alumno -> setNombre($nombre);
-            $alumno -> setApaterno($apaterno);
-            $alumno -> setAmaterno($amaterno);
-            $alumno -> getDBAlumno() -> add($alumno);
+            $this->secretaria->regitrarAlumno($rut,$carrera,$nombre,$apaterno,$amaterno);
         }
         
         function modificarAlumno($rut,$nombre,$apaterno,$amaterno){
