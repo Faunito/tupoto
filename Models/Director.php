@@ -138,6 +138,13 @@ class Director extends Profesor
         }
 
         //============ Asignaturas ================
+        function consultarAsignatura($codigo){
+            $asignatura = new Asignatura();
+            $asignatura->setId($codigo);
+            $asignatura->getDBAsignatura()->GetInstance($asignatura);
+            return $asignatura;
+        }
+        
         function crearAsignatura($codigo, $nombre, $nivel){
             $this->asignatura = new Asignatura();
             $this->asignatura->setCodigo($codigo);
@@ -176,6 +183,13 @@ class Director extends Profesor
             $this->desasignaCompetencia->getDBPuede()->delete($this->desasignaCompetencia);
         }
         //============== Mallas ================
+        function consultarMalla($id){
+            $malla = new Malla();
+            $malla->setIdMalla($id);
+            $malla->getDBMalla()->GetInstance($malla);
+            return $malla;
+        }
+        
         function crearMalla($codigo, $plan, $lvl, $asignaturas)
         {
             $this->malla = new Malla();
@@ -225,6 +239,12 @@ class Director extends Profesor
 
 
         //============ Alumnos ================
+        function consultarAlumno($rut){
+            $alumno = new Alumno();
+            $alumno->setRut($rut);
+            $alumno->getDBalumno()->GetInstance($alumno);
+            return $alumno;
+        }
 
     //GETTERS
 	function getCarrera()

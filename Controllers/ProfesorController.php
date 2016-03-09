@@ -39,8 +39,8 @@ class ProfesorController{
         return $this->arrayAlumnos;
     }
 
-    function listarAsignaturasProfesor($this->getProfesor()->getRut()){
-        $asignaturas = Asignatura::getAsignaturasProfesor($this->getProfesor()->getRut());
+    function listarAsignaturasProfesor(){
+        $asignaturas = Asignatura::getAsignaturasProfesor();
         $i=0;
         $array = array();
         foreach ($asignaturas as $asignatura) {

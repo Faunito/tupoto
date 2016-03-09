@@ -1,5 +1,5 @@
 <?php
-	$title = "Mallas";
+	$title = "Practicas";
 	require_once(ROOT_DIR . TEMPLATES_DIR . 'base/header.php');
 	require_once(ROOT_DIR . MODELS_DIR . 'Practica.php');
 	?>
@@ -15,11 +15,14 @@
 				        </div>
 			            <div class="card-content">
 			            <!-- LOS CAMPOS ID_PRACTICA, ESTADO y INTENTO deben ser automaticos -->
-			                <form id="myForm" action="#" method="POST">
+			                <form id="myForm" action="practicas.php?result=nuevo&param=<?php echo $this->data['alumno']->getRut(); ?>" method="POST">
 					            <div class="row">
 					                <div class=" col s1 offset-s3 input-field">       
-					                    <input id="nivel" name="nivel" type="text" class="validate">
-					                    <label for="nivel">Nivel *</label>
+					                    <select name="nivel">
+								      	<option value="" disabled selected>Nivel</option>
+								      	<option value="1">Primera</option>
+								    	<option value="2">Segunda</option>
+								    </select>
 					                </div>
 					                <div class=" col s1 input-field">       
 					                    <input id="horas" name="horas" type="text" class="validate">
