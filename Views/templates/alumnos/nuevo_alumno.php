@@ -1,5 +1,5 @@
 <?php
-	$title = "Mallas";
+	$title = "Nuevo alumno";
 	require_once(ROOT_DIR . TEMPLATES_DIR . 'base/header.php');
 	require_once(ROOT_DIR . MODELS_DIR . 'Alumno.php');
 	?>

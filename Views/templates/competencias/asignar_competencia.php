@@ -1,5 +1,5 @@
 <?php
-	$title = "Competencias";
+	$title = "Asignar asignaturas a competencia " . $this->data['competencia']->getNomComp();
 	require_once(ROOT_DIR . TEMPLATES_DIR . 'base/header.php');
 	require_once(ROOT_DIR . TEMPLATES_DIR . 'base/sidenav/sidenav_director.php');
 	?>

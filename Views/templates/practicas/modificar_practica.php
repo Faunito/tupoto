@@ -1,5 +1,5 @@
 <?php
-	$title = "Practicas";
+	$title = "Modificar práctica";
 	require_once(ROOT_DIR . TEMPLATES_DIR . 'base/header.php');
 	?>
 	<main id="sb-site" class="blue-grey lighten-5">

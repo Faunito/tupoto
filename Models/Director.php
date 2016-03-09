@@ -243,6 +243,7 @@ class Director extends Profesor
             $alumno = new Alumno();
             $alumno->setRut($rut);
             $alumno->getDBalumno()->GetInstance($alumno);
+            return $alumno;
         }
 
     //GETTERS

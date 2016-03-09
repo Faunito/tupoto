@@ -1,5 +1,5 @@
 <?php
-  $title = "Mallas";
+  $title = "Malla " . $this->data['malla']->getCodCarrera() . " - Plan " . $this->data['malla']->getPlan();
   require_once(ROOT_DIR . TEMPLATES_DIR . 'base/header.php');
   require_once(ROOT_DIR . TEMPLATES_DIR . 'base/sidenav/sidenav_director.php');
   ?>
