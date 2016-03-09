@@ -12,6 +12,7 @@ class DBAlumno Implements ICrud{
         $res2 = $res -> fetchObject(__CLASS__);
         $alumno->setCarrera($res2->CARRERA);
         $alumno->setNombre($res2->NOMBRE);
+        $alumno->setIdMalla($res2->ID_MALLA);
         $alumno->setApaterno($res2->APATERNO);
         $alumno->setAmaterno($res2->AMATERNO);
         return $alumno;

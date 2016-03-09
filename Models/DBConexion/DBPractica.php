@@ -60,6 +60,7 @@ class DBPractica implements ICrud{
         $var->setIntento($res2->INTENTO);
         $var->setNivelPractica($res2->NIVEL_PRACTICA);
         $var->setHoras($res2->HORAS);
+        return $var;
 	}
     
     function getPracticasAlumno($var){

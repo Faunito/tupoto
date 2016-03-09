@@ -378,6 +378,11 @@ class DirectorController extends ProfesorController{
             return $this->arrayPracticas;
         }
 
+        function consultarPractica($id){
+            $practica = $this->dir->consultarPractica($id);
+            return $practica;
+        }
+
     //============ Getters ================
 
     function getDirector(){

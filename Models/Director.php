@@ -237,13 +237,20 @@ class Director extends Profesor
             return $array;
         }
 
-
         //============ Alumnos ================
         function consultarAlumno($rut){
             $alumno = new Alumno();
             $alumno->setRut($rut);
             $alumno->getDBalumno()->GetInstance($alumno);
             return $alumno;
+        }
+
+        //============ Practicas ==============
+        function consultarPractica($id){
+            $practica = new Practica();
+            $practica->setIdPractica($id);
+            $practica->getDBPractica()->GetInstance($practica);
+            return $practica;
         }
 
     //GETTERS
