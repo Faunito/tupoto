@@ -166,10 +166,7 @@ class DirectorController extends ProfesorController{
         //============ Mallas ================ 
 
         function consultarMalla($id){
-
-            $malla = new Malla();
-            $malla->setIdMalla($id);
-            $malla->getDBMalla()->GetInstance($malla);
+            $malla = $this->dir->consultarMalla($id);
             return $malla;
         }
 
@@ -284,9 +281,7 @@ class DirectorController extends ProfesorController{
         }
         
         function consultarAsignatura($codigo){
-            $asignatura = new Asignatura();
-            $asignatura->setId($codigo);
-            $asignatura->getDBAsignatura()->GetInstance($asignatura);
+            $asignatura = $this->dir->consultarAsignatura($codigo);            
             return $asignatura;            
         }
 
@@ -356,9 +351,7 @@ class DirectorController extends ProfesorController{
         }
 
         function consultarAlumno($rut){
-            $alumno = new Alumno();
-            $alumno->setRut($rut);
-            $alumno->getDBalumno()->GetInstancce($alumno);
+            $alumno = $this->dir->consultarAlumno($rut);
             return $alumno;
         }
 

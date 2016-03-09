@@ -26,14 +26,12 @@ class DBPractica implements ICrud{
         $con = DBSingleton::getInstance()->getDB();
         //ejecutar query        
         $res = $con -> prepare('UPDATE practica SET DIRECCION_PRACTICA=:direccion,
-        ESTADO=:estado,FECHA_INICIO=:fInicio,FECHA_TERMINO=:fTermino,INTENTO=:intento,
+        FECHA_INICIO=:fInicio,FECHA_TERMINO=:fTermino,
         NIVEL_PRACTICA=:nivel,HORAS=:horas WHERE ID_PRACTICA=:id');        
         $res->bindParam(':id',$var->getIdPractica(),PDO::PARAM_STR);
         $res->bindParam(':direccion',$var->getDireccion(),PDO::PARAM_STR);
-        $res->bindParam(':estado',$var->getEstado(),PDO::PARAM_STR);
         $res->bindParam(':fInicio',$var->getFechaInicio(),PDO::PARAM_STR);
         $res->bindParam(':fTermino',$var->getFechaTermino(),PDO::PARAM_STR);
-        $res->bindParam(':intento',$var->getIntento(),PDO::PARAM_STR);
         $res->bindParam(':nivel',$var->getNivelPractica(),PDO::PARAM_STR);
         $res->bindParam(':horas',$var->getHoras(),PDO::PARAM_STR);
         $res->execute();
@@ -50,7 +48,7 @@ class DBPractica implements ICrud{
     public function GetInstance($var){
         $con = DBSingleton::getInstance()->getDB();
         $res = $con -> prepare('SELECT * FROM practica where ID_PRACTICA =:id');
-        $res->bindParam(':id',$var,PDO::PARAM_STR);
+        $res->bindParam(':id',$var->getIdPractica(),PDO::PARAM_STR);
         $res -> execute();
         $res2 = $res -> fetchObject(__CLASS__);
         $var->setAlumno($res2->RUT);

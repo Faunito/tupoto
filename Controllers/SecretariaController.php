@@ -21,6 +21,7 @@ class SecretariaController{
         return $this->template;
     }
     //========FUNCTIONS===========
+    //============ Practicas ================
     function ingresarPractica($alumno,$direccion,$estado,$fechaInicio,$fechaTermino,$intento,$nivelPractica,$horas){
         $fechaInicio = date ('Y-m-d',strtotime($fechaInicio));
         $fechaTermino = date ('Y-m-d',strtotime($fechaTermino));
@@ -50,11 +51,13 @@ class SecretariaController{
             return $this->arrayPracticas;
         }
         
-    function consultarPractica($rut){
-        $practica = new Practica();
-        $practica->setAlumno($rut);
-        $practica->getDBPractica()->GetInstance($practica);
+    function consultarPractica($id){
+        $practica = $this->secretaria->consultarPractica($id);        
         return $practica;
+    }
+    
+    function modificarPractica($id,$direccion,$fechaInicio,$fechaTermino,$nivelPractica,$horas){
+        $this->secretaria->modificarPractica($id,$direccion,$fechaInicio,$fechaTermino,$nivelPractica,$horas);
     }
     
     function eliminarPractica($id){
@@ -83,20 +86,12 @@ class SecretariaController{
         }
 
         function consultarAlumno($rut){
-            $alumno = new Alumno();
-            $alumno->setRut($rut);
-            $alumno->getDBAlumno()->GetInstance($alumno);
+            $alumno = $this->secretaria->consultarAlumno($rut);            
             return $alumno;
         }
         
         function registrarAlumno($rut,$carrera,$nombre,$apaterno,$amaterno){
-            $alumno = new Alumno();
-            $alumno -> setRut($rut);
-            $alumno -> setCarrera($carrera);
-            $alumno -> setNombre($nombre);
-            $alumno -> setApaterno($apaterno);
-            $alumno -> setAmaterno($amaterno);
-            $alumno -> getDBAlumno() -> add($alumno);
+            $this->secretaria->regitrarAlumno($rut,$carrera,$nombre,$apaterno,$amaterno);
         }
         
         function modificarAlumno($rut,$nombre,$apaterno,$amaterno){

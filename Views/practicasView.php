@@ -28,9 +28,7 @@
 	    			$this->controller->getTemplate()->load(ROOT_DIR.TEMPLATES_DIR.'practicas/nueva_practica.php');
 	    			break;
                 case 'modificar':
-                    $alumno = $this->controller->consultarAlumno($action['param']);
-                    $practica = $this->controller->consultarPractica($action['param']);                   
-                    $this->controller->getTemplate()->setData('alumno',$alumno);
+                    $practica = $this->controller->consultarPractica($action['param']);
                     $this->controller->getTemplate()->setData('practica',$practica);
 	    			$this->controller->getTemplate()->load(ROOT_DIR.TEMPLATES_DIR.'practicas/modificar_practica.php');
                     break;
@@ -65,6 +63,14 @@
 	    			//$this->controller->getTemplate()->redirect(ROOT_DIR.TEMPLATES_DIR.'alumnos.php);
 	    			break;
 	    		case 'modificar':
+                    $this->controller->modificarPractica( $result['param'],
+                                                          $post['direccion'],
+                                                          $post['fecha_inicio'],
+                                                          $post['fecha_termino'],
+								    				      $post['nivel'], 
+								    				      $post['horas']);
+	    			//TOAST
+	    			$this->controller->getTemplate()->redirect('alumnos.php');                
 	    			break;
 	    		case 'consultar':
                     $practicas = $this->controller->consultarPractica($result['param']);
