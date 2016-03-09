@@ -358,7 +358,7 @@ class DirectorController extends ProfesorController{
         function consultarAlumno($rut){
             $alumno = new Alumno();
             $alumno->setRut($rut);
-            $alumno->getDBalumno()->GetInstancce($alumno);
+            $alumno->getDBalumno()->GetInstance($alumno);
             return $alumno;
         }
 
