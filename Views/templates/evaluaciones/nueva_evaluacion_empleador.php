@@ -21,6 +21,7 @@
 					        <div class="col s12">
 					        <div class="card">
 					        <div class="card-content"> 
+					        <form id="myForm" action="evaluaciones.php?result=nueva-empleador" method="POST">
 					        <div class="row center">
 					        <div class="col s4 offset-s4">
 					        <img style="height: 160px; width: 320px;"src="<?php echo RESOURCES_DIR.'img/facultad.png';?>">
@@ -62,7 +63,7 @@
 					        	<h5><strong>Empresa o institución:</strong></h5> <!-- HAY QUE GUARDARLO -->
 					        </div>												<!-- PARA EL EMPLEADOR -->
 					        <div class="col s6 input-field no-padding" style="width: 53%; margin-top: 0; height: 30">
-					       	<input id="telefono" name="telefono" type="text" class="validate">
+					       	<input id="empresa" name="empresa" type="text" class="validate">
 					        </div>										         
 					        </div>
 					        <div class="row">				
@@ -70,17 +71,20 @@
 					        	<h5><strong>Nombre jefe directo:</strong></h5> <!--NO SE DONDE SE GUARDA-->
 					        </div>
 					        <div class="col s6 input-field no-padding" style="width: 55%; margin-top: 0; height: 30">
-					       	<input id="telefono" name="telefono" type="text" class="validate">
+					       	<input id="nombre" name="nombre" type="text" class="validate">
 					        </div>										         
 					        </div>
 					        <div class="row">
-					        <div class="col s5 offset-s1">
+					        <div class="col s1 offset-s1" style="width: 9%">
 					        	<h5><strong>Cargo:</strong></h5> <!--NO SE DONDE SE GUARDA-->
 					        </div>
+					        <div class="col s3 input-field no-padding" style="width: 33%; margin-top: 0; height: 30">
+					        	<input id="cargo" name="cargo" type="text" class="validate">
+					        </div>	
 					        <div class="col s2" style="width: 12%"> 
 					        <h5><strong>Telefono:</strong></h5> <!-- HAY QUE GUARDARLO -->
 					        </div>								<!-- PARA EL EMPLEADOR -->
-					        <div class="col s3 input-field no-padding" style="width: 25%; margin-top: 0; height: 30">
+					        <div class="col s3 input-field no-padding" style="width: 26%; margin-top: 0; height: 30">
 					        	<input id="telefono" name="telefono" type="text" class="validate">
 					        </div>									
 					        </div>
@@ -173,14 +177,12 @@
 							      <input type="checkbox" id="aprueba" />
 							      <label for="aprueba">APRUEBA</label>
 							    </p>
-							    <p> 
 					        </div>
 					       	<div class="col s2 offset-s4">
 					        	<p>
 							      <input type="checkbox" id="rechaza" />
 							      <label for="rechaza">RECHAZA</label>
 							    </p>
-							    <p> 
 					        </div>
 					        </div>					        
 					        <div class="row">	
@@ -188,6 +190,7 @@
 					        	<button class="btn btn-large waves-effect waves-light color_primario" type="submit" form="login" name="action">Ingresar</button>
 					        </div>
 					        </div>
+					        </form>
 					        </div>
 					        </div>
 					        </div>

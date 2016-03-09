@@ -21,6 +21,7 @@
 					        <div class="col s12">
 					        <div class="card">
 					        <div class="card-content"> 
+					        <form id="myForm" action="evaluaciones.php?result=nueva-profesor" method="POST">
 					        <div class="row center">
 					        <div class="col s4 offset-s4">
 					        <img style="height: 160px; width: 320px;"src="<?php echo RESOURCES_DIR.'img/facultad.png';?>">
@@ -68,70 +69,49 @@
 					        	<h6>BUENO – REGULAR – INSATISFACTORIO – NO APLICA</h6>
 					        </div>
 					        </div>
-					        <div class="row center">
+					        <div class="row"> <!-- REPETIR POR CADA COMPETENCIA -->
+					        <div class="col s4 offset-s1">
+					        	<h5><strong>1. COMPETENCIA 1:</strong></h5>
+					        </div>
+					        </div>
+					        <div class="row">
 					        <div class="col s10 offset-s1">
-
-				       		  <table>
-
-						        <thead>
-						          <tr>
-						              <th style="width:20%;" data-field="id">Competencia</th>
-						              <th class="center" style="width:17%;" data-field="name">Evaluación externa</th>
-						              <th class="center" style="width:17%;" data-field="price">Evaluación academica</th>
-						              <th style="width:46%;" data-field="price">Observaciones</th>
-						          </tr>
-						        </thead>
-
-						        <tbody>
-						        <?php
-						        foreach ($this->data['competencias'] as $competencia) {
-						        	echo '<tr>';
-
-						        	echo '<td style="text-align: justify;">';
-						        	echo '<h6><strong>' . $competencia->getNomComp() . '</strong></h6>';
-						        	echo $competencia->getDesComp();
-						        	echo '</td>';
-
-						        	echo '<td><input name="em" type="text" value="Bueno"><label for="em">Evaluación empleador</label></td>';
-
-						        	echo '</tr>';
-						        }
-						          <tr>
-						            
-						            <td>
-						            	<!-- ESTO DEBE ESTAR DESHABILITADO PARA EL PROFESOR 
-						            		 Y DEBE MOSTRAR LOS VALORES DE LA EVALUACIÓN DEL EMPLEADOR-->
-						            	<select name="evaluacion_empleador" disabled>
-								      	<option value="" disabled selected>Evaluar</option>
-								      	<option value="Bueno">Bueno</option>
-								    	<option value="Regular">Regular</option>
-								    	<option value="Insatisfactorio">Insatisfactorio</option>	
-								    	<option value="No aplica">No aplica</option>	   
-								    	</select>
-						            </td>
-						            <td>
-						            	<select name="evaluacion_profesor">
-								      	<option value="" disabled selected>Evaluar</option>
-								      	<option value="Bueno">Bueno</option>
-								    	<option value="Regular">Regular</option>
-								    	<option value="Insatisfactorio">Insatisfactorio</option>	
-								    	<option value="No aplica">No aplica</option>	   
-								    	</select>
-						            </td>
-						            <td>
-						            	<div class=" col s12 input-field">      
-						                    <textarea id="observacion" name="basico" class="materialize-textarea" length="1000"></textarea>
-		        							<label for="observacion">Observación</label>
-						                </div> 
-						            </td>
-						          </tr>
-						          ?>
-						        </tbody>
-
-						      </table>
-
+					        	<p>
+					        	descripcion competencia 1 ok descripcion competencia 1 ok descripcion competencia 1 ok descripcion competencia 1 ok descripcion competencia 1 ok descripcion competencia 1 ok descripcion competencia 1 ok descripcion competencia 1 ok descripcion competencia 1 ok descripcion competencia 1 ok descripcion competencia 1 ok descripcion competencia 1 ok descripcion competencia 1 ok descripcion competencia 1 ok descripcion competencia 1 ok 
+					        	</p>
+					       	</div>
+					        </div>
+					         <div class="row">
+					        <div class="col s3 offset-s5">
+						        <select name="evaluacion_competencia1">
+							      	<option value="" disabled selected>Evaluación externa</option>
+							      	<option value="Bueno">Bueno</option>
+							    	<option value="Regular">Regular</option>
+							    	<option value="Insatisfactorio">Insatisfactorio</option>	
+							    	<option value="No aplica">No aplica</option>	   
+						    	</select>
+					        </div>
+					        <div class="col s3">
+						        <select name="evaluacion_competencia1">
+							      	<option value="" disabled selected>Evaluación académica</option>
+							      	<option value="Bueno">Bueno</option>
+							    	<option value="Regular">Regular</option>
+							    	<option value="Insatisfactorio">Insatisfactorio</option>	
+							    	<option value="No aplica">No aplica</option>	   
+						    	</select>
+					        </div>
+					        </div> 
+					        <div class="row"  style="margin-bottom: 0">
+					        <div class="col s10 offset-s1">
+					        	<h6 style="margin-bottom: 0"><strong>OBSERVACION Y/O COMENTARIO:</strong></h6>
 					        </div>
 					        </div>
+					        <div class="row">
+					        <div class="col s10 offset-s1">
+					        	<div class=" col s12 input-field" style="margin-top: 0">      
+						            <textarea id="observacion" name="observacion" class="materialize-textarea" length="1000"></textarea>
+						        </div>					        </div>
+					        </div><!-- HASTA ACA POR CADA COMPETENCIA-->
 					        <div class="row">
 					        <div class="col s10 offset-s1">
 					        	<h5><strong>¿DE ACUERDO AL TRABAJO DESARROLLADO POR EL ALUMNO, USTED APRUEBA O RECHAZA LA PRÁCTICA?</strong></h5>
@@ -143,14 +123,12 @@
 							      <input type="checkbox" id="aprueba" />
 							      <label for="aprueba">APRUEBA</label>
 							    </p>
-							    <p> 
 					        </div>
 					       	<div class="col s2 offset-s4">
 					        	<p>
 							      <input type="checkbox" id="rechaza" />
 							      <label for="rechaza">RECHAZA</label>
 							    </p>
-							    <p> 
 					        </div>
 					        </div>					        
 					        <div class="row">	
@@ -158,6 +136,7 @@
 					        	<button class="btn btn-large waves-effect waves-light color_primario" type="submit" form="login" name="action">Ingresar</button>
 					        </div>
 					        </div>
+					        </form>
 					        </div>
 					        </div>
 					        </div>
