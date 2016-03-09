@@ -48,6 +48,10 @@ class Asignatura
     	return DBAsignatura::getAsignaturasGrafico($malla, $competencia);
     }
 
+    public static function listarAsignaturasProfesor($rutProfesor){
+    	return DBAsignatura::getAsignaturasProfesor($rutProfesor);
+    }
+
 	//============ Getters ================
 
 	function getId(){

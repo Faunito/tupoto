@@ -31,7 +31,7 @@
 
 	function router($view, $usuario){
 		if (isset($_GET['action'])) {
-			$view->action($_GET['action']);		
+			$view->action($_GET);		
 		}elseif (isset($_GET['result'])){
 			$view->result($_GET, $_POST);
 		}else{

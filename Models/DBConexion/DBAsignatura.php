@@ -23,7 +23,16 @@ class DBAsignatura Implements ICrud {
         $lista = $resultado->fetchAll();
         return $lista;
     }
-    
+
+    function getAsignaturasProfesor(){
+        $con = DBSingleton::getInstance()->getDB();
+        $res = $con -> prepare('SELECT asignatura.* FROM asignatura,profesor,dicta WHERE profesor.RUT=dicta.RUT AND dicta.RUT=asignatura.RUT AND profesor.RUT=:rut');
+        $res -> bindParam(':rut',$rutProfesor,PDO::PARAM_STR);
+        $res -> execute();        
+        $res1 = $res->fetchAll();
+        return $res1;  
+    }   
+
     function getAsignatura($id){
         $con = DBSingleton::getInstance()->getDB();
         $dbh = $con->prepare('SELECT * FROM asignatura WHERE ID_ASIGNATURA = :id');

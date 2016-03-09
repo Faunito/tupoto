@@ -354,6 +354,29 @@ class DirectorController extends ProfesorController{
             $alumno = $this->dir->consultarAlumno($rut);
             return $alumno;
         }
+        
+        function consultarPracticasAlumno($rut){
+            $practicas = Practica::getPracticasAlumno($rut);
+            $i=0;
+            $array=array();
+            foreach ($practicas as $practica) {
+                $nueva = new Practica();
+                $nueva->setIdPractica($practica['ID_PRACTICA']);
+                $nueva->setAlumno($practica['RUT']);
+                $nueva->setDireccion($practica['DIRECCION_PRACTICA']);
+                $nueva->setEstado($practica['ESTADO']);
+                $nueva->setFechaInicio($practica['FECHA_INICIO']);
+                $nueva->setFechaTermino($practica['FECHA_TERMINO']);
+                $nueva->setIntento($practica['INTENTO']);
+                $nueva->setNivelPractica($practica['NIVEL_PRACTICA']);
+                $nueva->setHoras($practica['HORAS']);
+                $array[$i]=$nueva;
+                $i++;
+            }
+            $this->arrayPracticas=$array;
+            $this->serializar($this);
+            return $this->arrayPracticas;
+        }
 
     //============ Getters ================
 

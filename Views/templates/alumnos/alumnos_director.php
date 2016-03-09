@@ -18,7 +18,7 @@
 				        </div>
 			            <div class="card-content">     
 							<div class="row">
-							  <div id="admin" class="col s10 offset-s1">
+							  <div id="admin" class="col s8 offset-s2">
 							    <div class="card material-table">
 							      <div class="table-header">
 							        <span class="table-title">Alumnos</span>
@@ -33,9 +33,7 @@
 								            <th class="no-padding">Nombre</th>
 								            <th class="no-padding">Apellido paterno</th>
 								            <th class="no-padding">Apellido materno</th>
-								            <th class="center no-padding" style="width: 60px;">Ver</th>
-								            <th class="center no-padding" style="width: 60px;">Modificar</th>
-								            <th class="center no-padding" style="width: 60px;">Eliminar</th>
+								            <th class="center no-padding" style="width: 80px;">Ver</th>	   
 								          </tr>
 								        </thead>
 								        <tbody>
@@ -49,13 +47,7 @@
 								    	    echo '<td class="no-padding">'.$persona->getAmaterno().'</td>';
 								    	    ?>
 								    	    <td class="center no-padding">
-								            	<a class="btn-floating waves-effect waves-light tooltipped" data-position="top" data-delay="50" data-tooltip="Ver alumno" href="alumnos.php?action=ver&param=<?php echo $persona->getRut(); ?>"><i class="mdi mdi-eye white-text right"></i></a>
-											</td>
-								            <td class="center no-padding">
-								            	<a class="btn-floating waves-effect waves-light tooltipped" data-position="top" data-delay="50" data-tooltip="Modificar" href="alumnos.php?action=modificar&param=<?php echo $persona->getRut(); ?>"><i class="material-icons color_primario white-text">edit</i></a>
-											</td>
-											<td class="center no-padding">
-								            	<a class="btn-floating waves-effect waves-light red  tooltipped" data-position="top" data-delay="50" data-tooltip="Eliminar" href="alumnos	.php?result=eliminar&param=<?php echo $persona->getRut(); ?>"><i class="material-icons  white-text">clear</i></a>
+								            	<a class="btn-floating waves-effect waves-light tooltipped" data-position="top" data-delay="50" data-tooltip="Ver alumno" href="practicas.php?action=ver&param=<?php echo $persona->getRut(); ?>"><i class="mdi mdi-eye white-text right"></i></a>
 											</td>
 								          </tr>
 								          <?php }} ?>

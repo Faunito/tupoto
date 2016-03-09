@@ -29,11 +29,11 @@
 							      	<table id="datatable">
 								        <thead>
 								          <tr>
-								            <th style="width: 120px">Rut</th>
-								            <th>Nombre</th>
-								            <th>Apellido paterno</th>
-								            <th>Apellido materno</th>
-								            <th class="center" style="width: 80">Prácticas</th>
+								            <th style="width: 120px;">Rut</th>
+								            <th class="no-padding">Nombre</th>
+								            <th class="no-padding">Apellido paterno</th>
+								            <th class="no-padding">Apellido materno</th>
+								            <th class="center no-padding" style="width: 60px;">Ver</th>
 								          </tr>
 								        </thead>
 								        <tbody>
@@ -42,15 +42,12 @@
 								        foreach ($this->data['alumnos'] as $persona) {
 								        	echo '<tr>';
 								        	echo '<td>'.$persona->getRut().'</td>';
-								    	    echo '<td>'.$persona->getNombre().'</td>';
-								    	    echo '<td>'.$persona->getApaterno().'</td>';
-								    	    echo '<td>'.$persona->getAmaterno().'</td>';
+								    	    echo '<td class="no-padding">'.$persona->getNombre().'</td>';
+								    	    echo '<td class="no-padding">'.$persona->getApaterno().'</td>';
+								    	    echo '<td class="no-padding">'.$persona->getAmaterno().'</td>';
 								    	    ?>
-								            <td class="center">
-								            	<a class="btn-floating waves-effect waves-light tooltipped" data-position="top" data-delay="50" data-tooltip="Modificar" href="competencias.php?result=consultar&param=<?php echo $persona->getRut(); ?>"><i class="material-icons color_primario white-text">edit</i></a>
-											</td>
-											<td class="center">
-								            	<a class="btn-floating waves-effect waves-light red  tooltipped" data-position="top" data-delay="50" data-tooltip="Eliminar" href="competencias.php?result=eliminar&param=<?php echo $persona->getRut(); ?>"><i class="material-icons  white-text">clear</i></a>
+								    	    <td class="center no-padding">
+								            	<a class="btn-floating waves-effect waves-light tooltipped" data-position="top" data-delay="50" data-tooltip="Ver alumno" href="alumnos.php?action=ver&param=<?php echo $persona->getRut(); ?>"><i class="mdi mdi-eye white-text right"></i></a>
 											</td>
 								          </tr>
 								          <?php }} ?>

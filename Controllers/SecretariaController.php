@@ -91,7 +91,7 @@ class SecretariaController{
         }
         
         function registrarAlumno($rut,$carrera,$nombre,$apaterno,$amaterno){
-            $this->secretaria->regitrarAlumno($rut,$carrera,$nombre,$apaterno,$amaterno);
+            $this->secretaria->registrarAlumno($rut,$carrera,$nombre,$apaterno,$amaterno);
         }
         
         function modificarAlumno($rut,$nombre,$apaterno,$amaterno){

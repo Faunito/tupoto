@@ -11,11 +11,12 @@
 
 	    public function output($usuario) {
 	    	switch ($usuario) {
-	    		case 'Profesor':
+	    		case 'Profesor':	    	
+	    			$asignaturas = $this->controller->listarAsignaturasProfesor($this->controller->getProfesor());
+	    			$this->controller->getTemplate()->setData('asignaturas', $asignaturas);
 					$this->controller->getTemplate()->load(ROOT_DIR.TEMPLATES_DIR.'asignaturas/asignaturas_profesor.php');
 	    			break;
 	    		case 'Director':
-					$this->controller->getTemplate()->load(ROOT_DIR.TEMPLATES_DIR.'asignaturas/asignaturas_director.php');
 	    			break;
 	    	}
 	    }

@@ -34,13 +34,18 @@
                     break;
 	    		case 'listar':	
                     $alumno = $this->controller->consultarAlumno($action['param']);
-                    $practicas = $this->controller->consultarPracticasAlumno($action['param']);                    
+                    $practicas = $this->controller->consultarPracticasAlumno($action['param']);             
                     $this->controller->getTemplate()->setData('alumno',$alumno);
                     $this->controller->getTemplate()->setData('practicas',$practicas);
-	    		    $this->controller->getTemplate()->load(ROOT_DIR.TEMPLATES_DIR.'alumnos/ver_alumno.php');
+	    		    $this->controller->getTemplate()->load(ROOT_DIR.TEMPLATES_DIR.'practicas/practicas_secretaria.php');
 	    			break;
-	    		case 'eliminar':
-
+	    		case 'ver':
+	    			$alumno = $this->controller->consultarAlumno($action['param']);
+	    			$practicas = $this->controller->consultarPracticasAlumno($action['param']);
+	    			$this->controller->getTemplate()->setData('alumno',$alumno);
+	    			$this->controller->getTemplate()->setData('practicas',$practicas);
+	    		    $this->controller->getTemplate()->load(ROOT_DIR.TEMPLATES_DIR.'practicas/practicas_director.php');
+	    			
 	    			break;	    		
 	    		default:
 	    			break;
@@ -52,7 +57,7 @@
 	    		case 'nuevo':
                     $this->controller->ingresarPractica( $result['param'],
                                                          $post['direccion'],
-                                                         $estado = 'inicio',
+                                                         $estado = 'Activa',
                                                          $post['fecha_inicio'],
                                                          $post['fecha_termino'],
                                                          $intento = '1', 

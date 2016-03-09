@@ -38,6 +38,26 @@ class ProfesorController{
         $this->serializar($this);
         return $this->arrayAlumnos;
     }
+
+    function listarAsignaturasProfesor(){
+        $asignaturas = Asignatura::getAsignaturasProfesor();
+        $i=0;
+        $array = array();
+        foreach ($asignaturas as $asignatura) {
+            $nuevo = new Asignatura();                
+            $nuevo->setId($asignatura['ID_ASIGNATURA']);
+            $nuevo->setMalla($asignatura['ID_MALLA']);
+            $nuevo->setNivelAcademico($asignatura['ID_PROGRAMA']);
+            $nuevo->setCodigo($asignatura['CODIGO_ASIGNATURA']);
+            $nuevo->setNombre($asignatura['NOMBRE_ASIGNATURA']);
+            $nuevo->setNivel($asignatura['NIVEL_ASIGNATURA']);
+            $array[$i] = $nuevo;
+            $i++;
+        }
+        $this->arrayAsignaturas = $array;        
+        $this->serializar($this);
+        return $this->arrayAsignaturas;
+    }
     //============ Setters ==========
     
     //============ Getters ==========
