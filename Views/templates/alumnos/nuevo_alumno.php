@@ -3,7 +3,7 @@
 	require_once(ROOT_DIR . TEMPLATES_DIR . 'base/header.php');
 	require_once(ROOT_DIR . MODELS_DIR . 'Alumno.php');
 	?>
-	<main class="blue-grey lighten-5">
+	<main <main id="sb-site" class="blue-grey lighten-5">
 		<div class="container">	
 			<!-- contenido del contenido principal -->
 			<div class="row center margen-top">

@@ -3,7 +3,7 @@
 	require_once(ROOT_DIR . TEMPLATES_DIR . 'base/header.php');
 	require_once(ROOT_DIR . MODELS_DIR . 'Practica.php');
 	?>
-	<main class="blue-grey lighten-5">
+	<main id="sb-site" class="blue-grey lighten-5">
 		<div class="container">	
 			<!-- contenido del contenido principal -->
 			<div class="row center margen-top">
@@ -11,27 +11,20 @@
 		          	<div class="card">
 		          		<div class="card-image">
 			          		<img src="<?php echo RESOURCES_DIR.'img/hola.jpg';?>">
-				            <span class="card-title"><strong><h4><a href="javascript:history.go(-1)"><i class="material-icons small white-text left" style="font-size: 40px">arrow_back</i></a>Prácticas</h4></strong></span>
+				            <span class="card-title"><strong><h4><a href="javascript:history.go(-1)"><i class="material-icons small white-text left" style="font-size: 40px">arrow_back</i></a>Ingrese una práctica para el alumno: <?php echo $this->data['alumno']->getNombre().' '.$this->data['alumno']->getApaterno().' '.$this->data['alumno']->getAmaterno();?></h4></strong></span>
 				        </div>
 			            <div class="card-content">
 			            <!-- LOS CAMPOS ID_PRACTICA, ESTADO y INTENTO deben ser automaticos -->
 			                <form id="myForm" action="#" method="POST">
-			               		<div class="row">
-					                 <div class="input-field col s4 offset-s3">
-			                    	        <input id="alumno" name="alumno" type="text" class="validate" disabled value='<?php echo $this->data['alumno']->getNombre().' '.$this->data['alumno']->getApaterno().' '.$this->data['alumno']->getAmaterno();?>'>
-									        <label for='alumno'>Alumno</label>
-			                    	</div>	
-
-					                <div class=" col s2 input-field">       
+					            <div class="row">
+					                <div class=" col s1 offset-s3 input-field">       
+					                    <input id="nivel" name="nivel" type="text" class="validate">
+					                    <label for="nivel">Nivel *</label>
+					                </div>
+					                <div class=" col s1 input-field">       
 					                    <input id="horas" name="horas" type="text" class="validate">
 					                    <label for="horas">Horas *</label>
-					                </div>			               
-					           	</div>
-					            <div class="row">
-					                <div class=" col s2 offset-s3 input-field">       
-					                    <input id="nivel" name="nivel" type="text" class="validate">
-					                    <label for="nivel">Nivel de práctica *</label>
-					                </div>
+					                </div>	
 					                <div class=" col s2 input-field">       
 					                    <input id="fecha_inicio" name="fecha_inicio" type="text" class="datepicker">
 					                    <label for="fecha_inicio">Fecha inicio *</label>
@@ -66,6 +59,23 @@
 	</main>
 		<?php
 		require_once(ROOT_DIR . TEMPLATES_DIR . 'base/scripts.php');
+		?>
+		<script>
+			$('.DatePicker').pickadate({
+	        monthsFull: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
+	        monthsShort: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'],
+	        weekdaysFull: ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'],
+	        weekdaysShort: ['Dom', 'Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sáb'],
+	        today: 'Hoy',
+	        clear: 'Borrar',
+	        close: 'Salir',
+	        selectMonths: true,
+	        selectYears: 200,
+	        format: 'dd-mm-yyyy',
+	        firstDay: 1
+    	});
+		</script>
+		<?php
 		require_once(ROOT_DIR . TEMPLATES_DIR . 'base/footer.php');
 
     ?>

@@ -47,7 +47,6 @@ class Alumno extends Persona
         return DBAlumno::getAllAsoc($rutProfesor);
 	}
 
-
     //SETTERS
 	function setCarrera($carrera)
 	{

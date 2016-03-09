@@ -72,7 +72,7 @@ class DBAsignatura Implements ICrud {
                 $dbh->bindParam($i, intval($asig), PDO::PARAM_STR);
                 $i++;
             }
-            $dbh->execute();            
+            $dbh->execute();
         }
 
     }

@@ -23,7 +23,7 @@ class Asignatura
 	static function listaAsignaturas(){
 
 	}
-
+	
 	public static function getAsignaturas(){
 		return DBAsignatura::getAll();
 	}
@@ -31,7 +31,6 @@ class Asignatura
 	public static function getAsignaturasMalla($id){
 		return DBAsignatura::getAsignaturasMalla($id);
 	}
-
 
 	public static function getAsignatura($codigo){
         return DBAsignatura::getAsignatura($codigo);

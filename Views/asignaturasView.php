@@ -62,7 +62,7 @@
 		    		$this->controller->modificarAsignatura(	$result['param'], 
 										    				$post['codigo'], 
 										    				$post['nombre'], 
-										    				$post['nivel']);
+										    				$post['nive']);
 		    		//TOAAAST
 		    		$this->controller->getTemplate()->redirect('asignaturas.php?action=ver-asignatura');
 	    			break;

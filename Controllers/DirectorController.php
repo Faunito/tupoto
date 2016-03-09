@@ -164,9 +164,10 @@ class DirectorController extends ProfesorController{
             }
         }           
         //============ Mallas ================ 
-        function ConsultarMalla($id){
+
+        function consultarMalla($id){
+
             $malla = new Malla();
-            $malla->setId($id);
             $malla->setIdMalla($id);
             $malla->getDBMalla()->GetInstance($malla);
             return $malla;
@@ -261,6 +262,21 @@ class DirectorController extends ProfesorController{
                 $nueva->setNombre($asignatura['NOMBRE_ASIGNATURA']);
                 $nueva->setNivel($asignatura['NIVEL_ASIGNATURA']);
                 $nueva->setDirector($this->dir);
+                $array[$i] = $nueva;
+                $i++;
+            }
+            return $array;
+        }
+
+        function listarAsignaturasCompetencia($id){
+            $especificaciones = Especificacion::getAsignaturasCompetencia($id);
+            $i=0;
+            $array=array();
+            foreach ($especificaciones as $especificacion) {
+                $nueva = new Especificacion();                
+                $nueva->setIdAsignatura($especificacion['ID_ASIGNATURA']);
+                $nueva->setIdCompetencia($especificacion['ID_COMPETENCIA']);
+                $nueva->setNivelCompetencia($especificacion['NIVELES_COMPETENCIA']);
                 $array[$i] = $nueva;
                 $i++;
             }

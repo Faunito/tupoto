@@ -98,13 +98,7 @@
 								</div>
 							</div>
 						</div>
-					    </div>
-					  	</div>
-					</div>
-					<div class="card">
-						<div class="card-content">
-							<div id="Grafic"></div>
-						</div>
+					  </div>
 					</div>
 				</div>
 			</div>
@@ -115,73 +109,6 @@
 	?>
 	<script src="<?php echo RESOURCES_DIR ?>js/jquery.jqplot.js"></script>
 	<script src="<?php echo RESOURCES_DIR ?>js/jqplot.bubbleRenderer.js"></script>
-
-	<?php 
-
-	$nivel_academico = $this->data['mallas'][1]->getNiveles();
-	$semestres = array();
-	$semestres['basico'] = array();
-	$semestres['intermedio'] = array();
-	$semestres['avanzado'] = array();
-
-	for ($i = 0; $i < $nivel_academico; $i++) { 
-		$semestres['basico'][$i] = 0;
-		$semestres['intermedio'][$i] = 0;
-		$semestres['avanzado'][$i] = 0;
-	}
-
-	$contador = count($this->data['graficos'][1]['asignaturas']);
-
-	for ($i = 0; $i < $nivel_academico; $i++) {
-
-		for ($j = 0; $j < count($this->data['graficos'][1]['asignaturas']); $j++) { 
-			if( $this->data['graficos'][1]['asignaturas'][$j]->getNivel() == ($i+1) ){
-				switch ($this->data['graficos'][1]['especificaciones'][$j]->getNivelCompetencia()) {
-					case 'Básico':
-						$semestres['basico'][$i]++;
-						break;
-					case 'Intermedio':
-						$semestres['intermedio'][$i]++;
-						break;
-					case 'Avanzado':
-						$semestres['avanzado'][$i]++;
-						break;
-				}	
-			}
-		}
-	}
-
-	foreach ($semestres as $semestre) {
-		foreach ($semestre as $key) {
-			echo $key . '<br>';
-		}
-		echo '<br>';
-	}
-
-	?>
-
-	<script>
-	$(document).ready(function(){
-
-
-    var arr = [	
-    			[10,	10, 	20], 
-			    [15, 	15, 	20], 
-			    [8, 	4, 		20], 
-			    [6, 	2, 		10], 
-			    [5, 	15, 	21], 
-			    [1, 	2, 		20], 
-			    [2, 	13, 	5 ],
-			  ];
-     
-    plot1c = $.jqplot('Grafic',[arr],{
-        title: 'GRÁFICO DE LA COMPETENCIA: <?php echo $this->data['competencia']->getNomComp(); ?>',
-        seriesDefaults:{
-            renderer: $.jqplot.BubbleRenderer
-        	}              
-    	});
-	});
-	</script>
 	
 	<?php
 	require_once(ROOT_DIR . TEMPLATES_DIR . 'base/footer.php');
