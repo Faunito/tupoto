@@ -378,11 +378,20 @@ class DirectorController extends ProfesorController{
             return $this->arrayPracticas;
         }
 
+        //============ Practicas ================ 
         function consultarPractica($id){
             $practica = $this->dir->consultarPractica($id);
             return $practica;
         }
 
+        //============ Evaluaciones ================ 
+        function crearEvaluacionAcademica($idpractica, $profesor, $resultado){
+            return $this->dir->crearEvaluacionAcademica($idpractica, $profesor, $resultado);
+        }
+
+        function crearEvaluacionCompetencia($idevaluacion, $idcompetencia, $observacion, $calificacion){
+            $this->dir->crearEvaluacionCompetencia($idevaluacion, $idcompetencia, $observacion, $calificacion);
+        }
     //============ Getters ================
 
     function getDirector(){

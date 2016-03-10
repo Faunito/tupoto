@@ -26,6 +26,9 @@ class Evaluacion
 	//METODOS
 
 	//GETTER
+	function getDBEvaluacion(){
+		return $this->dbevaluacion;
+	}
 	function getResultado()
 	{
 		return $this->resultado;
@@ -48,7 +51,7 @@ class Evaluacion
 
 	function getProfesor()
 	{
-		$this->profesor;
+		return $this->profesor;
 	}
 
 	function getEmpleador()
@@ -82,7 +85,7 @@ class Evaluacion
 		$this->observacion = $newVal;
 	}
 
-	function setPrfesor($newVal)
+	function setProfesor($newVal)
 	{
 		$this->profesor = $newVal;
 	}
