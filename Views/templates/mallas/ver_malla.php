@@ -24,7 +24,13 @@
             echo '</div>';
         }
         echo '</div>';
-    } ?>      
+    } ?>  
+    <div class="row">
+      <div class="col s2 offset-s10">
+      <h6>Ver cuadro de resumen</h6>
+      <a class="btn-floating waves-effect waves-light green tooltipped" data-position="top" data-delay="50" data-tooltip="Ver resumen" href="mallas.php?action=ver-resumen&param=<?php echo $this->data['malla']->getIdMalla(); ?>"><i class="material-icons small white-text left">arrow_forward</i></a>
+      </div>
+      </div>    
     </div>
   </div>
   <?php foreach ($this->data['competencias'] as $competencia) { ?>
@@ -34,7 +40,7 @@
       <div class="col s10 offset-s1">
       <div id="chart<?php echo $competencia->getIdComp(); ?>" style="height:500px;"></div>
       </div>
-      </div>
+      </div>      
     </div>
   </div>  
   <?php  }?>

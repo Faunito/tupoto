@@ -74,31 +74,22 @@ class DBEvaluacion implements ICrud
         $res = $con -> prepare('UPDATE evaluacion (ID_PRACTICA, RUT, RESULTADO, FECHA_ENTREGA, OBSERVACION)
         						VALUES (:id,:rut,:result,:fecha,:obs)');
         $res -> bindParam(':id',$var->getPractica()->getIdPractica(),PDO::PARAM_STR);
-        $res -> bindParam(':id',$var->getProfesor()->getRut(),PDO::PARAM_STR);
+        $res -> bindParam(':id',$var->getEmpleador()->getRut(),PDO::PARAM_STR);
         $res -> bindParam(':id',$var->getResultado(),PDO::PARAM_STR);
         $res -> bindParam(':id',$var->getFechaEntrega(),PDO::PARAM_STR);
         $res -> bindParam(':id',$var->getObservacion(),PDO::PARAM_STR);
         $res -> execute();
     }
 
-    public static function getEvalperPract($practica)
+    public static function getEvaluacionesPractica($practica)
     {
     	$con = DBSingleton::getInstance()->getDB();
-    	$res = $con -> prepare('SELECT * FROM evaluacion where ID_PRACTICA =:id');
+    	$res = $con -> prepare('SELECT E.ID_EVALUACION, E.ID_PRACTICA, E.RUT as RUT_E, E.FECHA_ENTREGA, E.RESULTADO, E.OBSERVACIONES, EV.RUT as RUT_P 
+        FROM evaluacion E LEFT JOIN evalua EV ON E.ID_EVALUACION = EV.ID_EVALUACION LEFT JOIN profesor P ON EV.RUT = P.RUT WHERE E.ID_PRACTICA =:id');
     	$res -> bindParam(':id',$practica->getIdPractica(),PDO::PARAM_STR);        
         $res -> execute();
-        $res2 = $res->fetchAll();
-        $evals = array();
-        foreach ($res2 as $key) {
-        	$aux = new Evaluacion();
-        	$aux->setPractica($practica);
-        	$aux->setResultado($key['RESULTADO']);
-        	$aux->setFechaEntrega($key['FECHA_ENTREGA']);
-        	$aux->setIdEvaluacion($key['ID_EVALUACION']);
-        	$aux->setObservacion($key['OBSERVACION']);
-        	array_push($evals, $aux);
-        }
-        return $evals;
+        $res2 = $res->fetchAll();       
+        return $res2;
     }
 }
 

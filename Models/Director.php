@@ -25,6 +25,7 @@ class Director extends Profesor
     private $malla;
     private $asignaCompetencia;
     private $desasignaCompetencia;
+    private $empleador;
 
 	function __construct()
 	{
@@ -36,8 +37,7 @@ class Director extends Profesor
 
 	function existeDirector($email,$pass,$tipo){
         return $this->dbdirector->existeDirector($email,$pass,$tipo);
-    }  
-
+    }
         //============ Competencias ================
         function consultarCompetenciasMalla($id){
             $res = Competencia::getCompetenciasMalla($id);
@@ -257,6 +257,37 @@ class Director extends Profesor
         }
 
         //============ Evaluaciones ================ 
+        function consultarEvaluacionesPractica($practica){
+            $evaluaciones = Evaluacion::getEvaluacionesPractica($practica);
+            $arrEvaluaciones = array();
+            foreach ($evaluaciones as $key) {
+            	$aux = new Evaluacion();
+            	$aux->setPractica($key['ID_PRACTICA']);
+                if($key['RUT_E']!=NULL){
+                    //es empleador
+                    $empleador = new Empleador();
+                    $empleador->setRut($key['RUT_E']);
+                    $empleador->getDBEmpleador()->GetInstance($empleador);                 
+                    $aux->setEmpleador($empleador);
+                    $aux->setProfesor(NULL);
+                }
+                if($key['RUT_P']!=NULL){
+                    //es profesor
+                    $profesor = new Profesor();
+                    $profesor->setRut($key['RUT_P']);
+                    $profesor->getDBProfesor()->consultarProfesor($profesor);
+                    $aux->setProfesor($profesor);
+                    $aux->setEmpleador(NULL);
+                }                
+                $aux->setResultado($key['RESULTADO']);
+            	$aux->setFechaEntrega($key['FECHA_ENTREGA']);
+            	$aux->setIdEvaluacion($key['ID_EVALUACION']);
+            	$aux->setObservacion($key['OBSERVACIONES']);
+            	array_push($arrEvaluaciones, $aux);
+            }            
+            return $arrEvaluaciones;
+        }
+        
         function crearEvaluacionAcademica($idpractica, $profesor, $resultado){
             $practica = new Practica();
             $practica->setIdPractica($idpractica);

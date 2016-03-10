@@ -56,9 +56,11 @@
 	    		case 'ver':
 	    			$alumno = $this->controller->consultarAlumno($action['rut']);
 	    			$practica = $this->controller->consultarPractica($action['practica']);
+                    $evaluaciones = $this->controller->consultarEvaluaciones($practica);
 	    			$this->controller->getTemplate()->setData('alumno',$alumno);
 	    			$this->controller->getTemplate()->setData('practica',$practica);
-	    		    $this->controller->getTemplate()->load(ROOT_DIR.TEMPLATES_DIR.'evaluaciones/evaluaciones_director.php');
+                    $this->controller->getTemplate()->setData('evaluaciones',$evaluaciones);
+	                $this->controller->getTemplate()->load(ROOT_DIR.TEMPLATES_DIR.'evaluaciones/evaluaciones_director.php');
 	    			break;
 	    		case 'ver-evaluaciones':	//secretaria
 	    			$alumno = $this->controller->consultarAlumno($action['rut']);

@@ -60,3 +60,27 @@ button.color_primario:hover {
 .elemento h6{
  font-size: 20px;
 }
+
+.texto-vertical-1 {
+    writing-mode: vertical-lr;
+}
+.texto-vertical-2 {
+    writing-mode: vertical-lr;
+    transform: rotate(180deg);
+}
+.texto-vertical-3 {
+  width:20px;
+  word-wrap: break-word;
+  text-align:center;
+  line-height:20px;
+}
+
+.cuadrito{
+  border-width:2px; 
+  border-style:solid;
+  border-color: white;
+}
+
+.cuadrito-oculto{
+    border-style:hidden;
+}
