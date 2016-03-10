@@ -36,7 +36,7 @@
 							      <div class="table-header">
 							        <span class="table-title">Lista de evaluaciones</span>
 							        <div class="actions">	
-							       		<a href="evaluaciones.php?action=nueva-empleador" class="modal-trigger waves-effect btn-flat nopadding"><i class="material-icons right">add_circle</i>Crear evaluación</a>	
+							       		<a href="evaluaciones.php?action=nueva-empleador&rut=<?php echo $this->data['alumno']->getRut();?>&practica=<?php echo $this->data['practica']->getIdPractica();?>" class="modal-trigger waves-effect btn-flat nopadding"><i class="material-icons right">add_circle</i>Crear evaluación</a>	
 							          	<a href="#" class="search-toggle waves-effect btn-flat nopadding"><i class="material-icons">search</i></a>
 							        </div>
 							      </div>

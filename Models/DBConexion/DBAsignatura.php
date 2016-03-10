@@ -6,13 +6,14 @@ class DBAsignatura Implements ICrud {
 	function GetInstance($asignatura){
         $con = DBSingleton::getInstance()->getDB();
         $resultado = $con->prepare('SELECT * FROM asignatura where ID_ASIGNATURA =:id');
-        $resultado->bindParam(':id', $asignatura->getCodigo() ,PDO::PARAM_STR);        
+        $resultado->bindParam(':id', $asignatura->getId() ,PDO::PARAM_STR);        
         $resultado->execute();
         $objeto = $resultado->fetchObject(__CLASS__);
         //puede que falten datos
         $asignatura->setCodigo($objeto->CODIGO_ASIGNATURA);
         $asignatura->setNombre($objeto->NOMBRE_ASIGNATURA);
         $asignatura->setNivel($objeto->NIVEL_ASIGNATURA);
+        return $asignatura;
 	}
     
 

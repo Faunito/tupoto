@@ -91,6 +91,17 @@ class Secretaria extends Funcionario
         $alumno -> setAmaterno($amaterno);
         $alumno -> getDBAlumno() -> add($alumno);
     }
+
+    function consultarCompetenciasEvaluacion($practica, $alumno){  
+            $practica->setAlumno($alumno);
+            $evaluacion = new Evaluacion();
+            $evaluacion->setPractica($practica);     
+
+            $detalle = new DetalleEvaluacion();
+            $detalle->setEvaluacion($evaluacion);
+
+            return $detalle->getCompetenciasEvaluacion();
+    }
     
     //SETTERS
     function setFacultad($facultad){

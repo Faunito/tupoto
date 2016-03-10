@@ -392,6 +392,7 @@ class DirectorController extends ProfesorController{
         function crearEvaluacionCompetencia($idevaluacion, $idcompetencia, $observacion, $calificacion){
             $this->dir->crearEvaluacionCompetencia($idevaluacion, $idcompetencia, $observacion, $calificacion);
         }
+        
     //============ Getters ================
 
     function getDirector(){

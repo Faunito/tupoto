@@ -53,3 +53,13 @@ SELECT A.*, E.NIVELES_COMPETENCIA FROM asignatura A
 INNER JOIN especificacion_de_evidencia E 
 ON A.ID_ASIGNATURA = E.ID_ASIGNATURA AND E.ID_COMPETENCIA = 23 AND E.NIVELES_COMPETENCIA IS NOT NULL
 INNER JOIN malla_curricular M ON A.ID_MALLA = M.ID_MALLA AND M.ID_MALLA = 5
+
+==============================================
+
+======= consulta todas las evaluaciones, de profesor y de empleador, de una practica
+
+SELECT E.ID_EVALUACION, E.ID_PRACTICA, E.RUT as RUT_E, E.FECHA_ENTREGA, E.RESULTADO, E.OBSERVACIONES, EV.RUT as RUT_P 
+FROM evaluacion E 
+LEFT JOIN evalua EV ON E.ID_EVALUACION = EV.ID_EVALUACION 
+LEFT JOIN profesor P ON EV.RUT = P.RUT
+WHERE E.ID_PRACTICA = 2
