@@ -24,7 +24,9 @@ class Evaluacion
 	}
 
 	//METODOS
-
+    public static function getEvaluacionesPractica($practica){
+        return DBEvaluacion::getEvaluacionesPractica($practica);
+    }
 	//GETTER
 	function getDBEvaluacion(){
 		return $this->dbevaluacion;

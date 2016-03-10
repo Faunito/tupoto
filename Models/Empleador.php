@@ -50,7 +50,7 @@ class Empleador extends Persona{
         $this->cantidadPractica = $newVal;
     }
     
-    function setNomEmpresa(){
+    function setNomEmpresa($newVal){
         $this->nombreEmpresa = $newVal;
     }
     

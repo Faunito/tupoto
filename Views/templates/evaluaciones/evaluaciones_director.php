@@ -78,9 +78,9 @@
 							      	<table id="datatable">
 								        <thead>
 								          <tr>
-                                            <th style="width: 100px;">Nivel</th>	
-								            <th class="no-padding" style="width: 100px;">Rut</th>
+                                            <th style="width: 100px;">Evaluador</th>	
 								            <th class="no-padding" style="width: 100px;">Entrega</th>
+								            <th class="no-padding" style="width: 100px;">Resultado</th>
                                             <th class="center no-padding" style="width: 60px">Asignar</th>
 								            <th class="center no-padding" style="width: 60px">Ver</th>
 								          </tr>
@@ -90,11 +90,21 @@
 								        if(!empty($this->data['evaluaciones'])){
 								        foreach ($this->data['evaluaciones'] as $evaluacion) {
 								        	echo '<tr>';
-								        	echo '<td>'.$evaluacion->getIdEvaluacion().'</td>';
-								    	    echo '<td class="no-padding">'.$evaluacion->getRut().'</td>';
+                                            echo '<td class="no-padding">';
+                                            if(!empty($evaluacion->getProfesor())){  
+                                                echo $evaluacion->getProfesor()->getNombre().' '.$evaluacion->getProfesor()->getApaterno();    
+                                            }
+                                            else{
+                                                echo $evaluacion->getEmpleador()->getNombre().' '.$evaluacion->getEmpleador()->getApaterno();
+                                            }
+                                            echo '</td>';							    	    
 								    	    echo '<td class="no-padding">'.$evaluacion->getFechaEntrega().'</td>';
+                                            echo '<td class="no-padding">'.$evaluacion->getResultado().'</td>';
 								    	    ?>
 								            <td class="center no-padding">
+								            	<a class="btn-floating waves-effect waves-light tooltipped" data-position="top" data-delay="50" data-tooltip="Actividades de compensación" href="evaluaciones.php?action=actividades&param=<?php echo $evaluacion->getIdEvaluacion(); ?>"><i class="mdi mdi-book green white-text right"></i></a>
+											</td>
+                                            <td class="center no-padding">
 								            	<a class="btn-floating waves-effect waves-light tooltipped" data-position="top" data-delay="50" data-tooltip="Ver detalle evaluación" href="evaluaciones.php?action=ver&param=<?php echo $evaluacion->getIdEvaluacion(); ?>"><i class="mdi mdi-eye white-text right"></i></a>
 											</td>
 								          </tr>

@@ -62,6 +62,21 @@ class DBProfesor implements ICrud {
         $profesor->setApaterno($res2->APATERNO);
         $profesor->setAmaterno($res2->AMATERNO);
 	}
+    
+    public function consultarProfesor($profesor){
+        $con = DBSingleton::getInstance()->getDB();
+        $res = $con -> prepare('SELECT * FROM profesor where RUT=:rut');
+        $res -> bindParam(':rut',$profesor -> getRut(),PDO::PARAM_STR);
+        $res -> execute();
+        $res2 = $res -> fetchObject(__CLASS__);
+        $profesor->setRut($res2->RUT);
+        $profesor->setTipoProfesor($res2->TIPO_PROFESOR);
+        $profesor->setCorreoElectronico($res2->EMAIL);
+        $profesor->setFacultad($res2->FACULTAD);
+        $profesor->setNombre($res2->NOMBRE);
+        $profesor->setApaterno($res2->APATERNO);
+        $profesor->setAmaterno($res2->AMATERNO);
+    }
 
     function existeProfesor($email,$pass,$tipo){
         $con = DBSingleton::getInstance()->getDB();

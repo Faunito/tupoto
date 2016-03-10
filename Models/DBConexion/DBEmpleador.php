@@ -45,9 +45,18 @@ class DBEmpleador Implements ICrud{
     
     function GetInstance($var){
         $con = DBSingleton::getInstance()->getDB();
-        $respuesta = $con->prepare('SELECT * FROM empleador WHERE RUT=:rut)');
+        $respuesta = $con->prepare('SELECT * FROM empleador WHERE RUT=:rut');
         $respuesta->bindParam(':rut',$var->getRut(),PDO::PARAM_STR);
         $respuesta->execute();
+        $res2 = $respuesta -> fetchObject(__CLASS__);
+        $var->setRut($res2->RUT);
+        $var->setCantPractica($res2->CANTIDAD_PRACTICAS);
+        $var->setNomEmpresa($res2->NOMBRE_EMPRESA);
+        $var->setFonoFijo($res2->TELEFONO);
+        $var->setCelular($res2->CELULAR);
+        $var->setNombre($res2->NOMBRE);
+        $var->setApaterno($res2->APATERNO);
+        $var->setAmaterno($res2->AMATERNO);        
     }
     
 }
