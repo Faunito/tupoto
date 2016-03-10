@@ -14,6 +14,7 @@ class DirectorController extends ProfesorController{
     private $arrayCompetencias;
     private $arrayAsignaturas;
     private $arrayMallas;
+    private $arrayEvaluaciones;
     private $arrayAlumnos;
     private $template;
 
@@ -23,7 +24,11 @@ class DirectorController extends ProfesorController{
     }
 
     //============ Funciones ================
-    
+        //============ Evaluaciones ================
+        function getEvaluaciones($practica){
+            $evaluaciones = $this->dir->consultarEvaluaciones($practica);
+            return $evaluaciones;
+        }        
         //============ Competencias ================
         function listarCompetencias(){
             $res = Competencia::getCompetencias();

@@ -34,7 +34,27 @@ class Director extends Profesor
 	function existeDirector($email,$pass,$tipo){
         return $this->dbdirector->existeDirector($email,$pass,$tipo);
     }  
-
+        //============ Evaluaciones ================
+        function getEvaluaciones($practica){
+            $evaluacions = Evaluacion::getEvaluaciones($practica);
+            $i=0;
+            $array = array(); 
+            foreach ($res as $key) {
+                $empleador = new Empleador();
+                $empleador->setRut($key['RUT']);
+                $aux = new Evaluacion();
+                $aux->setIdEvaluacion($key['ID_EVALUACION']);
+                $aux->setResultado($key['RESULTADO']);
+                $aux->setFechaEntrega($key['FECHA_ENTREGA']);
+                $aux->setObservacion($key['OBSERVACIONES']);
+                $aux->setProfesor();
+                $aux->setEmpleador();
+                $aux->setPractica($key['ID_PRACTICA']);
+                $array[$i] = $aux;
+                $i++;
+            }
+            return $array;
+        }
         //============ Competencias ================
         function consultarCompetenciasMalla($id){
             $res = Competencia::getCompetenciasMalla($id);

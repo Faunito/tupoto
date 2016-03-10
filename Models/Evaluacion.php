@@ -82,7 +82,7 @@ class Evaluacion
 		$this->observacion = $newVal;
 	}
 
-	function setPrfesor($newVal)
+	function setProfesor($newVal)
 	{
 		$this->profesor = $newVal;
 	}
