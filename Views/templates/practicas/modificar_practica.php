@@ -33,7 +33,7 @@
                                        <div class='col s2 offset-s3 input-field'>
                                            <select name="nivel" value='<?php echo $this->data['practica']->getNivelPractica(); ?>'>
                                                <?php switch($this->data['practica']->getNivelPractica()){
-													    case '1':																
+													    case '1':		
 														    echo '<option value="1" selected>Primera</option>';
 														    echo '<option value="2">Segunda</option>';
 														break;
@@ -43,6 +43,7 @@
 														break;    
                                                  }?>
                                            </select>
+                                           <label for="nivel">Nivel *</label>
                                        </div>
                                    </div>
 					           	<div class="row">

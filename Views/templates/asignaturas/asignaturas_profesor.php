@@ -16,11 +16,12 @@
 			            <div class="card-content">
 							<form id="myForm" action="#" method="GET">	      
 								<div class="row">
-								  <div id="admin" class="col s8 offset-s2">
+								  <div id="admin" class="col s6 offset-s3">
 								    <div class="card material-table">
 								      <div class="table-header">
 								        <span class="table-title">Asignaturas</span>
 								        <div class="actions">	
+								        	<a href="asignaturas.php?action=nuevo-programa" class="modal-trigger waves-effect btn-flat nopadding"><i class="material-icons right">add_circle</i>Crear asignatura</a>	
 								          	<a href="#" class="search-toggle waves-effect btn-flat nopadding"><i class="material-icons">search</i></a>
 								        </div>
 								      </div>
@@ -30,7 +31,6 @@
 									            <th>Nombre</th>
 									            <th class="no-padding" style="width: 80px">Código</th>
 									            <th class="no-padding" style="width: 80px">Nivel</th>
-									            <th class="no-padding" style="width: 80px">Malla</th>
 									            <th class="center no-padding" style="width: 80px">Programa</th>
 									          </tr>
 									        </thead>
@@ -42,10 +42,9 @@
 										        	echo '<td>'.$asignatura->getNombre().'</td>';
 								    	    		echo '<td class="no-padding">'.$asignatura->getCodigo().'</td>';
 								    	    		echo '<td class="no-padding">'.$asignatura->getNivel().'</td>';
-								    	    		echo '<td class="no-padding">'.$asignatura->getMalla().'</td>';
-								        	?>								        	
-									          <td class="center no-padding">
-								            	<a class="btn-floating waves-effect waves-light tooltipped" data-position="top" data-delay="50" data-tooltip="Ver alumno" href="asignturas.php?action=ver&param=<?php echo $persona->getRut(); ?>"><i class="mdi mdi-file-document white-text right"></i></a>
+								        		?>								        	
+									          	<td class="center no-padding">
+								            	<a class="btn-floating waves-effect waves-light tooltipped" data-position="top" data-delay="50" data-tooltip="Ver programa" href="asignturas.php?action=ver&param=<?php echo $asignatura->getId(); ?>"><i class="mdi mdi-file-document white-text right"></i></a>
 												</td>
 									          </tr>
 								          	<?php }} ?>									          

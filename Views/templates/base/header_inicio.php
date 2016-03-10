@@ -9,7 +9,7 @@
 				$usuario = $controller->getProfesor();
 				break;
 			case 'SecretariaController':
-				//$usuario = $controller->getSecretaria();
+				$usuario = $controller->getSecretaria();
 				break;
 			
 			default:

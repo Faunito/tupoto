@@ -3,7 +3,6 @@
 	require_once(ROOT_DIR . TEMPLATES_DIR . 'base/header_inicio.php');
 	?>
 	<main id="sb-site" class="blue-grey lighten-5">
-		<main id="sb-site" class="blue-grey lighten-5">
 		<div class="container">		
 
 			<!-- contenido del contenido principal -->
@@ -27,8 +26,7 @@
 			</div>
 		    <!-- fin del contenido del contenido principal -->		    
 		</div>	
-	</main>
-	</main>
+	</main>	
 	<?php
 	require_once(ROOT_DIR . TEMPLATES_DIR . 'base/scripts.php');
 	require_once(ROOT_DIR . TEMPLATES_DIR . 'base/footer.php');
