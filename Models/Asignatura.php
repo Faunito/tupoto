@@ -1,4 +1,4 @@
-<?php
+	<?php
 require_once ('DBConexion/DBAsignatura.php');
 require_once('Director.php');
 require_once ('Competencia.php');
@@ -48,8 +48,8 @@ class Asignatura
     	return DBAsignatura::getAsignaturasGrafico($malla, $competencia);
     }
 
-    public static function listarAsignaturasProfesor($rutProfesor){
-    	return DBAsignatura::getAsignaturasProfesor($rutProfesor);
+    public static function listarAsignaturasProfesor($Profesor){
+    	return DBAsignatura::getAsignaturasProfesor($Profesor);
     }
 
 	//============ Getters ================

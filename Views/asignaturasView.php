@@ -11,8 +11,8 @@
 
 	    public function output($usuario) {
 	    	switch ($usuario) {
-	    		case 'Profesor':	    	
-	    			$asignaturas = $this->controller->listarAsignaturasProfesor($this->controller->getProfesor());
+	    		case 'Profesor':  	
+	    			$asignaturas = $this->controller->listarAsignaturasProfesor($this->controller->getProfesor());	 
 	    			$this->controller->getTemplate()->setData('asignaturas', $asignaturas);
 					$this->controller->getTemplate()->load(ROOT_DIR.TEMPLATES_DIR.'asignaturas/asignaturas_profesor.php');
 	    			break;

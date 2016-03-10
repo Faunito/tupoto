@@ -38,6 +38,18 @@
                 </ul>
               </div>';
         break;
+      case 'secretaria':
+        echo '<div class="fixed-action-btn" style="bottom: 45px; right: 24px;">
+                <a class="btn-floating btn-large green darken-2">
+                  <i class=" large material-icons">view_module</i>
+                </a>
+                <ul>
+                  <li class="tooltipped" data-position="left" data-delay="50" data-tooltip="Alumnos">
+                    <a href="'. ROUTES_DIR .'alumnos.php" class="btn-floating indigo darken-1"><i class="material-icons">school</i></a>
+                  </li>
+                </ul>
+              </div>';
+        break;
         
         default:
           # code...

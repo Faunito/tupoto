@@ -10,7 +10,7 @@
   <div class="card">
     <div class="card-image">
       <img src="<?php echo RESOURCES_DIR.'img/hola.jpg';?>">
-      <span class="card-title"><strong><h4><a href="javascript:history.go(-1)"><i class="material-icons small white-text left" style="font-size: 40px">arrow_back</i></a>Malla <?php echo $this->data['malla']->getCodCarrera(); ?></h4></strong></span>
+      <span class="card-title"><strong><h4><a href="javascript:history.go(-1)"><i class="material-icons small white-text left" style="font-size: 40px">arrow_back</i></a>Malla <?php echo $this->data['malla']->getPlan(); ?></h4></strong></span>
     </div>
   <div class="card-content center">
   <?php
