@@ -7,6 +7,9 @@ require_once ('DBConexion/DBPuedeImpartir.php');
 require_once ('Competencia.php');
 require_once ('Evidencia.php');
 require_once ('Especificacion.php');
+require_once ('Practica.php');
+require_once ('Evaluacion.php');
+require_once ('DetalleEvaluacion.php');
 
 //require_once ('../autoload.php');
 //equire_once ('ActividaddCompensacion.php');
@@ -252,6 +255,40 @@ class Director extends Profesor
             $practica->getDBPractica()->GetInstance($practica);
             return $practica;
         }
+
+        //============ Evaluaciones ================ 
+        function crearEvaluacionAcademica($idpractica, $profesor, $resultado){
+            $practica = new Practica();
+            $practica->setIdPractica($idpractica);
+
+            $evaluacion = new Evaluacion();
+            $evaluacion->setPractica($practica);
+            $evaluacion->setProfesor($profesor);
+            $evaluacion->setEmpleador(null);
+            $evaluacion->setResultado($resultado);
+
+            $idevaluacion =  $evaluacion->getDBEvaluacion()->add($evaluacion);
+            $evaluacion->setIdEvaluacion($idevaluacion);
+            $evaluacion->getDBEvaluacion()->addEvalua($evaluacion);
+            return $idevaluacion;
+        }
+
+        function crearEvaluacionCompetencia($idevaluacion, $idcompetencia, $observacion, $calificacion){
+            $competencia = new Competencia();
+            $competencia->setIdComp($idcompetencia);
+
+            $evaluacion = new Evaluacion();
+            $evaluacion->setIdEvaluacion($idevaluacion);
+
+            $detalle = new DetalleEvaluacion();
+            $detalle->setCompetencia($competencia);
+            $detalle->setEvaluacion($evaluacion);
+            $detalle->setObservacion($observacion);
+            $detalle->setCalificacion($calificacion);
+
+            $evaluacion->getDBEvaluacion()->addDetalle($detalle);
+        }
+
 
     //GETTERS
 	function getCarrera()

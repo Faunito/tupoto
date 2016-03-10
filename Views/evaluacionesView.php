@@ -67,7 +67,64 @@
 
 	    public function result($result, $post){
 	    	switch ($result['result']) {
-	    		case 'nuevo':
+	    		case 'nueva-profesor':	//al llenar y enviar el programa
+	    		$observaciones = array();
+	    		$id_observaciones = array();
+	    		$evaluaciones = array();
+	    		$id_evaluaciones = array();
+	    		$i = 0;
+	    		$j = 0;
+
+	    		foreach ($post as $key => $value) {
+
+	    			if( strcmp($key, 'listo') == 0 ){	//pesca el radio button
+	    				$resultado = $value;    				
+
+	    			}else{
+	    				$evaluacion = explode('_', $key);
+
+	    				if( strcmp($evaluacion[0], 'observacion') == 0 ){	//pesca la observacion
+	    					$observaciones[$i] = $value;
+	    					$id_observaciones[$i] = $evaluacion[1];
+	    					$i++;
+
+	    				}elseif( strcmp($evaluacion[0], 'evaluacion') == 0 ){	//pesca la evaluacion
+	    					$evaluaciones[$j] = $value;
+	    					$id_evaluaciones[$j] = $evaluacion[1];
+	    					$j++;
+
+	    				}
+
+	    			}
+
+	    		}
+
+				switch (get_class($this->controller)) {
+					case 'DirectorController':
+						$idevaluacion = $this->controller->crearEvaluacionAcademica($result['practica'], $this->controller->getDirector(), $resultado);
+						break;
+					case 'ProfesorController':
+						$idevaluacion = $this->controller->crearEvaluacionAcademica($result['practica'], $this->controller->getProfesor(), $resultado);
+						break;
+				}
+
+	    		$contador_eva = count($id_evaluaciones);
+	    		$contador_obs = count($id_observaciones);
+	    		for ($i = 0; $i < $contador_eva; $i++) { 
+	    			for ($j = 0; $j < $contador_obs; $j++) { 
+		    			if( $id_evaluaciones[$i] == $id_observaciones[$j] ){ //encuentra una eva con nota y obs
+		    				//enviar datos a detalle_de_evaluacion
+		    				$this->controller->crearEvaluacionCompetencia(
+					    						$idevaluacion,
+					    						$id_evaluaciones[$i], 
+					    						$observaciones[$j], 
+					    						$evaluaciones[$i]
+					    					);
+		    			}	    				
+	    			}
+	    		}
+
+	    		$this->controller->getTemplate()->redirect('evaluaciones.php?action=ver&rut='. $result['rut'] .'&practica='. $result['practica'] .'');
 
 	    			break;
 	    		case 'modificar':
