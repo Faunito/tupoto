@@ -411,7 +411,30 @@ class DirectorController extends ProfesorController{
             $this->serializar($this);
             return $this->arrayPracticas;
         }
-
+        //============ Profesores ===============
+         function listarProfesores(){
+            $profesores = Profesor::getProfesores();
+            $i=0;
+            $array=array();
+            foreach ($profesores as $profesor) {
+                $nuevo = new Profesor();                
+                $nuevo->setRut($profesor['RUT']);
+                $nuevo->setCorreoElectronico($profesor['EMAIL']);
+                $nuevo->setFacultad($profesor['FACULTAD']);
+                $nuevo->setNombre($profesor['NOMBRE']);
+                $nuevo->setApaterno($profesor['APATERNO']);
+                $nuevo->setAmaterno($profesor['AMATERNO']);
+                $array[$i] = $nuevo;
+                $i++;
+            }
+            $this->arrayProfesores=$array;
+            $this->serializar($this);
+            return $this->arrayProfesores;
+        }
+        function asignarProfesorAlumno($alumno,$profesor){
+            $alumno->setProfesor($profesor);
+            $profesor->setAlumno($alumno);                
+        }
         //============ Practicas ================ 
         function consultarPractica($id){
             $practica = $this->dir->consultarPractica($id);

@@ -89,6 +89,14 @@ class DBProfesor implements ICrud {
         $res1 = $res->fetchColumn();
         return $res1 == 1 ? true : false;
     }    
-    
+
+    function getAll(){
+        $con = DBSingleton::getInstance()->getDB();
+        $res = $con -> prepare('SELECT * FROM profesor WHERE TIPO_PROFESOR="profesor"');
+        $res -> execute();
+        $res1 = $res->fetchAll();
+        return $res1;        
+    }
+
 }
 ?>

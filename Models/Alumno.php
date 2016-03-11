@@ -10,6 +10,7 @@ class Alumno extends Persona
 	private $carrera;   //carrera
 	private $nivelAcademico;//nivel academico
 	private $malla;
+	private $profesor;
 	//private $m_Practica;
 	//private $m_ActividaddCompensacion;
 
@@ -71,6 +72,9 @@ class Alumno extends Persona
 		$this->malla = $malla;
 	}
 
+	function setProfesor($profesor){
+        array_push($this->profesor,$profesor);
+    }  
 }
 
 ?>

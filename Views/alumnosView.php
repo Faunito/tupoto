@@ -1,7 +1,6 @@
 <?php 
 	require_once('View.php');
 
-
 	class AlumnosView extends View {
 
 		private $controller;    
@@ -41,7 +40,13 @@
 	    			$this->controller->getTemplate()->setData('alumno', $alumno);
 					$this->controller->getTemplate()->load(ROOT_DIR.TEMPLATES_DIR.'alumnos/ver_alumno.php');
 	    			break;
-	    		
+	    		case 'asignar-profesor':
+	    			$alumno = $this->controller->consultarAlumno($action['param']);
+	    			$profesores = $this->controller->listarProfesores();
+	    			$this->controller->getTemplate()->setData('profesores', $profesores);
+	    			$this->controller->getTemplate()->setData('alumno', $alumno);
+	    			$this->controller->getTemplate()->load(ROOT_DIR.TEMPLATES_DIR.'alumnos/asignar_profesor.php');
+	    			break;
 	    		default:
 	    			break;
 	    	}
@@ -75,7 +80,12 @@
 	    			$this->controller->eliminarAlumno($result['param']);
 					$this->controller->getTemplate()->redirect('alumnos.php');
 	    			break;
-	    		
+	    		case 'asignar-profesor':
+	    			$alumno = $this->controller->consultarAlumno($result['param']);
+	    			$profesor = $this->controller->consultarProfesor($result['param']);
+	    			$this->controller->asignarProfesorAlumno($alumno,$profesor);
+	    			$this->controller->getTemplate()->redirect('alumnos.php');
+	    			break;
 	    		default:
 	    			break;
 	    	}

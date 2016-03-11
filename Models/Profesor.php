@@ -8,6 +8,7 @@ class Profesor extends Funcionario
     //propias
 	private $tipoProfesor;
     private $facultad;
+    private $alumno;
     //para funciones negocios
     private $m_EvaluacionPracticaProfesor;
 	private $m_Evaluacion;
@@ -29,7 +30,15 @@ class Profesor extends Funcionario
 	function nuevaEvaluacionProfesor($rutAlumno){
 
 	}
+    public static function getProfesores()
+    {
+        return DBProfesor::getAll();
+    }
 
+    function consultarProfesor($rut)
+    {
+        return DBProfesor::consultarProfesor($rut);
+    }
     //SETTERS	
     function setFacultad($facultad){
         $this->facultad = $facultad;
@@ -39,6 +48,9 @@ class Profesor extends Funcionario
         $this->tipoProfesor = $tipoProfesor;
     }   
 
+    function setAlumno($alumno){
+        array_push($this->alumno,$alumno);
+    }  
     //GETTERS
     function getTipoProfesor(){
         return $this->tipoProfesor;
