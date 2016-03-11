@@ -10,7 +10,7 @@ require_once ('Especificacion.php');
 require_once ('Practica.php');
 require_once ('Evaluacion.php');
 require_once ('DetalleEvaluacion.php');
-
+require_once ('UsuarioFactory.php');
 //require_once ('../autoload.php');
 //equire_once ('ActividaddCompensacion.php');
 
@@ -38,6 +38,11 @@ class Director extends Profesor
 	function existeDirector($email,$pass,$tipo){
         return $this->dbdirector->existeDirector($email,$pass,$tipo);
     }
+   //============ Usuarios ================
+   function registrarUsuario($rut,$nombre,$apaterno,$amaterno,$password,$correo,$extra,$facultad){
+       $factoria = new UsuarioFactory();
+       return $usuario = $factoria->crearUsuario($rut,$nombre,$apaterno,$amaterno,$password,$correo,$extra,$facultad);       
+   }
         //============ Competencias ================
         function consultarCompetenciasMalla($id){
             $res = Competencia::getCompetenciasMalla($id);
