@@ -17,9 +17,9 @@ class DBEspecificacion implements ICrud {
     
     public function delete($var){
         $con = DBSingleton::getInstance()->getDB();        
-        $res = $con->prepare('DELETE FROM especificacion_de_evidencia WHERE ID_ASIGNATURA=:id AND ID_COMPETENCIA=:id1)');
-        $res->bindParam(':id',$var->getIdAsignatura(),PDO::PARAM_STR);
-        $res->bindParam(':id1',$var->getIdCompetencia(),PDO::PARAM_STR);
+        $res = $con->prepare('DELETE FROM especificacion_de_evidencia WHERE ID_ASIGNATURA=:ida AND ID_COMPETENCIA=:idc');
+        $res->bindParam(':ida',$var->getIdAsignatura(),PDO::PARAM_STR);
+        $res->bindParam(':idc',$var->getIdCompetencia(),PDO::PARAM_STR);
         $res->execute();
     }
     
@@ -69,5 +69,15 @@ class DBEspecificacion implements ICrud {
         $asignatura = $dbh->fetchAll();
         return $asignatura;     
     }
+
+    public static function getEspecificacionesAsignatura($id){
+        $con = DBSingleton::getInstance()->getDB();
+        $dbh = $con->prepare('SELECT * FROM especificacion_de_evidencia WHERE ID_ASIGNATURA = :id');
+        $dbh->bindParam(':id', $id ,PDO::PARAM_STR);
+        $dbh->execute();
+        $asignatura = $dbh->fetchAll();
+        return $asignatura;     
+    }
+    
 }
 ?>

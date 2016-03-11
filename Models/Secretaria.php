@@ -3,7 +3,7 @@
 require_once ('DBSingleton.php');
 require_once ('Funcionario.php');
 require_once ('Practica.php');
-//require_once ('IUsuario.php');
+require_once ('Empleador.php');
 require_once ('DBConexion/DBSecretaria.php');
 
 class Secretaria extends Funcionario
@@ -104,6 +104,53 @@ class Secretaria extends Funcionario
 
             return $detalle->getCompetenciasEvaluacion();
     }
+
+    function crearEvaluacionExterna($idpractica, $rut, $fechaentrega, $resultado, $observaciones){
+            $practica = new Practica();
+            $practica->setIdPractica($idpractica);
+
+            $empleador = new Empleador();
+            $empleador->setRut($rut);
+
+            $evaluacion = new Evaluacion();
+            $evaluacion->setPractica($practica);
+            $evaluacion->setProfesor(null);
+            $evaluacion->setEmpleador($empleador);
+            $evaluacion->setResultado($resultado);
+            $evaluacion->setObservacion($observaciones);
+
+            $idevaluacion =  $evaluacion->getDBEvaluacion()->add($evaluacion);
+            return $idevaluacion;
+        }
+
+        function crearEvaluacionCompetencia($idevaluacion, $idcompetencia, $observacion, $calificacion){
+            $competencia = new Competencia();
+            $competencia->setIdComp($idcompetencia);
+
+            $evaluacion = new Evaluacion();
+            $evaluacion->setIdEvaluacion($idevaluacion);
+
+            $detalle = new DetalleEvaluacion();
+            $detalle->setCompetencia($competencia);
+            $detalle->setEvaluacion($evaluacion);
+            $detalle->setObservacion($observacion);
+            $detalle->setCalificacion($calificacion);
+
+            $evaluacion->getDBEvaluacion()->addDetalle($detalle);
+        }
+
+        function crearEmpleador($rut, $nombre, $apaterno, $amaterno, $empresa, $cargo, $telefono){
+            $empleador = new Empleador();
+            $empleador->setRut($rut);
+            $empleador->setNombre($nombre);
+            $empleador->setApaterno($apaterno);
+            $empleador->setAmaterno($amaterno);
+            $empleador->setNomEmpresa($empresa);
+            $empleador->setCelular($telefono);
+            $empleador->setFonoFijo(null);
+            $empleador->setCantPractica(1);
+            $empleador->getDBEmpleador()->add($empleador);
+        }
     
     //SETTERS
     function setFacultad($facultad){

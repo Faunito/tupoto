@@ -139,7 +139,92 @@
 
 
 	    		case 'nueva-empleador':
-	    			var_dump($result);
+		    		$observaciones = array();
+		    		$id_observaciones = array();
+		    		$evaluaciones = array();
+		    		$id_evaluaciones = array();
+		    		$i = 0;
+		    		$j = 0;
+	    			foreach ($post as $key =>$value) {
+	    				if(strcmp($key, 'observaciones') == 0){
+	    					$observaciones = $value;
+	    				}elseif(strcmp($key, 'listo') == 0){
+	    					$resultado = $value;
+	    				}else{
+		    				$tipo = explode("_", $key);
+		    				if(strcmp($tipo[0], 'empleador') == 0){
+		    					switch ($tipo[1]) {
+		    						case 'rut':
+		    							$rut = $value;
+		    							break;
+		    						case 'nombre':
+		    							$nombre = $value;
+		    							break;
+		    						case 'apaterno':
+		    							$apaterno = $value;
+		    							break;
+		    						case 'amaterno':
+		    							$amaterno = $value;
+		    							break;
+		    						case 'empresa':
+		    							$empresa = $value;
+		    							break;
+		    						case 'cargo':
+		    							$cargo = $value;
+		    							break;
+		    						case 'telefono':
+		    							$telefono = $value;
+		    							break;
+		    					}
+		    				}  
+
+		    				$evaluacion = explode('_', $key);
+		    				if( strcmp($evaluacion[0], 'observacion') == 0 ){	//pesca la observacion
+		    					$observaciones[$i] = $value;
+		    					$id_observaciones[$i] = $evaluacion[1];
+		    					$i++;
+
+		    				}elseif( strcmp($evaluacion[0], 'evaluacion') == 0 ){	//pesca la evaluacion
+		    					$evaluaciones[$j] = $value;
+		    					$id_evaluaciones[$j] = $evaluacion[1];
+		    					$j++;
+
+		    				}					
+	    				}
+	    			}
+
+	    			// $this->controller->crearEmpleador(	$rut,
+	    			// 									$nombre,
+	    			// 									$apaterno,
+	    			// 									$amaterno,
+	    			// 									$empresa,
+	    			// 									$cargo,
+	    			// 									$telefono);
+
+	    			// $idevaluacion = $this->controller->crearEvaluacionExterna(	$result['practica'], 
+					   //  														$rut, 
+					   //  														'16-03-2016', //cambiar
+					   //  														$resultado,
+					   //  														$observaciones);
+
+	    			$contador_eva = count($id_evaluaciones);
+		    		$contador_obs = count($id_observaciones);
+			    		echo 'eva: ' . $contador_eva . ' - ' . $contador_obs; 
+		    		for ($i = 0; $i < $contador_eva; $i++) {
+		    			for ($j = 0; $j < $contador_obs; $j++) { 
+			    			if( $id_evaluaciones[$i] == $id_observaciones[$j] ){ //encuentra una eva con nota y obs
+			    				//enviar datos a detalle_de_evaluacion
+			    				$this->controller->crearEvaluacionCompetencia(
+						    						$idevaluacion,
+						    						$id_evaluaciones[$i], 
+						    						$observaciones[$j], 
+						    						$evaluaciones[$i]
+						    					);
+			    			}	    				
+		    			}
+		    		}
+
+	    			
 	    			break;
 
 

@@ -52,6 +52,10 @@ class Asignatura
     	return DBAsignatura::getAsignaturasProfesor($Profesor);
     }
 
+    public static function getAsignaturasResumen($malla){
+    	return DBAsignatura::getAsignaturasResumen($malla);
+    }
+
 	//============ Getters ================
 
 	function getId(){

@@ -16,7 +16,9 @@ class Especificacion{
 	public static function getAsignaturasCompetencia($id){
 		return DBEspecificacion::getAsignaturasCompetencia($id);
 	}
-
+	public static function getEspecificacionesAsignatura($id){
+		return DBEspecificacion::getEspecificacionesAsignatura($id);
+	}
 
     //GETTERS 
     function getIdCompetencia(){
