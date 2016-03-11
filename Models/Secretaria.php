@@ -18,6 +18,7 @@ class Secretaria extends Funcionario
         $this->dbsecretaria = new DBSecretaria();
     }
     //FUNCTIONS
+    
     function existeSecre($email,$pass){
         return $this->dbsecretaria->existeSecre($email,$pass);
     }
@@ -161,17 +162,21 @@ class Secretaria extends Funcionario
     }
     //GETTERS
     function getFacultad(){
-        return $facultad;
+        return $this->facultad;
     }
     
     function getTelefono(){
-        return $telefono;
+        return $this->telefono;
     }
     
     function getSecretaria($email,$pass){
         $this->setCorreoElectronico($email);
         $this->setPassword($pass);
         $this->dbsecretaria -> GetInstance($this);
+    }
+    
+    function getDBSecretaria(){
+        return $this->dbsecretaria;
     }
 }
 ?>

@@ -1,6 +1,7 @@
 <?php //namespace Models;
 require_once ('DBSingleton.php');
 require_once ('Funcionario.php');
+//require_once ('IUsuario.php');
 require_once ('DBConexion/DBProfesor.php');
 
 class Profesor extends Funcionario
@@ -14,7 +15,7 @@ class Profesor extends Funcionario
 	private $m_Evaluacion;
 	private $m_ProgramaCurricular;    
 	private $dbprofesor;
-
+    
 	public function __construct(){
 		$this->dbprofesor = new DBProfesor();
 	}    

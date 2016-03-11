@@ -24,7 +24,11 @@ class DirectorController extends ProfesorController{
     }
 
     //============ Funciones ================
-              
+        //============ Usuarios ================
+        function crearUsuario($rut,$nombre,$apaterno,$amaterno,$password,$correo,$extra,$facultad){
+            return $this->dir->crearUsuario($rut,$nombre,$apaterno,$amaterno,$password,$correo,$extra,$facultad);
+        }
+        
         //============ Competencias ================
         function listarCompetencias(){
             $res = Competencia::getCompetencias();
