@@ -14,6 +14,7 @@ class DirectorController extends ProfesorController{
     private $arrayCompetencias;
     private $arrayAsignaturas;
     private $arrayMallas;
+    private $arrayEvaluaciones;
     private $arrayAlumnos;
     private $template;
 
@@ -23,7 +24,7 @@ class DirectorController extends ProfesorController{
     }
 
     //============ Funciones ================
-    
+              
         //============ Competencias ================
         function listarCompetencias(){
             $res = Competencia::getCompetencias();
@@ -165,6 +166,7 @@ class DirectorController extends ProfesorController{
 
         function desasignarCompetenciaMalla($idMalla,$lista){
             foreach ($lista as $competencia) {
+                $this->dir->quitarEspecificacion($idMalla,$competencia->getIdComp());
                 $this->dir->desasignarCompetenciaMalla($idMalla,$competencia->getIdComp());           
             }
         }           
@@ -415,8 +417,12 @@ class DirectorController extends ProfesorController{
             $practica = $this->dir->consultarPractica($id);
             return $practica;
         }
-
         //============ Evaluaciones ================ 
+        function consultarEvaluaciones($practica){
+            $evaluaciones = $this->dir->consultarEvaluacionesPractica($practica);
+            return $evaluaciones;
+        }  
+        
         function crearEvaluacionAcademica($idpractica, $profesor, $resultado){
             return $this->dir->crearEvaluacionAcademica($idpractica, $profesor, $resultado);
         }
@@ -424,6 +430,7 @@ class DirectorController extends ProfesorController{
         function crearEvaluacionCompetencia($idevaluacion, $idcompetencia, $observacion, $calificacion){
             $this->dir->crearEvaluacionCompetencia($idevaluacion, $idcompetencia, $observacion, $calificacion);
         }
+        
     //============ Getters ================
 
     function getDirector(){

@@ -57,7 +57,7 @@
                                             echo '<td class="no-padding">'.$practica->getIntento().'</td>';
 								    	    ?>
 								    	     <td class="center no-padding">
-								            	<a class="btn-floating waves-effect waves-light tooltipped" data-position="top" data-delay="50" data-tooltip="Ver detalle de práctica" href="evaluaciones.php?action=listar&param=<?php echo $this->data['alumno']->getRut(); ?>"><i class="mdi mdi-eye white-text right"></i></a>
+								            	<a class="btn-floating waves-effect waves-light tooltipped" data-position="top" data-delay="50" data-tooltip="Ver detalle de práctica" href="evaluaciones.php?action=ver-evaluaciones&rut=<?php echo $this->data['alumno']->getRut(); ?>&practica=<?php echo $practica->getIdPractica(); ?>"><i class="mdi mdi-eye white-text right"></i></a>
 											</td>
 								            <td class="center no-padding">
 								            	<a class="btn-floating waves-effect waves-light tooltipped" data-position="top" data-delay="50" data-tooltip="Modificar" href="practicas.php?action=modificar&param=<?php echo $practica->getIdPractica(); ?>"><i class="material-icons color_primario white-text">edit</i></a>

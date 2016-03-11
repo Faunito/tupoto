@@ -1,6 +1,7 @@
 <?php
 
 require_once(ROOT_DIR . VIEWS_DIR . 'Template.php');
+require_once(ROOT_DIR . MODELS_DIR . 'Evaluacion.php');
 
 class SecretariaController{
     
@@ -100,6 +101,25 @@ class SecretariaController{
         
         function eliminarAlumno($rut){
              $this->secretaria->eliminarAlumno($rut);
+        }
+
+        //============ Competencias ================
+        function consultarCompetenciasEvaluacion($practica, $alumno){
+            return $this->secretaria->consultarCompetenciasEvaluacion($practica, $alumno);
+
+        }
+
+        //============ Evaluaciones ================ 
+        function crearEvaluacionExterna($idpractica, $rut, $fechaentrega, $resultado, $observaciones){
+            return $this->secretaria->crearEvaluacionExterna($idpractica, $rut, $fechaentrega, $resultado, $observaciones);
+        }
+
+        function crearEvaluacionCompetencia($idevaluacion, $idcompetencia, $observacion, $calificacion){
+            $this->secretaria->crearEvaluacionCompetencia($idevaluacion, $idcompetencia, $observacion, $calificacion);
+        }
+
+        function crearEmpleador($rut, $nombre, $apaterno, $amaterno, $empresa, $cargo, $telefono){
+            $this->secretaria->crearEmpleador($rut, $nombre, $apaterno, $amaterno, $empresa, $cargo, $telefono);
         }
 
     //============ Serializacion ==========

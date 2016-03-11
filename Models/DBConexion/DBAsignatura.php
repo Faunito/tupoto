@@ -6,13 +6,14 @@ class DBAsignatura Implements ICrud {
 	function GetInstance($asignatura){
         $con = DBSingleton::getInstance()->getDB();
         $resultado = $con->prepare('SELECT * FROM asignatura where ID_ASIGNATURA =:id');
-        $resultado->bindParam(':id', $asignatura->getCodigo() ,PDO::PARAM_STR);        
+        $resultado->bindParam(':id', $asignatura->getId() ,PDO::PARAM_STR);        
         $resultado->execute();
         $objeto = $resultado->fetchObject(__CLASS__);
         //puede que falten datos
         $asignatura->setCodigo($objeto->CODIGO_ASIGNATURA);
         $asignatura->setNombre($objeto->NOMBRE_ASIGNATURA);
         $asignatura->setNivel($objeto->NIVEL_ASIGNATURA);
+        return $asignatura;
 	}
     
 
@@ -119,7 +120,7 @@ class DBAsignatura Implements ICrud {
             $i++;
         }
         $cantidad = str_repeat("?,", count($array)-1) . "?";
-        $dbh = $con->prepare('  SELECT DISTINCT A.*,E.ID_COMPETENCIA, E.NIVELES_COMPETENCIA FROM asignatura A 
+        $dbh = $con->prepare(' SELECT DISTINCT A.*,E.ID_COMPETENCIA, E.NIVELES_COMPETENCIA FROM asignatura A 
                                 LEFT JOIN especificacion_de_evidencia E 
                                 ON A.ID_ASIGNATURA = E.ID_ASIGNATURA 
                                 WHERE A.ID_MALLA IN ('.$cantidad.') ORDER BY E.ID_COMPETENCIA DESC');

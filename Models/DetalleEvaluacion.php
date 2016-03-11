@@ -1,6 +1,7 @@
 <?php
 require_once ('Evaluacion.php');
 require_once ('Competencia.php');
+require_once ('DBConexion/DBDetalleEvaluacion.php');
 
 class DetalleEvaluacion
 {
@@ -9,11 +10,28 @@ class DetalleEvaluacion
     //PKS
 	private $evaluacion;
 	private $competencia;
+	private $dbdetalleevaluacion;
 
-	function __construct()
-	{
+	function __construct(){
+		$this->dbdetalleevaluacion = new DBDetalleEvaluacion();
 	}
 
+	function getCompetenciasEvaluacion(){
+		$this->competencia = new Competencia();
+		$competencias = $this->competencia->getDBCompetencia()->getCompetenciasMalla($this->evaluacion->getPractica()->getAlumno()->getIdMalla());
+		$array = array();
+		$i = 0;
+		foreach ($competencias as $competencia) {
+			$nueva = new Competencia();
+			$nueva->setIdComp($competencia['ID_COMPETENCIA']);
+			$nueva->setNomComp($competencia['NOMBRE_COMPETENCIA']);
+			$nueva->setDesComp($competencia['DESCRIPCION_DE_COMPETENCIA']);
+			$nueva->setCate($competencia['CATEGORIA']);
+			$array[$i] = $nueva;
+			$i++;
+		}
+		return $array;
+	}
 
 	//GETTERS
 	function getCalificacion()

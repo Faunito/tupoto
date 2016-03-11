@@ -1,7 +1,6 @@
 <?php
-	$title = "Asignar asignaturas a competencia " . $this->data['competencia']->getNomComp();
+	$title = "Asignar actividad de compensacion ";
 	require_once(ROOT_DIR . TEMPLATES_DIR . 'base/header.php');
-	require_once(ROOT_DIR . TEMPLATES_DIR . 'base/sidenav/sidenav_director.php');
 	?>
 	<main id="sb-site" class="blue-grey lighten-5">	
 		<div class="container">		
@@ -96,8 +95,8 @@
 											      	<div class="switch">
 											       	<label>
 											       	Quitar
-													<input name="<?php echo $this->data['asignaturas'][$i]->getId(); ?>" id="<?php echo $this->data['asignaturas'][$i]->getId(); ?>" type="checkbox"
-												    <?php if($this->data['especificaciones'][$i]->getIdCompetencia() != null && $this->data['especificaciones'][$i]->getIdCompetencia() == $this->data['competencia']->getIdComp()) echo 'checked'; ?> >
+												    <input name="<?php echo $this->data['asignaturas'][$i]->getId(); ?>" id="<?php echo $this->data['asignaturas'][$i]->getId(); ?>" type="checkbox"
+												    <?php if($this->data['especificaciones'][$i]->getIdCompetencia() != null) echo 'checked'; ?> >
 												    <span class="lever"></span>
 												    Agregar
 												    </label>

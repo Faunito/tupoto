@@ -8,7 +8,7 @@
 <!--Conveniciones-->
 
   <div class="card" >
-    <div class="card-content " style="overflow-x: scroll; overflow-y: scroll; height: 85%">
+    <div class="card-content" style="overflow-x: scroll; overflow-y: scroll; height: 85%">
 
       <table class="responsive-table">
         <thead>
@@ -145,8 +145,7 @@
                 }
               } 
               echo '</tr>';
-          }
-              
+            }
           ?>
         </tbody>
       </table>

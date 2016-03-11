@@ -17,6 +17,8 @@ class Alumno extends Persona
 	{
         $this->dbalumno = new DBAlumno();
 	}
+
+
     //GETTERS
     function getDBAlumno()
     {

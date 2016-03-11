@@ -23,15 +23,50 @@
 							  <div id="admin" class="col s10 offset-s1">
 							  	<h6 style="text-align: left; font-size:20px; ">Rut: <?php echo $this->data['alumno']->getRut(); ?></h6>
 							  	<h6 style="text-align: left; font-size:20px; margin-bottom: 20px;">Carrera: <?php echo $this->data['alumno']->getCarrera();?></h6>
-							  	<div class="card">
-							  		<div class="card-content">
-							  			<div class="row">
-							  				<div class="col s4">
-
-							  				</div>
-							  			</div>
+							  	<div class="row">
+							  	    <div class="col s2">
+                                        <div class='card'>
+                                            <div class='card-content blue white-text'>
+                                                <h9>Dirección: <p><?php echo $this->data['practica']->getDireccion();?></p></h9>
+                                            </div>
+                                        </div>
 							  		</div>
-							  	</div>
+                                    <div class="col s2">
+                                        <div class='card'>
+                                            <div class='card-content teal white-text'>
+                                                <h9>Estado: <p><?php echo $this->data['practica']->getEstado();?></p></h9>
+							  	            </div>
+                                        </div>
+                                    </div>                                        
+                                    <div class="col s2">
+                                        <div class='card'>
+                                            <div class='card-content green darken-3 white-text'>
+                                                <h9>Inicio: <p><?php echo $this->data['practica']->getFechaInicio();?></p></h9>
+							  		        </div>
+                                        </div>
+                                    </div>                                              
+                                    <div class="col s2">
+                                        <div class='card'>
+                                            <div class='card-content lime darken-3 white-text'>
+                                                <h9>Termino: <p><?php echo $this->data['practica']->getFechaTermino();?></p></h9>
+							  		        </div>
+                                        </div>
+                                    </div>    
+                                    <div class="col s2">
+                                        <div class='card'>
+                                            <div class='card-content orange darken-2 white-text'>
+                                                <h9>Nivel: <p><?php echo $this->data['practica']->getNivelPractica();?></p></h9>
+							  		        </div>
+                                        </div>
+                                    </div>
+                                    <div class="col s2">
+                                        <div class='card'>
+                                            <div class='card-content brown darken-2 white-text'>
+                                                <h9>Duración: <p><?php echo $this->data['practica']->getHoras();?></p></h9>
+							  		        </div>
+							  	        </div>
+                                   </div>
+                                </div>
 							    <div class="card material-table">
 							      <div class="table-header">
 							        <span class="table-title">Lista de evaluaciones</span>
@@ -43,12 +78,10 @@
 							      	<table id="datatable">
 								        <thead>
 								          <tr>
-                                            <th style="width: 100px;">Nivel</th>	
-								            <th class="no-padding" style="width: 100px;">Estado</th>
-								            <th class="no-padding" style="width: 100px;">Fecha inicio</th>
-								            <th class="no-padding" style="width: 100px;">Fecha Termino</th>
-                                            <th class="no-padding" style="width: 100px;">Duración</th>
-								            <th class="no-padding" style="width: 60px;">Intento</th>
+                                            <th style="width: 100px;">Evaluador</th>	
+								            <th class="no-padding" style="width: 100px;">Entrega</th>
+								            <th class="no-padding" style="width: 100px;">Resultado</th>
+                                            <th class="center no-padding" style="width: 60px">Asignar</th>
 								            <th class="center no-padding" style="width: 60px">Ver</th>
 								          </tr>
 								        </thead>
@@ -57,15 +90,22 @@
 								        if(!empty($this->data['evaluaciones'])){
 								        foreach ($this->data['evaluaciones'] as $evaluacion) {
 								        	echo '<tr>';
-								        	echo '<td>'.$evaluacion->getIdEvaluacion().'</td>';
-								    	    echo '<td class="no-padding">'.$evaluacion->getEstado().'</td>';
+                                            echo '<td class="no-padding">';
+                                            if(!empty($evaluacion->getProfesor())){  
+                                                echo $evaluacion->getProfesor()->getNombre().' '.$evaluacion->getProfesor()->getApaterno();    
+                                            }
+                                            else{
+                                                echo $evaluacion->getEmpleador()->getNombre().' '.$evaluacion->getEmpleador()->getApaterno();
+                                            }
+                                            echo '</td>';							    	    
 								    	    echo '<td class="no-padding">'.$evaluacion->getFechaEntrega().'</td>';
-								    	    echo '<td class="no-padding">'.$evaluacion->getResultado().'</td>';
-                                            echo '<td class="no-padding">'.$evaluacion->getHoras().'</td>';
-                                            echo '<td class="no-padding">'.$evaluacion->getIntento().'</td>';
+                                            echo '<td class="no-padding">'.$evaluacion->getResultado().'</td>';
 								    	    ?>
 								            <td class="center no-padding">
-								            	<a class="btn-floating waves-effect waves-light tooltipped" data-position="top" data-delay="50" data-tooltip="Ver alumno" href="evaluacions.php?action=ver&param=<?php echo $evaluacion->getIdEvaluacion(); ?>"><i class="mdi mdi-eye white-text right"></i></a>
+								            	<a class="btn-floating waves-effect waves-light tooltipped" data-position="top" data-delay="50" data-tooltip="Actividades de compensación" href="evaluaciones.php?action=actividades&param=<?php echo $evaluacion->getIdEvaluacion(); ?>"><i class="mdi mdi-book green white-text right"></i></a>
+											</td>
+                                            <td class="center no-padding">
+								            	<a class="btn-floating waves-effect waves-light tooltipped" data-position="top" data-delay="50" data-tooltip="Ver detalle evaluación" href="evaluaciones.php?action=ver&param=<?php echo $evaluacion->getIdEvaluacion(); ?>"><i class="mdi mdi-eye white-text right"></i></a>
 											</td>
 								          </tr>
 								          <?php }} ?>
