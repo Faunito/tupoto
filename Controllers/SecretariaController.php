@@ -110,12 +110,16 @@ class SecretariaController{
         }
 
         //============ Evaluaciones ================ 
-        function crearEvaluacionExterna($idpractica, $profesor, $resultado){
-            return $this->dir->crearEvaluacionAcademica($idpractica, $profesor, $resultado);
+        function crearEvaluacionExterna($idpractica, $rut, $fechaentrega, $resultado, $observaciones){
+            return $this->secretaria->crearEvaluacionExterna($idpractica, $rut, $fechaentrega, $resultado, $observaciones);
         }
 
         function crearEvaluacionCompetencia($idevaluacion, $idcompetencia, $observacion, $calificacion){
-            $this->dir->crearEvaluacionCompetencia($idevaluacion, $idcompetencia, $observacion, $calificacion);
+            $this->secretaria->crearEvaluacionCompetencia($idevaluacion, $idcompetencia, $observacion, $calificacion);
+        }
+
+        function crearEmpleador($rut, $nombre, $apaterno, $amaterno, $empresa, $cargo, $telefono){
+            $this->secretaria->crearEmpleador($rut, $nombre, $apaterno, $amaterno, $empresa, $cargo, $telefono);
         }
 
     //============ Serializacion ==========

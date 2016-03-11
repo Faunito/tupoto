@@ -218,6 +218,8 @@
 	    			$competenciasMalla=$this->controller->consultarCompetenciasMalla($result['param']);	
 	    			$i=0;
 	    			$j=0;
+	    			$listaOn = array();
+	    			$listaOff = array();
 	    			foreach ($post as $key => $value) {
 	    				if(strcmp($value,'on') == 0){
 	    					foreach ($competencias as $competencia) {

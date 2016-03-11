@@ -140,6 +140,19 @@ class Director extends Profesor
             $this->especificacion->getDBEspecificacion()->add($this->especificacion);
         }
 
+        function quitarEspecificacion($idmalla, $idcompetencia){
+            //sacar las asignaturas de la malla
+            $asignaturas = Asignatura::getAsignaturasMalla($idmalla);
+
+            foreach ($asignaturas as $asignatura) {
+                $this->especificacion = new Especificacion();
+                $this->especificacion->setIdCompetencia($idcompetencia);
+                $this->especificacion->setIdAsignatura($asignatura['ID_ASIGNATURA']);
+                $this->especificacion->getDBEspecificacion()->delete($this->especificacion);
+            }
+
+        }
+
         //============ Asignaturas ================
         function consultarAsignatura($codigo){
             $asignatura = new Asignatura();

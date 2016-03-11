@@ -161,6 +161,7 @@ class DirectorController extends ProfesorController{
 
         function desasignarCompetenciaMalla($idMalla,$lista){
             foreach ($lista as $competencia) {
+                $this->dir->quitarEspecificacion($idMalla,$competencia->getIdComp());
                 $this->dir->desasignarCompetenciaMalla($idMalla,$competencia->getIdComp());           
             }
         }           

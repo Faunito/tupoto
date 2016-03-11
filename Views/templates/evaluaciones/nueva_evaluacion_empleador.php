@@ -24,7 +24,7 @@
 		        <div class="card">
 			        <div class="card-content"> 
 
-				        <form id="formEvaluacion" action="evaluaciones.php?result=nueva-empleador" method="POST">
+				        <form id="formEvaluacion" action="evaluaciones.php?result=nueva-empleador&rut=<?php echo $this->data['alumno']->getRut(); ?>&practica=<?php echo $this->data['practica']->getIdPractica(); ?>" method="POST">
 
 					        <div class="row center">
 						        <div class="col s4 offset-s4">
@@ -76,7 +76,16 @@
 						        	<h5><strong>Empresa o institución:</strong></h5> 
 						        </div>
 						        <div class="col s6 input-field no-padding" style="width: 53%; margin-top: 0; height: 30">
-						       		<input id="empresa" name="empresa" type="text" class="validate">
+						       		<input id="empresa" name="empleador_empresa" type="text" class="validate">
+						        </div>										         
+					        </div>
+
+					        <div class="row">				
+						        <div class="col s10 offset-s1" style="width: 25%">
+						        	<h5><strong>RUT jefe directo:</strong></h5>
+						        </div>
+						        <div class="col s6 input-field no-padding" style="width: 55%; margin-top: 0; height: 30">
+						       		<input id="rut" name="empleador_rut" type="text" class="validate">
 						        </div>										         
 					        </div>
 
@@ -85,44 +94,70 @@
 						        	<h5><strong>Nombre jefe directo:</strong></h5>
 						        </div>
 						        <div class="col s6 input-field no-padding" style="width: 55%; margin-top: 0; height: 30">
-						       		<input id="nombre" name="nombre" type="text" class="validate">
+						       		<input id="nombre" name="empleador_nombre" type="text" class="validate">
 						        </div>										         
 					        </div>
 
 					        <div class="row">
-					        	<!-- HAY QUE GUARDARLO -->
+						        <div class="col s2 offset-s1" style="width: 12%">
+						        	<h5><strong>Apellido Paterno:</strong></h5>
+						        </div>
+						        <div class="col s3 input-field no-padding" style="width: 30%;">
+						        	<input id="cargo" name="empleador_apaterno" type="text" class="validate">
+						        </div>	
+						        <div class="col s2" style="width: 12%"> 
+						        	<h5><strong>Apellido Materno:</strong></h5> 
+						        </div>
+						        <div class="col s3 input-field no-padding">
+						        	<input id="telefono" name="empleador_amaterno" type="text" class="validate">
+						        </div>									
+					        </div>
+
+					        <div class="row">
 						        <div class="col s1 offset-s1" style="width: 9%">
 						        	<h5><strong>Cargo:</strong></h5>
 						        </div>
 						        <div class="col s3 input-field no-padding" style="width: 33%; margin-top: 0; height: 30">
-						        	<input id="cargo" name="cargo" type="text" class="validate">
+						        	<input id="cargo" name="empleador_cargo" type="text" class="validate">
 						        </div>	
 						        <div class="col s2" style="width: 12%"> 
 						        	<h5><strong>Telefono:</strong></h5> 
 						        </div>
 						        <div class="col s3 input-field no-padding" style="width: 26%; margin-top: 0; height: 30">
-						        	<input id="telefono" name="telefono" type="text" class="validate">
+						        	<input id="telefono" name="empleador_telefono" type="text" class="validate">
 						        </div>									
 					        </div>
 
 					        <div class="row">
 						        <div class="col s10 offset-s1">
-						        	<h5><strong>Dirección:</strong></h5> <!-- LO TENEMOS -->
+						        	<h5><strong>Dirección: <?php echo $this->data['practica']->getDireccion() ?></strong></h5>
 						        </div>
 					        </div>	
 
 					        <div class="row">
 						        <div class="col s5 offset-s1">
-						        	<h5><strong>Fecha de inicio:</strong></h5> <!-- LO TENEMOS -->
+						        	<h5>
+							        	<strong>Fecha de inicio:
+								        	<?php
+								        		echo $this->data['practica']->getFechaInicio();
+								        	 ?>
+							        	 </strong>
+						        	 </h5> 
 						        </div>
 						        <div class="col s5">
-						        	<h5><strong>Fecha de termino:</strong></h5> <!-- LO TENEMOS -->
+						        	<h5>
+							        	<strong>Fecha de término:
+								        	<?php
+								        		echo $this->data['practica']->getFechaTermino();
+								        	 ?>
+							        	 </strong>
+						        	 </h5> 
 						        </div>
 					        </div>
 
 					        <div class="row">
 						        <div class="col s10 offset-s1">
-						        	<h5><strong>Numero de horas:</strong></h5> <!-- LO TENEMOS -->
+						        	<h5><strong>Numero de horas: <?php echo $this->data['practica']->getHoras(); ?></strong></h5>
 						        </div>
 					        </div>
 
@@ -168,21 +203,11 @@
 										'</div>' .
 									 '</div>';
 
-								echo '<div class="row">';
+								echo '<div class="row">';								
 
-								echo '<div class="col s3 offset-s5">' .
-										'<select name="eva_ext" disabled>' .
-											'<option value="" disabled selected>Evaluación externa</option>' .
-									      	'<option value="Bueno">Bueno</option>' .
-									    	'<option value="Regular">Regular</option>' .
-									    	'<option value="Insatisfactorio">Insatisfactorio</option>' .	
-									    	'<option value="No aplica">No aplica</option>' .
-									    '</select>' .
-						        	 '</div>';
-
-						        echo '<div class="col s3">' .
+						        echo '<div class="col s3 offset-s8">' .
 								        '<select name="evaluacion_' . $competencia->getIdComp() . '">' .
-									      	'<option value="" disabled selected>Evaluación académica</option>' .
+									      	'<option value="" disabled selected>Evaluación empleador</option>' .
 									      	'<option value="b">Bueno</option>' .
 									    	'<option value="r">Regular</option>' .
 									    	'<option value="i">Insatisfactorio</option>' .	
@@ -222,7 +247,7 @@
 					        <div class="row">
 						        <div class="col s10 offset-s1">
 						        	<div class=" col s12 input-field" style="margin-top: 0">      
-							            <textarea id="departamento" name="departamento" class="materialize-textarea" length="1000"></textarea>
+							            <textarea id="departamento" name="empleador_departamento" class="materialize-textarea" length="1000"></textarea>
 							        </div>					        
 						        </div>
 					        </div>
@@ -240,7 +265,7 @@
 					        <div class="row">
 						        <div class="col s10 offset-s1">
 						        	<div class=" col s12 input-field" style="margin-top: 0">      
-							            <textarea id="observacion" name="observacion" class="materialize-textarea" length="1000"></textarea>
+							            <textarea id="observacion" name="observaciones" class="materialize-textarea" length="1000"></textarea>
 							        </div>					        
 						        </div>
 					        </div>
@@ -248,35 +273,36 @@
 					</div>
 
 					<div class="card">
-				        <div class="card-content">
-					        <div class="row">
-						        <div class="col s10 offset-s1">
-						        	<h5><strong>¿DE ACUERDO AL TRABAJO DESARROLLADO POR EL ALUMNO, USTED APRUEBA O RECHAZA LA PRÁCTICA?</strong></h5>
+							<div class="card-content">
+						        <div class="row">
+							        <div class="col s10 offset-s1">
+							        	<h5><strong>¿DE ACUERDO AL TRABAJO DESARROLLADO POR EL ALUMNO, USTED APRUEBA O RECHAZA LA PRÁCTICA?</strong></h5>
+							        </div>
 						        </div>
-					        </div>
+						        <div class="row">
 
-					        <div class="row">
-						        <div class="col s2 offset-s2">
-						        	<p>
-								      <input type="checkbox" id="aprueba" />
-								      <label for="aprueba">APRUEBA</label>
-								    </p>
-						        </div>
-						       	<div class="col s2 offset-s4">
-						        	<p>
-								      <input type="checkbox" id="rechaza" />
-								      <label for="rechaza">RECHAZA</label>
-								    </p>
-						        </div>
-					        </div>	
+							        <div class="col s2 offset-s2">
+							        	<p>
+									      <input type="radio" name="listo" id="aprueba" value="aprueba"/>
+									      <label for="aprueba">APRUEBA</label>
+									    </p>
+							        </div>
 
-					        <div class="row">	
-						        <div class="col s2 offset-s5">
-						        	<button class="btn btn-large waves-effect waves-light color_primario" type="submit" form="formEvaluacion">Ingresar</button>
+							       	<div class="col s2 offset-s4">
+							        	<p>
+									      <input type="radio" name="listo" id="rechaza" value="rechaza"/>
+									      <label for="rechaza">RECHAZA</label>
+									    </p>
+							        </div>
+
+						        </div>					        
+						        <div class="row">	
+							        <div class="col s2 offset-s5">
+							        	<button class="btn btn-large waves-effect waves-light color_primario" type="submit" form="formEvaluacion">Ingresar</button>
+							        </div>
 						        </div>
-					        </div>					        
-					    </div>
-					</div>
+				        	</div>
+				        </div>
 
 				        </form>
 	        </div>

@@ -120,7 +120,7 @@ class DBAsignatura Implements ICrud {
             $i++;
         }
         $cantidad = str_repeat("?,", count($array)-1) . "?";
-        $dbh = $con->prepare('  SELECT DISTINCT A.*,E.ID_COMPETENCIA, E.NIVELES_COMPETENCIA FROM asignatura A 
+        $dbh = $con->prepare(' SELECT DISTINCT A.*,E.ID_COMPETENCIA, E.NIVELES_COMPETENCIA FROM asignatura A 
                                 LEFT JOIN especificacion_de_evidencia E 
                                 ON A.ID_ASIGNATURA = E.ID_ASIGNATURA 
                                 WHERE A.ID_MALLA IN ('.$cantidad.') ORDER BY E.ID_COMPETENCIA DESC');

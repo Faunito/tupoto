@@ -63,3 +63,14 @@ FROM evaluacion E
 LEFT JOIN evalua EV ON E.ID_EVALUACION = EV.ID_EVALUACION 
 LEFT JOIN profesor P ON EV.RUT = P.RUT
 WHERE E.ID_PRACTICA = 2
+
+==============================================
+
+======= selecciona todos los datos de todas las asignaturas de una malla
+======= asignaturas con su nivel de especificacion y su competencia asociada
+
+SELECT A.ID_ASIGNATURA, A.CODIGO_ASIGNATURA, A.NOMBRE_ASIGNATURA, A.NIVEL_ASIGNATURA, E.NIVELES_COMPETENCIA, C.ID_COMPETENCIA, C.NOMBRE_COMPETENCIA, C.CATEGORIA, C.DESCRIPCION_DE_COMPETENCIA
+FROM asignatura A
+LEFT JOIN especificacion_de_evidencia E ON E.ID_ASIGNATURA = A.ID_ASIGNATURA
+LEFT JOIN competencia C ON C.ID_COMPETENCIA = E.ID_COMPETENCIA
+WHERE A.ID_MALLA = 5;

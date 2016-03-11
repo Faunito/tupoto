@@ -8,10 +8,11 @@ class DBEmpleador Implements ICrud{
     function add($var){
         $con = DBSingleton::getInstance()->getDB();
         $respuesta = $con->prepare('INSERT INTO empleador VALUES(:rut,:cantPractica,:nombEmp,
-            :telefono,:celular,:nombre,:apaterno,:amaterno)');
+            :telefono,:celular,:nombre,:apaterno,:amaterno) 
+            ON DUPLICATE KEY UPDATE CELULAR = :celular, TELEFONO = :telefono, CANTIDAD_PRACTICAS = CANTIDAD_PRACTICAS+1');
         $respuesta->bindParam(':rut',$var->getRut(),PDO::PARAM_STR);
         $respuesta->bindParam(':cantPractica',$var->getCantPractica(),PDO::PARAM_STR);
-        $respuesta->bindParam(':nombEmp',$var->getNombre(),PDO::PARAM_STR);
+        $respuesta->bindParam(':nombEmp',$var->getNomEmpresa(),PDO::PARAM_STR);
         $respuesta->bindParam(':telefono',$var->getFonoFijo(),PDO::PARAM_STR);
         $respuesta->bindParam(':celular',$var->getCelular(),PDO::PARAM_STR);
         $respuesta->bindParam(':nombre',$var->getNombre(),PDO::PARAM_STR);

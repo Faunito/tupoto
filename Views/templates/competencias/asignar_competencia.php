@@ -96,8 +96,8 @@
 											      	<div class="switch">
 											       	<label>
 											       	Quitar
-												    <input name="<?php echo $this->data['asignaturas'][$i]->getId(); ?>" id="<?php echo $this->data['asignaturas'][$i]->getId(); ?>" type="checkbox"
-												    <?php if($this->data['especificaciones'][$i]->getIdCompetencia() != null) echo 'checked'; ?> >
+													<input name="<?php echo $this->data['asignaturas'][$i]->getId(); ?>" id="<?php echo $this->data['asignaturas'][$i]->getId(); ?>" type="checkbox"
+												    <?php if($this->data['especificaciones'][$i]->getIdCompetencia() != null && $this->data['especificaciones'][$i]->getIdCompetencia() == $this->data['competencia']->getIdComp()) echo 'checked'; ?> >
 												    <span class="lever"></span>
 												    Agregar
 												    </label>
