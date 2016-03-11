@@ -84,3 +84,7 @@ button.color_primario:hover {
 .cuadrito-oculto{
     border-style:hidden;
 }
+
+.fila{
+ height: 100px;
+}

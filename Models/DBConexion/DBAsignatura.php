@@ -44,7 +44,7 @@ class DBAsignatura Implements ICrud {
 
     public static function getAsignaturasMalla($id){
         $con = DBSingleton::getInstance()->getDB();
-        $dbh = $con->prepare('SELECT * FROM asignatura WHERE ID_MALLA = :id');
+        $dbh = $con->prepare('SELECT * FROM asignatura WHERE ID_MALLA = :id ORDER BY NIVEL_ASIGNATURA');
         $dbh->bindParam(':id', $id ,PDO::PARAM_STR);
         $dbh->execute();
         $asignatura = $dbh->fetchAll();
@@ -149,6 +149,20 @@ class DBAsignatura Implements ICrud {
         $dbh->execute();
         $grafico = $dbh->fetchAll();
         return $grafico;
+    }
+
+    public static function getAsignaturasResumen($malla){
+        $array=array();
+        $con = DBSingleton::getInstance()->getDB();
+        $dbh = $con->prepare('  SELECT A.ID_ASIGNATURA, A.CODIGO_ASIGNATURA, A.NOMBRE_ASIGNATURA, A.NIVEL_ASIGNATURA, E.NIVELES_COMPETENCIA, C.ID_COMPETENCIA, C.NOMBRE_COMPETENCIA, C.CATEGORIA, C.DESCRIPCION_DE_COMPETENCIA
+                    FROM asignatura A
+                    LEFT JOIN especificacion_de_evidencia E ON E.ID_ASIGNATURA = A.ID_ASIGNATURA
+                    LEFT JOIN competencia C ON C.ID_COMPETENCIA = E.ID_COMPETENCIA
+                    WHERE A.ID_MALLA =:malla');
+        $dbh->bindParam(':malla', $malla, PDO::PARAM_STR);
+        $dbh->execute();
+        $asignaturas = $dbh->fetchAll();
+        return $asignaturas;
     }
 
 	function add($asignatura){

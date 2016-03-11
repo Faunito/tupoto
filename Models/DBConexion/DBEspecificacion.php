@@ -69,5 +69,15 @@ class DBEspecificacion implements ICrud {
         $asignatura = $dbh->fetchAll();
         return $asignatura;     
     }
+
+    public static function getEspecificacionesAsignatura($id){
+        $con = DBSingleton::getInstance()->getDB();
+        $dbh = $con->prepare('SELECT * FROM especificacion_de_evidencia WHERE ID_ASIGNATURA = :id');
+        $dbh->bindParam(':id', $id ,PDO::PARAM_STR);
+        $dbh->execute();
+        $asignatura = $dbh->fetchAll();
+        return $asignatura;     
+    }
+    
 }
 ?>

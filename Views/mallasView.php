@@ -96,50 +96,44 @@
 	    			$this->controller->getTemplate()->load(ROOT_DIR.TEMPLATES_DIR.'mallas/asignar_competencia_malla.php');
 	    			break;
 	    		case 'ver-resumen':
+	    			$i=0;
 	    			$malla = $this->controller->consultarMalla($action['param']);
 	    			$asignaturas = $this->controller->listarAsignaturasMalla($action['param']);
-	    			$niveles = array();
 	    			foreach ($asignaturas as $asignatura) {
-	    				if(!isset($niveles[$asignatura->getNivel()]))
-	    				{
-	    					$niveles[$asignatura->getNivel()]=array();
-	    				}
-	    				array_push($niveles[$asignatura->getNivel()], $asignatura);
+	    				$especificaciones[$i] = $this->controller->listarEspecificacionesAsignatura($asignatura->getId());
+	    				$i++;
 	    			}
 	    			$this->controller->getTemplate()->setData('malla',$malla);
-	    			$this->controller->getTemplate()->setData('niveles',$niveles);
-
 	    			//================== Datos para el grafico =============================
 	    			$competencias = $this->controller->consultarCompetenciasMalla($action['param']);
 	    			$this->controller->getTemplate()->setData('competencias', $competencias);
-
-	    			$graficos = array();
-	    			if(!empty($competencias)){
-	    				$i = 0;
-	    				foreach ($competencias as $competencia) {
-	    					$graficos[$i] = $this->controller->asignaturasGrafico($malla, $competencia);
-	    					$i++;
+	    			$genericas = array();
+	    			$licenciatura = array();
+	    			$especialidad = array();
+	    			$evidenciasGenericas = array();
+	    			$evidenciasLicenciatura = array();
+	    			$evidenciasEspecialidad = array();
+	    			foreach ($competencias as $competencia) {
+	    				switch ($competencia->getCate()) {
+	    					case 'Generica':
+	    						array_push($genericas,$competencia);
+	    						break;
+	    					case 'Licenciatura':
+	    						array_push($licenciatura,$competencia);
+	    						break;
+	    					case 'Especialidad':
+	    						array_push($especialidad,$competencia);
+	    						break;
+	    					default:
+	    						break;
 	    				}
-	    				$this->controller->getTemplate()->setData('graficos', $graficos);
-	    				//Hacer un for $i por cada grafico, dentro del template
-	    				//mostrando $mallas[$i],
-	    				//y dentro de otro for $j
-	    				//$graficos[$i]['asignaturas'][$j], $graficos[$i]['especificaciones'][$j]
-
-		    			// $contador = count($graficos);	//cantidad de mallas
-	    				// for($i = 0; $i < $contador; $i++) {
-	    				// 	echo $mallas[$i]->getCodCarrera() . ' - ' . $mallas[$i]->getPlan() . '<br>';
-	    				// 	$contadorAsignaturas = count($graficos[$i]['asignaturas']);
-	    				// 	for ($j = 0; $j < $contadorAsignaturas; $j++) { 
-	    				// 		echo $graficos[$i]['asignaturas'][$j]->getNombre() . ' -> ' . $graficos[$i]['especificaciones'][$j]->getNivelCompetencia() . '<br>';
-	    				// 	}
-	    				// }
-	    			
 	    			}
-
-
-
-	    			$this->controller->getTemplate()->load(ROOT_DIR.TEMPLATES_DIR.'mallas/resumen_malla.php');
+	    			$this->controller->getTemplate()->setData('especificaciones', $especificaciones);
+					$this->controller->getTemplate()->setData('genericas', $genericas);
+					$this->controller->getTemplate()->setData('licenciatura', $licenciatura);
+					$this->controller->getTemplate()->setData('especialidad', $especialidad);
+					$this->controller->getTemplate()->setData('asignaturas', $asignaturas);
+					$this->controller->getTemplate()->load(ROOT_DIR.TEMPLATES_DIR.'mallas/resumen_malla.php');
 	    			break;
 	    			
 	    		

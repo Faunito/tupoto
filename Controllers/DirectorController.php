@@ -141,6 +141,11 @@ class DirectorController extends ProfesorController{
         function asignarAsignaturaCompetencia($idCompetencia,$idAsignatura,$Nivel){
             $this->dir->asignarAsignaturaCompetencia($idCompetencia,$idAsignatura,$Nivel);
         }
+        
+        function listarEspecificacionesAsignatura($id){
+            $especificaciones=$this->dir->listarEspecificacionesAsignatura($id);
+            return $especificaciones;
+        }
         //============ Mallas Puede_Impartir Competencias ================
         function consultarCompetenciasMalla($idMalla){
             $competencias=$this->dir->consultarCompetenciasMalla($idMalla);
@@ -225,6 +230,33 @@ class DirectorController extends ProfesorController{
             $this->arrayAsignaturas = $array;
             $this->serializar($this);
             return $this->arrayAsignaturas;
+        }
+        function listarAsignaturasResumen($malla){
+            $asignaturas = Asignatura::getAsignaturasResumen($malla);
+            $i=0;
+            $array=array();
+            $i=0;
+            $array = array();
+            $array['asignaturas'] = array();
+            $array['especificaciones'] = array();
+            foreach ($asignaturas as $asignatura) {
+                $nueva = new Asignatura();                
+                $nueva->setId($asignatura['ID_ASIGNATURA']);
+                $nueva->setCodigo($asignatura['CODIGO_ASIGNATURA']);
+                $nueva->setNombre($asignatura['NOMBRE_ASIGNATURA']);
+                $nueva->setNivel($asignatura['NIVEL_ASIGNATURA']);
+                $nueva->setDirector($this->dir);
+                $array['asignaturas'][$i] = $nueva;
+
+                $nuevaE = new Especificacion();
+                $nuevaE->setIdAsignatura($asignatura['ID_ASIGNATURA']);
+                $nuevaE->setIdCompetencia($asignatura['ID_COMPETENCIA']);
+                $nuevaE->setNivelCompetencia($asignatura['NIVELES_COMPETENCIA']);
+                $array['especificaciones'][$i] = $nuevaE;
+
+                $i++;
+            }
+            return $array;
         }
 
         function listarAsignaturasLibres(){

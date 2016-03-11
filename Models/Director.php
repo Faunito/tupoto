@@ -140,6 +140,21 @@ class Director extends Profesor
             $this->especificacion->getDBEspecificacion()->add($this->especificacion);
         }
 
+        function listarEspecificacionesAsignatura($id){
+            $especificaciones = Especificacion::getEspecificacionesAsignatura($id);
+            $i=0;
+            $array=array();
+            foreach ($especificaciones as $especificacion) {
+                $nuevaE = new Especificacion();
+                $nuevaE->setIdAsignatura($especificacion['ID_ASIGNATURA']);
+                $nuevaE->setIdCompetencia($especificacion['ID_COMPETENCIA']);
+                $nuevaE->setNivelCompetencia($especificacion['NIVELES_COMPETENCIA']);
+                $array[$i] = $nuevaE;
+                $i++;
+            }
+            return $array;
+        }
+
         //============ Asignaturas ================
         function consultarAsignatura($codigo){
             $asignatura = new Asignatura();
